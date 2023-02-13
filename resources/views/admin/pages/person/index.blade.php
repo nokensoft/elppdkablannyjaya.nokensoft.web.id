@@ -33,48 +33,50 @@
                                         @else
                                     <form action="{{ url('app/person') }}" method="get">
                                         @endif
-<div class="input-group mb-3">
-  <input type="search" name="s" class="form-control" placeholder="Search">
-  <button type="submit" class="btn btn-primary">Search</button>
-</div>
-</form>
+                                        <div class="input-group mb-3">
+                                        <input type="search" name="s" class="form-control" placeholder="Search">
+                                        <button type="submit" class="btn btn-primary">Search</button>
+                                        </div>
+                                        </form>
 
                                         
 
                                         <div class="mt-3">
                                         <table class="table table-bordered">
-        <tr>
-            <th width="1%">No</th>
-            <th>Foto</th>
-            <th>Nama</th>
-           
-          
-            <th width="280px">Action</th>
-        </tr>
-        @foreach ($datas as $data)
-        <tr>
-            <td>{{ ++$i }}</td>
-            <td></td>
-             <td>{{Str::limit($data->name, 20)}}</td>
-              
-            <td>
-                <form action="{{ url('app/person',$data->id) }}" method="POST">
-     
-                
-               
-                
-                    <a class="btn btn-primary" href="{{ url('app/person/'.$data->id.'/edit') }}">Edit</a>
-     
-                    @csrf
-                    @method('DELETE')
-        
-                    <button type="submit" class="btn btn-danger">Delete</button>
-                </form>
-            </td>
-        </tr>
-        @endforeach
+                                            <tr>
+                                                <th width="1%">No</th>
+                                                <th>Foto</th>
+                                                <th>Nama</th>
+                                            
+                                            
+                                                <th width="280px">Action</th>
+                                            </tr>
+                                            @foreach ($datas as $data)
+                                            <tr>
+                                                <td>{{ ++$i }}</td>
+                                                <td>
+                                                    @if(!empty($data->image))
 
-    </table>
+                                                    <img src="{{ url($data->image)}}" alt="icon" class="img-fluid img-thumbnail" width="200">
+
+                                                    @endif
+                                                </td>
+                                                <td>{{Str::limit($data->name, 20)}}</td>
+                                                
+                                                <td>
+                                                    <form action="{{ url('app/person',$data->id) }}" method="POST">
+                                                            <a class="btn btn-primary" href="{{ url('app/person/'.$data->id.'/edit') }}">Edit</a>
+                                            
+                                                            @csrf
+                                                            @method('DELETE')
+                                                
+                                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                                        </form>
+                                                    </td>
+                                                </tr>
+                                                @endforeach
+
+                                            </table>
                                         </div>
                                         <!-- end .mt-4 -->
 

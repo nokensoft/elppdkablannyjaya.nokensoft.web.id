@@ -77,11 +77,12 @@
     <div class="mb-3">
         <label for="image" class="form-label">Image <span class="text-danger">*</span></label>
         {!! Form::file('image',null,['required','id'=>'image','class'=>'form-control','placeholder'=>'Image']) !!}
+        
         @if(!empty($data->image))
 
-<img src="{{ url($data->image)}}" alt="icon" class="img-fluid img-thumbnail" width="200">
+        <img src="{{ url($data->image)}}" alt="icon" class="img-fluid img-thumbnail" width="200">
 
-@endif
+        @endif
      
     </div>
 
