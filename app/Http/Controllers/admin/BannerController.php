@@ -32,7 +32,7 @@ class BannerController extends Controller
         $jumlahtrash = Banner::onlyTrashed()->count();
         $jumlahdraft = Banner::where('status', 0)->count();
         $datapublish = Banner::where('status', 1)->count();
-        
+
 
         return view('admin.pages.banner.index',compact('datas','jumlahtrash','jumlahdraft','datapublish')) ->with('i', (request()->input('page', 1) - 1) * 5);
     }
@@ -52,7 +52,7 @@ class BannerController extends Controller
         $jumlahtrash = Banner::onlyTrashed()->count();
         $jumlahdraft = Banner::where('status', 0)->count();
         $datapublish = Banner::where('status', 1)->count();
-        
+
 
         return view('admin.pages.banner.index',compact('datas','jumlahtrash','jumlahdraft','datapublish')) ->with('i', (request()->input('page', 1) - 1) * 5);
     }
@@ -64,8 +64,8 @@ class BannerController extends Controller
      */
     public function create()
     {
-        
-        
+
+
         return view('admin.pages.banner.create');
     }
 
@@ -89,9 +89,9 @@ class BannerController extends Controller
 
            //upload image
            $filename  = 'nokensoft'.'-'.date('Y-m-d-H-i-s').$request->file('image')->getClientOriginalName();
-    
+
         $request->file('image')->storeAs('public/resource/banners/'.$tahun.'/'.$bulan,$filename);
-            
+
            $url = ('storage/resource/banners/'.$tahun.'/'.$bulan.'/'.$filename);
 
         $form_data = array(
@@ -130,7 +130,7 @@ class BannerController extends Controller
      */
     public function edit($id)
     {
-       
+
         $data = Banner::findOrFail($id);
         return view('admin.pages.banner.edit', compact('data'));
     }
@@ -144,7 +144,7 @@ class BannerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+
         $tahun = date("Y");
         $bulan = date("M");
 
@@ -167,10 +167,10 @@ class BannerController extends Controller
 
         if ($request->hasFile('image')) {
             $filename  = 'nokensoft'.'-'.date('Y-m-d-H-i-s').$request->file('image')->getClientOriginalName();
-    
+
             $request->file('image')->storeAs('public/resource/banners/'.$tahun.'/'.$bulan,$filename);
-                
-               $url = ('storage/resource/banners/'.$tahun.'/'.$bulan.'/'.$filename);
+
+               $url = ('storage/public/resource/banners/'.$tahun.'/'.$bulan.'/'.$filename);
             $form_data['image'] = $url;
 
             $datalama = Banner::findOrFail($id);
@@ -180,8 +180,8 @@ class BannerController extends Controller
     }
 
 
-     
-        
+
+
     $data = Banner::find($id);
     $data->update($form_data);
 
@@ -204,7 +204,7 @@ class BannerController extends Controller
         alert()->success('Proses Berhasil', 'Sukses!!')->autoclose(1200);
         return redirect()->back();
 
-        
+
     }
 
     public function trash()
@@ -213,7 +213,7 @@ class BannerController extends Controller
         $jumlahtrash = Banner::onlyTrashed()->count();
         $jumlahdraft = Banner::where('status', 0)->count();
         $datapublish = Banner::where('status', 1)->count();
-        
+
 
         return view('admin.pages.banner.trash',compact('datas','jumlahtrash','jumlahdraft','datapublish')) ->with('i', (request()->input('page', 1) - 1) * 5);
     }
@@ -231,13 +231,13 @@ class BannerController extends Controller
 //dd($data->image);
         if($data->image){
             \File::delete($data->image);
-             
-            
+
+
         }
 
         $data->forceDelete();
 
-       
+
 
         alert()->success('Proses Berhasil', 'Sukses!!')->autoclose(1200);
         return redirect()->back();
