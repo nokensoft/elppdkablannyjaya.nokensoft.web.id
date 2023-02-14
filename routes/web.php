@@ -18,6 +18,7 @@ use App\Http\Controllers\ProductController;
 |
 */
 
+
 Route::get('/', function () {
     // return view('welcome');
     return redirect('/login');
@@ -44,6 +45,10 @@ Route::group(['middleware' => ['auth']], function() {
 //     $targetFolder = storage_path('app/public');
 //     $linkFolder = $_SERVER['DOCUMENT_ROOT'] . '/storage';
 // });
+
+Route::get('/linkstorage', function () {
+    Artisan::call('storage:link');
+});
 
 require_once 'app.php';
 
