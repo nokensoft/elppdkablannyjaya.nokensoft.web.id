@@ -54,7 +54,7 @@
         @foreach ($datas as $data)
         <tr>
             <td>{{ ++$i }}</td>
-            <td><img src="{{ url($data->image)}}" alt="image" class="img-fluid img-thumbnail" width="100"></td>
+            <td><img src="{{ Storage::url($data->image)}}" alt="image" class="img-fluid img-thumbnail" width="100"></td>
             <td>{{Str::limit($data->title, 20)}}</td>
 
 

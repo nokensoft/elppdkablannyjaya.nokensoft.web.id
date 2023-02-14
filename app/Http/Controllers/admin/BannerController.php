@@ -92,7 +92,7 @@ class BannerController extends Controller
 
            $request->file('image')->storeAs('public/resource/banners/'.$tahun.'/'.$bulan,$filename);
 
-           $url = ('storage/resource/banners/'.$tahun.'/'.$bulan.'/'.$filename);
+           $url = ('public/resource/banners/'.$tahun.'/'.$bulan.'/'.$filename);
 
         $form_data = array(
             'title' => $request->title,
