@@ -65,7 +65,7 @@
         @foreach ($datas as $data)
         <tr>
             <td>{{ ++$i }}</td>
-            <td><img src="{{ Storage::url('public/resource/sliders') }}/{{ $data->image}}" width="100px"></td>
+            <td><img src="{{ Storage::url('/public/resource/sliders') }}/{{ $data->image}}" width="100px"></td>
             <td>{{Str::limit($data->title, 20)}}</td>
             <td>{{Str::limit($data->subtitle, 20)}}</td>
             <td>{{ $data->status }}</td>
