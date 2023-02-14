@@ -1,12 +1,12 @@
 <?php
-  
+
 use Illuminate\Support\Facades\Route;
-  
+
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
-  
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,12 +17,12 @@ use App\Http\Controllers\ProductController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-  
+
 Route::get('/', function () {
     // return view('welcome');
     return redirect('/login');
 });
-  
+
 // Auth::routes();
 Auth::routes(['register' => false]);
 Route::redirect('/register', '/login');
@@ -39,8 +39,12 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('products', ProductController::class);
 });
 
- 
 
+Route::get('/storage-link',function(){
+    $targetFolder = storage_path('app/public');
+    $linkFolder = $_SERVER['DOCUMENT_ROOT'] . '/storage';
+    symlink($targetFolder,$linkFolder);
+});
 
 require_once 'app.php';
- 
+
