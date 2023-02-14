@@ -90,7 +90,7 @@ class BannerController extends Controller
            //upload image
            $filename  = 'nokensoft'.'-'.date('Y-m-d-H-i-s').$request->file('image')->getClientOriginalName();
 
-        $request->file('image')->storeAs('public/resource/banners/'.$tahun.'/'.$bulan,$filename);
+           $request->file('image')->storeAs('public/resource/banners/'.$tahun.'/'.$bulan,$filename);
 
            $url = ('storage/resource/banners/'.$tahun.'/'.$bulan.'/'.$filename);
 
