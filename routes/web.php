@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
+use Illuminate\Support\Facades\File;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +18,9 @@ use App\Http\Controllers\ProductController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+File::link(
+    storage_path('app/public'), public_path('storage')
+);
 
 Route::get('/', function () {
     // return view('welcome');
@@ -40,11 +44,7 @@ Route::group(['middleware' => ['auth']], function() {
 });
 
 
-Route::get('/storage-link',function(){
-    $targetFolder = storage_path('app/public');
-    $linkFolder = $_SERVER['DOCUMENT_ROOT'] . '/storage';
-    symlink($targetFolder,$linkFolder);
-});
+
 
 require_once 'app.php';
 
