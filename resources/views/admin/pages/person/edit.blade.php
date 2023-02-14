@@ -15,8 +15,8 @@
                                     <h4 class="page-title">halaman</h4>
                                 </div>
                             </div>
-                        </div>     
-                        <!-- end page title --> 
+                        </div>
+                        <!-- end page title -->
                         @if ($errors->any())
     <div class="alert alert-danger">
         <strong>Whoops!</strong> Ada Form Yang Belum diisi.<br><br>
@@ -36,7 +36,7 @@
                                         <!-- <form action="{{ url('app/halaman') }}" method="POST" enctype="multipart/form-data"> -->
                                         {!! Form::model($data,array('url'=>'app/person/'.$data->id,'method'=>'put','files'=>'true'))!!}
                                         @csrf
-    
+
 
                                         <div class="mb-3">
         <label for="name" class="form-label">Nama <span class="text-danger">*</span></label>
@@ -77,29 +77,29 @@
     <div class="mb-3">
         <label for="image" class="form-label">Image <span class="text-danger">*</span></label>
         {!! Form::file('image',null,['required','id'=>'image','class'=>'form-control','placeholder'=>'Image']) !!}
-        
+
         @if(!empty($data->image))
 
-        <img src="{{ url($data->image)}}" alt="icon" class="img-fluid img-thumbnail" width="200">
+        <img src="{{ Storage::url($data->image) }}" alt="icon" class="img-fluid img-thumbnail" width="200">
 
         @endif
-     
+
     </div>
 
 
     <div class="mb-3">
         <label for="product-category" class="form-label">Status <span class="text-danger">*</span></label>
-        
+
         {!! Form::select('status', [''=>'Status  ...','1'=>'Aktif','0'=>'draft'], null,['class'=>'form-control select2','id'=>'status','required']) !!}
 
     </div>
 
-  
+
 </div>
 </div> <!-- end card -->
 </div> <!-- end col -->
 
- 
+
 </div>
 <!-- end row -->
 <!--end wrapper-->
@@ -120,12 +120,12 @@
 {!! Form::close() !!}
 
   @stop
-  
+
 @push('script-header')
  <!-- Plugins css-->
  <link href="{{ asset('assets/admin/assets/libs/select2/css/select2.min.css')}}" rel="stylesheet" type="text/css" />
         <!-- <link href="{{ asset('assets/admin/assets/libs/dropzone/min/dropzone.min.css')}}" rel="stylesheet" type="text/css" />
-       
+
         <link href="{{ asset('assets/admin/assets/libs/dropify/css/dropify.min.css')}}" rel="stylesheet" type="text/css" /> -->
         <link href="{{ asset('assets/admin/assets/libs/quill/quill.core.css')}}" rel="stylesheet" type="text/css" />
         <link href="{{ asset('assets/admin/assets/libs/quill/quill.snow.css')}}" rel="stylesheet" type="text/css" />
@@ -137,7 +137,7 @@
    <script src="{{ asset('assets/admin/assets/js/vendor.min.js')}}"></script>
    <script src="{{ asset('assets/admin/assets/libs/select2/js/select2.min.js')}}"></script>
         <!-- Quill js -->
-        <script src="{{ asset('assets/admin/assets/libs/quill/quill.min.js')}}"></script>  
+        <script src="{{ asset('assets/admin/assets/libs/quill/quill.min.js')}}"></script>
    <!-- Init js -->
 
      <script src="{{ asset('assets/admin/assets/js/pages/add-product.init.js')}}"></script>
@@ -149,7 +149,7 @@
         <!-- Init js-->
         <script src="{{ asset('assets/admin/assets/js/pages/form-fileuploads.init.js')}}"></script>
 
-      
+
   <script src="{{ asset('assets/admin/ckeditor/ckeditor.js')}}"></script>
 <script type="text/javascript">
     $(document).ready(function () {

@@ -15,8 +15,8 @@
                                     <h4 class="page-title">person</h4>
                                 </div>
                             </div>
-                        </div>     
-                        <!-- end page title --> 
+                        </div>
+                        <!-- end page title -->
 
                         <div class="row">
                             <div class="col-12">
@@ -27,7 +27,7 @@
                                     <!-- End Left sidebar -->
 
                                     <div class="inbox-rightbar">
-                                   
+
                                     @if (request()->segment(3) == 'draft')
                                     <form action="{{ url('app/person/draft') }}" method="get">
                                         @else
@@ -39,7 +39,7 @@
                                         </div>
                                         </form>
 
-                                        
+
 
                                         <div class="mt-3">
                                         <table class="table table-bordered">
@@ -47,8 +47,8 @@
                                                 <th width="1%">No</th>
                                                 <th>Foto</th>
                                                 <th>Nama</th>
-                                            
-                                            
+
+
                                                 <th width="280px">Action</th>
                                             </tr>
                                             @foreach ($datas as $data)
@@ -57,19 +57,19 @@
                                                 <td>
                                                     @if(!empty($data->image))
 
-                                                    <img src="{{ url($data->image)}}" alt="icon" class="img-fluid img-thumbnail" width="200">
+                                                    <img src="{{ Storage::url($data->image)}}" alt="icon" class="img-fluid img-thumbnail" width="200">
 
                                                     @endif
                                                 </td>
                                                 <td>{{Str::limit($data->name, 20)}}</td>
-                                                
+
                                                 <td>
                                                     <form action="{{ url('app/person',$data->id) }}" method="POST">
                                                             <a class="btn btn-primary" href="{{ url('app/person/'.$data->id.'/edit') }}">Edit</a>
-                                            
+
                                                             @csrf
                                                             @method('DELETE')
-                                                
+
                                                             <button type="submit" class="btn btn-danger">Delete</button>
                                                         </form>
                                                     </td>
@@ -82,21 +82,20 @@
 
                                         {!! $datas->links() !!}
                                         <!-- end row-->
-                                    </div> 
+                                    </div>
                                     <!-- end inbox-rightbar-->
 
                                     <div class="clearfix"></div>
                                     </div>
-                                  
+
                                 </div> <!-- end card-->
                             </div> <!-- end col -->
-                          
+
                             </div>
                         </div>
-                      
+
                         <!-- end row -->
-                       
+
   <!--end wrapper-->
 
   @stop
-  

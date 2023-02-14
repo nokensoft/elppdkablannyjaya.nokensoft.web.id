@@ -88,7 +88,7 @@
 
     <input type="file" name="image"/>
                 <p class="text-muted text-center mt-2 mb-0" >Max File size 1 MB</p>
-                <img src="{{ Storage::url($data->image))}}" alt="image" class="img-fluid img-thumbnail" width="100">
+                <img src="{{ Storage::url($data->image)}}" alt="image" class="img-fluid img-thumbnail" width="100">
     <!-- Preview -->
     <div class="dropzone-previews mt-3" id="file-previews"></div>
 </div>

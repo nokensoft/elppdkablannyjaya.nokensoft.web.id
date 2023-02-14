@@ -33,12 +33,12 @@ class PersonController extends Controller
         $jumlahtrash = Person::onlyTrashed()->count();
         $jumlahdraft = Person::where('status', 0)->count();
         $datapublish = Person::where('status', 1)->count();
-        
+
 
         return view('admin.pages.person.index',compact('datas','jumlahtrash','jumlahdraft','datapublish')) ->with('i', (request()->input('page', 1) - 1) * 5);
-   
-       
-        
+
+
+
     }
 
     /**
@@ -59,7 +59,7 @@ class PersonController extends Controller
      */
     public function store(Request $request)
     {
-       
+
 
         $request->validate([
             'name' => 'required',
@@ -96,13 +96,13 @@ class PersonController extends Controller
 
 
         $filename  = 'nokensoft'.'-'.date('Y-m-d-H-i-s').$request->file('image')->getClientOriginalName();
-    
+
         $request->file('image')->storeAs('public/resource/sdm/'.$tahun.'/'.$bulan,$filename);
-            
-           $url = ('storage/resource/sdm/'.$tahun.'/'.$bulan.'/'.$filename);
+
+        $url = ('public/resource/sdm/'.$tahun.'/'.$bulan.'/'.$filename);
 
         $person = new Person();
-       
+
         $person->name = $request->name;
         $person->email = $request->email;
         $person->phone = $request->phone;
@@ -116,10 +116,10 @@ class PersonController extends Controller
         $person->save();
         alert()->success('Berhasil', 'Sukses!!')->autoclose(1100);
         return redirect()->route('app.person');
-       
-   
-       
-        
+
+
+
+
     }
 
     /**
@@ -189,10 +189,10 @@ class PersonController extends Controller
 
         if($request->hasFile('image')){
             $filename  = 'nokensoft'.'-'.date('Y-m-d-H-i-s').$request->file('image')->getClientOriginalName();
-    
+
             $request->file('image')->storeAs('public/resource/sdm/'.$tahun.'/'.$bulan,$filename);
-                
-               $url = ('storage/resource/sdm/'.$tahun.'/'.$bulan.'/'.$filename);
+
+               $url = ('public/resource/sdm/'.$tahun.'/'.$bulan.'/'.$filename);
 
                $datalama = Person::findOrFail($id);
                if($datalama->image){
@@ -218,11 +218,11 @@ class PersonController extends Controller
     return redirect()->route('app.person');
 
     }
-    
-  
-   
-      
- 
+
+
+
+
+
 
     /**
      * Remove the specified resource from storage.

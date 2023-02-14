@@ -170,7 +170,7 @@ class BannerController extends Controller
 
             $request->file('image')->storeAs('public/resource/banners/'.$tahun.'/'.$bulan,$filename);
 
-               $url = ('storage/public/resource/banners/'.$tahun.'/'.$bulan.'/'.$filename);
+               $url = ('public/resource/banners/'.$tahun.'/'.$bulan.'/'.$filename);
             $form_data['image'] = $url;
 
             $datalama = Banner::findOrFail($id);
