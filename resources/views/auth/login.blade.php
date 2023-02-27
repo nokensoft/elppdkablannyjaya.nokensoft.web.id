@@ -3,22 +3,27 @@
 
     <head>
         <meta charset="utf-8" />
-        <title>Demo | Log In | E-LPPD KABUPATEN LANNY JAYA</title>
+        <title> Log In | E-LPPD KABUPATEN LANNY JAYA | DEMO</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
         <meta content="Coderthemes" name="author" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
         <!-- App favicon -->
         <link rel="shortcut icon" href="{{ asset('assets/admin/assets/images/favicon.png')}}">
 
 		<!-- Bootstrap css -->
 		<link href="{{ asset('assets/admin/assets/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" />
+
 		<!-- App css -->
 		<link href="{{ asset('assets/admin/assets/css/app.min.css')}}" rel="stylesheet" type="text/css" id="app-style"/>
+
 		<!-- icons -->
 		<link href="{{ asset('assets/admin/assets/css/icons.min.css')}}" rel="stylesheet" type="text/css" />
+
 		<!-- Head js -->
 		<script src="{{ asset('assets/admin/assets/js/head.js')}}"></script>
+
         <!-- font awesome -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
@@ -52,6 +57,7 @@
 
                         <!-- title-->
                         <h4 class="mt-0 display-1 fw-bold">Sign In</h4>
+
                         <p class="text-muted mb-4">Masukan alamat email dan kata sandi Anda untuk mengakses.</p>
 
                         <!-- form -->
