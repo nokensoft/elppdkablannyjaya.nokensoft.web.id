@@ -32,6 +32,14 @@ class DatabaseSeeder extends Seeder
             'status' => '1',
         ]);
 
+        \App\Models\User::factory()->create([
+            'name' => 'Samuel Bosawer',
+            'job_desc' => 'Administrator',
+            'email' => 's.bos@gmail.com',
+            'password' => bcrypt('s.bos@gmail.com'),
+            'status' => '1',
+        ]);
+
 
         //   \App\Models\Slider::factory(10)->create();
 
