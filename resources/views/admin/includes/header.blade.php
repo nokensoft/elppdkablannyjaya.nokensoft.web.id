@@ -1,4 +1,4 @@
-<link rel="shortcut icon" href="{{ asset('assets/admin/assets/images/favicon.ico')}}">
+<link rel="shortcut icon" href="{{ asset('assets/admin/assets/images/favicon.png')}}">
 @stack('script-header')
 <!-- Bootstrap css -->
 <link href="{{ asset('assets/admin/assets/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" />
