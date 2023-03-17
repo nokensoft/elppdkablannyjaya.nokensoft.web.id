@@ -42,4 +42,5 @@ Route::group(['middleware' => ['auth']], function() {
 
 
 require_once 'app.php';
+require_once 'admin.php';
 
