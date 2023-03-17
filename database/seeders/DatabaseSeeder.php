@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
         \App\Models\User::factory()->create([
             'name' => 'Admin Master',
             'job_desc' => 'Administrator',
-            'avatar' => 'ssets/admin/assets/images/users/user-admin.jpg',
+            'avatar' => 'assets/admin/assets/images/users/user-admin.jpg',
             'email' => 'admin@gmail.com',
             'password' => bcrypt('password'),
             'status' => '1',
@@ -28,7 +28,7 @@ class DatabaseSeeder extends Seeder
         \App\Models\User::factory()->create([
             'name' => 'Janzen Faidiban',
             'job_desc' => 'Administrator',
-            'avatar' => 'ssets/admin/assets/images/users/user-janzen.jpg',
+            'avatar' => 'assets/admin/assets/images/users/user-janzen.jpg',
             'email' => 'janzen@gmail.com',
             'password' => bcrypt('janzen@gmail.com'),
             'status' => '1',
@@ -37,7 +37,7 @@ class DatabaseSeeder extends Seeder
         \App\Models\User::factory()->create([
             'name' => 'Samuel Bosawer',
             'job_desc' => 'Administrator',
-            'avatar' => 'ssets/admin/assets/images/users/user-samuel.jpg',
+            'avatar' => 'assets/admin/assets/images/users/user-samuel.jpg',
             'email' => 's.bos@gmail.com',
             'password' => bcrypt('s.bos@gmail.com'),
             'status' => '1',
