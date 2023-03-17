@@ -3,7 +3,7 @@
 
     <head>
         <meta charset="utf-8" />
-        <title> UBold - Responsive Admin Dashboard Template</title>
+        <title> SILPPD Lanny Jaya</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
         <meta content="Coderthemes" name="author" />
@@ -35,13 +35,13 @@
                             <div class="auth-logo">
                                 <a href="index.html" class="logo logo-dark text-center">
                                     <span class="logo-lg">
-                                        <img src="assets/images/logo-dark.png" alt="" height="22">
+                                        <img src="assets/admin/assets/images/logo-dark.png" alt="" height="22">
                                     </span>
                                 </a>
 
                                 <a href="index.html" class="logo logo-light text-center">
                                     <span class="logo-lg">
-                                        <img src="assets/images/logo-light.png" alt="" height="22">
+                                        <img src="assets/admin/assets/images/logo-light.png" alt="" height="22">
                                     </span>
                                 </a>
                             </div>
@@ -49,7 +49,7 @@
 
                         <!-- title-->
                         <h4 class="mt-0">Login</h4>
-                        <p class="text-muted mb-4">E-LPPD Pemerintah Kabupaten Lanny Jaya</p>
+                        <p class="text-muted mb-4">Masukan alamat email dan kata sandi Anda untuk mengakses. </p>
 
                         <!-- form -->
                         <form method="POST" action="{{ route('login') }}">
@@ -112,12 +112,9 @@
             <!-- Auth fluid right content -->
             <div class="auth-fluid-right text-center">
                 <div class="auth-user-testimonial">
-                    <h2 class="mb-3 text-white">I love the color!</h2>
-                    <p class="lead"><i class="mdi mdi-format-quote-open"></i> I've been using your theme from the previous developer for our web app, once I knew new version is out, I immediately bought with no hesitation. Great themes, good documentation with lots of customization available and sample app that really fit our need. <i class="mdi mdi-format-quote-close"></i>
-                    </p>
-                    <h5 class="text-white">
-                        - Fadlisaad (Ubold Admin User)
-                    </h5>
+                    <h2 class="mb-3 text-white display-1 fw-bold">SILPPD</h2>
+                    <p class="text-uppercase">Sistem Informasi Laporan Penyelenggaraan Pemerintah Daerah</p>
+                    <p class="text-uppercase">Kabupaten Lanny Jaya</p>
                 </div> <!-- end auth-user-testimonial-->
             </div>
             <!-- end Auth fluid right content -->
