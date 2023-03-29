@@ -26,11 +26,11 @@ class DatabaseSeeder extends Seeder
         ]);
 
         \App\Models\User::factory()->create([
-            'name' => 'Janzen Faidiban',
+            'name' => 'Admin Master',
             'job_desc' => 'Administrator',
-            'avatar' => 'assets/admin/assets/images/users/user-janzen.jpg',
-            'email' => 'janzen@gmail.com',
-            'password' => bcrypt('janzen@gmail.com'),
+            'avatar' => 'assets/admin/assets/images/users/user-admin.png',
+            'email' => 'admin.master@gmail.com',
+            'password' => bcrypt('admin.master@gmail.com'),
             'status' => '1',
         ]);
 

@@ -65,12 +65,12 @@
             </li>
 
             <li>
-                <a href="#sidebarEcommerce" data-bs-toggle="collapse">
+                <a href="#sippid" data-bs-toggle="collapse">
                     <i class="fa fa-bookmark"></i>
                     <span> LPPD </span>
                     <span class="menu-arrow"></span>
                 </a>
-                <div class="collapse" id="sidebarEcommerce">
+                <div class="collapse" id="sippid">
                     <ul class="nav-second-level">
                         <li>
                             <a href="#">Sub Menu Item</a>

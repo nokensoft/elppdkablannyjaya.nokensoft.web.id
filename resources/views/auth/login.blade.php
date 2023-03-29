@@ -35,13 +35,13 @@
                             <div class="auth-logo">
                                 <a href="index.html" class="logo logo-dark text-center">
                                     <span class="logo-lg">
-                                        <img src="assets/admin/assets/images/logo-dark.png" alt="Logo SILPPD" height="75px">
+                                        <img src="assets/admin/assets/images/logo-dark.png" class="w-100" alt="Logo SILPPD" height="">
                                     </span>
                                 </a>
 
                                 <a href="index.html" class="logo logo-light text-center">
                                     <span class="logo-lg">
-                                        <img src="assets/admin/assets/images/logo-light.png" alt="Logo SILPPD" height="75px">
+                                        <img src="assets/admin/assets/images/logo-light.png" class="w-100" alt="Logo SILPPD" height="">
                                     </span>
                                 </a>
                             </div>
@@ -49,7 +49,7 @@
 
                         <!-- title-->
                         <h4 class="mt-0 display-3 fw-bold">Login</h4>
-                        <p class="text-muted mb-4">Masukan alamat email dan kata sandi Anda untuk mengakses. </p>
+                        <p class="text-muted mb-4">Masukan alamat email dan kata sandi Anda untuk mengakses sistem informasi. </p>
 
                         <!-- form -->
                         <form method="POST" action="{{ route('login') }}">
@@ -57,7 +57,7 @@
 
                         <div class="mb-3">
                                 <label for="emailaddress" class="form-label">Alamat Email</label>
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                                <input id="email" type="email" class="form-control form-control-lg @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
 
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
@@ -66,10 +66,10 @@
                                 @enderror
                             </div>
                             <div class="mb-3">
-                                <a href="auth-recoverpw-2.html" class="text-muted float-end"><small>Lupa kata sandi?</small></a>
+                                {{-- <a href="auth-recoverpw-2.html" class="text-muted float-end"><small>Lupa kata sandi?</small></a> --}}
                                 <label for="password" class="form-label">Kata Sandi</label>
                                 <div class="input-group input-group-merge">
-                                    <input type="password" id="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+                                    <input type="password" id="password" class="form-control form-control-lg @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
                                     <div class="input-group-text" data-password="false">
                                         <span class="password-eye"></span>
                                     </div>
@@ -84,7 +84,7 @@
                             <div class="row mb-3">
                         </div>
                             <div class="text-center d-grid">
-                                <button class="btn btn-primary btn-lg" type="submit">Log In </button>
+                                <button class="btn btn-primary btn-lg fw-bold" type="submit"><i class="fas fa-sign-in-alt mr-1"></i> Log In </button>
                             </div>
 
                         </form>
@@ -92,7 +92,7 @@
 
                         <!-- Footer-->
                         <footer class="footer footer-alt">
-                            <p class="text-muted">Belum punya akun? <a href="auth-register-2.html" class="text-muted ms-1"><b>Hubungi Admin</b></a></p>
+                            <p class="text-muted">Terkendala saat login? <a href="#" class="text-muted ms-1"><b>Hubungi Admin</b></a></p>
                         </footer>
 
                     </div> <!-- end .card-body -->
@@ -105,7 +105,7 @@
                 <div class="auth-user-testimonial">
                     <img src="assets/admin/assets/images/logo-kab-lanny-jaya.png" alt="Logo Kabupaten Lanny Jaya" class="col-lg-2 mx-auto">
                     <h2 class="mb-3 text-white display-1 fw-bold">SILPPD</h2>
-                    <p class="text-uppercase">Sistem Informasi Laporan Penyelenggaraan Pemerintah Daerah <br> Kabupaten Lanny Jaya</p>
+                    <p class="text-uppercase display-6 fw-bold">Sistem Informasi Laporan Penyelenggaraan Pemerintah Daerah <br> Kabupaten Lanny Jaya</p>
                 </div> <!-- end auth-user-testimonial-->
             </div>
             <!-- end Auth fluid right content -->
