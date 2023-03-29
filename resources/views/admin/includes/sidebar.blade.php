@@ -76,13 +76,13 @@
                             <a href="{{asset('admin/profil/pemerintah-daerah')}}">Pemerintah Dearah</a>
                         </li>
                         <li>
-                            <a href="#">Kepala Daerah</a>
+                            <a href="{{asset('admin/profil/kepala-daerah')}}">Kepala Daerah</a>
                         </li>    
                         <li>
-                            <a href="#">Wakil Kepala Daerah</a>
+                            <a href="{{asset('admin/profil/wakil-kepala-daerah')}}">Wakil Kepala Daerah</a>
                         </li>      
                         <li>
-                            <a href="#">Sekretaris Daerah</a>
+                            <a href="{{asset('admin/profil/sekretaris-daerah')}}">Sekretaris Daerah</a>
                         </li>                 
                     </ul>
                 </div>

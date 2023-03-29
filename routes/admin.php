@@ -31,6 +31,18 @@ Route::prefix('admin')->middleware('auth')->group(function () {
         return view('admin.pages.profil.pemerintah-daerah');
     });
 
+    Route::get('profil/kepala-daerah', function () {
+        return view('admin.pages.profil.kepala-daerah');
+    });
+
+    Route::get('profil/wakil-kepala-daerah', function () {
+        return view('admin.pages.profil.wakil-kepala-daerah');
+    });
+
+    Route::get('profil/sekretaris-daerah', function () {
+        return view('admin.pages.profil.sekretaris-daerah');
+    });
+
     // TENTANG APLIKASI
 
     Route::get('/tentang-aplikasi', function () {
