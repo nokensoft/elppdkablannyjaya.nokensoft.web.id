@@ -100,17 +100,17 @@
                             </a>
                             <div class="dropdown-menu">
                                 <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item fs-4">
+                                <a href="{{asset('admin/lppd/monitoring')}}" class="dropdown-item fs-4">
                                     <i class="fas fa-bookmark me-1"></i>
                                     <span>Monitoring</span>
                                 </a>
                                 <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item fs-4">
+                                <a href="{{asset('admin/lppd/pelaporan')}}" class="dropdown-item fs-4">
                                     <i class="fas fa-bookmark me-1"></i>
                                     <span>Pelaporan</span>
                                 </a>
                                 <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item fs-4">
+                                <a href="{{asset('admin/lppd/perangkat-daerah')}}" class="dropdown-item fs-4">
                                     <i class="fas fa-bookmark me-1"></i>
                                     <span>Perangkat Daerah</span>
                                 </a>
@@ -126,17 +126,17 @@
                             </a>
                             <div class="dropdown-menu">
                                 <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item fs-4">
+                                <a href="{{asset('admin/ikk')}}" class="dropdown-item fs-4">
                                     <i class="fas fa-bookmark me-1"></i>
                                     <span>Pelaporan IKK</span>
                                 </a>
                                 <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item fs-4">
+                                <a href="{{asset('admin/ikk-makro')}}" class="dropdown-item fs-4">
                                     <i class="fas fa-bookmark me-1"></i>
                                     <span>Pelaporan IKK Makro</span>
                                 </a>
                                 <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item fs-4">
+                                <a href="{{asset('admin/ikk-output')}}" class="dropdown-item fs-4">
                                     <i class="fas fa-bookmark me-1"></i>
                                     <span>Pelaporan IKK Output</span>
                                 </a>
