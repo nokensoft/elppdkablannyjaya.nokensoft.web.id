@@ -26,7 +26,7 @@
                         <div class="row">
 
                             <!-- .col start -->
-                            <div class="col-lg-6">
+                            <div class="col-lg-8">
 
                                 <table class="table table-bordered fs-4">
                                     <tbody>
@@ -73,14 +73,16 @@
                             <!-- .col end -->
 
                             <!-- .col start -->
-                            <div class="col-lg-6">
+                            <div class="col-lg-4">
 
                                 <table class="table table-bordered fs-4">
                                     <tbody>
                                         <tr>
                                             <td>Foto Wakil Kepala Daerah</td>
+                                        </tr>
+                                        <tr>
                                             <td class="fw-bold">
-                                                <img src="{{asset('assets/admin/assets/images/users/user-women.png')}}" alt="Logo" width="100%">
+                                                <img src="{{asset('assets/admin/assets/images/users/user-women.png')}}" alt="Logo" width="100%" class="img-thumbnail p-5">
                                             </td>
                                         </tr>
                                     </tbody>

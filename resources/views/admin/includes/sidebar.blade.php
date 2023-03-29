@@ -56,18 +56,18 @@
 
             <li>
                 <a href="{{ url('/admin/tentang-aplikasi')}}">
-                    <i class="fa fa-bookmark"></i>
+                    <i class="fa fa-laptop"></i>
                     <span> Tentang Aplikasi </span>
                 </a>
             </li>
 
-            <li class="menu-title mt-2">Aplikasi</li>
+            <li class="menu-title mt-2">Profil</li>
             </li>
 
             <li>
                 <a href="#profil_daerah" data-bs-toggle="collapse">
-                    <i class="fa fa-bookmark"></i>
-                    <span> Profil </span>
+                    <i class="fa fa-building"></i>
+                    <span> Profil Daerah </span>
                     <span class="menu-arrow"></span>
                 </a>
                 <div class="collapse" id="profil_daerah">
@@ -89,8 +89,18 @@
             </li>
 
             <li>
+                <a href="{{ url('/admin/profil/dprd')}}">
+                    <i class="fa fa-users"></i>
+                    <span> Profil DPRD </span>
+                </a>
+            </li>
+
+            <li class="menu-title mt-2">Aplikasi</li>
+            </li>
+
+            <li>
                 <a href="#sippid" data-bs-toggle="collapse">
-                    <i class="fa fa-bookmark"></i>
+                    <i class="fa fa-book"></i>
                     <span> LPPD </span>
                     <span class="menu-arrow"></span>
                 </a>
@@ -108,7 +118,7 @@
 
             <li>
                 <a href="#sidebarCrm" data-bs-toggle="collapse">
-                    <i class="fa fa-bookmark"></i>
+                    <i class="fa fa-book"></i>
                     <span> IKK </span>
                     <span class="menu-arrow"></span>
                 </a>

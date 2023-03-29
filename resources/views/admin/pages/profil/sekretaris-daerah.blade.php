@@ -23,10 +23,11 @@
                         <h1 class="fw-bold">Profil Sekretaris Daerah</h1>
                         <p class="text-secondary">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed repudiandae recusandae suscipit eligendi ipsa, amet expedita dicta fugiat. Nihil accusantium beatae harum natus amet repudiandae quae! Consequuntur odio et quae ipsum distinctio, vero magnam necessitatibus, accusamus delectus provident autem minus impedit! Quidem similique dicta ipsam facilis impedit voluptates libero sunt.</p>
 
+
                         <div class="row">
 
                             <!-- .col start -->
-                            <div class="col-lg-6">
+                            <div class="col-lg-8">
 
                                 <table class="table table-bordered fs-4">
                                     <tbody>
@@ -77,14 +78,16 @@
                             <!-- .col end -->
 
                             <!-- .col start -->
-                            <div class="col-lg-6">
+                            <div class="col-lg-4">
 
                                 <table class="table table-bordered fs-4">
                                     <tbody>
                                         <tr>
                                             <td>Foto Sekretaris Daerah</td>
+                                        </tr>
+                                        <tr>
                                             <td class="fw-bold">
-                                                <img src="{{asset('assets/admin/assets/images/users/user-admin.png')}}" alt="Logo" width="100%">
+                                                <img src="{{asset('assets/admin/assets/images/users/user-man.png')}}" alt="Logo" width="100%" class="img-thumbnail p-5">
                                             </td>
                                         </tr>
                                     </tbody>
