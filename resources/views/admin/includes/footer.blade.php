@@ -7,7 +7,4 @@
         <!-- App js -->
         <script src="{{ asset('assets/admin/assets/js/app.min.js')}}"></script>
 
-
-
-
     

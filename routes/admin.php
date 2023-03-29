@@ -26,6 +26,7 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     });
 
     // PROFIL
+    // DAERAH
 
     Route::get('profil/pemerintah-daerah', function () {
         return view('admin.pages.profil.pemerintah-daerah');
@@ -41,6 +42,12 @@ Route::prefix('admin')->middleware('auth')->group(function () {
 
     Route::get('profil/sekretaris-daerah', function () {
         return view('admin.pages.profil.sekretaris-daerah');
+    });
+
+    // DPRD
+
+    Route::get('profil/dprd', function () {
+        return view('admin.pages.profil.dprd');
     });
 
     // TENTANG APLIKASI
