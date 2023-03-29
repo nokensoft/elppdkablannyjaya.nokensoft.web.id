@@ -49,16 +49,12 @@
                 <!-- Footer Start -->
                 <footer class="footer">
                     <div class="container-fluid">
-                        <div class="row">
+                        <div class="row text-uppercase">
                             <div class="col-md-6">
-                                <script>document.write(new Date().getFullYear())</script> &copy; <a href="#" class="link-secondary">Sekretariat Daerah Kabupaten Lanny Jaya</a> 
+                                <script>document.write(new Date().getFullYear())</script> &copy; <a href="#" class="link-secondary">Sistem Informasi Laporan Penyelenggaraan Pemerintah Daerah, Kabupaten Lanny Jaya. </a> 
                             </div>
-                            <div class="col-md-6">
-                                <div class="text-md-end footer-links d-none d-sm-block">
-                                    <a href="{{asset('admin/tentang-aplikasi')}}">Tentang Aplikasi</a>
-                                    <a href="{{asset('admin/bantuan')}}">Bantuan</a>
-                                    <a href="{{asset('admin/faq')}}">FAQ</a>
-                                </div>
+                            <div class="col-md-6 text-end">
+                                <span class="bg-outline-light">Versi 1.0</span>
                             </div>
                         </div>
                     </div>
