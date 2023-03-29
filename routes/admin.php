@@ -25,6 +25,22 @@ Route::prefix('admin')->middleware('auth')->group(function () {
         return view('admin.pages.beranda');
     });
 
+    Route::get('/tentang-aplikasi', function () {
+        return view('admin.pages.tentang-aplikasi');
+    });
+
+    Route::get('/bantuan', function () {
+        return view('admin.pages.bantuan');
+    });
+
+    Route::get('/faq', function () {
+        return view('admin.pages.faq');
+    });
+
+
+
+
+
     Route::get('/artikel', function () {
         return view('admin.pages.artikel.list');
     });

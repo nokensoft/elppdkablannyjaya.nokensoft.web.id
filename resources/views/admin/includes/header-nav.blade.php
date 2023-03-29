@@ -7,11 +7,8 @@
                             <a class="nav-link dropdown-toggle arrow-none waves-effect waves-light" data-toggle="fullscreen" href="#">
                                 <i class="fe-maximize noti-icon"></i>
                             </a>
-                        </li>
-    
-                     
-            
-    
+                        </li> 
+                                 
                         <li class="dropdown notification-list topbar-dropdown">
                             <a class="nav-link dropdown-toggle nav-user me-0 waves-effect waves-light" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
                                 <img src="{{ asset( Auth::user()->avatar )}}" alt="{{Auth::user()->avatar}}" class="rounded-circle">
@@ -59,11 +56,9 @@
                         <a href="index.html" class="logo logo-dark text-center">
                             <span class="logo-sm">
                                 <img src="{{ asset('assets/admin/assets/images/logo-sm.png')}}" alt="" height="40">
-                                <!-- <span class="logo-lg-text-light">UBold</span> -->
                             </span>
                             <span class="logo-lg">
-                                <img src="{{ asset('assets/admin/assets/images/logo-dark.pn')}}'" alt="" height="40">
-                                <!-- <span class="logo-lg-text-light">U</span> -->
+                                <img src="{{ asset('assets/admin/assets/images/logo-light.png')}}" alt="" height="40">
                             </span>
                         </a>
     

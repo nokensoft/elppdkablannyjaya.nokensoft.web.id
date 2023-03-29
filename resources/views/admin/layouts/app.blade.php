@@ -16,7 +16,7 @@
     </head> 
 
     <!-- body start -->
-    <body  data-layout-mode="detached" data-theme="light" data-topbar-color="dark" data-menu-position="fixed" data-leftbar-color="light" data-leftbar-size='default' data-sidebar-user='true'>
+    <body data-layout-mode="detached" data-layout='{"mode": "light", "width": "fluid", "menuPosition": "fixed", "sidebar": { "color": "light", "size": "default", "showuser": true}, "topbar": {"color": "dark"}, "showRightSidebarOnPageLoad": true}'>
 
 @include('sweetalert::alert')
         <!-- Begin page -->
@@ -51,13 +51,13 @@
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-md-6">
-                                <script>document.write(new Date().getFullYear())</script> &copy; Power By <a href="">Nokensoft</a> 
+                                <script>document.write(new Date().getFullYear())</script> &copy; <a href="#" class="link-secondary">Sekretariat Daerah Kabupaten Lanny Jaya</a> 
                             </div>
                             <div class="col-md-6">
                                 <div class="text-md-end footer-links d-none d-sm-block">
-                                    <a href="javascript:void(0);">About Us</a>
-                                    <a href="javascript:void(0);">Help</a>
-                                    <a href="javascript:void(0);">Contact Us</a>
+                                    <a href="{{asset('admin/tentang-aplikasi')}}">Tentang Aplikasi</a>
+                                    <a href="{{asset('admin/bantuan')}}">Bantuan</a>
+                                    <a href="{{asset('admin/faq')}}">FAQ</a>
                                 </div>
                             </div>
                         </div>

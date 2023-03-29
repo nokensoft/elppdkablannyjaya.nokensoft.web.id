@@ -45,7 +45,7 @@
 
         <ul id="side-menu">
 
-            <li class="menu-title">Menu Utama {{asset('')}} {{url('')}}</li>
+            <li class="menu-title">Menu Utama</li>
 
             <li>
                 <a href="{{ url('/admin/beranda')}}">

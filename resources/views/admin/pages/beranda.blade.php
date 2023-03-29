@@ -150,15 +150,15 @@
    <!-- Chart JS -->
    <script src="{{ asset('assets/admin/assets/libs/chart.js/Chart.bundle.min.js')}}"></script>
 
-<script src="{{ asset('assets/admin/assets/libs/moment/min/moment.min.js')}}"></script>
-<script src="{{ asset('assets/admin/assets/libs/jquery.scrollto/jquery.scrollTo.min.js')}}"></script>
+    <script src="{{ asset('assets/admin/assets/libs/moment/min/moment.min.js')}}"></script>
+    <script src="{{ asset('assets/admin/assets/libs/jquery.scrollto/jquery.scrollTo.min.js')}}"></script>
 
-<!-- Chat app -->
-<script src="{{ asset('assets/admin/assets/js/pages/jquery.chat.js')}}"></script>
+    <!-- Chat app -->
+    <script src="{{ asset('assets/admin/assets/js/pages/jquery.chat.js')}}"></script>
 
-<!-- Todo app -->
-<script src="{{ asset('assets/admin/assets/js/pages/jquery.todo.js')}}"></script>
+    <!-- Todo app -->
+    <script src="{{ asset('assets/admin/assets/js/pages/jquery.todo.js')}}"></script>
 
-<!-- Dashboard init JS -->
-<script src="{{ asset('assets/admin/assets/js/pages/dashboard-3.init.js')}}"></script>  
+    <!-- Dashboard init JS -->
+    <script src="{{ asset('assets/admin/assets/js/pages/dashboard-3.init.js')}}"></script>  
   @endpush
