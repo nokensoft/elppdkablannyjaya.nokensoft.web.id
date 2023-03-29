@@ -82,6 +82,13 @@ Route::prefix('admin')->middleware('auth')->group(function () {
         return view('admin.pages.profil.dprd.tambah');
     });
 
+    // LPPD ROUTES
+    require_once 'lppd.php';
+    
+
+    
+
+
     // TENTANG APLIKASI
 
     Route::get('/tentang-aplikasi', function () {

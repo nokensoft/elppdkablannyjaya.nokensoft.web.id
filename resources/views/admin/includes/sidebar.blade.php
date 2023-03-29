@@ -65,12 +65,12 @@
             </li>
 
             <li>
-                <a href="#profil_daerah" data-bs-toggle="collapse">
+                <a href="#profil_daerah" data-bs-toggle="collapse" aria-expanded="true">
                     <i class="fa fa-building"></i>
                     <span> Profil Daerah </span>
                     <span class="menu-arrow"></span>
                 </a>
-                <div class="collapse" id="profil_daerah">
+                <div class="collapse show" id="profil_daerah">
                     <ul class="nav-second-level">
                         <li>
                             <a href="{{asset('admin/profil/pemerintah-daerah')}}">Pemerintah Dearah</a>
@@ -93,45 +93,6 @@
                     <i class="fa fa-users"></i>
                     <span> Profil DPRD </span>
                 </a>
-            </li>
-
-            <li class="menu-title mt-2">Aplikasi</li>
-            </li>
-
-            <li>
-                <a href="#sippid" data-bs-toggle="collapse">
-                    <i class="fa fa-book"></i>
-                    <span> LPPD </span>
-                    <span class="menu-arrow"></span>
-                </a>
-                <div class="collapse" id="sippid">
-                    <ul class="nav-second-level">
-                        <li>
-                            <a href="#">Sub Menu Item</a>
-                        </li>
-                        <li>
-                            <a href="#">Sub Menu Item</a>
-                        </li>                       
-                    </ul>
-                </div>
-            </li>
-
-            <li>
-                <a href="#sidebarCrm" data-bs-toggle="collapse">
-                    <i class="fa fa-book"></i>
-                    <span> IKK </span>
-                    <span class="menu-arrow"></span>
-                </a>
-                <div class="collapse" id="sidebarCrm">
-                    <ul class="nav-second-level">
-                        <li>
-                            <a href="#">Sub Menu Item</a>
-                        </li>
-                        <li>
-                            <a href="#">Sub Menu Item</a>
-                        </li>
-                    </ul>
-                </div>
             </li>
 
             {{-- <li>

@@ -90,48 +90,59 @@
                             </a>
                             <!-- End mobile menu toggle-->
                         </li>   
-                <!-- Jalan Pintas-->
+                        <!-- Jalan Pintas-->
+
                         <li class="dropdown d-none d-xl-block">
                             <a class="nav-link dropdown-toggle waves-effect waves-light" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                                Jalan Pintas
+                                <i class="fas fa-book me-1"></i> 
+                                LPPD
                                 <i class="mdi mdi-chevron-down"></i> 
                             </a>
                             <div class="dropdown-menu">
                                 <!-- item-->
                                 <a href="javascript:void(0);" class="dropdown-item">
-                                    <i class="fe-briefcase me-1"></i>
-                                    <span>New Projects</span>
+                                    <i class="fas fa-bookmark me-1"></i>
+                                    <span>Monitoring</span>
                                 </a>
-    
                                 <!-- item-->
                                 <a href="javascript:void(0);" class="dropdown-item">
-                                    <i class="fe-user me-1"></i>
-                                    <span>Create Users</span>
+                                    <i class="fas fa-bookmark me-1"></i>
+                                    <span>Pelaporan</span>
                                 </a>
-    
                                 <!-- item-->
                                 <a href="javascript:void(0);" class="dropdown-item">
-                                    <i class="fe-bar-chart-line- me-1"></i>
-                                    <span>Revenue Report</span>
-                                </a>
-    
-                                <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item">
-                                    <i class="fe-settings me-1"></i>
-                                    <span>Settings</span>
-                                </a>
-    
-                                <div class="dropdown-divider"></div>
-    
-                                <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item">
-                                    <i class="fe-headphones me-1"></i>
-                                    <span>Help & Support</span>
+                                    <i class="fas fa-bookmark me-1"></i>
+                                    <span>Perangkat Daerah</span>
                                 </a>
     
                             </div>
                         </li>
+                        
+                        <li class="dropdown d-none d-xl-block">
+                            <a class="nav-link dropdown-toggle waves-effect waves-light" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                                <i class="fas fa-book me-1"></i> 
+                                IKK
+                                <i class="mdi mdi-chevron-down"></i> 
+                            </a>
+                            <div class="dropdown-menu">
+                                <!-- item-->
+                                <a href="javascript:void(0);" class="dropdown-item">
+                                    <i class="fas fa-bookmark me-1"></i>
+                                    <span>Pelaporan IKK</span>
+                                </a>
+                                <!-- item-->
+                                <a href="javascript:void(0);" class="dropdown-item">
+                                    <i class="fas fa-bookmark me-1"></i>
+                                    <span>Pelaporan IKK Makro</span>
+                                </a>
+                                <!-- item-->
+                                <a href="javascript:void(0);" class="dropdown-item">
+                                    <i class="fas fa-bookmark me-1"></i>
+                                    <span>Pelaporan IKK Output</span>
+                                </a>
     
+                            </div>
+                        </li>    
                         
                     </ul>
                     <div class="clearfix"></div>
