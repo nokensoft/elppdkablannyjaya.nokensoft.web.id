@@ -84,6 +84,9 @@ Route::prefix('admin')->middleware('auth')->group(function () {
 
     // LPPD ROUTES
     require_once 'lppd.php';
+
+    // IKK ROUTES
+    require_once 'ikk.php';
     
 
     

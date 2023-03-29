@@ -131,12 +131,12 @@
                                     <span>Pelaporan IKK</span>
                                 </a>
                                 <!-- item-->
-                                <a href="{{asset('admin/ikk-makro')}}" class="dropdown-item fs-4">
+                                <a href="{{asset('admin/ikk/makro')}}" class="dropdown-item fs-4">
                                     <i class="fas fa-bookmark me-1"></i>
                                     <span>Pelaporan IKK Makro</span>
                                 </a>
                                 <!-- item-->
-                                <a href="{{asset('admin/ikk-output')}}" class="dropdown-item fs-4">
+                                <a href="{{asset('admin/ikk/output')}}" class="dropdown-item fs-4">
                                     <i class="fas fa-bookmark me-1"></i>
                                     <span>Pelaporan IKK Output</span>
                                 </a>
