@@ -23,6 +23,12 @@
                         <h1 class="fw-bold">Profil Pemerintah Daerah</h1>
                         <p class="text-secondary">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed repudiandae recusandae suscipit eligendi ipsa, amet expedita dicta fugiat. Nihil accusantium beatae harum natus amet repudiandae quae! Consequuntur odio et quae ipsum distinctio, vero magnam necessitatibus, accusamus delectus provident autem minus impedit! Quidem similique dicta ipsam facilis impedit voluptates libero sunt.</p>
 
+                        <div class="mb-3">
+                            <a href="{{asset('admin/profil/pemerintah-daerah/ubah')}}" class="btn btn-info waves-effect waves-light fs-4">
+                                <i class="fas fa-edit me-1"></i> Ubah
+                            </a>
+                        </div>
+
                         <div class="row">
 
                             <!-- .col start -->
@@ -40,12 +46,6 @@
                                                 <img src="{{asset('assets/admin/assets/images/logo-kab-lanny-jaya.png')}}" alt="Logo" width="250px">
                                             </td>
                                         </tr>
-                                        <tr>
-                                            <td>Peta Dearah</td>
-                                            <td class="fw-bold">
-                                                <img src="https://upload.wikimedia.org/wikipedia/commons/8/81/91.23.00_Papua_Lanny_Jaya.svg" alt="Peta Lanny Jaya" width="100%">
-                                            </td>
-                                        </tr>
                                     </tbody>
                                 </table>
                                 
@@ -59,20 +59,20 @@
                                     <tbody>
                                         <tr>
                                             <td>Distrik/Kecamatan</td>
-                                            <td class="fw-bold d-flex justify-content-between">00
-                                                <a href="#" class="btn btn-sm btn-outline-dark fs-6"><i class="fas fa-arrow-right me-1"></i>Tampilkan Detail</a>
+                                            <td class="fw-bold d-flex justify-content-between">123
+                                                <a href="#" class="btn btn-sm btn-outline-dark fs-6"><i class="fas fa-arrow-right me-1"></i>Detail</a>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>Desa/Kelurahan</td>
-                                            <td class="fw-bold d-flex justify-content-between">00
-                                                <a href="#" class="btn btn-sm btn-outline-dark fs-6"><i class="fas fa-arrow-right me-1"></i>Tampilkan Detail</a>
+                                            <td class="fw-bold d-flex justify-content-between">45
+                                                <a href="#" class="btn btn-sm btn-outline-dark fs-6"><i class="fas fa-arrow-right me-1"></i>Detail</a>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>Jumlah Penduduk</td>
-                                            <td class="fw-bold d-flex justify-content-between">00
-                                                <a href="#" class="btn btn-sm btn-outline-dark fs-6"><i class="fas fa-arrow-right me-1"></i>Tampilkan Detail</a>
+                                            <td class="fw-bold d-flex justify-content-between">78
+                                                <a href="#" class="btn btn-sm btn-outline-dark fs-6"><i class="fas fa-arrow-right me-1"></i>Detail</a>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -82,6 +82,7 @@
                             <!-- .col end -->
 
                         </div>
+                        <!-- .row end -->
 
                     </div>
                 </div>

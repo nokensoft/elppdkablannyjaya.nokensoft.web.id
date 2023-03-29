@@ -23,6 +23,12 @@
                         <h1 class="fw-bold">Profil Kepala Daerah</h1>
                         <p class="text-secondary">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed repudiandae recusandae suscipit eligendi ipsa, amet expedita dicta fugiat. Nihil accusantium beatae harum natus amet repudiandae quae! Consequuntur odio et quae ipsum distinctio, vero magnam necessitatibus, accusamus delectus provident autem minus impedit! Quidem similique dicta ipsam facilis impedit voluptates libero sunt.</p>
 
+                        <div class="mb-3">
+                            <a href="{{asset('admin/profil/kepala-daerah/ubah')}}" class="btn btn-info waves-effect waves-light fs-4">
+                                <i class="fas fa-edit me-1"></i> Ubah
+                            </a>
+                        </div>
+
                         <div class="row">
 
                             <!-- .col start -->

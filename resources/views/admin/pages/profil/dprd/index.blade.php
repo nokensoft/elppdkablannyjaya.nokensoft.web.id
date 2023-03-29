@@ -24,7 +24,7 @@
                         <p class="text-secondary">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed repudiandae recusandae suscipit eligendi ipsa, amet expedita dicta fugiat. Nihil accusantium beatae harum natus amet repudiandae quae! Consequuntur odio et quae ipsum distinctio, vero magnam necessitatibus, accusamus delectus provident autem minus impedit! Quidem similique dicta ipsam facilis impedit voluptates libero sunt.</p>
 
                         <div class="mb-3">
-                            <a href="{{asset('admin/profil/dprd#tambah')}}" class="btn btn-info waves-effect waves-light fs-4">
+                            <a href="{{asset('admin/profil/dprd/tambah')}}" class="btn btn-info waves-effect waves-light fs-4">
                                 <i class="fas fa-plus me-1"></i> Tambah Data
                             </a>
                         </div>
@@ -67,9 +67,8 @@
                                                 33 Kali
                                             </td>
                                             <td>
-                                                <a href="#" class="btn btn-sm btn-outline-dark waves-effect waves-light fs-4">
-                                                    Detail
-                                                </a>
+                                                <a href="{{asset('admin/profil/dprd/detail')}}" class="btn btn-sm btn-dark waves-effect waves-light fs-4 mb-1"> Detail </a>
+                                                <a href="{{asset('admin/profil/dprd/ubah')}}" class="btn btn-sm btn-outline-dark waves-effect waves-light fs-4"> Ubah </a>
                                             </td>
                                         </tr>
                                         <tr>
@@ -88,9 +87,8 @@
                                                 23 Kali
                                             </td>
                                             <td>
-                                                <a href="#" class="btn btn-sm btn-outline-dark waves-effect waves-light fs-4">
-                                                    Detail
-                                                </a>
+                                                <a href="{{asset('admin/profil/dprd/detail')}}" class="btn btn-sm btn-dark waves-effect waves-light fs-4 mb-1"> Detail </a>
+                                                <a href="{{asset('admin/profil/dprd/ubah')}}" class="btn btn-sm btn-outline-dark waves-effect waves-light fs-4"> Ubah </a>
                                             </td>
                                         </tr>
                                         <tr>
@@ -109,9 +107,8 @@
                                                 11 Kali
                                             </td>
                                             <td>
-                                                <a href="#" class="btn btn-sm btn-outline-dark waves-effect waves-light fs-4">
-                                                    Detail
-                                                </a>
+                                                <a href="{{asset('admin/profil/dprd/detail')}}" class="btn btn-sm btn-dark waves-effect waves-light fs-4 mb-1"> Detail </a>
+                                                <a href="{{asset('admin/profil/dprd/ubah')}}" class="btn btn-sm btn-outline-dark waves-effect waves-light fs-4"> Ubah </a>
                                             </td>
                                         </tr>
                                     </tbody>

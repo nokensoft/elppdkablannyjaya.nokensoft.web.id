@@ -32,22 +32,54 @@ Route::prefix('admin')->middleware('auth')->group(function () {
         return view('admin.pages.profil.pemerintah-daerah');
     });
 
+    // UBAH
+    Route::get('profil/pemerintah-daerah/ubah', function () {
+        return view('admin.pages.profil.pemerintah-daerah-ubah');
+    });
+
     Route::get('profil/kepala-daerah', function () {
         return view('admin.pages.profil.kepala-daerah');
+    });
+
+    // UBAH
+    Route::get('profil/kepala-daerah/ubah', function () {
+        return view('admin.pages.profil.kepala-daerah-ubah');
     });
 
     Route::get('profil/wakil-kepala-daerah', function () {
         return view('admin.pages.profil.wakil-kepala-daerah');
     });
 
+    // UBAH
+    Route::get('profil/wakil-kepala-daerah/ubah', function () {
+        return view('admin.pages.profil.wakil-kepala-daerah-ubah');
+    });
+
     Route::get('profil/sekretaris-daerah', function () {
         return view('admin.pages.profil.sekretaris-daerah');
+    });
+
+    // UBAH
+    Route::get('profil/sekretaris-daerah/ubah', function () {
+        return view('admin.pages.profil.sekretaris-daerah-ubah');
     });
 
     // DPRD
 
     Route::get('profil/dprd', function () {
-        return view('admin.pages.profil.dprd');
+        return view('admin.pages.profil.dprd.index');
+    });
+
+    Route::get('profil/dprd/detail', function () {
+        return view('admin.pages.profil.dprd.detail');
+    });
+
+    Route::get('profil/dprd/ubah', function () {
+        return view('admin.pages.profil.dprd.ubah');
+    });
+
+    Route::get('profil/dprd/tambah', function () {
+        return view('admin.pages.profil.dprd.tambah');
     });
 
     // TENTANG APLIKASI
