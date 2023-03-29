@@ -93,24 +93,24 @@
                         <!-- Jalan Pintas-->
 
                         <li class="dropdown d-none d-xl-block">
-                            <a class="nav-link dropdown-toggle waves-effect waves-light" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle waves-effect waves-light fs-4" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
                                 <i class="fas fa-book me-1"></i> 
                                 LPPD
                                 <i class="mdi mdi-chevron-down"></i> 
                             </a>
                             <div class="dropdown-menu">
                                 <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item">
+                                <a href="javascript:void(0);" class="dropdown-item fs-4">
                                     <i class="fas fa-bookmark me-1"></i>
                                     <span>Monitoring</span>
                                 </a>
                                 <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item">
+                                <a href="javascript:void(0);" class="dropdown-item fs-4">
                                     <i class="fas fa-bookmark me-1"></i>
                                     <span>Pelaporan</span>
                                 </a>
                                 <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item">
+                                <a href="javascript:void(0);" class="dropdown-item fs-4">
                                     <i class="fas fa-bookmark me-1"></i>
                                     <span>Perangkat Daerah</span>
                                 </a>
@@ -119,24 +119,24 @@
                         </li>
                         
                         <li class="dropdown d-none d-xl-block">
-                            <a class="nav-link dropdown-toggle waves-effect waves-light" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle waves-effect waves-light fs-4" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
                                 <i class="fas fa-book me-1"></i> 
                                 IKK
                                 <i class="mdi mdi-chevron-down"></i> 
                             </a>
                             <div class="dropdown-menu">
                                 <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item">
+                                <a href="javascript:void(0);" class="dropdown-item fs-4">
                                     <i class="fas fa-bookmark me-1"></i>
                                     <span>Pelaporan IKK</span>
                                 </a>
                                 <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item">
+                                <a href="javascript:void(0);" class="dropdown-item fs-4">
                                     <i class="fas fa-bookmark me-1"></i>
                                     <span>Pelaporan IKK Makro</span>
                                 </a>
                                 <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item">
+                                <a href="javascript:void(0);" class="dropdown-item fs-4">
                                     <i class="fas fa-bookmark me-1"></i>
                                     <span>Pelaporan IKK Output</span>
                                 </a>
