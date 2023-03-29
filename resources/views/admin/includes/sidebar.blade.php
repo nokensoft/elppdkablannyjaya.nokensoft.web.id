@@ -65,6 +65,30 @@
             </li>
 
             <li>
+                <a href="#profil_daerah" data-bs-toggle="collapse">
+                    <i class="fa fa-bookmark"></i>
+                    <span> Profil </span>
+                    <span class="menu-arrow"></span>
+                </a>
+                <div class="collapse" id="profil_daerah">
+                    <ul class="nav-second-level">
+                        <li>
+                            <a href="{{asset('admin/profil/pemerintah-daerah')}}">Pemerintah Dearah</a>
+                        </li>
+                        <li>
+                            <a href="#">Kepala Daerah</a>
+                        </li>    
+                        <li>
+                            <a href="#">Wakil Kepala Daerah</a>
+                        </li>      
+                        <li>
+                            <a href="#">Sekretaris Daerah</a>
+                        </li>                 
+                    </ul>
+                </div>
+            </li>
+
+            <li>
                 <a href="#sippid" data-bs-toggle="collapse">
                     <i class="fa fa-bookmark"></i>
                     <span> LPPD </span>
@@ -100,7 +124,7 @@
                 </div>
             </li>
 
-            <li>
+            {{-- <li>
                 <a href="#sidebarEcommerce" data-bs-toggle="collapse">
                     <i class="fa fa-bookmark"></i>
                     <span> Noken CMS </span>
@@ -135,7 +159,7 @@
                         
                     </ul>
                 </div>
-            </li>
+            </li> --}}
             
         </ul>
 

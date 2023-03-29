@@ -25,6 +25,14 @@ Route::prefix('admin')->middleware('auth')->group(function () {
         return view('admin.pages.beranda');
     });
 
+    // PROFIL
+
+    Route::get('profil/pemerintah-daerah', function () {
+        return view('admin.pages.profil.pemerintah-daerah');
+    });
+
+    // TENTANG APLIKASI
+
     Route::get('/tentang-aplikasi', function () {
         return view('admin.pages.tentang-aplikasi');
     });

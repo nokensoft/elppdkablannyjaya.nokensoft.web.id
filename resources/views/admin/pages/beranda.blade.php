@@ -21,11 +21,56 @@
                     <div class="card-body">
                         <h1 class="fw-bold">Beranda</h1>
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil adipisci quam sit fuga incidunt! Iusto autem ipsum magni quod recusandae repudiandae facere saepe sunt cumque, molestiae tempore voluptas hic voluptatum dicta incidunt pariatur ipsam sequi omnis quibusdam unde delectus. Officiis impedit aspernatur, repellendus eveniet voluptas perspiciatis? Laboriosam repellendus vero ex voluptatibus dolorum necessitatibus ipsam sint! Consequuntur, sit? Possimus, quas, velit quisquam a, in quae quis natus eum tempore suscipit reprehenderit consequuntur eius! Incidunt in a vero impedit ab adipisci quibusdam ullam quasi deserunt, expedita obcaecati sed nesciunt nulla velit ducimus fuga laborum, placeat libero! Minima distinctio rerum obcaecati. Nihil, quos?</p>
+
+                        
+
+                    <div class="table-responsive">
+                        <table class="table table-bordered mb-0">
+                            <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Username</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Mark</td>
+                                <td>Otto</td>
+                                <td>@mdo</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>Mark</td>
+                                <td>Otto</td>
+                                <td>@TwBootstrap</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td>Jacob</td>
+                                <td>Thornton</td>
+                                <td>@fat</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">4</th>
+                                <td colspan="2">Larry the Bird</td>
+                                <td>@twitter</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div> <!-- end .table-responsive-->
+
+
                     </div>
                 </div>
             </div>
         </div>
         <!-- end row -->
+
+
+
 
         <div class="row">
             <div class="col-md-6 col-xl-3">
