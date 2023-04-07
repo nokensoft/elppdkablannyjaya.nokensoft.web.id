@@ -17,6 +17,7 @@ use App\Http\Controllers\admin\ProductController;
  
 
 Route::prefix('admin')->middleware('auth')->group(function () {
+
     Route::get('/', function () {
         return view('admin.pages.beranda');
     });
@@ -25,43 +26,47 @@ Route::prefix('admin')->middleware('auth')->group(function () {
         return view('admin.pages.beranda');
     });
 
-    // PROFIL
+    /*
+    ===============================================
+    PROFIL
+    ===============================================
+    */
     // DAERAH
 
     Route::get('profil/pemerintah-daerah', function () {
-        return view('admin.pages.profil.pemerintah-daerah');
+        return view('admin.pages.profil.pemerintah-daerah.index');
     });
 
     // UBAH
     Route::get('profil/pemerintah-daerah/ubah', function () {
-        return view('admin.pages.profil.pemerintah-daerah-ubah');
+        return view('admin.pages.profil.pemerintah-daerah.edit');
     });
 
     Route::get('profil/kepala-daerah', function () {
-        return view('admin.pages.profil.kepala-daerah');
+        return view('admin.pages.profil.kepala-daerah.index');
     });
 
     // UBAH
     Route::get('profil/kepala-daerah/ubah', function () {
-        return view('admin.pages.profil.kepala-daerah-ubah');
+        return view('admin.pages.profil.kepala-daerah.edit');
     });
 
     Route::get('profil/wakil-kepala-daerah', function () {
-        return view('admin.pages.profil.wakil-kepala-daerah');
+        return view('admin.pages.profil.wakil-kepala-daerah.index');
     });
 
     // UBAH
     Route::get('profil/wakil-kepala-daerah/ubah', function () {
-        return view('admin.pages.profil.wakil-kepala-daerah-ubah');
+        return view('admin.pages.profil.wakil-kepala-daerah.edit');
     });
 
     Route::get('profil/sekretaris-daerah', function () {
-        return view('admin.pages.profil.sekretaris-daerah');
+        return view('admin.pages.profil.sekretaris-daerah.index');
     });
 
     // UBAH
     Route::get('profil/sekretaris-daerah/ubah', function () {
-        return view('admin.pages.profil.sekretaris-daerah-ubah');
+        return view('admin.pages.profil.sekretaris-daerah.edit');
     });
 
     // DPRD
