@@ -15,6 +15,8 @@ use App\Http\Controllers\admin\RoleController;
 use App\Http\Controllers\admin\UserController;
 use App\Http\Controllers\admin\ProductController;
 use App\Http\Controllers\admin\DprdController;
+use App\Http\Controllers\admin\DistrikController;
+use App\Http\Controllers\admin\DesaController;
 use App\Http\Controllers\admin\LppdController;
 
 
@@ -83,6 +85,28 @@ Route::prefix('admin')->middleware('auth')->group(function () {
         Route::get('dprd/delete/{id}','delete')->name('admin.dprd.delete');
         Route::put('dprd/{id}','update')->name('admin.dprd.update');
         Route::delete('dprd/{id}','destroy')->name('admin.dprd.destroy');
+    });
+
+    // DISTRIK
+    Route::controller(DistrikController::class)->group(function(){
+        Route::get('distrik','index')->name('admin.distrik');
+        Route::get('distrik/create','create')->name('admin.distrik.create');
+        Route::post('distrik','store')->name('admin.distrik.store');
+        Route::get('distrik/edit','edit')->name('admin.distrik.edit');
+        Route::get('distrik/show','show')->name('admin.distrik.show');
+        Route::put('distrik/{id}','update')->name('admin.distrik.update');
+        Route::delete('distrik/{id}','destroy')->name('admin.distrik.destroy');
+    });
+
+    // DESA
+    Route::controller(DesaController::class)->group(function(){
+        Route::get('desa','index')->name('admin.desa');
+        Route::get('desa/create','create')->name('admin.desa.create');
+        Route::post('desa','store')->name('admin.desa.store');
+        Route::get('desa/edit','edit')->name('admin.desa.edit');
+        Route::get('desa/show','show')->name('admin.desa.show');
+        Route::put('desa/{id}','update')->name('admin.desa.update');
+        Route::delete('desa/{id}','destroy')->name('admin.desa.destroy');
     });
 
     // LPPD ROUTES
