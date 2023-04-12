@@ -62,12 +62,13 @@
                                                     @if ($data->foto == null)
                                                         <img src="{{asset('assets/admin/assets/images/users/user-man.png')}}" alt="Logo" width="100%" class="img-thumbnail">
                                                     @else
-                                                     <img src="{{ url('storage/resource/admin/dprd/'.$data->foto)}}" alt="{{$data->slug}}" class="img-fluid img-thumbnail" width="100"></td>
+                                                     <img src="{{ url($data->foto)}}" alt="{{$data->slug}}" class="img-fluid img-thumbnail" width="100"></td>
                                                     @endif
                                                 </td>
                                                 <td>
-                                                    <a href="{{route('admin.dprd.show')}}" class="btn btn-sm btn-dark waves-effect waves-light fs-4 mb-1"> Detail </a>
-                                                    <a href="{{route('admin.dprd.edit')}}" class="btn btn-sm btn-outline-dark waves-effect waves-light fs-4"> Ubah </a>
+                                                    {{-- <a href="{{route('admin.dprd.show',$data->id)}}" class="btn btn-sm btn-dark waves-effect waves-light fs-4 mb-1"> Detail </a> --}}
+                                                    <a href="{{route('admin.dprd.edit',$data->slug)}}" class="btn btn-sm btn-outline-dark waves-effect waves-light fs-4 mb-2"> Ubah </a>
+                                                    <a href="{{route('admin.dprd.delete',$data->slug)}}" class="btn btn-sm btn-outline-danger waves-effect waves-light fs-4"> Hapus </a>
                                                 </td>
                                             </tr>
                                         @endforeach

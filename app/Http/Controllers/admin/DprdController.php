@@ -54,7 +54,7 @@ class DprdController extends Controller
 
         $filename  = 'profil-dprd'.'-'.date('Y-m-d-H-i-s').$request->file('foto')->getClientOriginalName();
 
-        $request->file('foto')->storeAs('public/resource/admin/dprd/',$filename);
+        $request->file('foto')->storeAs('public/resource/admin/dprd/'.$tahun.'/'.$bulan,$filename);
         $url = ('storage/resource/admin/dprd/'.$tahun.'/'.$bulan.'/'.$filename);
 
         $dprd = new Dprd();
@@ -67,7 +67,7 @@ class DprdController extends Controller
         $dprd->ttl              = $request->ttl;
         $dprd->nama_partai      = $request->nama_partai;
         $dprd->pendidikan       = $request->pendidikan;
-        $dprd->foto             = $filename;
+        $dprd->foto             = $url;
         $dprd->slug             =  Str::slug($request->nama_lengkap);
 
 
@@ -94,9 +94,10 @@ class DprdController extends Controller
      * @param  \App\Models\Dprd  $dprd
      * @return \Illuminate\Http\Response
      */
-    public function edit(Dprd $dprd)
+    public function edit($dprd)
     {
-        return view('admin.pages.profil.dprd.ubah');
+        $data =DB::select("SELECT * FROM profil_dprd WHERE slug = '$dprd' ");
+        return view('admin.pages.profil.dprd.ubah',['data' => $data]);
     }
 
     /**
@@ -106,9 +107,47 @@ class DprdController extends Controller
      * @param  \App\Models\Dprd  $dprd
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Dprd $dprd)
+    public function update(Request $request,$slug)
     {
-        //
+         $request->validate([
+            'nama_instansi' => 'required'
+        ],
+        [
+            'nama_instansi.required' => 'Nama tidak boleh kosong',
+        ]);
+
+        $tahun = date("Y");
+        $bulan = date("M");
+
+        $dprd = new Dprd();
+
+        if(!empty($request->file('foto'))){
+            $filename  = 'profil-dprd'.'-'.date('Y-m-d-H-i-s').$request->file('foto')->getClientOriginalName();
+            $request->file('foto')->storeAs('public/resource/admin/dprd/'.$tahun.'/'.$bulan,$filename);
+            $url = ('storage/resource/admin/dprd/'.$tahun.'/'.$bulan.'/'.$filename);
+            $datalama =DB::select("SELECT * FROM profil_dprd WHERE id = '$slug' ");
+            if($datalama[0]->foto){
+             \File::delete($datalama[0]->foto);
+            }
+            $data['foto']             = $url;
+        };
+
+        $data['nama_instansi']    = $request->nama_instansi;
+        $data['jabatan']          = $request->jabatan;
+        $data['nama_lengkap']     = $request->nama_lengkap;
+        $data['nik']              = $request->nik;
+        $data['alamat']           = $request->alamat;
+        $data['ttl']              = $request->ttl;
+        $data['nama_partai']      = $request->nama_partai;
+        $data['pendidikan']       = $request->pendidikan;
+
+        $user = DB::table('profil_dprd')
+            ->where('id', $slug)
+            ->update($data);
+
+        alert()->success('Berhasil', 'Sukses!!')->autoclose(1100);
+        return redirect()->route('admin.dprd');
+
     }
 
     /**
@@ -117,8 +156,23 @@ class DprdController extends Controller
      * @param  \App\Models\Dprd  $dprd
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Dprd $dprd)
+    public function delete($dprd)
     {
-        //
+        $data =DB::select("SELECT * FROM profil_dprd WHERE slug = '$dprd' ");
+        return view('admin.pages.profil.dprd.delete',['data' => $data]);
+    }
+    public function destroy($id)
+    {
+        $data = Dprd::findOrFail($id);
+
+        //dd($data);
+        if($data->foto){
+            \File::delete($data->foto);
+        }
+
+        $data->forceDelete();
+
+        alert()->success('Berhasil', 'Sukses!!')->autoclose(1500);
+        return redirect()->route('admin.dprd');
     }
 }
