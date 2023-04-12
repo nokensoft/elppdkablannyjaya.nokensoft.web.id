@@ -49,10 +49,6 @@ Route::prefix('app')->middleware('auth')->group(function () {
         Route::delete('users/delete/{id}','delete')->name('app.users.delete');
     });
 
-
-
-
-
  
 
    Route::controller(SliderController::class)->group(function(){

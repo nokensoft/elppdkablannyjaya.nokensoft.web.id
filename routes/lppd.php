@@ -18,5 +18,5 @@
 
     // PERANGKAT DAERAH
     Route::get('lppd/perangkat-daerah', function () {
-        return view('admin.pages.lppd.perangkat-daerah');
+        return view('admin.pages.lppd.perangkat-daerah.index');
     });

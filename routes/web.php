@@ -33,7 +33,6 @@ Route::group(['middleware' => ['auth']], function() {
         return view('admin.pages.starter');
     });
 
-
     Route::resource('roles', RoleController::class);
     Route::resource('users', UserController::class);
     Route::resource('products', ProductController::class);
