@@ -9,6 +9,7 @@ use Image;
 use Alert;
 use Storage;
 use Illuminate\Support\Str;
+
 class KategoriController extends Controller
 {
     /**
@@ -31,17 +32,17 @@ class KategoriController extends Controller
         $jumlahtrash = Kategori::onlyTrashed()->count();
         $jumlahdraft = Kategori::where('status', 0)->count();
         $datapublish = Kategori::where('status', 1)->count();
-        
+
 
         return view('admin.pages.kategori.index',compact('datas','jumlahtrash','jumlahdraft','datapublish')) ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
 
-    
-    
+
+
     public function draft(Request $request)
     {
-         
+
         $datas = Kategori::where([
             ['title', '!=', Null],
             [function ($query) use ($request) {
@@ -53,7 +54,7 @@ class KategoriController extends Controller
             }]
         ])->where('status',0)->paginate(5);
         // $datas = kategori::where('status',1)->latest()->paginate(5);
-        
+
         $jumlahtrash = Kategori::onlyTrashed()->count();
         $jumlahdraft = Kategori::where('status', 0)->count();
         $datapublish = Kategori::where('status', 1)->count();
@@ -87,24 +88,24 @@ class KategoriController extends Controller
         ]);
         if(!empty( $request->file('image'))){
             $filename  = 'nokensoft'.'-'.date('Y-m-d-H-i-s').$request->file('image')->getClientOriginalName();
-   
+
         //    Input::file('foto')->move(public_path().'/source/upload',$filename);
 
         $request->file('image')->storeAs('public/resource/sliders',$filename);
            //    $image->storeAs('public/resource/sliders', $image->hashName());
-   
+
            $data = $request->all();
 
               $data = array(
-              
-              
+
+
              'image'=> $filename,
              'title' => $request->title,
              'deskripsi' => $request->deskripsi,
               'katakunci' => $request->katakunci,
              'status' => $request->status,
                 'slug' => Str::slug($request->title),
-            
+
             );
             $Kategori = Kategori::create($data);
         }
@@ -112,21 +113,21 @@ class KategoriController extends Controller
             $data = $request->all();
 
             $data = array(
-            
-           
+
+
            'title' => $request->title,
            'deskripsi' => $request->deskripsi,
             'katakunci' => $request->katakunci,
            'status' => $request->status,
             'slug' => Str::slug($request->title),
-          
+
           );
           $Kategori = Kategori::create($data);
         }
         alert()->success('Berhasil', 'Sukses!!')->autoclose(1500);
         return redirect()->route('app.kategori');
 
-       
+
 
     }
 
@@ -151,7 +152,7 @@ class KategoriController extends Controller
     {
         $data = Kategori::findOrFail($id);
         return view('admin.pages.kategori.edit',compact('data'));
-        
+
 
     }
 
@@ -173,24 +174,24 @@ class KategoriController extends Controller
         ]);
         if(!empty( $request->file('image'))){
             $filename  = 'nokensoft'.'-'.date('Y-m-d-H-i-s').$request->file('image')->getClientOriginalName();
-   
+
         //    Input::file('foto')->move(public_path().'/source/upload',$filename);
 
         $request->file('image')->storeAs('public/resource/sliders',$filename);
            //    $image->storeAs('public/resource/sliders', $image->hashName());
-   
+
            $data = $request->all();
 
               $data = array(
-              
-              
+
+
              'image'=> $filename,
              'title' => $request->title,
              'deskripsi' => $request->deskripsi,
               'katakunci' => $request->katakunci,
              'status' => $request->status,
                 'slug' => Str::slug($request->title),
-            
+
             );
             $Kategori = Kategori::whereId($id)->update($data);
         }
@@ -198,14 +199,14 @@ class KategoriController extends Controller
             $data = $request->all();
 
             $data = array(
-            
-           
+
+
            'title' => $request->title,
            'deskripsi' => $request->deskripsi,
             'katakunci' => $request->katakunci,
            'status' => $request->status,
             'slug' => Str::slug($request->title),
-          
+
           );
           $Kategori = Kategori::whereId($id)->update($data);
         }
@@ -239,7 +240,7 @@ class KategoriController extends Controller
         alert()->success('Berhasil', 'Sukses!!')->autoclose(1500);
         return redirect()->route('app.kategori');
 
-        
+
      }
 
 
@@ -254,5 +255,5 @@ class KategoriController extends Controller
         alert()->success('Berhasil', 'Sukses!!')->autoclose(1500);
         return redirect()->route('app.kategori.trash');
      }
-     
+
 }

@@ -29,60 +29,63 @@
 
                                 <h1 class="fw-bold">Tambah Data Profil DPRD</h1>
 
-                                <form action="{{asset('admin/profil/dprd')}}" method="">
-
+                                <form action="{{route('admin.dprd.store')}}" method="POST" enctype="multipart/form-data">
+                                    @csrf
                                     <div class="mb-3 fs-4">
                                         <img src="{{asset('assets/admin/assets/images/users/user-default.png')}}" alt="Logo" width="250px" class="img-thumbnail mb-1">
-                                        
-                                        <input type="file" class="form-control form-control-lg">
+
+                                        <input type="file" name="foto" class="form-control form-control-lg">
 
                                     </div>
 
                                     <div class="mb-3 fs-4">
                                         <label for="" class="fw-bold">Nama Instansi</label>
-                                        <input type="text" class="form-control form-control-lg" value="Nama Instansi">
+                                        <input type="text" class="form-control form-control-lg" value="{{ old('nama_instansi')}}" placeholder="Nama Instansi"  name="nama_instansi">
+                                        @if($errors->has('nama_instansi'))
+                                            <label class="text-danger"> {{ $errors->first('nama_instansi') }} </label>
+                                        @endif
                                     </div>
 
                                     <div class="mb-3 fs-4">
                                         <label for="" class="fw-bold">Jabatan</label>
-                                        <input type="text" class="form-control form-control-lg" value="Jabatan">
+                                        <input type="text" class="form-control form-control-lg" placeholder="Jabatan" name="jabatan">
                                     </div>
 
                                     <div class="mb-3 fs-4">
                                         <label for="" class="fw-bold">Nama Lengkap</label>
-                                        <input type="text" class="form-control form-control-lg" value="Nama Lengkap">
+                                        <input type="text" class="form-control form-control-lg" placeholder="Nama Lengkap" name="nama_lengkap">
                                     </div>
 
                                     <div class="mb-3 fs-4">
                                         <label for="" class="fw-bold">NIK</label>
-                                        <input type="text" class="form-control form-control-lg" value="1234567890">
+                                        <input type="text" class="form-control form-control-lg" placeholder="1234332234" name="nik">
                                     </div>
 
                                     <div class="mb-3 fs-4">
                                         <label for="" class="fw-bold">Alamat</label>
-                                        <input type="text" class="form-control form-control-lg" value="Jalan Raya, Kelurahan, Kecamatan, Kota/Kabupaten.">
+                                        <input type="text" class="form-control form-control-lg" placeholder="Jalan Raya, Kelurahan, Kecamatan, Kota/Kabupaten." name="alamat">
                                     </div>
 
                                     <div class="mb-3 fs-4">
                                         <label for="" class="fw-bold">TTL</label>
-                                        <input type="text" class="form-control form-control-lg" value="Nama Tempat, 01 Bulan 1970">
+                                        <input type="text" class="form-control form-control-lg"  name="ttl" value="Nama Tempat, 01 Bulan 1970">
                                     </div>
 
                                     <div class="mb-3 fs-4">
                                         <label for="" class="fw-bold">Nama Partai</label>
-                                        <input type="text" class="form-control form-control-lg" value="Nama Partai">
+                                        <input type="text" class="form-control form-control-lg" name="nama_partai"  value="Nama Partai">
                                     </div>
 
                                     <div class="mb-3 fs-4">
                                         <label for="" class="fw-bold">Pendidikan</label>
-                                        <input type="text" class="form-control form-control-lg" value="Strata Satu (S1)">
+                                        <input type="text" class="form-control form-control-lg" name="pendidikan" value="Strata Satu (S1)">
                                     </div>
 
-                                    <div class="mb-3 fs-4">
+                                    {{-- <div class="mb-3 fs-4">
                                         <label for="" class="fw-bold">Perjalanan Dinas</label>
                                         <input type="text" class="form-control form-control-lg bg-secondary text-light" value="33 Kali" disabled>
                                         <a href="#" class="link-info mt-1 d-block">Olah Data</a>
-                                    </div>
+                                    </div> --}}
 
                                     <div class="border-top border-1 pt-3 mt-4">
                                         <button type="submit" class="btn btn-info waves-effect waves-light fs-4">
@@ -94,7 +97,7 @@
                                     </div>
 
                                 </form>
-                                
+
                             </div>
                             <!-- .col end -->
 
@@ -106,7 +109,7 @@
             </div>
         </div>
         <!-- end row -->
-                        
+
 
   <!--end wrapper-->
 
@@ -126,5 +129,5 @@
     <script src="{{ asset('assets/admin/assets/js/pages/jquery.todo.js')}}"></script>
 
     <!-- Dashboard init JS -->
-    <script src="{{ asset('assets/admin/assets/js/pages/dashboard-3.init.js')}}"></script>  
+    <script src="{{ asset('assets/admin/assets/js/pages/dashboard-3.init.js')}}"></script>
   @endpush

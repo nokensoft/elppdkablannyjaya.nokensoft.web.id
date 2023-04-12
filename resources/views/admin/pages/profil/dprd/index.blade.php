@@ -22,7 +22,7 @@
                     <div class="card-body">
                         <h1 class="fw-bold">Profil DPRD</h1>
                         <div class="mb-3">
-                            <a href="{{asset('admin/profil/dprd/tambah')}}" class="btn btn-info waves-effect waves-light fs-4">
+                            <a href="{{ route('admin.dprd.create') }}" class="btn btn-info waves-effect waves-light fs-4">
                                 <i class="fas fa-plus me-1"></i> Tambah Data
                             </a>
                         </div>
@@ -44,74 +44,36 @@
                                             <th>Partai</th>
                                             <th>Pendidikan</th>
                                             <th>Foto</th>
-                                            <th>Perjalanan Dinas</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>Nama Instansi</td>
-                                            <td>Jabatan</td>
-                                            <td>Nama Lengkap</td>
-                                            <td>1234567890</td>
-                                            <td>Jalan Raya, Kelurahan, Kecamatan, Kota/Kabupaten.</td>
-                                            <td>Nama Tempat, 01 Bulan 1970</td>
-                                            <td>Nama Partai</td>
-                                            <td>Strata Satu (1)</td>
-                                            <td>
-                                                <img src="{{asset('assets/admin/assets/images/users/user-man.png')}}" alt="Logo" width="100%" class="img-thumbnail">
-                                            </td>
-                                            <td>
-                                                33 Kali
-                                            </td>
-                                            <td>
-                                                <a href="{{asset('admin/profil/dprd/detail')}}" class="btn btn-sm btn-dark waves-effect waves-light fs-4 mb-1"> Detail </a>
-                                                <a href="{{asset('admin/profil/dprd/ubah')}}" class="btn btn-sm btn-outline-dark waves-effect waves-light fs-4"> Ubah </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Nama Instansi</td>
-                                            <td>Jabatan</td>
-                                            <td>Nama Lengkap</td>
-                                            <td>1234567890</td>
-                                            <td>Jalan Raya, Kelurahan, Kecamatan, Kota/Kabupaten.</td>
-                                            <td>Nama Tempat, 01 Bulan 1970</td>
-                                            <td>Nama Partai</td>
-                                            <td>Strata Satu (1)</td>
-                                            <td>
-                                                <img src="{{asset('assets/admin/assets/images/users/user-women.png')}}" alt="Logo" width="100%" class="img-thumbnail">
-                                            </td>
-                                            <td>
-                                                23 Kali
-                                            </td>
-                                            <td>
-                                                <a href="{{asset('admin/profil/dprd/detail')}}" class="btn btn-sm btn-dark waves-effect waves-light fs-4 mb-1"> Detail </a>
-                                                <a href="{{asset('admin/profil/dprd/ubah')}}" class="btn btn-sm btn-outline-dark waves-effect waves-light fs-4"> Ubah </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Nama Instansi</td>
-                                            <td>Jabatan</td>
-                                            <td>Nama Lengkap</td>
-                                            <td>1234567890</td>
-                                            <td>Jalan Raya, Kelurahan, Kecamatan, Kota/Kabupaten.</td>
-                                            <td>Nama Tempat, 01 Bulan 1970</td>
-                                            <td>Nama Partai</td>
-                                            <td>Strata Satu (1)</td>
-                                            <td>
-                                                <img src="{{asset('assets/admin/assets/images/users/user-admin.png')}}" alt="Logo" width="100%" class="img-thumbnail">
-                                            </td>
-                                            <td>
-                                                11 Kali
-                                            </td>
-                                            <td>
-                                                <a href="{{asset('admin/profil/dprd/detail')}}" class="btn btn-sm btn-dark waves-effect waves-light fs-4 mb-1"> Detail </a>
-                                                <a href="{{asset('admin/profil/dprd/ubah')}}" class="btn btn-sm btn-outline-dark waves-effect waves-light fs-4"> Ubah </a>
-                                            </td>
-                                        </tr>
+                                        @foreach ($all as $data )
+                                            <tr>
+                                                <td>{{$data->nama_instansi}}</td>
+                                                <td>{{$data->jabatan}}</td>
+                                                <td>{{$data->nama_lengkap}}</td>
+                                                <td>{{$data->nik}}</td>
+                                                <td>{{$data->alamat}}</td>
+                                                <td>{{$data->ttl}}</td>
+                                                <td>{{$data->nama_partai}}</td>
+                                                <td>{{$data->pendidikan}}</td>
+                                                <td>
+                                                    @if ($data->foto == null)
+                                                        <img src="{{asset('assets/admin/assets/images/users/user-man.png')}}" alt="Logo" width="100%" class="img-thumbnail">
+                                                    @else
+                                                     <img src="{{ url('storage/resource/admin/dprd/'.$data->foto)}}" alt="{{$data->slug}}" class="img-fluid img-thumbnail" width="100"></td>
+                                                    @endif
+                                                </td>
+                                                <td>
+                                                    <a href="{{route('admin.dprd.show')}}" class="btn btn-sm btn-dark waves-effect waves-light fs-4 mb-1"> Detail </a>
+                                                    <a href="{{route('admin.dprd.edit')}}" class="btn btn-sm btn-outline-dark waves-effect waves-light fs-4"> Ubah </a>
+                                                </td>
+                                            </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
-                                
+
                             </div>
                             <!-- .col end -->
 
@@ -122,7 +84,7 @@
             </div>
         </div>
         <!-- end row -->
-                        
+
 
   <!--end wrapper-->
 
@@ -142,5 +104,5 @@
     <script src="{{ asset('assets/admin/assets/js/pages/jquery.todo.js')}}"></script>
 
     <!-- Dashboard init JS -->
-    <script src="{{ asset('assets/admin/assets/js/pages/dashboard-3.init.js')}}"></script>  
+    <script src="{{ asset('assets/admin/assets/js/pages/dashboard-3.init.js')}}"></script>
   @endpush

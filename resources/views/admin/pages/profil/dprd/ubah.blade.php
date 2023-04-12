@@ -29,11 +29,11 @@
 
                                 <h1 class="fw-bold">Ubah Profil DPRD</h1>
 
-                                <form action="{{asset('admin/profil/dprd')}}" method="">
-
+                                <form action="{{route('admin.dprd.update')}}" method="POST" enctype="multipart/form-data">
+                                    @csrf
+                                    @method('PUT')
                                     <div class="mb-3 fs-4">
                                         <img src="{{asset('assets/admin/assets/images/users/user-man.png')}}" alt="Logo" width="250px" class="img-thumbnail mb-1">
-                                        
                                         <input type="file" class="form-control form-control-lg">
                                     </div>
 
@@ -93,7 +93,7 @@
                                     </div>
 
                                 </form>
-                                
+
                             </div>
                             <!-- .col end -->
 
@@ -105,7 +105,7 @@
             </div>
         </div>
         <!-- end row -->
-                        
+
 
   <!--end wrapper-->
 
@@ -125,5 +125,5 @@
     <script src="{{ asset('assets/admin/assets/js/pages/jquery.todo.js')}}"></script>
 
     <!-- Dashboard init JS -->
-    <script src="{{ asset('assets/admin/assets/js/pages/dashboard-3.init.js')}}"></script>  
+    <script src="{{ asset('assets/admin/assets/js/pages/dashboard-3.init.js')}}"></script>
   @endpush

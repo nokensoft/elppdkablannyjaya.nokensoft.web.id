@@ -8,7 +8,7 @@
         <img src="{{ asset( Auth::user()->avatar )}}" alt="user-img" title="Mat Helme" class="rounded-circle avatar-md">
         <div class="dropdown">
             <a href="javascript: void(0);" class="text-black dropdown-toggle h5 mt-2 mb-1 d-block"
-                data-bs-toggle="dropdown"> {{ Auth::user()->name }}</a>                   
+                data-bs-toggle="dropdown"> {{ Auth::user()->name }}</a>
             <div class="dropdown-menu user-pro-dropdown">
 
                 <!-- item-->
@@ -77,19 +77,19 @@
                         </li>
                         <li>
                             <a href="{{asset('admin/profil/kepala-daerah')}}">Kepala Daerah</a>
-                        </li>    
+                        </li>
                         <li>
                             <a href="{{asset('admin/profil/wakil-kepala-daerah')}}">Wakil Kepala Daerah</a>
-                        </li>      
+                        </li>
                         <li>
                             <a href="{{asset('admin/profil/sekretaris-daerah')}}">Sekretaris Daerah</a>
-                        </li>                 
+                        </li>
                     </ul>
                 </div>
             </li>
 
             <li>
-                <a href="{{ url('/admin/profil/dprd')}}">
+                <a href="{{ route('admin.dprd') }}">
                     <i class="fa fa-users"></i>
                     <span> Profil DPRD </span>
                 </a>
@@ -127,11 +127,11 @@
                         <li>
                             <a href="{{ url('/app/person')}}">SDM</a>
                         </li>
-                        
+
                     </ul>
                 </div>
             </li> --}}
-            
+
         </ul>
 
     </div>
