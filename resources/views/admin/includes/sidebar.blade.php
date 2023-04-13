@@ -89,10 +89,24 @@
             </li>
 
             <li>
-                <a href="{{ route('admin.dprd') }}">
-                    <i class="fa fa-users"></i>
-                    <span> Profil DPRD </span>
+                <a href="#data-master" data-bs-toggle="collapse" aria-expanded="true">
+                    <i class="fa fa-bookmark"></i>
+                    <span> Data Master </span>
+                    <span class="menu-arrow"></span>
                 </a>
+                <div class="collapse show" id="data-master">
+                    <ul class="nav-second-level">
+                        <li>
+                            <a href="{{route('admin.dprd')}}">DPRD</a>
+                        </li>
+                        <li>
+                            <a href="{{route('admin.distrik')}}">Distrik</a>
+                        </li>
+                        <li>
+                            <a href="{{route('admin.desa')}}">Desa</a>
+                        </li>
+                    </ul>
+                </div>
             </li>
 
             {{-- <li>
@@ -131,6 +145,13 @@
                     </ul>
                 </div>
             </li> --}}
+
+            <li>
+                <a href="{{ url('/admin/pengaturan')}}">
+                    <i class="fe-settings"></i>
+                    <span> Pengaturan </span>
+                </a>
+            </li>
 
         </ul>
 

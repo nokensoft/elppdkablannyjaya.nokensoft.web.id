@@ -15,16 +15,16 @@ return new class extends Migration
     {
         Schema::create('profil_dprd', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_instansi');
-            $table->string('jabatan');
-            $table->string('nama_lengkap');
-            $table->string('nik');
-            $table->string('alamat');
-            $table->string('ttl');
-            $table->string('nama_partai');
-            $table->string('pendidikan');
-            $table->string('foto');
-            $table->string('slug');
+            $table->string('nama_lengkap')->nullable();
+            $table->string('jabatan')->nullable();
+            $table->string('nik')->nullable();
+            $table->string('alamat')->nullable();
+            $table->string('ttl')->nullable();
+            $table->string('nama_partai')->nullable();
+            $table->string('pendidikan')->nullable();
+            $table->string('foto')->nullable();
+            
+            $table->string('slug')->nullable();
             $table->timestamps();
             // $table->softDeletes();
         });

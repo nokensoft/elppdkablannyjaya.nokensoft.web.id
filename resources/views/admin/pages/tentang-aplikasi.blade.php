@@ -22,6 +22,8 @@
                         <h1 class="fw-bold">Tentang Aplikasi</h1>
                         <p class="">Aplikas SIPPID Kabupaten Lanny Jaya dibuat untuk mempermudah Pemerintah Kabupaten Lanny Jaya dalam mengumpulan dan mengelola LPPD secara online.</p>
                         <p>Sistem ini digunakan oleh Pemerintah Daerah Kabupaten Lanny Jaya dengan sistem basis data (database) yang terpusat agar memudahkan petugas dan pejabat dalam mengelola data. Dengan sistem basis data secara online dan terpusat, membuat proses penyampaikan laporan kinerja lebih efisien dan konsisten. Selain itu, data tersebut juga mudah diakses dari mana saja dan kapan saja.</p>
+
+                        <a href="" class="btn btn-sm btn-outline-info waves-effect waves-light"><i class="fa fa-edit"></i> Sunting</a>
                     </div>
                 </div>
             </div>

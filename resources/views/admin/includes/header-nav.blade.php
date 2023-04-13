@@ -53,7 +53,7 @@
     
                     <!-- LOGO -->
                     <div class="logo-box">
-                        <a href="index.html" class="logo logo-dark text-center">
+                        <a href="{{url('admin/beranda')}}" class="logo logo-dark text-center">
                             <span class="logo-sm">
                                 <img src="{{ asset('assets/admin/assets/images/logo-sm.png')}}" alt="" height="40">
                             </span>
@@ -62,7 +62,7 @@
                             </span>
                         </a>
     
-                        <a href="index.html" class="logo logo-light text-center">
+                        <a href="{{url('admin/beranda')}}" class="logo logo-light text-center">
                             <span class="logo-sm">
                                 <img src="{{ asset('assets/admin/assets/images/logo-sm.png')}}" alt="" height="40">
                             </span>
@@ -110,7 +110,7 @@
                                     <span>Pelaporan</span>
                                 </a>
                                 <!-- item-->
-                                <a href="{{asset('admin/lppd/perangkat-daerah')}}" class="dropdown-item fs-4">
+                                <a href="{{asset('admin/lppd/perangkatdaerah')}}" class="dropdown-item fs-4">
                                     <i class="fas fa-bookmark me-1"></i>
                                     <span>Perangkat Daerah</span>
                                 </a>
@@ -126,20 +126,30 @@
                             </a>
                             <div class="dropdown-menu">
                                 <!-- item-->
-                                <a href="{{asset('admin/ikk')}}" class="dropdown-item fs-4">
+                                <a href="{{asset('admin/ikk/pendidikan')}}" class="dropdown-item fs-4">
                                     <i class="fas fa-bookmark me-1"></i>
-                                    <span>Pelaporan IKK</span>
+                                    <span>IKK Bidang Pedidikan</span>
                                 </a>
                                 <!-- item-->
-                                <a href="{{asset('admin/ikk/makro')}}" class="dropdown-item fs-4">
+                                <a href="{{asset('admin/ikk/kesehatan')}}" class="dropdown-item fs-4">
+                                    <i class="fas fa-bookmark me-1"></i>
+                                    <span>IKK Bidang Kesehatan</span>
+                                </a>
+                                <!-- item-->
+                                <a href="{{asset('admin/ikk/pekerjaanumum')}}" class="dropdown-item fs-4">
+                                    <i class="fas fa-bookmark me-1"></i>
+                                    <span>IKK Bidang Pekerjaan Umum</span>
+                                </a>
+                                <!-- item-->
+                                {{-- <a href="{{asset('admin/ikk/makro')}}" class="dropdown-item fs-4">
                                     <i class="fas fa-bookmark me-1"></i>
                                     <span>Pelaporan IKK Makro</span>
-                                </a>
+                                </a> --}}
                                 <!-- item-->
-                                <a href="{{asset('admin/ikk/output')}}" class="dropdown-item fs-4">
+                                {{-- <a href="{{asset('admin/ikk/output')}}" class="dropdown-item fs-4">
                                     <i class="fas fa-bookmark me-1"></i>
                                     <span>Pelaporan IKK Output</span>
-                                </a>
+                                </a> --}}
     
                             </div>
                         </li>    

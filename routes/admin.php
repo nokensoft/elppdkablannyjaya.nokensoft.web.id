@@ -14,19 +14,34 @@ use App\Http\Controllers\admin\PersonController;
 use App\Http\Controllers\admin\RoleController;
 use App\Http\Controllers\admin\UserController;
 use App\Http\Controllers\admin\ProductController;
+use App\Http\Controllers\admin\BerandaController;
 use App\Http\Controllers\admin\DprdController;
+use App\Http\Controllers\admin\DistrikController;
+use App\Http\Controllers\admin\DesaController;
 use App\Http\Controllers\admin\LppdController;
+use App\Http\Controllers\admin\PerangkatDaerahController;
+use App\Http\Controllers\admin\PelaporanController;
+use App\Http\Controllers\admin\MonitoringController;
+use App\Http\Controllers\admin\IkkController;
+use App\Http\Controllers\admin\PengaturanController;
 
 
 Route::prefix('admin')->middleware('auth')->group(function () {
 
     Route::get('/', function () {
-        return view('admin.pages.beranda');
+        return redirect('admin/beranda');;
     });
 
-    Route::get('/beranda', function () {
-        return view('admin.pages.beranda');
+
+    // DPRD
+    // Route::resource('/order', OrderController::class);
+    Route::controller(BerandaController::class)->group(function(){
+        Route::get('beranda','index')->name('admin.beranda');
     });
+
+    // Route::get('/beranda', function () {
+    //     return view('admin.pages.beranda');
+    // });
 
     /*
     ===============================================
@@ -78,17 +93,115 @@ Route::prefix('admin')->middleware('auth')->group(function () {
         Route::get('dprd','index')->name('admin.dprd');
         Route::get('dprd/create','create')->name('admin.dprd.create');
         Route::post('dprd','store')->name('admin.dprd.store');
-        Route::get('dprd/edit','edit')->name('admin.dprd.edit');
+        
+        Route::get('dprd/{id}/edit','edit')->name('admin.dprd.edit');
+
         Route::get('dprd/show','show')->name('admin.dprd.show');
+        Route::get('dprd/delete/{id}','delete')->name('admin.dprd.delete');
+        
         Route::put('dprd/{id}','update')->name('admin.dprd.update');
+
         Route::delete('dprd/{id}','destroy')->name('admin.dprd.destroy');
     });
 
+    // DISTRIK
+    Route::controller(DistrikController::class)->group(function(){
+        Route::get('distrik','index')->name('admin.distrik');
+        Route::get('distrik/create','create')->name('admin.distrik.create');
+        Route::post('distrik','store')->name('admin.distrik.store');
+        Route::get('distrik/{id}/edit','edit')->name('admin.distrik.edit');
+        Route::get('distrik/show','show')->name('admin.distrik.show');
+        Route::get('distrik/delete/{id}','delete')->name('admin.distrik.delete');
+        Route::put('distrik/{id}','update')->name('admin.distrik.update');
+        Route::delete('distrik/{id}','destroy')->name('admin.distrik.destroy');
+    });
+
+    // DESA
+    Route::controller(DesaController::class)->group(function(){
+        Route::get('desa','index')->name('admin.desa');
+        Route::get('desa/create','create')->name('admin.desa.create');
+        Route::post('desa','store')->name('admin.desa.store');
+        Route::get('desa/{id}/edit','edit')->name('admin.desa.edit');
+        Route::get('desa/show','show')->name('admin.desa.show');
+        Route::get('desa/delete/{id}','delete')->name('admin.desa.delete');
+        Route::put('desa/{id}','update')->name('admin.desa.update');
+        Route::delete('desa/{id}','destroy')->name('admin.desa.destroy');
+    });
+
+    // PERANGKAT DAERAH
+    Route::controller(PerangkatDaerahController::class)->group(function(){
+        Route::get('lppd/perangkatdaerah','index')->name('admin.perangkatdaerah');
+        Route::get('lppd/perangkatdaerah/create','create')->name('admin.perangkatdaerah.create');
+        
+        Route::post('perangkatdaerah','store')->name('admin.perangkatdaerah.store');
+        Route::get('perangkatdaerah/{id}/edit','edit')->name('admin.perangkatdaerah.edit');
+        Route::get('perangkatdaerah/show','show')->name('admin.perangkatdaerah.show');
+        Route::get('perangkatdaerah/delete/{id}','delete')->name('admin.perangkatdaerah.delete');
+        Route::put('perangkatdaerah/{id}','update')->name('admin.perangkatdaerah.update');
+        Route::delete('perangkatdaerah/{id}','destroy')->name('admin.perangkatdaerah.destroy');
+    });
+
+    // PELAPORAN
+    Route::controller(MonitoringController::class)->group(function(){
+        Route::get('lppd/monitoring','index')->name('admin.monitoring');
+    });
+
+    // MONITORING
+    Route::controller(PelaporanController::class)->group(function(){
+        Route::get('lppd/pelaporan','index')->name('admin.pelaporan');
+
+        Route::get('lppd/pelaporan/2021','index2021')->name('admin.pelaporan.2021');
+        Route::get('lppd/pelaporan/2021/cover','index2021_cover')->name('admin.pelaporan.2021.cover');
+        
+        Route::get('lppd/pelaporan/edit/2021','edit2021')->name('admin.lppd.pelaporan.edit2021');
+    });
+
+    // IKK
+    Route::controller(IkkController::class)->group(function(){
+        Route::get('ikk','index')->name('admin.ikk');
+
+        Route::get('ikk/create','create')->name('admin.ikk.create');
+        Route::post('ikk','store')->name('admin.ikk.store');
+        
+        Route::get('ikk/print','print')->name('admin.ikk.print');
+
+        Route::get('ikk/pendidikan','pendidikan')->name('admin.ikk.pendidikan');
+
+        Route::get('ikk/kesehatan','kesehatan')->name('admin.ikk.kesehatan');
+
+        Route::get('ikk/pekerjaanumum','pekerjaanumum')->name('admin.ikk.pekerjaanumum');
+
+
+        Route::get('ikk/{id}/edit','edit')->name('admin.ikk.edit');
+        Route::put('ikk/{id}','update')->name('admin.ikk.update');
+        
+        Route::get('ikk/delete/{id}','delete')->name('admin.ikk.delete');
+        Route::delete('ikk/{id}','destroy')->name('admin.ikk.destroy');
+    });
+
+
+    // PENGATURAN
+    Route::controller(PengaturanController::class)->group(function(){
+        Route::get('pengaturan','index')->name('admin.pengaturan');
+        Route::get('pengaturan/ubah','edit')->name('admin.pengaturan.ubah');
+        Route::put('pengaturan/{id}','update')->name('admin.pengaturan.update');
+    });
+
+
+
+    // lppd
+    // Route::controller(LppdController::class)->group(function(){
+    //     Route::get('lppd/monitoring','monitoring')->name('admin.lppd.monitoring');
+        
+    //     // Route::get('lppd/pelaporan','pelaporan')->name('admin.lppd.pelaporan');
+    //     // Route::get('lppd/perangkatdaerah','perangkatdaerah')->name('admin.lppd.perangkatdaerah');
+    // });
+
     // LPPD ROUTES
-    require_once 'lppd.php';
+    // require_once 'lppd.php';
 
     // IKK ROUTES
-    require_once 'ikk.php';
+    // require_once 'ikk.php';
 
 
 
@@ -136,11 +249,6 @@ Route::prefix('admin')->middleware('auth')->group(function () {
         Route::post('users/restore/{id}','restore')->name('app.users.restore');
         Route::delete('users/delete/{id}','delete')->name('app.users.delete');
     });
-
-
-
-
-
 
 
    Route::controller(SliderController::class)->group(function(){

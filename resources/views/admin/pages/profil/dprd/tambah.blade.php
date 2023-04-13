@@ -39,21 +39,13 @@
                                     </div>
 
                                     <div class="mb-3 fs-4">
-                                        <label for="" class="fw-bold">Nama Instansi</label>
-                                        <input type="text" class="form-control form-control-lg" value="{{ old('nama_instansi')}}" placeholder="Nama Instansi"  name="nama_instansi">
-                                        @if($errors->has('nama_instansi'))
-                                            <label class="text-danger"> {{ $errors->first('nama_instansi') }} </label>
-                                        @endif
+                                        <label for="" class="fw-bold">Nama Lengkap</label>
+                                        <input type="text" class="form-control form-control-lg" placeholder="Nama Lengkap" name="nama_lengkap">
                                     </div>
 
                                     <div class="mb-3 fs-4">
                                         <label for="" class="fw-bold">Jabatan</label>
                                         <input type="text" class="form-control form-control-lg" placeholder="Jabatan" name="jabatan">
-                                    </div>
-
-                                    <div class="mb-3 fs-4">
-                                        <label for="" class="fw-bold">Nama Lengkap</label>
-                                        <input type="text" class="form-control form-control-lg" placeholder="Nama Lengkap" name="nama_lengkap">
                                     </div>
 
                                     <div class="mb-3 fs-4">

@@ -35,9 +35,8 @@
                                 <table class="table table-bordered fs-4">
                                     <thead class="bg-dark text-light">
                                         <tr>
-                                            <th>Instansi</th>
-                                            <th>Jabatan</th>
                                             <th>Nama Lengkap</th>
+                                            <th>Jabatan</th>
                                             <th>NIK</th>
                                             <th>Alamat</th>
                                             <th>TTL</th>
@@ -50,9 +49,8 @@
                                     <tbody>
                                         @foreach ($all as $data )
                                             <tr>
-                                                <td>{{$data->nama_instansi}}</td>
-                                                <td>{{$data->jabatan}}</td>
                                                 <td>{{$data->nama_lengkap}}</td>
+                                                <td>{{$data->jabatan}}</td>
                                                 <td>{{$data->nik}}</td>
                                                 <td>{{$data->alamat}}</td>
                                                 <td>{{$data->ttl}}</td>
@@ -62,12 +60,13 @@
                                                     @if ($data->foto == null)
                                                         <img src="{{asset('assets/admin/assets/images/users/user-man.png')}}" alt="Logo" width="100%" class="img-thumbnail">
                                                     @else
-                                                     <img src="{{ url('storage/resource/admin/dprd/'.$data->foto)}}" alt="{{$data->slug}}" class="img-fluid img-thumbnail" width="100"></td>
+                                                     <img src="{{ url($data->foto)}}" alt="{{$data->foto}}" class="img-fluid img-thumbnail" width="100"></td>
                                                     @endif
                                                 </td>
                                                 <td>
-                                                    <a href="{{route('admin.dprd.show')}}" class="btn btn-sm btn-dark waves-effect waves-light fs-4 mb-1"> Detail </a>
-                                                    <a href="{{route('admin.dprd.edit')}}" class="btn btn-sm btn-outline-dark waves-effect waves-light fs-4"> Ubah </a>
+                                                    <a href="{{route('admin.dprd.show',$data->id)}}" class="btn btn-sm btn-dark waves-effect waves-light fs-4"> Detail </a>
+                                                    <a href="{{route('admin.dprd.edit',$data->id)}}" class="btn btn-sm btn-outline-dark waves-effect waves-light fs-4"> Ubah </a>
+                                                    <a href="{{route('admin.dprd.delete',$data->id)}}" class="btn btn-sm btn-outline-dark waves-effect waves-light fs-4"> Hapus </a>
                                                 </td>
                                             </tr>
                                         @endforeach

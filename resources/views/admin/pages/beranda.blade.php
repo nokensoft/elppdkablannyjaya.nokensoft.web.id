@@ -28,17 +28,14 @@
         </div>
         <!-- end row -->
 
-
-
-
         <div class="row">
 
             <div class="col-md-6 col-xl-3">
                 <div class="card" id="tooltip-container2">
                     <div class="card-body">
                         <i class="fa fa-info-circle text-muted float-end" data-bs-container="#tooltip-container2" data-bs-toggle="tooltip" data-bs-placement="bottom" title="More Info"></i>
-                        <h4 class="mt-0 font-16">Jumlah Perangkat Daerah</h4>
-                        <h2 class="text-dark my-3 text-center display-1 fw-bold"><span data-plugin="counterup">123</span></h2>
+                        <h4 class="mt-0 font-16">Jumlah DPRD</h4>
+                        <h2 class="text-dark my-3 text-center display-1 fw-bold"><span data-plugin="counterup">{{ $totalDprd }}</span></h2>
                         <a href="#" class="btn btn-lg w-100">
                             <i class="fas fa-arrow-right mr-2"></i> Tampilkan Detail
                         </a>
@@ -51,7 +48,7 @@
                     <div class="card-body">
                         <i class="fa fa-info-circle text-muted float-end" data-bs-container="#tooltip-container2" data-bs-toggle="tooltip" data-bs-placement="bottom" title="More Info"></i>
                         <h4 class="mt-0 font-16">Jumlah Distrik/Kecamatan</h4>
-                        <h2 class="text-dark my-3 text-center display-1 fw-bold"><span data-plugin="counterup">45</span></h2>
+                        <h2 class="text-dark my-3 text-center display-1 fw-bold"><span data-plugin="counterup">{{ $totalDistrik }}</span></h2>
                         <a href="#" class="btn btn-lg w-100">
                             <i class="fas fa-arrow-right mr-2"></i> Tampilkan Detail
                         </a>
@@ -64,7 +61,7 @@
                     <div class="card-body">
                         <i class="fa fa-info-circle text-muted float-end" data-bs-container="#tooltip-container2" data-bs-toggle="tooltip" data-bs-placement="bottom" title="More Info"></i>
                         <h4 class="mt-0 font-16">Jumlah Desa/Kelurahan</h4>
-                        <h2 class="text-dark my-3 text-center display-1 fw-bold"><span data-plugin="counterup">78</span></h2>
+                        <h2 class="text-dark my-3 text-center display-1 fw-bold"><span data-plugin="counterup">{{ $totalDesa }}</span></h2>
                         <a href="#" class="btn btn-lg w-100">
                             <i class="fas fa-arrow-right mr-2"></i> Tampilkan Detail
                         </a>
@@ -72,18 +69,18 @@
                 </div>
             </div>
 
-            <div class="col-md-6 col-xl-3">
+            {{-- <div class="col-md-6 col-xl-3">
                 <div class="card" id="tooltip-container2">
                     <div class="card-body">
                         <i class="fa fa-info-circle text-muted float-end" data-bs-container="#tooltip-container2" data-bs-toggle="tooltip" data-bs-placement="bottom" title="More Info"></i>
                         <h4 class="mt-0 font-16">Jumlah Penduduk</h4>
-                        <h2 class="text-dark my-3 text-center display-1 fw-bold"><span data-plugin="counterup">90</span></h2>
+                        <h2 class="text-dark my-3 text-center display-1 fw-bold"><span data-plugin="counterup">{{ $totalPenduduk }}</span></h2>
                         <a href="#" class="btn btn-lg w-100">
                             <i class="fas fa-arrow-right mr-2"></i> Tampilkan Detail
                         </a>
                     </div>
                 </div>
-            </div>
+            </div> --}}
 
         </div>
         <!-- end row -->
