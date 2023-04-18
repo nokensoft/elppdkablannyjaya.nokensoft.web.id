@@ -30,3 +30,7 @@ Migrate and seed database
 
 Link the storage
 ```php artisan storage:link ```
+
+## Faker documentation
+
+https://github.com/fzaninotto/Faker

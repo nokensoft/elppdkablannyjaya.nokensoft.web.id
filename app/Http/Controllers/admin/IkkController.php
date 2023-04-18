@@ -17,14 +17,14 @@ class IkkController extends Controller
     {
         // $all = DB::select('SELECT * FROM ikk ORDER BY id DESC');
 
-        $all = DB::table('ikk')->get();
+        $all = DB::table('ikk')->orderBy('no_ikk', 'asc')->get();
         return view('admin.pages.ikk.makro.index', ['all' => $all]);
     }
 
     public function pendidikan()
     {
         // $all = DB::select('SELECT * FROM ikk WHERE urusan="pendidikan" ORDER BY id DESC');
-        
+
         $all = DB::table('ikk')->get()->where('urusan', 'pendidikan');
         return view('admin.pages.ikk.makro.index', ['all' => $all, 'bidang_ikk' => 'pendidikan']);
     }
