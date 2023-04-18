@@ -26,8 +26,8 @@ class DatabaseSeeder extends Seeder
         $this->call([
             UserSeeder::class,
             IkkSeeder::class,
-            // DistrikSeeder::class,
-            // DesaSeeder::class,
+            DistrikSeeder::class,
+            DesaSeeder::class,
             PerangkatDaerahSeeder::class,
             PelaporanSeeder::class,
             DprdSeeder::class,
@@ -38,8 +38,8 @@ class DatabaseSeeder extends Seeder
 
         User::factory(3)->create();
         Ikk::factory(3)->create();
-        // Distrik::factory(3)->create();
-        // Desa::factory(3)->create();
+        Distrik::factory(3)->create();
+        Desa::factory(3)->create();
 
     }
 }
