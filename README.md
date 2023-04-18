@@ -10,6 +10,14 @@ https://elppdkablannyjaya.nokensoft.web.id
 ## Heroku
 https://dashboard.heroku.com/apps/elppd-kab-lanny-jaya
 
+```
+composer update
+```
+
+```
+php artisan migrate:refresh --seed
+```
+
 ## Instalation
 
 Composer update

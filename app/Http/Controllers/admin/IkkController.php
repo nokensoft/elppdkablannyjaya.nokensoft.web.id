@@ -21,20 +21,20 @@ class IkkController extends Controller
 
     public function pendidikan()
     {
-        $all =DB::select('SELECT * FROM ikk WHERE urusan="Pendidikan" ORDER BY id DESC');
-        return view('admin.pages.ikk.makro.index', ['all' => $all, 'bidang_ikk' => 'Pendidikan']);
+        $all =DB::select('SELECT * FROM ikk WHERE urusan="pendidikan" ORDER BY id DESC');
+        return view('admin.pages.ikk.makro.index', ['all' => $all, 'bidang_ikk' => 'pendidikan']);
     }
 
     public function kesehatan()
     {
-        $all =DB::select('SELECT * FROM ikk WHERE urusan="Kesehatan" ORDER BY id DESC');
-        return view('admin.pages.ikk.makro.index', ['all' => $all, 'bidang_ikk' => 'Kesehatan']);
+        $all =DB::select('SELECT * FROM ikk WHERE urusan="kesehatan" ORDER BY id DESC');
+        return view('admin.pages.ikk.makro.index', ['all' => $all, 'bidang_ikk' => 'kesehatan']);
     }
 
     public function pekerjaanumum()
     {
-        $all =DB::select('SELECT * FROM ikk WHERE urusan="Pekerjaan Umum" ORDER BY id DESC  ');
-        return view('admin.pages.ikk.makro.index', ['all' => $all, 'bidang_ikk' => 'Pekerjaan Umum']);
+        $all =DB::select('SELECT * FROM ikk WHERE urusan="pekerjaanumum" ORDER BY id DESC  ');
+        return view('admin.pages.ikk.makro.index', ['all' => $all, 'bidang_ikk' => 'pekerjaanumum']);
     }
 
     public function print()
