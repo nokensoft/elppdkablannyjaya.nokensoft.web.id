@@ -17,7 +17,7 @@ class IkkSeeder extends Seeder
     {
 
         // pekerjaan umum
-        DB::table('Ikk')->insert([
+        DB::table('ikk')->insert([
             'no_ikk'            => '1.c.7',
             'urusan'            => 'Pekerjaan Umum',
             'ikk'               => 'Tingkat Kemantapan Jalan Kabupaten ',
@@ -34,7 +34,7 @@ class IkkSeeder extends Seeder
 
         // kesehatan
 
-        DB::table('Ikk')->insert([
+        DB::table('ikk')->insert([
             'no_ikk'            => '1.a.2',
             'urusan'            => 'Kesehatan',
             'ikk'               => 'Persentase RS Rujukan tingkat Kabupaten yang terakreditasi',
@@ -49,7 +49,7 @@ class IkkSeeder extends Seeder
             'capaian_kinerja'   => ''
         ]);
 
-        DB::table('Ikk')->insert([
+        DB::table('ikk')->insert([
             'no_ikk'            => '1.a.1',
             'urusan'            => 'Kesehatan',
             'ikk'               => 'Rasio daya tampung RS terhadap jumlah penduduk',
@@ -66,7 +66,7 @@ class IkkSeeder extends Seeder
 
         // pendidikan
 
-        DB::table('Ikk')->insert([
+        DB::table('ikk')->insert([
             'no_ikk'            => '1.a.1',
             'urusan'            => 'Pendidikan',
             'ikk'               => 'Tingkat Partisipasi warga negara usia 5-6 tahun yang berpartisipasi dalam PAUD',
@@ -79,7 +79,7 @@ class IkkSeeder extends Seeder
             'capaian_kinerja'   => ''
         ]);
 
-        DB::table('Ikk')->insert([
+        DB::table('ikk')->insert([
             'no_ikk'            => '1.a.2',
             'urusan'            => 'Pendidikan',
             'ikk'               => 'Tingkat Partisipasi warga negara usia 7-12 tahun yang berpartisipasi dalam Pendidikan Dasar',
