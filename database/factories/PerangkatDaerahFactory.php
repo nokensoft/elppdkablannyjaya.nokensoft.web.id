@@ -17,13 +17,13 @@ class PerangkatDaerahFactory extends Factory
      */
     public function definition()
     {
-        return [
-            'nama_organisasi' => fake()->company(),
-            'urusan' => fake()->sentence(),
-            'rumpun' => fake()->sentence(),
-            'alamat' => fake()->sentence(),
-            'foto' => $this->faker->imageUrl(640, 480, 'cats', true),
-        ];
+        // return [
+        //     'nama_organisasi' => fake()->company(),
+        //     'urusan' => fake()->sentence(),
+        //     'rumpun' => fake()->sentence(),
+        //     'alamat' => fake()->sentence(),
+        //     'foto' => $this->faker->imageUrl(640, 480, 'cats', true),
+        // ];
     }
 
     /**

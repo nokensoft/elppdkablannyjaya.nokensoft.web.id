@@ -18,11 +18,18 @@ class DistrikFactory extends Factory
     public function definition()
     {
         return [
-            'nama_distrik' => fake()->sentence(),
+            'nama_distrik' => fake()->randomElement([
+                'Tiom',
+                'Pirime',
+                'Mikki',
+                'Gamelia',
+                'Dimba'
+            ]),
             'ibu_kota_distrik' => fake()->sentence(),
-            'nama_kepala_distrik' => fake()->sentence(),
-            'alamat' => fake()->sentence(),
-            'telp' => fake()->sentence(),
+            'nama_kepala_distrik' => fake()->name(),
+            'alamat' => fake()->streetAddress(),
+            'telp' => fake()->phoneNumber(),
+            'email' => fake()->email(),
         ];
     }
 
