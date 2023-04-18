@@ -7,6 +7,9 @@ https://github.com/nokensoftprojects2023/elppdkablannyjaya.nokensoft.web.id
 ## Demo URL
 https://elppdkablannyjaya.nokensoft.web.id
 
+## Heroku
+https://dashboard.heroku.com/apps/elppd-kab-lanny-jaya
+
 ## Instalation
 
 Composer update
