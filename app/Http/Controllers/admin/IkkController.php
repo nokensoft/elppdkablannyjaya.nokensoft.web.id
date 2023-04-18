@@ -15,31 +15,35 @@ class IkkController extends Controller
 {
     public function index()
     {
-        $all =DB::select('SELECT * FROM ikk ORDER BY id DESC');
+        // $all = DB::select('SELECT * FROM ikk ORDER BY id DESC');
+
+        $all = DB::table('ikk')->get();
         return view('admin.pages.ikk.makro.index', ['all' => $all]);
     }
 
     public function pendidikan()
     {
-        $all =DB::select('SELECT * FROM ikk WHERE urusan="pendidikan" ORDER BY id DESC');
+        // $all = DB::select('SELECT * FROM ikk WHERE urusan="pendidikan" ORDER BY id DESC');
+        
+        $all = DB::table('ikk')->get()->where('urusan', 'pendidikan');
         return view('admin.pages.ikk.makro.index', ['all' => $all, 'bidang_ikk' => 'pendidikan']);
     }
 
     public function kesehatan()
     {
-        $all =DB::select('SELECT * FROM ikk WHERE urusan="kesehatan" ORDER BY id DESC');
+        $all = DB::select('SELECT * FROM ikk WHERE urusan="kesehatan" ORDER BY id DESC');
         return view('admin.pages.ikk.makro.index', ['all' => $all, 'bidang_ikk' => 'kesehatan']);
     }
 
     public function pekerjaanumum()
     {
-        $all =DB::select('SELECT * FROM ikk WHERE urusan="pekerjaanumum" ORDER BY id DESC  ');
+        $all = DB::select('SELECT * FROM ikk WHERE urusan="pekerjaanumum" ORDER BY id DESC  ');
         return view('admin.pages.ikk.makro.index', ['all' => $all, 'bidang_ikk' => 'pekerjaanumum']);
     }
 
     public function print()
     {
-        $all =DB::select('SELECT * FROM ikk ORDER BY id DESC  ');
+        $all = DB::select('SELECT * FROM ikk ORDER BY id DESC  ');
         return view('admin.pages.ikk.makro.print', ['all' => $all]);
     }
 
