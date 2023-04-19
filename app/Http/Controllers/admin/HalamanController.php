@@ -5,10 +5,8 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Halaman;
-use Image;
-use Alert;
-use Storage;
-use Auth;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 class HalamanController extends Controller
 {
@@ -205,7 +203,7 @@ class HalamanController extends Controller
    
            $datalama = Halaman::findOrFail($id);
            if($datalama->image){
-            \File::delete($datalama->image);
+            File::delete($datalama->image);
              
         }
        
@@ -303,7 +301,7 @@ class HalamanController extends Controller
         
         //dd($data);
         if($data->image){
-            \File::delete($data->image);
+            File::delete($data->image);
              
             
         }

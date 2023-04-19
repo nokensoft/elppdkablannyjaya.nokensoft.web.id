@@ -7,8 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Album;
 use Image;
 use Alert;
-use Storage;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
 class AlbumController extends Controller

@@ -5,9 +5,8 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Slider;
-use Image;
-use Alert;
-use Storage;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 class SliderController extends Controller
 {
@@ -161,7 +160,7 @@ class SliderController extends Controller
    
            $datalama = Slider::findOrFail($id);
            if($datalama->image){
-            \File::delete($datalama->image);
+            File::delete($datalama->image);
              
         }
 
@@ -249,7 +248,7 @@ public function delete($id)
     
     //dd($data);
     if($data->image){
-        \Storage::delete('public/resource/sliders/'.$data->image);
+        Storage::delete('public/resource/sliders/'.$data->image);
          
         
     }

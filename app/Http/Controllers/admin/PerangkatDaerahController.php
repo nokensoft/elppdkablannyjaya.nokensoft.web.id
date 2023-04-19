@@ -10,6 +10,7 @@ use Image;
 use Alert;
 use Storage;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
 
 class PerangkatDaerahController extends Controller
 {
@@ -154,7 +155,7 @@ class PerangkatDaerahController extends Controller
 
         //dd($data);
         if($data->foto){
-            \File::delete($data->foto);
+            File::delete($data->foto);
         }
 
         $data->forceDelete();

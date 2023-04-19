@@ -6,10 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\pelapoarn;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-use Image;
-use Alert;
-use Storage;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
 
 class PelaporanController extends Controller
 {
@@ -179,7 +177,7 @@ class PelaporanController extends Controller
 
         //dd($data);
         if($data->foto){
-            \File::delete($data->foto);
+            File::delete($data->foto);
         }
 
         $data->forceDelete();

@@ -6,10 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Artikel;
 use App\Models\GambarArtikel;
-use Image;
-use Alert;
-use Storage;
-use Auth;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class GambarArtikelController extends Controller
@@ -181,7 +178,7 @@ if(!empty($utama)){
     
         //dd($data);
         if($data->image){
-            \Storage::delete('public/resource/artikel/'.$data->image);
+            Storage::delete('public/resource/artikel/'.$data->image);
              
             
         }

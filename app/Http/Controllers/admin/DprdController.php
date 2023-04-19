@@ -10,6 +10,7 @@ use Image;
 use Alert;
 use Storage;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
 
 class DprdController extends Controller
 {
@@ -126,7 +127,7 @@ class DprdController extends Controller
             $url = ('storage/resource/admin/dprd/'.$tahun.'/'.$bulan.'/'.$filename);
             $datalama =DB::select("SELECT * FROM profil_dprd WHERE id = '$id' ");
             if($datalama[0]->foto){
-             \File::delete($datalama[0]->foto);
+             File::delete($datalama[0]->foto);
             }
             $data['foto']             = $url;
         };
@@ -165,7 +166,7 @@ class DprdController extends Controller
 
         //dd($data);
         if($data->foto){
-            \File::delete($data->foto);
+            File::delete($data->foto);
         }
 
         $data->forceDelete();

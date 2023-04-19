@@ -10,6 +10,7 @@ use Image;
 use Alert;
 use Storage;
 use Auth;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 
 class FotoController extends Controller
@@ -177,7 +178,7 @@ if(!empty($utama)){
         
         //dd($data);
         if($data->image){
-            \File::delete($data->image);
+            File::delete($data->image);
              
             
         }

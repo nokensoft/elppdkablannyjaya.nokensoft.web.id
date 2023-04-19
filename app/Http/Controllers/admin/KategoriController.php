@@ -5,9 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Kategori;
-use Image;
-use Alert;
-use Storage;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 
 class KategoriController extends Controller
@@ -248,7 +246,7 @@ class KategoriController extends Controller
         $data = Kategori::onlyTrashed()->where('id',$id);
 
         if(!empty($data->image)){
-            \Storage::delete('public/resource/kategori/'.$data->image);
+            File::delete('public/resource/kategori/'.$data->image);
         }
 
         $data->forceDelete();

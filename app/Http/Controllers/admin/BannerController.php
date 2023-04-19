@@ -5,11 +5,12 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Banner;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 use Image;
-use Alert;
-use Storage;
-use Auth;
 use Illuminate\Support\Str;
+use RealRashid\SweetAlert\Facades\Alert;
+
 class BannerController extends Controller
 {
     /**
@@ -175,7 +176,7 @@ class BannerController extends Controller
 
             $datalama = Banner::findOrFail($id);
             if($datalama->image){
-             \File::delete($datalama->image);
+             File::delete($datalama->image);
         }
     }
 
@@ -230,7 +231,7 @@ class BannerController extends Controller
         $data = Banner::onlyTrashed()->findOrFail($id);
 //dd($data->image);
         if($data->image){
-            \File::delete($data->image);
+            File::delete($data->image);
              
             
         }

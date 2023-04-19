@@ -6,9 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Models\ikk;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-use Image;
-use Alert;
-use Storage;
 use Illuminate\Support\Facades\DB;
 
 class IkkController extends Controller
