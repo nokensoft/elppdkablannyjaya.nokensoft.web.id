@@ -47,7 +47,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($all as $data )
+                                        @foreach ($datas as $data )
                                             <tr>
                                                 <td>{{$data->nama_lengkap}}</td>
                                                 <td>{{$data->jabatan}}</td>
@@ -76,6 +76,15 @@
                             </div>
                             <!-- .col end -->
 
+                        </div>
+
+                        <div class="row">
+                            <div class="col text-center">
+                                {{ $datas->links() }}
+
+                                {{ $datas->count() }}
+                                {{ $datas->total() }}
+                            </div>
                         </div>
 
                     </div>

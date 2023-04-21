@@ -31,7 +31,6 @@ class KategoriController extends Controller
         $jumlahdraft = Kategori::where('status', 0)->count();
         $datapublish = Kategori::where('status', 1)->count();
 
-
         return view('admin.pages.kategori.index',compact('datas','jumlahtrash','jumlahdraft','datapublish')) ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 

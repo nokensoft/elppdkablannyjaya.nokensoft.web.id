@@ -17,8 +17,9 @@ class DprdController extends Controller
     // INDEX
     public function index()
     {
-        $all =DB::select('SELECT * FROM profil_dprd ORDER BY id DESC  ');
-        return view('admin.pages.profil.dprd.index', ['all' => $all]);
+        $datas = Dprd::orderBy('nama_lengkap','asc')->paginate(2);
+
+        return view('admin.pages.profil.dprd.index', ['datas' => $datas]);
     }
 
     // CREATE
@@ -77,7 +78,7 @@ class DprdController extends Controller
     // EDIT
     public function edit($id)
     {
-        $data =DB::select("SELECT * FROM profil_dprd WHERE id = '$id' ");
+        $data = Dprd::where('id', $id)->get();
         return view('admin.pages.profil.dprd.ubah',['data' => $data]);
     }
 
@@ -91,20 +92,23 @@ class DprdController extends Controller
             'nama_lengkap.required' => 'Nama tidak boleh kosong',
         ]);
 
-        $tahun = date("Y");
-        $bulan = date("M");
-
         $dprd = new Dprd();
 
         if(!empty($request->file('foto'))){
+
+            $tahun = date("Y");
+            $bulan = date("M");
+
             $filename  = 'profil-dprd'.'-'.date('Y-m-d-H-i-s').$request->file('foto')->getClientOriginalName();
             $request->file('foto')->storeAs('public/resource/admin/dprd/'.$tahun.'/'.$bulan,$filename);
             $file_url = ('storage/resource/admin/dprd/'.$tahun.'/'.$bulan.'/'.$filename);
             $datalama =DB::select("SELECT * FROM profil_dprd WHERE id = '$id' ");
+
             if($datalama[0]->foto){
              File::delete($datalama[0]->foto);
             }
             $data['foto']             = $file_url;
+
         };
 
         $data['nama_lengkap']     = $request->nama_lengkap;
@@ -127,7 +131,7 @@ class DprdController extends Controller
     // DELETE CONFIRMATION
     public function delete($id)
     {
-        $data =DB::select("SELECT * FROM profil_dprd WHERE id = '$id' ");
+        $data = Dprd::where('id', $id)->get();
         return view('admin.pages.profil.dprd.delete',['data' => $data]);
     }
 
@@ -135,15 +139,13 @@ class DprdController extends Controller
     public function destroy($id)
     {
         $data = Dprd::findOrFail($id);
-
-        //dd($data);
         if($data->foto){
             File::delete($data->foto);
         }
 
         $data->forceDelete();
 
-        alert()->success('Berhasil', 'Sukses!!')->autoclose(1500);
+        alert()->success('Berhasil', 'Terhapus!!')->autoclose(1500);
         return redirect()->route('admin.dprd');
     }
 }
