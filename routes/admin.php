@@ -39,10 +39,6 @@ Route::prefix('admin')->middleware('auth')->group(function () {
         Route::get('beranda','index')->name('admin.beranda');
     });
 
-    // Route::get('/beranda', function () {
-    //     return view('admin.pages.beranda');
-    // });
-
     /*
     ===============================================
     PROFIL
@@ -92,7 +88,9 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::controller(DprdController::class)->group(function(){
         Route::get('dprd','index')->name('admin.dprd');
         Route::get('dprd/create','create')->name('admin.dprd.create');
-        Route::post('dprd','store')->name('admin.dprd.store');
+        Route::post('dprd','store')->name('admin.dprd.store');        
+        
+        Route::get('dprd/print','print')->name('admin.dprd.print');
         
         Route::get('dprd/{id}/edit','edit')->name('admin.dprd.edit');
 
@@ -108,11 +106,16 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::controller(DistrikController::class)->group(function(){
         Route::get('distrik','index')->name('admin.distrik');
         Route::get('distrik/create','create')->name('admin.distrik.create');
-        Route::post('distrik','store')->name('admin.distrik.store');
+        Route::post('distrik','store')->name('admin.distrik.store');   
+        
+        Route::get('distrik/print','print')->name('admin.distrik.print');
+
         Route::get('distrik/{id}/edit','edit')->name('admin.distrik.edit');
         Route::get('distrik/show','show')->name('admin.distrik.show');
+        
         Route::get('distrik/delete/{id}','delete')->name('admin.distrik.delete');
         Route::put('distrik/{id}','update')->name('admin.distrik.update');
+
         Route::delete('distrik/{id}','destroy')->name('admin.distrik.destroy');
     });
 
@@ -121,10 +124,14 @@ Route::prefix('admin')->middleware('auth')->group(function () {
         Route::get('desa','index')->name('admin.desa');
         Route::get('desa/create','create')->name('admin.desa.create');
         Route::post('desa','store')->name('admin.desa.store');
+        
+        Route::get('desa/print','print')->name('admin.desa.print');
+
         Route::get('desa/{id}/edit','edit')->name('admin.desa.edit');
         Route::get('desa/show','show')->name('admin.desa.show');
         Route::get('desa/delete/{id}','delete')->name('admin.desa.delete');
         Route::put('desa/{id}','update')->name('admin.desa.update');
+
         Route::delete('desa/{id}','destroy')->name('admin.desa.destroy');
     });
 
@@ -188,25 +195,6 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     });
 
 
-
-    // lppd
-    // Route::controller(LppdController::class)->group(function(){
-    //     Route::get('lppd/monitoring','monitoring')->name('admin.lppd.monitoring');
-        
-    //     // Route::get('lppd/pelaporan','pelaporan')->name('admin.lppd.pelaporan');
-    //     // Route::get('lppd/perangkatdaerah','perangkatdaerah')->name('admin.lppd.perangkatdaerah');
-    // });
-
-    // LPPD ROUTES
-    // require_once 'lppd.php';
-
-    // IKK ROUTES
-    // require_once 'ikk.php';
-
-
-
-
-
     // TENTANG APLIKASI
 
     Route::get('/tentang-aplikasi', function () {
@@ -222,20 +210,12 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     });
 
 
-
-
-
     Route::get('/artikel', function () {
         return view('admin.pages.artikel.list');
     });
     Route::get('/artikel/create', function () {
         return view('admin.pages.artikel.form');
     });
-
-    // Route::resource('roles', RoleController::class)->name('app.roles');
-   // Route::resource('users', UserController::class);
-    // Route::resource('products', ProductController::class)->name('app.products');
-
 
     Route::controller(UserController::class)->group(function(){
         Route::get('users','index')->name('app.users');
@@ -419,12 +399,6 @@ Route::controller(RoleController::class)->group(function(){
     Route::post('role/restore/{id}','restore')->name('app.role.restore');
     Route::delete('role/delete/{id}','delete')->name('app.role.delete');
 });
-
-
-
-
-
-
 
 
 

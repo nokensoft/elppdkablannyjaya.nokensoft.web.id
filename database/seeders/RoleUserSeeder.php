@@ -46,7 +46,7 @@ class RoleUserSeeder extends Seeder
             'name'              => 'Admin',
             'email'             => 'admin@lannyjayakab.go.id',
             'password'          => bcrypt('admin@lannyjayakab.go.id'),
-            'avatar'            => 'assets/images/avatars/1.jpg',
+            'avatar'            => 'assets/images/avatars/user.png',
         ]);
         $admin->assignRole($adminRole);
 
@@ -55,7 +55,7 @@ class RoleUserSeeder extends Seeder
             'name'              => 'Editor',
             'email'             => 'editor@lannyjayakab.go.id',
             'password'          => bcrypt('editor@lannyjayakab.go.id'),
-            'avatar'            => 'assets/images/avatars/2.jpg',
+            'avatar'            => 'assets/images/avatars/user2.png',
         ]);
         $editor->assignRole($editorRole);
 
@@ -64,7 +64,7 @@ class RoleUserSeeder extends Seeder
             'name'              => 'Author',
             'email'             => 'author@lannyjayakab.go.id',
             'password'          => bcrypt('author@lannyjayakab.go.id'),
-            'avatar'            => 'assets/images/avatars/3.jpg',
+            'avatar'            => 'assets/images/avatars/user3.png',
         ]);
         $author->assignRole($authorRole);
 

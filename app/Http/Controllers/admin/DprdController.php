@@ -18,8 +18,14 @@ class DprdController extends Controller
     public function index()
     {
         $datas = Dprd::orderBy('nama_lengkap','asc')->paginate(2);
-
         return view('admin.pages.profil.dprd.index', ['datas' => $datas]);
+    }
+
+    // PRINT
+    public function print()
+    {
+        $datas = Dprd::orderBy('nama_lengkap','asc')->paginate();
+        return view('admin.pages.profil.dprd.print', ['datas' => $datas]);
     }
 
     // CREATE

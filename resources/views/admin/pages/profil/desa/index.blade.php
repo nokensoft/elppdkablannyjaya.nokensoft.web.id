@@ -20,11 +20,26 @@
             <div class="col">
                 <div class="card">
                     <div class="card-body">
-                        <h1 class="fw-bold">Profil Desa</h1>
-                        <div class="mb-3">
-                            <a href="{{ route('admin.desa.create') }}" class="btn btn-info waves-effect waves-light fs-4">
-                                <i class="fas fa-plus me-1"></i> Tambah Data
-                            </a>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h1 class="fw-bold">Profil Desa </h1>
+                                Tanggal : <span class="fw-bold">{{ today()->toDateString() }}</span>
+                            </div>
+                            <div class="col-md-6 text-md-end">
+                                <a href="{{ route('admin.desa.create') }}" class="btn btn-info waves-effect waves-light fs-4">
+                                    <i class="fas fa-plus me-1"></i> Tambah Data
+                                </a>
+                                
+                                <a href="{{ route('admin.desa.print') }}" target="_blank" class="btn btn-outline-info border-0 waves-effect waves-light fs-4" title="Cetak file atau export ke file PDF">
+                                    <i class="fas fa-print me-1"></i> Print
+                                </a>
+                                
+                                <a target="_blank" class="btn btn-outline-info border-0 waves-effect waves-light fs-4" title="Download file excel">
+                                    <i class="fas fa-file me-1"></i> Download Excel
+                                </a>
+                                
+                            </div>
                         </div>
 
                         <div class="row">
@@ -32,12 +47,12 @@
                             <!-- .col start -->
                             <div class="col">
                                 
-
                                 <table class="table table-bordered fs-4">
                                     <thead class="bg-dark text-light">
                                         <tr>
                                             <th>Nama Desa</th>
                                             <th>Nama Kepala Desa</th>
+                                            <th>Foto Kepala Desa</th>
                                             <th>Alamat</th>
                                             <th>Telp</th>
                                             <th>Email</th>
@@ -45,10 +60,17 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($all as $data )
+                                        @foreach ($datas as $data )
                                             <tr>
                                                 <td>{{$data->nama_desa}}</td>
                                                 <td>{{$data->nama_kepala_desa}}</td>
+                                                <td>
+                                                    @if ($data->foto == null)
+                                                        <img src="{{asset('assets/images/user.png')}}" alt="Logo" class="img-fluid img-thumbnail" width="100">
+                                                    @else
+                                                        <img src="{{ url($data->foto)}}" alt="{{$data->foto}}" alt="Logo" class="img-fluid img-thumbnail" width="100"></td>
+                                                    @endif
+                                                </td>
                                                 <td>{{$data->alamat}}</td>
                                                 <td>{{$data->telp}}</td>
                                                 <td>{{$data->email}}</td>
@@ -66,6 +88,14 @@
                             <!-- .col end -->
 
                         </div>
+
+                        <!--pagination start-->
+                        <div class="row">
+                            <div class="col">
+                                {{ $datas->links() }}
+                            </div>
+                        </div>
+                        <!--pagination end-->
 
                     </div>
                 </div>

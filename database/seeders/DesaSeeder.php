@@ -25,7 +25,8 @@ class DesaSeeder extends Seeder
             'nama_kepala_desa'          => '',
             'alamat'                    => 'Lanny Jaya.',
             'telp'                      => '082112341234',
-            'email'                     => $faker->email()
+            'email'                     => $faker->email(),
+            'foto'                      => 'assets/images/user.png',
         ]);
 
         DB::table($table)->insert([
@@ -33,7 +34,8 @@ class DesaSeeder extends Seeder
             'nama_kepala_desa'          => '',
             'alamat'                    => 'Lanny Jaya.',
             'telp'                      => '082112341234',
-            'email'                     => $faker->email()
+            'email'                     => $faker->email(),
+            'foto'                      => 'assets/images/user.png',
         ]);
 
         DB::table($table)->insert([
@@ -41,7 +43,8 @@ class DesaSeeder extends Seeder
             'nama_kepala_desa'          => '',
             'alamat'                    => 'Lanny Jaya.',
             'telp'                      => '082112341234',
-            'email'                     => $faker->email()
+            'email'                     => $faker->email(),
+            'foto'                      => 'assets/images/user.png',
         ]);
 
     }

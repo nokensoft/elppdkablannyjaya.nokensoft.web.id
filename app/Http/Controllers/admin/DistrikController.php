@@ -13,33 +13,30 @@ use Illuminate\Support\Facades\DB;
 
 class DistrikController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    // INDEX
     public function index()
     {
-        $all =DB::select('SELECT * FROM profil_distrik ORDER BY id DESC  ');
-        return view('admin.pages.profil.distrik.index', ['all' => $all]);
+        $datas = Distrik::orderBy('nama_distrik','asc')->paginate(2);
+        return view('admin.pages.profil.distrik.index', ['datas' => $datas]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    // PRINT
+    public function print()
+    {
+        $datas = Distrik::orderBy('nama_distrik','asc')->paginate();
+        return view('admin.pages.profil.distrik.print', [
+            'datas' => $datas,
+            'page_title' => 'Print - Data Distrik'
+        ]);
+    }
+
+    // CREATE
     public function create()
     {
         return view('admin.pages.profil.distrik.tambah');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    // STORE
     public function store(Request $request)
     {
         $request->validate([
@@ -48,7 +45,6 @@ class DistrikController extends Controller
         [
             'nama_distrik.required' => 'Nama tidak boleh kosong',
         ]);
-
 
         $distrik = new Distrik();
 
@@ -61,44 +57,26 @@ class DistrikController extends Controller
 
         $distrik->slug             =  Str::slug($request->nama_distrik);
 
-
         $distrik->save();
         alert()->success('Berhasil', 'Sukses!!')->autoclose(1100);
         return redirect()->route('admin.distrik');
 
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Distrik  $distrik
-     * @return \Illuminate\Http\Response
-     */
+    // SHOW
     public function show(Distrik $id)
     {
         return view('admin.pages.profil.distrik.detail');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\disDistriktrik  $distrik
-     * @return \Illuminate\Http\Response
-     */
-
+    // EDIT
     public function edit($id)
     {
-        $data =DB::select("SELECT * FROM profil_distrik WHERE id = '$id' ");
+        $data = Distrik::where('id', $id)->get();
         return view('admin.pages.profil.distrik.ubah',['data' => $data]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\distrik  $distrik
-     * @return \Illuminate\Http\Response
-     */
+    // UPDATE
     public function update(Request $request,$id)
     {
         $request->validate([
@@ -108,33 +86,26 @@ class DistrikController extends Controller
             'nama_distrik.required' => 'Nama tidak boleh kosong',
         ]);
 
-
         $distrik = new Distrik();
 
-        $data['nama_distrik']    = $request->nama_distrik;
-        $data['ibu_kota_distrik']    = $request->ibu_kota_distrik;
+        $data['nama_distrik']           = $request->nama_distrik;
+        $data['ibu_kota_distrik']       = $request->ibu_kota_distrik;
         $data['nama_kepala_distrik']    = $request->nama_kepala_distrik;
-        $data['alamat']    = $request->alamat;
-        $data['telp']    = $request->telp;
-        $data['email']    = $request->email;
-        $data['email']    = $request->email;
+        $data['alamat']                 = $request->alamat;
+        $data['telp']                   = $request->telp;
+        $data['email']                  = $request->email;
+        $data['email']                  = $request->email;
 
-        $data['slug']                 =  Str::slug($request->nama_distrik);
+        $data['slug']                   = Str::slug($request->nama_distrik);
 
-        $user = DB::table('profil_distrik')
-            ->where('id', $id)
-            ->update($data);
+        Distrik::where('id', $id)->update($data);
 
         alert()->success('Berhasil', 'Sukses!!')->autoclose(1100);
         return redirect()->route('admin.distrik');
+
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Distrik  $distrik
-     * @return \Illuminate\Http\Response
-     */
+    // DELETE PROCESS
     public function delete($id)
     {
         $data =DB::select("SELECT * FROM profil_distrik WHERE id = '$id' ");
@@ -144,11 +115,6 @@ class DistrikController extends Controller
     public function destroy($id)
     {
         $data = Distrik::findOrFail($id);
-
-        //dd($data);
-        // if($data->foto){
-        //     \File::delete($data->foto);
-        // }
 
         $data->forceDelete();
 

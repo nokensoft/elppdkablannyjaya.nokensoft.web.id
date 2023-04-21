@@ -13,41 +13,42 @@ use Illuminate\Support\Facades\DB;
 
 class DesaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    // INDEX
     public function index()
     {
-        $all =DB::select('SELECT * FROM profil_desa ORDER BY id DESC  ');
-        return view('admin.pages.profil.desa.index', ['all' => $all]);
+        $datas = Desa::orderBy('nama_desa','asc')->paginate(2);
+        return view('admin.pages.profil.desa.index', [
+            'datas' => $datas
+        ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    // PRINT
+    public function print()
+    {
+        $datas = Desa::orderBy('nama_desa','asc')->get();
+        return view('admin.pages.profil.desa.print', [
+            'datas' => $datas,
+            'page_title' => 'Print - Data Desa'
+        ]);
+    }
+
+    // CREATE
     public function create()
     {
         return view('admin.pages.profil.desa.tambah');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    // STORE
     public function store(Request $request)
     {
-        $request->validate([
-            'nama_desa' => 'required'
-        ],
-        [
-            'nama_desa.required' => 'Nama tidak boleh kosong',
-        ]);
+        $request->validate(
+            [
+                'nama_desa' => 'required'
+            ],
+            [
+                'nama_desa.required' => 'Nama tidak boleh kosong',
+            ]
+        );
 
 
         $desa = new Desa();
@@ -64,92 +65,67 @@ class DesaController extends Controller
         $desa->save();
         alert()->success('Berhasil', 'Sukses!!')->autoclose(1100);
         return redirect()->route('admin.desa');
-
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\desa  $desa
-     * @return \Illuminate\Http\Response
-     */
+    // SHOW
     public function show(Desa $id)
     {
         return view('admin.pages.profil.desa.detail');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\disdesatrik  $desa
-     * @return \Illuminate\Http\Response
-     */
+    // EDIT
+    public function edit($id)
+    {
+        $data = Desa::where('id', $id)->get();
+        return view('admin.pages.profil.desa.ubah', [
+            'data' => $data
+        ]);
+    }
 
-     public function edit($id)
-     {
-         $data =DB::select("SELECT * FROM profil_desa WHERE id = '$id' ");
-         return view('admin.pages.profil.desa.ubah',['data' => $data]);
-     }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\desa  $desa
-     * @return \Illuminate\Http\Response
-     */
+    // UPDATE PROCESS
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'nama_desa' => 'required'
-        ],
-        [
-            'nama_desa.required' => 'Nama tidak boleh kosong',
-        ]);
+        $request->validate(
+            [
+                'nama_desa' => 'required'
+            ],
+            [
+                'nama_desa.required' => 'Nama tidak boleh kosong',
+            ]
+        );
 
 
         $desa = new Desa();
 
-        $data['nama_desa']    = $request->nama_desa;
-        $data['nama_kepala_desa']    = $request->nama_kepala_desa;
-        $data['alamat']    = $request->alamat;
-        $data['telp']    = $request->telp;
-        $data['email']    = $request->email;
-        $data['email']    = $request->email;
+        $data['nama_desa']          = $request->nama_desa;
+        $data['nama_kepala_desa']   = $request->nama_kepala_desa;
+        $data['alamat']             = $request->alamat;
+        $data['telp']               = $request->telp;
+        $data['email']              = $request->email;
+        $data['email']              = $request->email;
 
-        $data['slug']                 =  Str::slug($request->nama_desa);
+        $data['slug']               =  Str::slug($request->nama_desa);
 
-        $user = DB::table('profil_desa')
-            ->where('id', $id)
-            ->update($data);
+        Desa::where('id', $id)->update($data);
 
         alert()->success('Berhasil', 'Sukses!!')->autoclose(1100);
         return redirect()->route('admin.desa');
     }
 
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\desa  $desa
-     * @return \Illuminate\Http\Response
-     */
+    // DELETE PROCESS
     public function delete($id)
     {
-        $data =DB::select("SELECT * FROM profil_desa WHERE id = '$id' ");
-        return view('admin.pages.profil.desa.delete',['data' => $data]);
+        $data = Desa::where('id', $id)->get();
+        return view('admin.pages.profil.desa.delete', [
+            'data' => $data
+        ]);
     }
 
+    // DESTROY
     public function destroy($id)
     {
-        $data = Desa::findOrFail($id);
-
-        //dd($data);
-        // if($data->foto){
-        //     \File::delete($data->foto);
-        // }
-
-        $data->forceDelete();
+        Desa::findOrFail($id)->forceDelete();
 
         alert()->success('Berhasil', 'Data terhapus!!')->autoclose(1500);
         return redirect()->route('admin.desa');
