@@ -44,7 +44,7 @@ class RoleUserSeeder extends Seeder
         // ADMIN
         $admin = User::create([
             'name'              => 'Admin',
-            'email'             => 'admin@gmail.com',
+            'email'             => 'admin@lannyjayakab.go.id',
             'password'          => bcrypt('admin@lannyjayakab.go.id')
         ]);
         $admin->assignRole($adminRole);
@@ -52,7 +52,7 @@ class RoleUserSeeder extends Seeder
         // EDITOR
         $editor = User::create([
             'name'              => 'Editor',
-            'email'             => 'editor@gmail.com',
+            'email'             => 'editor@lannyjayakab.go.id',
             'password'          => bcrypt('editor@lannyjayakab.go.id')
         ]);
         $editor->assignRole($editorRole);
@@ -60,7 +60,7 @@ class RoleUserSeeder extends Seeder
         // AUTHOR
         $author = User::create([
             'name'              => 'Author',
-            'email'             => 'author@gmail.com',
+            'email'             => 'author@lannyjayakab.go.id',
             'password'          => bcrypt('author@lannyjayakab.go.id')
         ]);
         $author->assignRole($authorRole);
