@@ -10,26 +10,26 @@ https://elppdkablannyjaya.nokensoft.web.id
 ## Heroku
 https://dashboard.heroku.com/apps/elppd-kab-lanny-jaya
 
-```
-composer update
-```
+    ```
+    composer update
+    ```
 
-```
-php artisan migrate:refresh --seed
-```
+    ```
+    php artisan migrate:refresh --seed
+    ```
 
 ## Instalation
 
-Composer update
-```composer update```
+    Composer update
+    ```composer update```
 
-Update and setup ```.env``` file
+    Update and setup ```.env``` file
 
-Migrate and seed database
-```php artisan migrate:refresh --seed```
+    Migrate and seed database
+    ```php artisan migrate:refresh --seed```
 
-Link the storage
-```php artisan storage:link ```
+    Link the storage
+    ```php artisan storage:link ```
 
 ## Faker documentation
 
