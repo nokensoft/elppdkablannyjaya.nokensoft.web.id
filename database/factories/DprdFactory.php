@@ -18,9 +18,9 @@ class DprdFactory extends Factory
     public function definition()
     {
         return [
-            'nama_lengkap' => fake()->sentence(),
-            'jabatan' => fake()->sentence(),
-            'foto' => $this->faker->imageUrl(640, 480, 'cats', true),
+            'nama_lengkap'  => fake()->sentence(),
+            'jabatan'       => fake()->sentence(),
+            'foto'          => $this->faker->imageUrl(640, 480, 'cats', true),
         ];
     }
 

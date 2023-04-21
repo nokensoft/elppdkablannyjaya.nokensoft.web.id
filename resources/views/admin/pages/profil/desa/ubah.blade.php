@@ -29,13 +29,13 @@
 
                                 <h1 class="fw-bold">Ubah Desa</h1>
 
-                                <form action="{{route('admin.desa.update',$data[0]->id)}}" method="POST" enctype="multipart/form-data">
+                                <form action="{{route('admin.desa.update',$data->id)}}" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     @method('PUT')
 
                                     <div class="mb-3 fs-4">
                                         <label for="" class="fw-bold">Nama Desa</label>
-                                        <input type="text" class="form-control form-control-lg"  name="nama_desa" value="{{old('nama_desa') ? old('nama_desa') : $data[0]->nama_desa }}">
+                                        <input type="text" class="form-control form-control-lg"  name="nama_desa" value="{{old('nama_desa') ? old('nama_desa') : $data->nama_desa }}">
                                         @if($errors->has('nama_desa'))
                                             <label class="text-danger"> {{ $errors->first('nama_desa') }} </label>
                                         @endif
@@ -43,7 +43,7 @@
 
                                     <div class="mb-3 fs-4">
                                         <label for="" class="fw-bold">Nama Kepala Desa</label>
-                                        <input type="text" class="form-control form-control-lg" name="nama_kepala_desa" value="{{old('nama_kepala_desa') ? old('nama_kepala_desa') : $data[0]->nama_kepala_desa }}">
+                                        <input type="text" class="form-control form-control-lg" name="nama_kepala_desa" value="{{old('nama_kepala_desa') ? old('nama_kepala_desa') : $data->nama_kepala_desa }}">
                                         @if($errors->has('nama_kepala_desa'))
                                             <label class="text-danger"> {{ $errors->first('nama_kepala_desa') }} </label>
                                         @endif
@@ -51,7 +51,7 @@
 
                                     <div class="mb-3 fs-4">
                                         <label for="" class="fw-bold">Alamat</label>
-                                        <textarea name="alamat" id="" rows="5" class="form-control form-control-lg">{{old('alamat') ? old('alamat') : $data[0]->alamat }}</textarea>
+                                        <textarea name="alamat" id="" rows="5" class="form-control form-control-lg">{{old('alamat') ? old('alamat') : $data->alamat }}</textarea>
                                         @if($errors->has('alamat'))
                                             <label class="text-danger"> {{ $errors->first('alamat') }} </label>
                                         @endif
@@ -59,7 +59,7 @@
 
                                     <div class="mb-3 fs-4">
                                         <label for="" class="fw-bold">Telp</label>
-                                        <input type="text" class="form-control form-control-lg" name="telp" value="{{old('telp') ? old('telp') : $data[0]->telp }}">
+                                        <input type="text" class="form-control form-control-lg" name="telp" value="{{old('telp') ? old('telp') : $data->telp }}">
                                         @if($errors->has('telp'))
                                             <label class="text-danger"> {{ $errors->first('telp') }} </label>
                                         @endif
@@ -67,7 +67,7 @@
 
                                     <div class="mb-3 fs-4">
                                         <label for="" class="fw-bold">Email</label>
-                                        <input type="email" class="form-control form-control-lg" name="email" value="{{old('email') ? old('email') : $data[0]->email }}">
+                                        <input type="email" class="form-control form-control-lg" name="email" value="{{old('email') ? old('email') : $data->email }}">
                                         @if($errors->has('email'))
                                             <label class="text-danger"> {{ $errors->first('email') }} </label>
                                         @endif

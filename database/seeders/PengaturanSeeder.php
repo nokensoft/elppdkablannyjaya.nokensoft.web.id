@@ -4,21 +4,13 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
+use App\Models\Pengaturan;
 
 class PengaturanSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
     public function run()
     {
-
-        $table = 'pengaturan';
-
-        DB::table($table)->insert([
+        Pengaturan::insert([
             'judul_situs'           => 'SILPPD',
             'deskripsi_situs'       => 'Sistem Informasi Laporan Penyelenggaraan Pengelolaan Daerah',
             'logo'                  => 'assets/images/logo/logo.png',

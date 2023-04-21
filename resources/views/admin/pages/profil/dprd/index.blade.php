@@ -78,10 +78,10 @@
                                                         <img src="{{ url($data->foto)}}" alt="{{$data->foto}}" class="img-fluid img-thumbnail" width="100"></td>
                                                     @endif
                                                 </td>
-                                                <td>
-                                                    <a href="{{route('admin.dprd.show',$data->id)}}" class="btn btn-sm btn-dark waves-effect waves-light fs-4"> Detail </a>
-                                                    <a href="{{route('admin.dprd.edit',$data->id)}}" class="btn btn-sm btn-outline-dark waves-effect waves-light fs-4"> Ubah </a>
-                                                    <a href="{{route('admin.dprd.delete',$data->id)}}" class="btn btn-sm btn-outline-dark waves-effect waves-light fs-4"> Hapus </a>
+                                                <td class="d-flex justify-content-between gap-1">
+                                                    <a href="{{route('admin.dprd.show',$data->id)}}" class="btn btn-sm btn-dark border-0  waves-effect waves-light fs-4"> <i class="fas fa-eye"></i> </a>
+                                                    <a href="{{route('admin.dprd.edit',$data->id)}}" class="btn btn-sm btn-outline-dark border-0 waves-effect waves-light fs-4"> <i class="fas fa-edit"></i> </a>
+                                                    <a href="{{route('admin.dprd.delete',$data->id)}}" class="btn btn-sm btn-outline-dark border-0 waves-effect waves-light fs-4"> <i class="fas fa-trash"></i> </a>                                                  
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -90,6 +90,7 @@
                             </div>
                             <!-- .col end -->
                         </div>
+                        <!-- .row end -->                        
 
                         <!--pagination start-->
                         <div class="row">

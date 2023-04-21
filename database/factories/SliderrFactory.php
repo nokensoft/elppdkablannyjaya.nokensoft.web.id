@@ -20,10 +20,10 @@ class SliderrFactory extends Factory
     public function definition()
     {
         return [
-            'title' => $this->faker->sentence(5),
-            'subtitle'  => $this->faker->sentence(100),
-            'image' => $this->faker->imageUrl(640, 480, 'cats', true),
-            'status' => $this->faker->randomElement(['1', '0']),
+            'title'         => $this->faker->sentence(5),
+            'subtitle'      => $this->faker->sentence(100),
+            'image'         => $this->faker->imageUrl(640, 480, 'cats', true),
+            'status'        => $this->faker->randomElement(['1', '0']),
         ];
     }
 }

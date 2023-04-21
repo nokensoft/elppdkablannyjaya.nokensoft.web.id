@@ -18,16 +18,16 @@ class PelaporanFactory extends Factory
     public function definition()
     {
         return [
-            'tahun' => fake()->sentence(),
-            'cover' => fake()->sentence(),
-            'cover_file' => fake()->sentence(),
-            'babi' => fake()->sentence(),
-            'babii' => fake()->sentence(),
-            'babiii' => fake()->sentence(),
-            'babiv' => fake()->sentence(),
-            'babv' => fake()->sentence(),
-            'lampiran' => fake()->sentence(),
-            'status' => fake()->sentence(),
+            'tahun'         => fake()->sentence(),
+            'cover'         => fake()->sentence(),
+            'cover_file'    => fake()->sentence(),
+            'babi'          => fake()->sentence(),
+            'babii'         => fake()->sentence(),
+            'babiii'        => fake()->sentence(),
+            'babiv'         => fake()->sentence(),
+            'babv'          => fake()->sentence(),
+            'lampiran'      => fake()->sentence(),
+            'status'        => fake()->sentence(),
         ];
     }
 

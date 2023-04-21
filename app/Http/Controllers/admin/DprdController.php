@@ -84,8 +84,8 @@ class DprdController extends Controller
     // EDIT
     public function edit($id)
     {
-        $data = Dprd::where('id', $id)->get();
-        return view('admin.pages.profil.dprd.ubah',['data' => $data]);
+        $data = Dprd::whereId($id)->first();
+        return view('admin.pages.profil.dprd.ubah', compact('data'));
     }
 
     // UPDATE PROCESS
@@ -113,21 +113,20 @@ class DprdController extends Controller
             if($datalama[0]->foto){
              File::delete($datalama[0]->foto);
             }
-            $data['foto']             = $file_url;
+            
+            $data['foto']           = $file_url;
 
         };
 
-        $data['nama_lengkap']     = $request->nama_lengkap;
-        $data['jabatan']          = $request->jabatan;
-        $data['nik']              = $request->nik;
-        $data['alamat']           = $request->alamat;
-        $data['ttl']              = $request->ttl;
-        $data['nama_partai']      = $request->nama_partai;
-        $data['pendidikan']       = $request->pendidikan;
+        $data['nama_lengkap']       = $request->nama_lengkap;
+        $data['jabatan']            = $request->jabatan;
+        $data['nik']                = $request->nik;
+        $data['alamat']             = $request->alamat;
+        $data['ttl']                = $request->ttl;
+        $data['nama_partai']        = $request->nama_partai;
+        $data['pendidikan']         = $request->pendidikan;
 
-        $user = DB::table('profil_dprd')
-            ->where('id', $id)
-            ->update($data);
+        Dprd::where('id', $id)->update($data);
 
         alert()->success('Berhasil', 'Sukses!!')->autoclose(1100);
         return redirect()->route('admin.dprd');
@@ -137,8 +136,8 @@ class DprdController extends Controller
     // DELETE CONFIRMATION
     public function delete($id)
     {
-        $data = Dprd::where('id', $id)->get();
-        return view('admin.pages.profil.dprd.delete',['data' => $data]);
+        $data = Dprd::whereId($id)->first();
+        return view('admin.pages.profil.dprd.delete', compact('data'));
     }
 
     // DESTORY PROCESS

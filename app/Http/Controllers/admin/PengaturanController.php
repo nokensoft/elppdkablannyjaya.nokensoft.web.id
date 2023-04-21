@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\pengaturan;
+use App\Models\Pengaturan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Image;
@@ -13,19 +13,22 @@ use Illuminate\Support\Facades\DB;
 
 class PengaturanController extends Controller
 {
+    // INDEX
     public function index()
     {
-        $data =DB::select("SELECT * FROM pengaturan WHERE id = '1' ");
-        return view('admin.pages.pengaturan.index',['data' => $data]);
+        $data = Pengaturan::whereId(1)->first();
+        return view('admin.pages.pengaturan.index', compact('data'));
     }
     
+    // EDIT
     public function edit()
     {
-        $data =DB::select("SELECT * FROM pengaturan WHERE id = '1' ");
-        return view('admin.pages.pengaturan.ubah',['data' => $data]);
+        $data = Pengaturan::whereId(1)->first();
+        return view('admin.pages.pengaturan.edit', compact('data'));
     }
     
-    public function update(Request $request,$id)
+    // UPDATE
+    public function update(Request $request, $id)
     {
         $request->validate([
            'judul_situs' => 'required'
@@ -38,12 +41,8 @@ class PengaturanController extends Controller
 
        $data['judul_situs']     = $request->judul_situs;
        $data['deskripsi_situs'] = $request->deskripsi_situs;
-    //    $data['logo']            = $request->logo;
-    //    $data['favicon']         = $request->favicon;
 
-       $user = DB::table('pengaturan')
-           ->where('id', $id)
-           ->update($data);
+       Pengaturan::whereId($id)->update($data);
 
        alert()->success('Berhasil', 'Sukses!!')->autoclose(1100);
        return redirect()->route('admin.pengaturan');       

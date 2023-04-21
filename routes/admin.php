@@ -24,6 +24,7 @@ use App\Http\Controllers\admin\PelaporanController;
 use App\Http\Controllers\admin\MonitoringController;
 use App\Http\Controllers\admin\IkkController;
 use App\Http\Controllers\admin\PengaturanController;
+use App\Http\Controllers\admin\ProfilDaerahController;
 
 
 Route::prefix('admin')->middleware('auth')->group(function () {
@@ -41,46 +42,25 @@ Route::prefix('admin')->middleware('auth')->group(function () {
 
     /*
     ===============================================
-    PROFIL
+    PROFIL DAERAH
     ===============================================
     */
-    // DAERAH
 
-    Route::get('profil/pemerintah-daerah', function () {
-        return view('admin.pages.profil.pemerintah-daerah.index');
-    });
+    Route::controller(ProfilDaerahController::class)->group(function(){
 
-    // UBAH
-    Route::get('profil/pemerintah-daerah/ubah', function () {
-        return view('admin.pages.profil.pemerintah-daerah.edit');
-    });
+        // PEMERINTAH DAERAH
+        Route::get('profildaerah/pemerintahdaerah','pemerintahdaerah')->name('admin.profildaerah.pemerintahdaerah');
+        Route::get('profildaerah/pemerintahdaerah/edit','edit_pemerintahdaerah')->name('admin.profildaerah.pemerintahdaerah.edit');
+        Route::put('profildaerah/pemerintahdaerah/{id}','update_pemerintahdaerah')->name('admin.profildaerah.pemerintahdaerah.update');
 
-    Route::get('profil/kepala-daerah', function () {
-        return view('admin.pages.profil.kepala-daerah.index');
-    });
+        // KEPALA DAERAH
+        Route::get('profildaerah/kepaladaerah','kepaladaerah')->name('profildaerah.kepaladaerah');
 
-    // UBAH
-    Route::get('profil/kepala-daerah/ubah', function () {
-        return view('admin.pages.profil.kepala-daerah.edit');
-    });
+        // WAKIL KEPALA DAERAH
+        Route::get('profildaerah/wakilkepaladaerah','wakilkepaladaerah')->name('profildaerah.wakilkepaladaerah');
 
-    Route::get('profil/wakil-kepala-daerah', function () {
-        return view('admin.pages.profil.wakil-kepala-daerah.index');
-    });
-
-    // UBAH
-    Route::get('profil/wakil-kepala-daerah/ubah', function () {
-        return view('admin.pages.profil.wakil-kepala-daerah.edit');
-    });
-
-
-    Route::get('profil/sekretaris-daerah', function () {
-        return view('admin.pages.profil.sekretaris-daerah.index');
-    });
-
-    // UBAH
-    Route::get('profil/sekretaris-daerah/ubah', function () {
-        return view('admin.pages.profil.sekretaris-daerah.edit');
+        // SEKRETARIS DAERAH
+        Route::get('profildaerah/sekretarisdaerah','sekretarisdaerah')->name('profildaerah.sekretarisdaerah');
     });
 
     // DPRD

@@ -43,7 +43,6 @@
                                             <th>Kepala Organiasi</th>
                                             <th>Jumlah Pegawai</th>
                                             <th>Status</th>
-                                            {{-- <th>Foto Gedung Kantor</th> --}}
                                             <th class="text-center">Aksi</th>
                                         </tr>
                                     </thead>
@@ -59,13 +58,6 @@
                                                 <td>{{$data->nama_pimpinan}}</td>
                                                 <td>{{$data->jumlah_pegawai}}</td>
                                                 <td>{{$data->status}}</td>
-                                                {{-- <td>
-                                                    @if ($data->foto == null)
-                                                        <img src="{{asset('assets/admin/assets/images/users/user-man.png')}}" alt="Logo" width="100%" class="img-thumbnail">
-                                                    @else
-                                                     <img src="{{ url($data->foto)}}" alt="{{$data->slug}}" class="img-fluid img-thumbnail" width="100"></td>
-                                                    @endif
-                                                </td> --}}
                                                 <td>
                                                     <a href="{{route('admin.perangkatdaerah.show')}}" class="btn btn-sm btn-dark waves-effect waves-light fs-4"> Detail </a>
                                                     <a href="{{route('admin.perangkatdaerah.edit',$data->id)}}" class="btn btn-sm btn-outline-dark waves-effect waves-light fs-4"> Ubah </a>
@@ -80,6 +72,15 @@
                             <!-- .col end -->
 
                         </div>
+                        <!-- .row end -->                        
+
+                        <!--pagination start-->
+                        <div class="row">
+                            <div class="col">
+                                {{ $datas->links() }}
+                            </div>
+                        </div>
+                        <!--pagination end-->
 
                     </div>
                 </div>

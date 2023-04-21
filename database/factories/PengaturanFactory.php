@@ -18,12 +18,12 @@ class PengaturanFactory extends Factory
     public function definition()
     {
         return [
-            'judul_situs' => fake()->sentence(),
-            'deskripsi_situs' => fake()->sentence(),
-            'logo' => fake()->sentence(),
-            'favicon' => fake()->sentence(),
-            'termsconditions' => fake()->sentence(),
-            'footerinformation' => fake()->sentence(),
+            'judul_situs'           => fake()->sentence(),
+            'deskripsi_situs'       => fake()->sentence(),
+            'logo'                  => fake()->sentence(),
+            'favicon'               => fake()->sentence(),
+            'termsconditions'       => fake()->sentence(),
+            'footerinformation'     => fake()->sentence(),
         ];
     }
 

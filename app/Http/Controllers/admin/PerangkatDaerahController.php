@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\perangkatdaerah;
+use App\Models\PerangkatDaerah;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Image;
@@ -14,33 +14,20 @@ use Illuminate\Support\Facades\File;
 
 class PerangkatDaerahController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    // INDEX
     public function index()
     {
-        $all =DB::select('SELECT * FROM profil_perangkatdaerah ORDER BY id DESC  ');
-        return view('admin.pages.lppd.perangkatdaerah.index', ['all' => $all]);
+        $datas = PerangkatDaerah::orderBy('nama_organisasi','asc')->paginate(2);
+        return view('admin.pages.lppd.perangkatdaerah.index', ['datas' => $datas]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    // CREATE
     public function create()
     {
         return view('admin.pages.lppd.perangkatdaerah.tambah');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    // STORE
     public function store(Request $request)
     {
         $request->validate([
@@ -79,36 +66,20 @@ class PerangkatDaerahController extends Controller
 
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\perangkatdaerah  $perangkatdaerah
-     * @return \Illuminate\Http\Response
-     */
+    // SHOW
     public function show(perangkatdaerah $perangkatdaerah)
     {
         return view('admin.pages.lppd.perangkatdaerah.detail');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\perangkatdaerah  $perangkatdaerah
-     * @return \Illuminate\Http\Response
-     */
+    // EDIT
     public function edit($id)
     {
-        $data =DB::select("SELECT * FROM profil_perangkatdaerah WHERE id = '$id' ");
-        return view('admin.pages.lppd.perangkatdaerah.ubah',['data' => $data]);
+        $data = PerangkatDaerah::whereId($id)->first();
+        return view('admin.pages.lppd.perangkatdaerah.edit', compact('data'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\perangkatdaerah  $perangkatdaerah
-     * @return \Illuminate\Http\Response
-     */
+    // UPDATE
     public function update(Request $request,$slug)
     {
          $request->validate([
@@ -138,22 +109,18 @@ class PerangkatDaerahController extends Controller
 
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\perangkatdaerah  $perangkatdaerah
-     * @return \Illuminate\Http\Response
-     */
+    // DELETE
     public function delete($id)
     {
-        $data =DB::select("SELECT * FROM profil_perangkatdaerah WHERE id = '$id' ");
-        return view('admin.pages.lppd.perangkatdaerah.hapus',['data' => $data]);
+        $data = PerangkatDaerah::whereId($id)->first();
+        return view('admin.pages.lppd.perangkatdaerah.hapus', compact('data'));
     }
+
+    // DESTROY
     public function destroy($id)
     {
         $data = perangkatdaerah::findOrFail($id);
 
-        //dd($data);
         if($data->foto){
             File::delete($data->foto);
         }

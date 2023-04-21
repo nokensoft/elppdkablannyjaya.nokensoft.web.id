@@ -15,11 +15,6 @@ use App\Models\Pengaturan;
 
 class DatabaseSeeder extends Seeder
 {
-    /**
-     * Seed the application's database.
-     *
-     * @return void
-     */
     public function run()
     {
 
@@ -32,6 +27,7 @@ class DatabaseSeeder extends Seeder
             PelaporanSeeder::class,
             DprdSeeder::class,
             PengaturanSeeder::class,
+            ProfilDaerahSeeder::class,
         ]);
 
         // \App\Models\User::factory(10)->create();

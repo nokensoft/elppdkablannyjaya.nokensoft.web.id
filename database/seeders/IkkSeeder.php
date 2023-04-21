@@ -4,20 +4,15 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
+use App\Models\Ikk;
 
 class IkkSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
     public function run()
     {
 
-        // pekerjaan umum
-        DB::table('ikk')->insert([
+        // PEKERJAAN UMUM
+        Ikk::insert([
             'no_ikk'            => '1.c.7',
             'urusan'            => 'Pekerjaan Umum',
             'ikk'               => 'Tingkat Kemantapan Jalan Kabupaten ',
@@ -32,9 +27,8 @@ class IkkSeeder extends Seeder
             'capaian_kinerja'   => ''
         ]);
 
-        // kesehatan
-
-        DB::table('ikk')->insert([
+        // KESEHATAN
+        Ikk::insert([
             'no_ikk'            => '1.a.2',
             'urusan'            => 'Kesehatan',
             'ikk'               => 'Persentase RS Rujukan tingkat Kabupaten yang terakreditasi',
@@ -49,7 +43,7 @@ class IkkSeeder extends Seeder
             'capaian_kinerja'   => ''
         ]);
 
-        DB::table('ikk')->insert([
+        Ikk::insert([
             'no_ikk'            => '1.a.1',
             'urusan'            => 'Kesehatan',
             'ikk'               => 'Rasio daya tampung RS terhadap jumlah penduduk',
@@ -64,9 +58,8 @@ class IkkSeeder extends Seeder
             'capaian_kinerja'   => ''
         ]);
 
-        // pendidikan
-
-        DB::table('ikk')->insert([
+        // PENDIDIKAN
+        Ikk::insert([
             'no_ikk'            => '1.a.1',
             'urusan'            => 'Pendidikan',
             'ikk'               => 'Tingkat Partisipasi warga negara usia 5-6 tahun yang berpartisipasi dalam PAUD',
@@ -79,7 +72,7 @@ class IkkSeeder extends Seeder
             'capaian_kinerja'   => ''
         ]);
 
-        DB::table('ikk')->insert([
+        Ikk::insert([
             'no_ikk'            => '1.a.2',
             'urusan'            => 'Pendidikan',
             'ikk'               => 'Tingkat Partisipasi warga negara usia 7-12 tahun yang berpartisipasi dalam Pendidikan Dasar',

@@ -73,16 +73,16 @@
                 <div class="collapse show" id="profil_daerah">
                     <ul class="nav-second-level">
                         <li>
-                            <a href="{{asset('admin/profil/pemerintah-daerah')}}">Pemerintah Dearah</a>
+                            <a href="{{asset('admin/profildaerah/pemerintahdaerah')}}">Pemerintah Dearah</a>
                         </li>
                         <li>
-                            <a href="{{asset('admin/profil/kepala-daerah')}}">Kepala Daerah</a>
+                            <a href="{{asset('admin/profildaerah/kepaladaerah')}}">Kepala Daerah</a>
                         </li>
                         <li>
-                            <a href="{{asset('admin/profil/wakil-kepala-daerah')}}">Wakil Kepala Daerah</a>
+                            <a href="{{asset('admin/profildaerah/wakilkepaladaerah')}}">Wakil Kepala Daerah</a>
                         </li>
                         <li>
-                            <a href="{{asset('admin/profil/sekretaris-daerah')}}">Sekretaris Daerah</a>
+                            <a href="{{asset('admin/profildaerah/sekretarisdaerah')}}">Sekretaris Daerah</a>
                         </li>
                     </ul>
                 </div>

@@ -28,26 +28,26 @@
 
                                 <h1 class="fw-bold">Ubah Pengaturan</h1>
 
-                                <form action="{{route('admin.pengaturan.update',$data[0]->id)}}" method="POST" enctype="multipart/form-data">
+                                <form action="{{route('admin.pengaturan.update',$data->id)}}" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     @method('PUT')
                                     {{-- <div class="mb-3 fs-4">
-                                        @if ($data[0]->foto == null)
-                                            <img src="{{asset('assets/admin/assets/images/users/user-man.png')}}" alt="{{$data[0]->slug}}"  width="250px" class="img-thumbnail mb-1">
+                                        @if ($data->foto == null)
+                                            <img src="{{asset('assets/admin/assets/images/users/user-man.png')}}" alt="{{$data->slug}}"  width="250px" class="img-thumbnail mb-1">
                                         @else
-                                                <img src="{{ url($data[0]->foto)}}" alt="{{$data[0]->foto}}" class="img-fluid img-thumbnail"  width="250px" class="img-thumbnail mb-1"></td>
+                                                <img src="{{ url($data->foto)}}" alt="{{$data->foto}}" class="img-fluid img-thumbnail"  width="250px" class="img-thumbnail mb-1"></td>
                                         @endif
                                         <input type="file" class="form-control form-control-lg" name="foto">
                                     </div> --}}
 
                                     <div class="mb-3 fs-4">
                                         <label for="" class="fw-bold">Informasi Situs</label>
-                                        <input type="text" class="form-control form-control-lg" name="judul_situs" value="{{old('judul_situs') ? old('judul_situs') : $data[0]->judul_situs }}">
+                                        <input type="text" class="form-control form-control-lg" name="judul_situs" value="{{old('judul_situs') ? old('judul_situs') : $data->judul_situs }}">
                                     </div>
 
                                     <div class="mb-3 fs-4">
                                         <label for="" class="fw-bold">Deskripsi Situs</label>
-                                        <input type="text" class="form-control form-control-lg" name="deskripsi_situs" value="{{old('deskripsi_situs') ? old('deskripsi_situs') : $data[0]->deskripsi_situs }}">
+                                        <input type="text" class="form-control form-control-lg" name="deskripsi_situs" value="{{old('deskripsi_situs') ? old('deskripsi_situs') : $data->deskripsi_situs }}">
                                     </div>
 
                                     <div class="border-top border-1 pt-3 mt-4">
@@ -60,6 +60,7 @@
                                     </div>
 
                                 </form>
+                                <!-- form end -->
 
                             </div>
                             <!-- .col end -->

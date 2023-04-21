@@ -16,7 +16,6 @@
         </div>
         <!-- end row -->
 
-
         <div class="row" id="ubah">
             <div class="col">
                 <div class="card">
@@ -29,13 +28,13 @@
 
                                 <h1 class="fw-bold">Ubah Perangkat Daerah</h1>
 
-                                <form action="{{route('admin.perangkatdaerah.update',$data[0]->id)}}" method="POST" enctype="multipart/form-data">
+                                <form action="{{route('admin.perangkatdaerah.update',$data->id)}}" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     @method('PUT')
 
                                     <div class="mb-3 fs-4">
                                         <label for="" class="fw-bold">Nama Organisasi</label>
-                                        <input type="text" class="form-control form-control-lg" name="nama_organisasi" value="{{old('nama_organisasi') ? old('nama_organisasi') : $data[0]->nama_organisasi }}">
+                                        <input type="text" class="form-control form-control-lg" name="nama_organisasi" value="{{old('nama_organisasi') ? old('nama_organisasi') : $data->nama_organisasi }}">
                                         @if($errors->has('nama_organisasi'))
                                             <label class="text-danger"> {{ $errors->first('nama_organisasi') }} </label>
                                          @endif
@@ -43,7 +42,7 @@
 
                                     <div class="mb-3 fs-4">
                                         <label for="" class="fw-bold">Urusan</label>
-                                        <input type="text" class="form-control form-control-lg" name="urusan" value="{{old('urusan') ? old('urusan') : $data[0]->urusan }}">
+                                        <input type="text" class="form-control form-control-lg" name="urusan" value="{{old('urusan') ? old('urusan') : $data->urusan }}">
                                         @if($errors->has('urusan'))
                                             <label class="text-danger"> {{ $errors->first('urusan') }} </label>
                                          @endif
@@ -51,7 +50,7 @@
 
                                     <div class="mb-3 fs-4">
                                         <label for="" class="fw-bold">Rumpun</label>
-                                        <input type="text" class="form-control form-control-lg" name="rumpun" value="{{old('rumpun') ? old('rumpun') : $data[0]->rumpun }}">
+                                        <input type="text" class="form-control form-control-lg" name="rumpun" value="{{old('rumpun') ? old('rumpun') : $data->rumpun }}">
                                         @if($errors->has('rumpun'))
                                             <label class="text-danger"> {{ $errors->first('rumpun') }} </label>
                                          @endif
@@ -59,7 +58,7 @@
 
                                     <div class="mb-3 fs-4">
                                         <label for="" class="fw-bold">Tipe Kantor</label>
-                                        <input type="text" class="form-control form-control-lg" name="tipe_kantor" value="{{old('tipe_kantor') ? old('tipe_kantor') : $data[0]->tipe_kantor }}">
+                                        <input type="text" class="form-control form-control-lg" name="tipe_kantor" value="{{old('tipe_kantor') ? old('tipe_kantor') : $data->tipe_kantor }}">
                                         @if($errors->has('tipe_kantor'))
                                             <label class="text-danger"> {{ $errors->first('tipe_kantor') }} </label>
                                          @endif
@@ -67,7 +66,7 @@
 
                                     <div class="mb-3 fs-4">
                                         <label for="" class="fw-bold">Alamat</label>
-                                        <input type="text" class="form-control form-control-lg" value="{{old('alamat') ? old('alamat') : $data[0]->alamat }}" name="alamat">
+                                        <input type="text" class="form-control form-control-lg" value="{{old('alamat') ? old('alamat') : $data->alamat }}" name="alamat">
                                         @if($errors->has('alamat'))
                                             <label class="text-danger"> {{ $errors->first('alamat') }} </label>
                                          @endif
@@ -75,7 +74,7 @@
 
                                     <div class="mb-3 fs-4">
                                         <label for="" class="fw-bold">Nama Pimpinan</label>
-                                        <input type="text" class="form-control form-control-lg" name="nama_pimpinan" value="{{old('nama_pimpinan') ? old('nama_pimpinan') : $data[0]->nama_pimpinan }}">
+                                        <input type="text" class="form-control form-control-lg" name="nama_pimpinan" value="{{old('nama_pimpinan') ? old('nama_pimpinan') : $data->nama_pimpinan }}">
                                         @if($errors->has('nama_pimpinan'))
                                             <label class="text-danger"> {{ $errors->first('nama_pimpinan') }} </label>
                                          @endif
@@ -83,7 +82,7 @@
 
                                     <div class="mb-3 fs-4">
                                         <label for="" class="fw-bold">Jumlah Pegawai</label>
-                                        <input type="text" class="form-control form-control-lg" name="jumlah_pegawai" value="{{old('jumlah_pegawai') ? old('jumlah_pegawai') : $data[0]->jumlah_pegawai }}">
+                                        <input type="text" class="form-control form-control-lg" name="jumlah_pegawai" value="{{old('jumlah_pegawai') ? old('jumlah_pegawai') : $data->jumlah_pegawai }}">
                                         @if($errors->has('jumlah_pegawai'))
                                             <label class="text-danger"> {{ $errors->first('jumlah_pegawai') }} </label>
                                          @endif

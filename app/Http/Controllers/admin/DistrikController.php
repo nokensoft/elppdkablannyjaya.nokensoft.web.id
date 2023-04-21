@@ -17,7 +17,7 @@ class DistrikController extends Controller
     public function index()
     {
         $datas = Distrik::orderBy('nama_distrik','asc')->paginate(2);
-        return view('admin.pages.profil.distrik.index', ['datas' => $datas]);
+        return view('admin.pages.profil.distrik.index', compact('datas'));
     }
 
     // PRINT
@@ -25,8 +25,8 @@ class DistrikController extends Controller
     {
         $datas = Distrik::orderBy('nama_distrik','asc')->paginate();
         return view('admin.pages.profil.distrik.print', [
-            'datas' => $datas,
-            'page_title' => 'Print - Data Distrik'
+            'datas'         => $datas,
+            'page_title'    => 'Print - Data Distrik'
         ]);
     }
 
@@ -40,22 +40,22 @@ class DistrikController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nama_distrik' => 'required'
+            'nama_distrik'              => 'required'
         ],
         [
-            'nama_distrik.required' => 'Nama tidak boleh kosong',
+            'nama_distrik.required'     => 'Nama tidak boleh kosong',
         ]);
 
         $distrik = new Distrik();
 
-        $distrik->nama_distrik         = $request->nama_distrik;
-        $distrik->ibu_kota_distrik     = $request->ibu_kota_distrik;
-        $distrik->nama_kepala_distrik  = $request->nama_kepala_distrik;
-        $distrik->alamat               = $request->alamat;
-        $distrik->telp                 = $request->telp;
-        $distrik->email                = $request->email;
+        $distrik->nama_distrik          = $request->nama_distrik;
+        $distrik->ibu_kota_distrik      = $request->ibu_kota_distrik;
+        $distrik->nama_kepala_distrik   = $request->nama_kepala_distrik;
+        $distrik->alamat                = $request->alamat;
+        $distrik->telp                  = $request->telp;
+        $distrik->email                 = $request->email;
 
-        $distrik->slug             =  Str::slug($request->nama_distrik);
+        $distrik->slug                  =  Str::slug($request->nama_distrik);
 
         $distrik->save();
         alert()->success('Berhasil', 'Sukses!!')->autoclose(1100);
@@ -72,8 +72,8 @@ class DistrikController extends Controller
     // EDIT
     public function edit($id)
     {
-        $data = Distrik::where('id', $id)->get();
-        return view('admin.pages.profil.distrik.ubah',['data' => $data]);
+        $data = Distrik::whereId($id)->first();
+        return view('admin.pages.profil.distrik.ubah', compact('data'));
     }
 
     // UPDATE
@@ -108,15 +108,13 @@ class DistrikController extends Controller
     // DELETE PROCESS
     public function delete($id)
     {
-        $data =DB::select("SELECT * FROM profil_distrik WHERE id = '$id' ");
-        return view('admin.pages.profil.distrik.delete',['data' => $data]);
+        $data = Distrik::whereId($id)->first();
+        return view('admin.pages.profil.distrik.delete', compact('data'));
     }
 
     public function destroy($id)
     {
-        $data = Distrik::findOrFail($id);
-
-        $data->forceDelete();
+        Distrik::findOrFail($id)->forceDelete();
 
         alert()->success('Berhasil', 'Data terhapus!!')->autoclose(1500);
         return redirect()->route('admin.distrik');

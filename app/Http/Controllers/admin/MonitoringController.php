@@ -13,13 +13,7 @@ use Illuminate\Support\Facades\DB;
 
 class MonitoringController extends Controller
 {
-    // // index
-    // public function index()
-    // {
-    //     $all =DB::select('SELECT * FROM monitoring WHERE tahun = 2021  ');
-    //     return view('admin.pages.lppd.pelaporan.index', ['all' => $all]);
-    // }
-
+    // INDEX
     public function index() {
         return view('admin.pages.lppd.monitoring.index');
     }

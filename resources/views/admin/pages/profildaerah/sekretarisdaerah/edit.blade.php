@@ -7,8 +7,7 @@
                     <div class="page-title-right">
                         <ol class="breadcrumb m-0">
                             <li class="breadcrumb-item"><a href="{{asset('admin/beranda')}}">Beranda</a></li>
-                            <li class="breadcrumb-item"><a href="{{asset('admin/profil')}}">Profil</a></li>
-                            <li class="breadcrumb-item active">Perangkat Daerah</li>
+                            <li class="breadcrumb-item active">Pengaturan</li>
                         </ol>
                     </div>
                 </div>
@@ -27,31 +26,42 @@
                             <!-- .col start -->
                             <div class="col-lg-6  mx-auto border border-4 border-info rounded shadow-lg p-5 my-5">
 
-                                <h1 class="fw-bold">Ubah Perangkat Daerah</h1>
+                                <h1 class="fw-bold">Ubah Pengaturan</h1>
 
-                                <form action="{{asset('admin/profil/pemerintah-daerah')}}" method="">
+                                <form action="{{route('admin.pengaturan.update',$data->id)}}" method="POST" enctype="multipart/form-data">
+                                    @csrf
+                                    @method('PUT')
+                                    {{-- <div class="mb-3 fs-4">
+                                        @if ($data->foto == null)
+                                            <img src="{{asset('assets/admin/assets/images/users/user-man.png')}}" alt="{{$data->slug}}"  width="250px" class="img-thumbnail mb-1">
+                                        @else
+                                                <img src="{{ url($data->foto)}}" alt="{{$data->foto}}" class="img-fluid img-thumbnail"  width="250px" class="img-thumbnail mb-1"></td>
+                                        @endif
+                                        <input type="file" class="form-control form-control-lg" name="foto">
+                                    </div> --}}
 
                                     <div class="mb-3 fs-4">
-                                        <label for="nama_organisasi" class="fw-bold">Nama Organisasi</label>
-                                        <input type="text" id="nama_organisasi" name="nama_organisasi" class="form-control form-control-lg" value="{{ $data->nama_organisasi }}">
+                                        <label for="" class="fw-bold">Informasi Situs</label>
+                                        <input type="text" class="form-control form-control-lg" name="judul_situs" value="{{old('judul_situs') ? old('judul_situs') : $data->judul_situs }}">
                                     </div>
 
                                     <div class="mb-3 fs-4">
-                                        <label for="urusan" class="fw-bold">Urusan</label>
-                                        <input type="text" id="urusan" name="urusan" class="form-control form-control-lg" value="">
+                                        <label for="" class="fw-bold">Deskripsi Situs</label>
+                                        <input type="text" class="form-control form-control-lg" name="deskripsi_situs" value="{{old('deskripsi_situs') ? old('deskripsi_situs') : $data->deskripsi_situs }}">
                                     </div>
 
                                     <div class="border-top border-1 pt-3 mt-4">
                                         <button type="submit" class="btn btn-info waves-effect waves-light fs-4">
                                             <i class="fas fa-save me-1"></i> Simpan
                                         </button>
-                                        <a href="{{ URL::previous() }}" class="btn btn-outline-light waves-effect waves-light fs-4">
+                                        <a href="{{URL::previous()}}" class="btn btn-outline-light waves-effect waves-light fs-4">
                                             <i class="fas fa-arrow-left me-1"></i> Kembali
                                         </a>
                                     </div>
 
                                 </form>
-                                
+                                <!-- form end -->
+
                             </div>
                             <!-- .col end -->
 
@@ -63,7 +73,7 @@
             </div>
         </div>
         <!-- end row -->
-                        
+
 
   <!--end wrapper-->
 
@@ -83,5 +93,5 @@
     <script src="{{ asset('assets/admin/assets/js/pages/jquery.todo.js')}}"></script>
 
     <!-- Dashboard init JS -->
-    <script src="{{ asset('assets/admin/assets/js/pages/dashboard-3.init.js')}}"></script>  
+    <script src="{{ asset('assets/admin/assets/js/pages/dashboard-3.init.js')}}"></script>
   @endpush

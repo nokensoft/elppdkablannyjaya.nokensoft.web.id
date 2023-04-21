@@ -7,8 +7,7 @@
                     <div class="page-title-right">
                         <ol class="breadcrumb m-0">
                             <li class="breadcrumb-item"><a href="{{asset('admin/beranda')}}">Beranda</a></li>
-                            <li class="breadcrumb-item"><a href="{{asset('admin/profil')}}">Profil</a></li>
-                            <li class="breadcrumb-item active">Ubah Distrik</li>
+                            <li class="breadcrumb-item active">Pemerintah Daerah</li>
                         </ol>
                     </div>
                 </div>
@@ -27,51 +26,42 @@
                             <!-- .col start -->
                             <div class="col-lg-6  mx-auto border border-4 border-info rounded shadow-lg p-5 my-5">
 
-                                <h1 class="fw-bold">Ubah Distrik</h1>
+                                <h1 class="fw-bold">Ubah Pemerintah Daerah</h1>
 
-                                <form action="{{route('admin.distrik.update',$data->id)}}" method="POST" enctype="multipart/form-data">
+                                <form action="{{route('admin.profildaerah.pemerintahdaerah.update',$data->id)}}" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     @method('PUT')
 
                                     <div class="mb-3 fs-4">
-                                        <label for="" class="fw-bold">Nama Distrik</label>
-                                        <input type="text" class="form-control form-control-lg"  name="nama_distrik" value="{{old('nama_distrik') ? old('nama_distrik') : $data->nama_distrik }}">
-                                        @if($errors->has('nama_distrik'))
-                                            <label class="text-danger"> {{ $errors->first('nama_distrik') }} </label>
+                                        <label for="pemda_namainstansi" class="fw-bold">Nama Instansi</label>
+                                        <input type="text" class="form-control form-control-lg" id="pemda_namainstansi" name="pemda_namainstansi" value="{{old('pemda_namainstansi') ? old('pemda_namainstansi') : $data->pemda_namainstansi }}">
+                                        
+                                        @if($errors->has('pemda_namainstansi'))
+                                            <small class="text-danger"> {{ $errors->first('pemda_namainstansi') }} </small>
                                         @endif
+
                                     </div>
+                                    <!-- input item end -->
 
                                     <div class="mb-3 fs-4">
-                                        <label for="" class="fw-bold">Nama Kepala Distrik</label>
-                                        <input type="text" class="form-control form-control-lg" name="nama_kepala_distrik" value="{{old('nama_kepala_distrik') ? old('nama_kepala_distrik') : $data->nama_kepala_distrik }}">
-                                        @if($errors->has('nama_kepala_distrik'))
-                                            <label class="text-danger"> {{ $errors->first('nama_kepala_distrik') }} </label>
+                                        <label for="pemda_lambang" class="fw-bold">Lambang Pemerintah Darah</label>
+                                        <input type="text" class="form-control form-control-lg" id="pemda_lambang" name="pemda_lambang" value="{{old('pemda_lambang') ? old('pemda_lambang') : $data->pemda_lambang }}">
+                                        
+                                        @if($errors->has('pemda_lambang'))
+                                            <small class="text-danger"> {{ $errors->first('pemda_lambang') }} </small>
                                         @endif
                                     </div>
+                                    <!-- input item end -->
 
                                     <div class="mb-3 fs-4">
-                                        <label for="" class="fw-bold">Alamat</label>
-                                        <textarea name="alamat" id="" rows="5" class="form-control form-control-lg">{{old('alamat') ? old('alamat') : $data->alamat }}</textarea>
-                                        @if($errors->has('alamat'))
-                                            <label class="text-danger"> {{ $errors->first('alamat') }} </label>
+                                        <label for="pemda_peta" class="fw-bold">Gambar Peta Wilayah</label>
+                                        <input type="text" class="form-control form-control-lg" id="pemda_peta" name="pemda_peta" value="{{old('pemda_peta') ? old('pemda_peta') : $data->pemda_peta }}">
+                                        
+                                        @if($errors->has('pemda_peta'))
+                                            <small class="text-danger"> {{ $errors->first('pemda_peta') }} </small>
                                         @endif
                                     </div>
-
-                                    <div class="mb-3 fs-4">
-                                        <label for="" class="fw-bold">Telp</label>
-                                        <input type="text" class="form-control form-control-lg" name="telp" value="{{old('telp') ? old('telp') : $data->telp }}">
-                                        @if($errors->has('telp'))
-                                            <label class="text-danger"> {{ $errors->first('telp') }} </label>
-                                        @endif
-                                    </div>
-
-                                    <div class="mb-3 fs-4">
-                                        <label for="" class="fw-bold">Email</label>
-                                        <input type="email" class="form-control form-control-lg" name="email" value="{{old('email') ? old('email') : $data->email }}">
-                                        @if($errors->has('email'))
-                                            <label class="text-danger"> {{ $errors->first('email') }} </label>
-                                        @endif
-                                    </div>
+                                    <!-- input item end -->
 
                                     <div class="border-top border-1 pt-3 mt-4">
                                         <button type="submit" class="btn btn-info waves-effect waves-light fs-4">
@@ -81,8 +71,10 @@
                                             <i class="fas fa-arrow-left me-1"></i> Kembali
                                         </a>
                                     </div>
+                                    <!-- submit button end -->
 
                                 </form>
+                                <!-- form end -->
 
                             </div>
                             <!-- .col end -->

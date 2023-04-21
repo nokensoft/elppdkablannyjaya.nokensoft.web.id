@@ -29,51 +29,51 @@
 
                                 <h1 class="fw-bold">Ubah Profil DPRD</h1>
 
-                                <form action="{{route('admin.dprd.update',$data[0]->id)}}" method="POST" enctype="multipart/form-data">
+                                <form action="{{route('admin.dprd.update',$data->id)}}" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     @method('PUT')
                                     <div class="mb-3 fs-4">
-                                        @if ($data[0]->foto == null)
-                                            <img src="{{asset('assets/admin/assets/images/users/user-man.png')}}" alt="{{$data[0]->slug}}"  width="250px" class="img-thumbnail mb-1">
+                                        @if ($data->foto == null)
+                                            <img src="{{asset('assets/admin/assets/images/users/user-man.png')}}" alt="{{$data->slug}}"  width="250px" class="img-thumbnail mb-1">
                                         @else
-                                                <img src="{{ url($data[0]->foto)}}" alt="{{$data[0]->foto}}" class="img-fluid img-thumbnail"  width="250px" class="img-thumbnail mb-1"></td>
+                                                <img src="{{ url($data->foto)}}" alt="{{$data->foto}}" class="img-fluid img-thumbnail"  width="250px" class="img-thumbnail mb-1"></td>
                                         @endif
                                         <input type="file" class="form-control form-control-lg" name="foto">
                                     </div>
 
                                     <div class="mb-3 fs-4">
                                         <label for="" class="fw-bold">Nama Lengkap</label>
-                                        <input type="text" class="form-control form-control-lg" name="nama_lengkap" value="{{old('nama_lengkap') ? old('nama_lengkap') : $data[0]->nama_lengkap }}">
+                                        <input type="text" class="form-control form-control-lg" name="nama_lengkap" value="{{old('nama_lengkap') ? old('nama_lengkap') : $data->nama_lengkap }}">
                                     </div>
 
                                     <div class="mb-3 fs-4">
                                         <label for="" class="fw-bold">Jabatan</label>
-                                        <input type="text" class="form-control form-control-lg" name="jabatan" value="{{old('jabatan') ? old('jabatan') : $data[0]->jabatan }}">
+                                        <input type="text" class="form-control form-control-lg" name="jabatan" value="{{old('jabatan') ? old('jabatan') : $data->jabatan }}">
                                     </div>
 
                                     <div class="mb-3 fs-4">
                                         <label for="" class="fw-bold">NIK</label>
-                                        <input type="text" class="form-control form-control-lg" name="nik" value="{{old('nik') ? old('nik') : $data[0]->nik }}">
+                                        <input type="text" class="form-control form-control-lg" name="nik" value="{{old('nik') ? old('nik') : $data->nik }}">
                                     </div>
 
                                     <div class="mb-3 fs-4">
                                         <label for="" class="fw-bold">Alamat</label>
-                                        <input type="text" class="form-control form-control-lg" value="{{old('alamat') ? old('alamat') : $data[0]->alamat }}" name="alamat">
+                                        <input type="text" class="form-control form-control-lg" value="{{old('alamat') ? old('alamat') : $data->alamat }}" name="alamat">
                                     </div>
 
                                     <div class="mb-3 fs-4">
                                         <label for="" class="fw-bold">TTL</label>
-                                        <input type="text" class="form-control form-control-lg" value="{{old('ttl') ? old('ttl') : $data[0]->ttl }}" name="ttl">
+                                        <input type="text" class="form-control form-control-lg" value="{{old('ttl') ? old('ttl') : $data->ttl }}" name="ttl">
                                     </div>
 
                                     <div class="mb-3 fs-4">
                                         <label for="" class="fw-bold">Nama Partai</label>
-                                        <input type="text" class="form-control form-control-lg" value="{{old('nama_partai') ? old('nama_partai') : $data[0]->nama_partai }}" name="nama_partai">
+                                        <input type="text" class="form-control form-control-lg" value="{{old('nama_partai') ? old('nama_partai') : $data->nama_partai }}" name="nama_partai">
                                     </div>
 
                                     <div class="mb-3 fs-4">
                                         <label for="" class="fw-bold">Pendidikan</label>
-                                        <input type="text" class="form-control form-control-lg" value="{{old('pendidikan') ? old('pendidikan') : $data[0]->pendidikan }}" name="pendidikan">
+                                        <input type="text" class="form-control form-control-lg" value="{{old('pendidikan') ? old('pendidikan') : $data->pendidikan }}" name="pendidikan">
                                     </div>
                                     {{-- <div class="mb-3 fs-4">
                                         <label for="" class="fw-bold">Perjalanan Dinas</label>

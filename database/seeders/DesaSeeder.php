@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
+use App\Models\Desa;
 use Faker\Generator;
 
 class DesaSeeder extends Seeder
@@ -18,9 +18,8 @@ class DesaSeeder extends Seeder
     {
 
         $faker = app(Generator::class);
-        $table = 'profil_desa';
 
-        DB::table($table)->insert([
+        Desa::insert([
             'nama_desa'                 => 'Kelurahan Bokon',
             'nama_kepala_desa'          => '',
             'alamat'                    => 'Lanny Jaya.',
@@ -29,7 +28,7 @@ class DesaSeeder extends Seeder
             'foto'                      => 'assets/images/user.png',
         ]);
 
-        DB::table($table)->insert([
+        Desa::insert([
             'nama_desa'                 => 'Aniwo',
             'nama_kepala_desa'          => '',
             'alamat'                    => 'Lanny Jaya.',
@@ -38,7 +37,7 @@ class DesaSeeder extends Seeder
             'foto'                      => 'assets/images/user.png',
         ]);
 
-        DB::table($table)->insert([
+        Desa::insert([
             'nama_desa'                 => 'Dimba',
             'nama_kepala_desa'          => '',
             'alamat'                    => 'Lanny Jaya.',

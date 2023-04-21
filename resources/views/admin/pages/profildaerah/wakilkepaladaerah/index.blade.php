@@ -7,7 +7,7 @@
                     <div class="page-title-right">
                         <ol class="breadcrumb m-0">
                             <li class="breadcrumb-item"><a href="{{asset('admin/beranda')}}">Beranda</a></li>
-                            <li class="breadcrumb-item active">Pengaturan</li>
+                            <li class="breadcrumb-item active">Profil Wakil Kepala Daerah</li>
                         </ol>
                     </div>
                 </div>
@@ -19,7 +19,7 @@
             <div class="col">
                 <div class="card">
                     <div class="card-body">
-                        <h1 class="fw-bold">Pengaturan</h1>
+                        <h1 class="fw-bold">Profil Wakil Kepala Daerah</h1>
 
                         <div class="row">
 
@@ -29,24 +29,8 @@
                                 <table class="table table-bordered fs-4">
                                     <tbody>
                                         <tr>
-                                            <td>Informasi Situs</td>
-                                            <td class="fw-bold">{{$data->judul_situs}}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Desktripsi</td>
-                                            <td class="fw-bold">{{$data->deskripsi_situs}}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Logo</td>
-                                            <td class="fw-bold">
-                                                <img src="{{asset($data->logo)}}" alt="Logo" width="250px">
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Favicon</td>
-                                            <td class="fw-bold">
-                                                <img src="{{asset($data->favicon)}}" alt="Logo" width="50px">
-                                            </td>
+                                            <td>Nama Wakil Kepala Daerah</td>
+                                            <td class="fw-bold">{{$data->wakil_nama}}</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -55,7 +39,7 @@
                             <!-- .col end -->
                         
                         <div class="mb-3">
-                            <a href="{{asset('admin/pengaturan/ubah')}}" class="btn btn-info waves-effect waves-light fs-4">
+                            <a href="{{asset('admin/pengaturan/ubah')}}" class="btn btn-outline-info border-0 waves-effect waves-light fs-4">
                                 <i class="fas fa-edit me-1"></i> Ubah
                             </a>
                         </div>

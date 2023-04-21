@@ -29,12 +29,12 @@
 
                                 <h1 class="fw-bold">Hapus?</h1>
 
-                                <form action="{{route('admin.perangkatdaerah.destroy',$data[0]->id)}}" method="POST" enctype="multipart/form-data">
+                                <form action="{{route('admin.perangkatdaerah.destroy', $data->id)}}" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     @method('DELETE')
 
                                     <div class="mb-3 fs-4">
-                                        <label for="" class="fw-bold">{{ ($data[0]->nama_organisasi) }}</label>
+                                        <label for="" class="fw-bold">{{ ($data->nama_organisasi) }}</label>
                                     </div>
 
                                     <div class="border-top border-1 pt-3 mt-4">
@@ -45,21 +45,16 @@
                                             <i class="fas fa-arrow-left me-1"></i> Tidak
                                         </a>
                                     </div>
-
                                 </form>
-
                             </div>
                             <!-- .col end -->
-
                         </div>
                         <!-- .row end -->
-
                     </div>
                 </div>
             </div>
         </div>
         <!-- end row -->
-
 
   <!--end wrapper-->
 

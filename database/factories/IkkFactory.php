@@ -18,21 +18,21 @@ class IkkFactory extends Factory
     public function definition()
     {
         return [
-            'no_ikk' => fake()->regexify('[1-4]{1}[.][a-h]{1}[.][1-4]{1}'),
-            'urusan' => fake()->randomElement([
+            'no_ikk'        => fake()->regexify('[1-4]{1}[.][a-h]{1}[.][1-4]{1}'),
+            'urusan'        => fake()->randomElement([
                 'Pendidikan', 
                 'Kesehatan', 
                 'Pekerjaan Umum', 
                 'Pendapatan'
             ]),
-            'ikk' => fake()->sentence(),
-            'rumus' => fake()->sentence(),
-            'ket_jml1' => fake()->sentence(),
-            'jml1' => fake()->randomDigitNot(2),
-            'ket_jml2' => fake()->sentence(),
-            'jml2' => fake()->randomDigitNot(2),
+            'ikk'           => fake()->sentence(),
+            'rumus'         => fake()->sentence(),
+            'ket_jml1'      => fake()->sentence(),
+            'jml1'          => fake()->randomDigitNot(2),
+            'ket_jml2'      => fake()->sentence(),
+            'jml2'          => fake()->randomDigitNot(2),
             // 'capaian_kinerja' => fake()->sentence(),
-            'keterangan' => fake()->paragraph(2),
+            'keterangan'    => fake()->paragraph(2),
         ];
     }
 

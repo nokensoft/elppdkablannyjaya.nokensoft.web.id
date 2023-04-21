@@ -47,7 +47,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($all as $data )
+                                        @foreach ($datas as $data )
                                             <tr>
                                                 <td>{{$data->nama_organisasi}}</td>
                                                 <td>{{$data->urusan}}</td>
@@ -63,10 +63,10 @@
                                                      <img src="{{ url($data->foto)}}" alt="{{asset($data->foto)}}" class="img-fluid img-thumbnail" width="150px"></td>
                                                     @endif
                                                 </td>
-                                                <td>
-                                                    <a href="{{route('admin.perangkatdaerah.show',$data->id)}}" class="btn btn-sm btn-dark waves-effect waves-light fs-4"> Detail </a>
-                                                    <a href="{{route('admin.perangkatdaerah.edit',$data->id)}}" class="btn btn-sm btn-outline-dark waves-effect waves-light fs-4"> Ubah </a>
-                                                    <a href="{{route('admin.perangkatdaerah.delete',$data->id)}}" class="btn btn-sm btn-outline-dark waves-effect waves-light fs-4"> Hapus </a>
+                                                <td class="d-flex justify-content-between gap-1">
+                                                    <a href="{{route('admin.perangkatdaerah.show',$data->id)}}" class="btn btn-sm btn-dark border-0  waves-effect waves-light fs-4"> <i class="fas fa-eye"></i> </a>
+                                                    <a href="{{route('admin.perangkatdaerah.edit',$data->id)}}" class="btn btn-sm btn-outline-dark border-0 waves-effect waves-light fs-4"> <i class="fas fa-edit"></i> </a>
+                                                    <a href="{{route('admin.perangkatdaerah.delete',$data->id)}}" class="btn btn-sm btn-outline-dark border-0 waves-effect waves-light fs-4"> <i class="fas fa-trash"></i> </a>                                                  
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -77,6 +77,15 @@
                             <!-- .col end -->
 
                         </div>
+                        <!-- .row end -->                        
+
+                        <!--pagination start-->
+                        <div class="row">
+                            <div class="col">
+                                {{ $datas->links() }}
+                            </div>
+                        </div>
+                        <!--pagination end-->
 
                     </div>
                 </div>
@@ -90,18 +99,5 @@
   @stop
 
   @push('script-footer')
-   <!-- Chart JS -->
-   <script src="{{ asset('assets/admin/assets/libs/chart.js/Chart.bundle.min.js')}}"></script>
-
-    <script src="{{ asset('assets/admin/assets/libs/moment/min/moment.min.js')}}"></script>
-    <script src="{{ asset('assets/admin/assets/libs/jquery.scrollto/jquery.scrollTo.min.js')}}"></script>
-
-    <!-- Chat app -->
-    <script src="{{ asset('assets/admin/assets/js/pages/jquery.chat.js')}}"></script>
-
-    <!-- Todo app -->
-    <script src="{{ asset('assets/admin/assets/js/pages/jquery.todo.js')}}"></script>
-
-    <!-- Dashboard init JS -->
-    <script src="{{ asset('assets/admin/assets/js/pages/dashboard-3.init.js')}}"></script>  
+  
   @endpush

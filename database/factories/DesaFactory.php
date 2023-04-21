@@ -18,11 +18,11 @@ class DesaFactory extends Factory
     public function definition()
     {
         return [
-            'nama_desa' => fake()->sentence(2),
-            'nama_kepala_desa' => fake()->name(),
-            'alamat' => fake()->address(),
-            'telp' => fake()->phoneNumber(),
-            'email' => fake()->email(),
+            'nama_desa'         => fake()->sentence(2),
+            'nama_kepala_desa'  => fake()->name(),
+            'alamat'            => fake()->address(),
+            'telp'              => fake()->phoneNumber(),
+            'email'             => fake()->email(),
         ];
     }
 

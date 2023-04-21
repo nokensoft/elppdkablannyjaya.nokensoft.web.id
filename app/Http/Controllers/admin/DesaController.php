@@ -17,19 +17,15 @@ class DesaController extends Controller
     public function index()
     {
         $datas = Desa::orderBy('nama_desa','asc')->paginate(2);
-        return view('admin.pages.profil.desa.index', [
-            'datas' => $datas
-        ]);
+        return view('admin.pages.profil.desa.index', compact('datas'));
     }
 
     // PRINT
     public function print()
     {
         $datas = Desa::orderBy('nama_desa','asc')->get();
-        return view('admin.pages.profil.desa.print', [
-            'datas' => $datas,
-            'page_title' => 'Print - Data Desa'
-        ]);
+        $page_title = 'Print - Data Desa';
+        return view('admin.pages.profil.desa.print', compact('datas', 'page_title'));
     }
 
     // CREATE
@@ -76,10 +72,8 @@ class DesaController extends Controller
     // EDIT
     public function edit($id)
     {
-        $data = Desa::where('id', $id)->get();
-        return view('admin.pages.profil.desa.ubah', [
-            'data' => $data
-        ]);
+        $data = Desa::whereId($id)->first();
+        return view('admin.pages.profil.desa.ubah', compact('data'));
     }
 
     // UPDATE PROCESS
@@ -116,10 +110,8 @@ class DesaController extends Controller
     // DELETE PROCESS
     public function delete($id)
     {
-        $data = Desa::where('id', $id)->get();
-        return view('admin.pages.profil.desa.delete', [
-            'data' => $data
-        ]);
+        $data = Desa::whereId($id)->first();
+        return view('admin.pages.profil.desa.delete', compact('data'));
     }
 
     // DESTROY
