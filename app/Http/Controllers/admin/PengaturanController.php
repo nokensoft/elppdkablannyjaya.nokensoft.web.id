@@ -41,6 +41,7 @@ class PengaturanController extends Controller
 
        $data['judul_situs']     = $request->judul_situs;
        $data['deskripsi_situs'] = $request->deskripsi_situs;
+       $data['tentang_aplikasi'] = $request->tentang_aplikasi;
 
        Pengaturan::whereId($id)->update($data);
 

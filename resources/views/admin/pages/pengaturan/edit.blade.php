@@ -41,14 +41,57 @@
                                     </div> --}}
 
                                     <div class="mb-3 fs-4">
-                                        <label for="" class="fw-bold">Informasi Situs</label>
+                                        <label for="judul_situs" class="fw-bold">Judl Situs</label>
                                         <input type="text" class="form-control form-control-lg" name="judul_situs" value="{{old('judul_situs') ? old('judul_situs') : $data->judul_situs }}">
+
+                                        @if($errors->has('judul_situs'))
+                                            <small class="text-danger"> {{ $errors->first('judul_situs') }} </small>
+                                        @endif
+
                                     </div>
+                                    <!-- input item end -->
 
                                     <div class="mb-3 fs-4">
-                                        <label for="" class="fw-bold">Deskripsi Situs</label>
+                                        <label for="deskripsi_situs" class="fw-bold">Deskripsi Situs</label>
                                         <input type="text" class="form-control form-control-lg" name="deskripsi_situs" value="{{old('deskripsi_situs') ? old('deskripsi_situs') : $data->deskripsi_situs }}">
+
+                                        @if($errors->has('deskripsi_situs'))
+                                            <small class="text-danger"> {{ $errors->first('deskripsi_situs') }} </small>
+                                        @endif
+
                                     </div>
+                                    <!-- input item end -->
+                                    
+                                    <div class="mb-3 fs-4">
+                                        @if ($data->logo == null)
+                                            <img src="{{asset('assets/images/profildaerah/kepala.png')}}" alt="{{$data->slug}}"  width="250px" class="img-thumbnail">
+                                        @else
+                                            <img src="{{ url($data->logo)}}" alt="{{$data->logo}}" class="img-fluid img-thumbnail"  width="250px" class="img-thumbnail"></td>
+                                        @endif
+                                        <input type="file" class="form-control form-control-lg mt-2" name="logo">
+                                    </div>
+                                    <!-- input item end -->
+                                    
+                                    <div class="mb-3 fs-4">
+                                        @if ($data->favicon == null)
+                                            <img src="{{asset('assets/images/profildaerah/kepala.png')}}" alt="{{$data->slug}}"  width="100px" class="img-thumbnail">
+                                        @else
+                                            <img src="{{ url($data->favicon)}}" alt="{{$data->favicon}}" class="img-fluid img-thumbnail"  width="100px" class="img-thumbnail"></td>
+                                        @endif
+                                        <input type="file" class="form-control form-control-lg mt-2" name="favicon">
+                                    </div>
+                                    <!-- input item end -->
+
+                                    <div class="mb-3 fs-4">
+                                        <label for="tentang_aplikasi" class="fw-bold">Tentang Aplikasi</label>
+                                        <textarea name="tentang_aplikasi" id="tentang_aplikasi" cols="30" rows="10" class="form-control form-control-lg">{{old('tentang_aplikasi') ? old('tentang_aplikasi') : $data->tentang_aplikasi }}</textarea>
+
+                                        @if($errors->has('tentang_aplikasi'))
+                                            <small class="text-danger"> {{ $errors->first('tentang_aplikasi') }} </small>
+                                        @endif
+
+                                    </div>
+                                    <!-- input item end -->
 
                                     <div class="border-top border-1 pt-3 mt-4">
                                         <button type="submit" class="btn btn-info waves-effect waves-light fs-4">
@@ -58,19 +101,20 @@
                                             <i class="fas fa-arrow-left me-1"></i> Kembali
                                         </a>
                                     </div>
-
+                                    <!-- button end -->
                                 </form>
                                 <!-- form end -->
-
                             </div>
                             <!-- .col end -->
-
                         </div>
                         <!-- .row end -->
 
                     </div>
+                    <!-- .card-body end -->
                 </div>
+                <!-- .body end -->
             </div>
+            <!-- .col end -->
         </div>
         <!-- end row -->
 

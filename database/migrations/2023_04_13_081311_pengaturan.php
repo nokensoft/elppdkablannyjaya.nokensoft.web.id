@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('favicon')->nullable(); 
             $table->string('termsconditions')->nullable(); 
             $table->string('footerinformation')->nullable(); 
+            $table->longText('tentang_aplikasi')->nullable(); 
             
             $table->timestamps();
         });

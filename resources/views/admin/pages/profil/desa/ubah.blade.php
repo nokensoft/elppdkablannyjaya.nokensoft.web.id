@@ -7,7 +7,6 @@
                     <div class="page-title-right">
                         <ol class="breadcrumb m-0">
                             <li class="breadcrumb-item"><a href="{{asset('admin/beranda')}}">Beranda</a></li>
-                            <li class="breadcrumb-item"><a href="{{asset('admin/profil')}}">Profil</a></li>
                             <li class="breadcrumb-item active">Ubah Desa</li>
                         </ol>
                     </div>

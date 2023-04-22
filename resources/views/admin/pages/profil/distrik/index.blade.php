@@ -7,7 +7,6 @@
                     <div class="page-title-right">
                         <ol class="breadcrumb m-0">
                             <li class="breadcrumb-item"><a href="{{asset('admin/beranda')}}">Beranda</a></li>
-                            <li class="breadcrumb-item"><a href="{{asset('admin/profil')}}">Profil</a></li>
                             <li class="breadcrumb-item active">Distrik</li>
                         </ol>
                     </div>
@@ -77,9 +76,9 @@
                                                 <td>{{$data->telp}}</td>
                                                 <td>{{$data->email}}</td>
                                                 <td class="d-flex justify-content-between gap-1">
-                                                    <a href="{{route('admin.distrik.show',$data->id)}}" class="btn btn-sm btn-dark border-0  waves-effect waves-light fs-4"> <i class="fas fa-eye"></i> </a>
-                                                    <a href="{{route('admin.distrik.edit',$data->id)}}" class="btn btn-sm btn-outline-dark border-0 waves-effect waves-light fs-4"> <i class="fas fa-edit"></i> </a>
-                                                    <a href="{{route('admin.distrik.delete',$data->id)}}" class="btn btn-sm btn-outline-dark border-0 waves-effect waves-light fs-4"> <i class="fas fa-trash"></i> </a>                                                  
+                                                    <a href="{{route('admin.distrik.show',$data->id)}}" class="btn btn-sm btn-info border-0  waves-effect waves-light fs-4"> <i class="fas fa-eye"></i> </a>
+                                                    <a href="{{route('admin.distrik.edit',$data->id)}}" class="btn btn-sm btn-outline-info border-0 waves-effect waves-light fs-4"> <i class="fas fa-edit"></i> </a>
+                                                    <a href="{{route('admin.distrik.delete',$data->id)}}" class="btn btn-sm btn-outline-info border-0 waves-effect waves-light fs-4"> <i class="fas fa-trash"></i> </a>                                                  
                                                 </td>
                                             </tr>
 

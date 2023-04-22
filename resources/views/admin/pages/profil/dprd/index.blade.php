@@ -7,8 +7,7 @@
                     <div class="page-title-right">
                         <ol class="breadcrumb m-0">
                             <li class="breadcrumb-item"><a href="{{asset('admin/beranda')}}">Beranda</a></li>
-                            <li class="breadcrumb-item"><a href="{{asset('admin/profil')}}">Profil</a></li>
-                            <li class="breadcrumb-item active">Kepala DPRD</li>
+                            <li class="breadcrumb-item active">DPRD</li>
                         </ol>
                     </div>
                 </div>
@@ -51,13 +50,13 @@
                                     <thead class="bg-dark text-light">
                                         <tr>
                                             <th>Nama Lengkap</th>
+                                            <th>Foto</th>
                                             <th>Jabatan</th>
                                             <th>NIK</th>
                                             <th>Alamat</th>
                                             <th>TTL</th>
                                             <th>Partai</th>
                                             <th>Pendidikan</th>
-                                            <th>Foto</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
@@ -65,12 +64,6 @@
                                         @foreach ($datas as $data )
                                             <tr>
                                                 <td>{{$data->nama_lengkap}}</td>
-                                                <td>{{$data->jabatan}}</td>
-                                                <td>{{$data->nik}}</td>
-                                                <td>{{$data->alamat}}</td>
-                                                <td>{{$data->ttl}}</td>
-                                                <td>{{$data->nama_partai}}</td>
-                                                <td>{{$data->pendidikan}}</td>
                                                 <td>
                                                     @if ($data->foto == null)
                                                         <img src="{{asset('assets/images/user.png')}}" alt="Logo" class="img-fluid img-thumbnail" width="100">
@@ -78,10 +71,16 @@
                                                         <img src="{{ url($data->foto)}}" alt="{{$data->foto}}" class="img-fluid img-thumbnail" width="100"></td>
                                                     @endif
                                                 </td>
+                                                <td>{{$data->jabatan}}</td>
+                                                <td>{{$data->nik}}</td>
+                                                <td>{{$data->alamat}}</td>
+                                                <td>{{$data->ttl}}</td>
+                                                <td>{{$data->nama_partai}}</td>
+                                                <td>{{$data->pendidikan}}</td>
                                                 <td class="d-flex justify-content-between gap-1">
-                                                    <a href="{{route('admin.dprd.show',$data->id)}}" class="btn btn-sm btn-dark border-0  waves-effect waves-light fs-4"> <i class="fas fa-eye"></i> </a>
-                                                    <a href="{{route('admin.dprd.edit',$data->id)}}" class="btn btn-sm btn-outline-dark border-0 waves-effect waves-light fs-4"> <i class="fas fa-edit"></i> </a>
-                                                    <a href="{{route('admin.dprd.delete',$data->id)}}" class="btn btn-sm btn-outline-dark border-0 waves-effect waves-light fs-4"> <i class="fas fa-trash"></i> </a>                                                  
+                                                    <a href="{{route('admin.dprd.show',$data->id)}}" class="btn btn-sm btn-info border-0  waves-effect waves-light fs-4"> <i class="fas fa-eye"></i> </a>
+                                                    <a href="{{route('admin.dprd.edit',$data->id)}}" class="btn btn-sm btn-outline-info border-0 waves-effect waves-light fs-4"> <i class="fas fa-edit"></i> </a>
+                                                    <a href="{{route('admin.dprd.delete',$data->id)}}" class="btn btn-sm btn-outline-info border-0 waves-effect waves-light fs-4"> <i class="fas fa-trash"></i> </a>                                                  
                                                 </td>
                                             </tr>
                                         @endforeach

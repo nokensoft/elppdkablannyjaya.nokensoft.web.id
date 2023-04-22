@@ -33,12 +33,29 @@
                                             <td class="fw-bold">{{ $data->pemda_namainstansi }}</td>
                                         </tr>
                                         <tr>
-                                            <td>Lambang Pemerintah Daerah</td>
-                                            <td class="fw-bold">{{ $data->pemda_lambang }}</td>
+                                            <td>Lambang Daerah</td>
+                                            <td>
+                                                <img src="{{ asset($data->pemda_lambang) }}" class="img-thumbnail col-lg-6" alt="Foto">
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                
+                            </div>
+                            <!-- .col end -->
+
+                            <!-- .col start -->
+                            <div class="col-lg-6">
+
+                                <table class="table table-bordered fs-4">
+                                    <tbody>
+                                        <tr>
+                                            <td>Peta Wilayah</td>
                                         </tr>
                                         <tr>
-                                            <td>Gambar Peta Wilayah</td>
-                                            <td class="fw-bold">{{ $data->pemda_peta }}</td>
+                                            <td class="fw-bold">
+                                                <img src="{{ asset($data->pemda_peta) }}" class="img-thumbnail w-100" alt="Foto">
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>

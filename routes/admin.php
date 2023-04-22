@@ -54,13 +54,20 @@ Route::prefix('admin')->middleware('auth')->group(function () {
         Route::put('profildaerah/pemerintahdaerah/{id}','update_pemerintahdaerah')->name('admin.profildaerah.pemerintahdaerah.update');
 
         // KEPALA DAERAH
-        Route::get('profildaerah/kepaladaerah','kepaladaerah')->name('profildaerah.kepaladaerah');
+        Route::get('profildaerah/kepaladaerah','kepaladaerah')->name('admin.profildaerah.kepaladaerah');
+        Route::get('profildaerah/kepaladaerah/edit','edit_kepaladaerah')->name('admin.profildaerah.kepaladaerah.edit');
+        Route::put('profildaerah/kepaladaerah/{id}','update_kepaladaerah')->name('admin.profildaerah.kepaladaerah.update');
 
         // WAKIL KEPALA DAERAH
-        Route::get('profildaerah/wakilkepaladaerah','wakilkepaladaerah')->name('profildaerah.wakilkepaladaerah');
+        Route::get('profildaerah/wakilkepaladaerah','wakilkepaladaerah')->name('admin.profildaerah.wakilkepaladaerah');
+        Route::get('profildaerah/wakilkepaladaerah/edit','edit_wakilkepaladaerah')->name('admin.profildaerah.wakilkepaladaerah.edit');
+        Route::put('profildaerah/wakilkepaladaerah/{id}','update_wakilkepaladaerah')->name('admin.profildaerah.wakilkepaladaerah.update');
 
         // SEKRETARIS DAERAH
-        Route::get('profildaerah/sekretarisdaerah','sekretarisdaerah')->name('profildaerah.sekretarisdaerah');
+        Route::get('profildaerah/sekretarisdaerah','sekretarisdaerah')->name('admin.profildaerah.sekretarisdaerah');
+        Route::get('profildaerah/sekretarisdaerah/edit','edit_sekretarisdaerah')->name('admin.profildaerah.sekretarisdaerah.edit');
+        Route::put('profildaerah/sekretarisdaerah/{id}','update_sekretarisdaerah')->name('admin.profildaerah.sekretarisdaerah.update');
+
     });
 
     // DPRD

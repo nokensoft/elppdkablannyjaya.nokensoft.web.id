@@ -12,8 +12,8 @@ class ProfilDaerahSeeder extends Seeder
     {
         ProfilDaerah::insert([
             'pemda_namainstansi'    => 'Pemerintah Kabupaten Lanny Jaya',
-            'pemda_lambang'         => 'pemda_lambang',
-            'pemda_peta'            => 'pemda_peta',
+            'pemda_lambang'         => 'assets/images/profildaerah/logo-lg.png',
+            'pemda_peta'            => 'https://upload.wikimedia.org/wikipedia/commons/8/81/91.23.00_Papua_Lanny_Jaya.svg',
 
             // KEPALA DAERAH
             'kepala_nama'           => 'kepala_nama',
@@ -49,7 +49,7 @@ class ProfilDaerahSeeder extends Seeder
             'sekretaris_tgl_lahir'  => 'sekretaris_tgl_lahir',
             'sekretaris_no_sk'      => 'sekretaris_no_sk',
             'sekretaris_file_sk'    => 'sekretaris_file_sk',
-            'sekretaris_tmt'        => 'wakil_tmt',
+            'sekretaris_tmt'        => 'sekretaris_tmt',
             'sekretaris_foto'       => 'assets/images/profildaerah/sekretaris.png',
         ]);
     }

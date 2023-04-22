@@ -30,23 +30,27 @@
                                     <tbody>
                                         <tr>
                                             <td>Informasi Situs</td>
-                                            <td class="fw-bold">{{$data->judul_situs}}</td>
+                                            <td class="fw-bold">{!! $data->judul_situs !!}</td>
                                         </tr>
                                         <tr>
                                             <td>Desktripsi</td>
-                                            <td class="fw-bold">{{$data->deskripsi_situs}}</td>
+                                            <td class="fw-bold">{!! $data->deskripsi_situs !!}</td>
                                         </tr>
                                         <tr>
                                             <td>Logo</td>
                                             <td class="fw-bold">
-                                                <img src="{{asset($data->logo)}}" alt="Logo" width="250px">
+                                                <img src="{{ asset($data->logo) }}" alt="Logo" width="250px">
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>Favicon</td>
                                             <td class="fw-bold">
-                                                <img src="{{asset($data->favicon)}}" alt="Logo" width="50px">
+                                                <img src="{{ asset($data->favicon) }}" alt="Favicon" width="50px">
                                             </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Tentang Aplikasi</td>
+                                            <td class="fw-bold">{!! $data->tentang_aplikasi !!}</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -55,7 +59,7 @@
                             <!-- .col end -->
                         
                         <div class="mb-3">
-                            <a href="{{asset('admin/pengaturan/ubah')}}" class="btn btn-info waves-effect waves-light fs-4">
+                            <a href="{{asset('admin/pengaturan/ubah')}}" class="btn btn-outline-info border-0 waves-effect waves-light fs-4">
                                 <i class="fas fa-edit me-1"></i> Ubah
                             </a>
                         </div>
