@@ -37,10 +37,10 @@
 
             </div>
         </div>
-        <p class="text-muted">{{ Auth::user()->job_desc }}</p>
     </div>
 
-    <!--- Sidemenu -->
+    @if(Auth::user()->hasRole('administrator'))
+         <!--- Sidemenu -->
     <div id="sidebar-menu">
 
         <ul id="side-menu">
@@ -96,6 +96,9 @@
                 </a>
                 <div class="collapse show" id="data-master">
                     <ul class="nav-second-level">
+                        <li>
+                            <a href="{{ route('pengguna.index') }}">Pengguna</a>
+                        </li>
                         <li>
                             <a href="{{route('admin.dprd')}}">DPRD</a>
                         </li>
@@ -159,6 +162,189 @@
     <!-- End Sidebar -->
 
     <div class="clearfix"></div>
+    @elseif (Auth::user()->hasRole('bidang_pendidikan'))
+     <!--- Sidemenu -->
+     <div id="sidebar-menu">
+
+        <ul id="side-menu">
+
+            <li class="menu-title">Menu Utama</li>
+
+            <li>
+                <a href="{{ url('/admin/beranda')}}">
+                    <i data-feather="home"></i>
+                    <span> Beranda </span>
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ url('/admin/tentang-aplikasi')}}">
+                    <i class="fa fa-laptop"></i>
+                    <span> Tentang Aplikasi </span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa fa-laptop"></i>
+                    <span> IKK Pendidikan </span>
+                </a>
+            </li>
+
+            <li class="menu-title mt-2">Profil</li>
+            </li>
+
+            <li>
+                <a href="#profil_daerah" data-bs-toggle="collapse" aria-expanded="true">
+                    <i class="fa fa-building"></i>
+                    <span> Profil Daerah </span>
+                    <span class="menu-arrow"></span>
+                </a>
+                <div class="collapse show" id="profil_daerah">
+                    <ul class="nav-second-level">
+                        <li>
+                            <a href="{{asset('admin/profildaerah/pemerintahdaerah')}}">Pemerintah Dearah</a>
+                        </li>
+                        <li>
+                            <a href="{{asset('admin/profildaerah/kepaladaerah')}}">Kepala Daerah</a>
+                        </li>
+                        <li>
+                            <a href="{{asset('admin/profildaerah/wakilkepaladaerah')}}">Wakil Kepala Daerah</a>
+                        </li>
+                        <li>
+                            <a href="{{asset('admin/profildaerah/sekretarisdaerah')}}">Sekretaris Daerah</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+
+        </ul>
+
+    </div>
+    <!-- End Sidebar -->
+    <div class="clearfix"></div>
+
+    @elseif (Auth::user()->hasRole('bidang_kesehatan'))
+     <!--- Sidemenu -->
+     <div id="sidebar-menu">
+
+        <ul id="side-menu">
+
+            <li class="menu-title">Menu Utama</li>
+
+            <li>
+                <a href="{{ url('/admin/beranda')}}">
+                    <i data-feather="home"></i>
+                    <span> Beranda </span>
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ url('/admin/tentang-aplikasi')}}">
+                    <i class="fa fa-laptop"></i>
+                    <span> Tentang Aplikasi </span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa fa-laptop"></i>
+                    <span> IKK Kesehatan </span>
+                </a>
+            </li>
+
+            <li class="menu-title mt-2">Profil</li>
+            </li>
+
+            <li>
+                <a href="#profil_daerah" data-bs-toggle="collapse" aria-expanded="true">
+                    <i class="fa fa-building"></i>
+                    <span> Profil Daerah </span>
+                    <span class="menu-arrow"></span>
+                </a>
+                <div class="collapse show" id="profil_daerah">
+                    <ul class="nav-second-level">
+                        <li>
+                            <a href="{{asset('admin/profildaerah/pemerintahdaerah')}}">Pemerintah Dearah</a>
+                        </li>
+                        <li>
+                            <a href="{{asset('admin/profildaerah/kepaladaerah')}}">Kepala Daerah</a>
+                        </li>
+                        <li>
+                            <a href="{{asset('admin/profildaerah/wakilkepaladaerah')}}">Wakil Kepala Daerah</a>
+                        </li>
+                        <li>
+                            <a href="{{asset('admin/profildaerah/sekretarisdaerah')}}">Sekretaris Daerah</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+
+        </ul>
+
+    </div>
+    <!-- End Sidebar -->
+    <div class="clearfix"></div>
+    @elseif (Auth::user()->hasRole('bidang_pu'))
+     <!--- Sidemenu -->
+     <div id="sidebar-menu">
+
+        <ul id="side-menu">
+
+            <li class="menu-title">Menu Utama</li>
+
+            <li>
+                <a href="{{ url('/admin/beranda')}}">
+                    <i data-feather="home"></i>
+                    <span> Beranda </span>
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ url('/admin/tentang-aplikasi')}}">
+                    <i class="fa fa-laptop"></i>
+                    <span> Tentang Aplikasi </span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa fa-laptop"></i>
+                    <span> IKK Pekerjaan Umum </span>
+                </a>
+            </li>
+
+            <li class="menu-title mt-2">Profil</li>
+            </li>
+
+            <li>
+                <a href="#profil_daerah" data-bs-toggle="collapse" aria-expanded="true">
+                    <i class="fa fa-building"></i>
+                    <span> Profil Daerah </span>
+                    <span class="menu-arrow"></span>
+                </a>
+                <div class="collapse show" id="profil_daerah">
+                    <ul class="nav-second-level">
+                        <li>
+                            <a href="{{asset('admin/profildaerah/pemerintahdaerah')}}">Pemerintah Dearah</a>
+                        </li>
+                        <li>
+                            <a href="{{asset('admin/profildaerah/kepaladaerah')}}">Kepala Daerah</a>
+                        </li>
+                        <li>
+                            <a href="{{asset('admin/profildaerah/wakilkepaladaerah')}}">Wakil Kepala Daerah</a>
+                        </li>
+                        <li>
+                            <a href="{{asset('admin/profildaerah/sekretarisdaerah')}}">Sekretaris Daerah</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+
+        </ul>
+
+    </div>
+    <!-- End Sidebar -->
+    <div class="clearfix"></div>
+    @endif
+
 
 </div>
 <!-- Sidebar -left -->

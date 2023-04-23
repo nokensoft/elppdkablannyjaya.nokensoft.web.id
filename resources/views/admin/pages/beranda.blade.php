@@ -27,7 +27,7 @@
             </div>
         </div>
         <!-- end row -->
-
+        @if(Auth::user()->hasRole('administrator'))
         <div class="row">
 
             <div class="col-md-6 col-xl-3">
@@ -83,8 +83,55 @@
             </div> --}}
 
         </div>
+
+        @elseif(Auth::user()->hasRole('bidang_pendidikan'))
+        <div class="row">
+            <div class="col-md-6 col-xl-3">
+                <div class="card" id="tooltip-container2">
+                    <div class="card-body">
+                        <i class="fa fa-info-circle text-muted float-end" data-bs-container="#tooltip-container2" data-bs-toggle="tooltip" data-bs-placement="bottom" title="More Info"></i>
+                        <h4 class="mt-0 font-16">Jumlah Data</h4>
+                        <h2 class="text-dark my-3 text-center display-1 fw-bold"><span data-plugin="counterup">{{ $totalDprd }}</span></h2>
+                        <a href="#" class="btn btn-lg w-100">
+                            <i class="fas fa-arrow-right mr-2"></i> Tampilkan Detail
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @elseif(Auth::user()->hasRole('bidang_kesehatan'))
+        <div class="row">
+            <div class="col-md-6 col-xl-3">
+                <div class="card" id="tooltip-container2">
+                    <div class="card-body">
+                        <i class="fa fa-info-circle text-muted float-end" data-bs-container="#tooltip-container2" data-bs-toggle="tooltip" data-bs-placement="bottom" title="More Info"></i>
+                        <h4 class="mt-0 font-16">Jumlah Data</h4>
+                        <h2 class="text-dark my-3 text-center display-1 fw-bold"><span data-plugin="counterup">{{ $totalDprd }}</span></h2>
+                        <a href="#" class="btn btn-lg w-100">
+                            <i class="fas fa-arrow-right mr-2"></i> Tampilkan Detail
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @elseif(Auth::user()->hasRole('bidang_pu'))
+        <div class="row">
+            <div class="col-md-6 col-xl-3">
+                <div class="card" id="tooltip-container2">
+                    <div class="card-body">
+                        <i class="fa fa-info-circle text-muted float-end" data-bs-container="#tooltip-container2" data-bs-toggle="tooltip" data-bs-placement="bottom" title="More Info"></i>
+                        <h4 class="mt-0 font-16">Jumlah Data</h4>
+                        <h2 class="text-dark my-3 text-center display-1 fw-bold"><span data-plugin="counterup">{{ $totalDprd }}</span></h2>
+                        <a href="#" class="btn btn-lg w-100">
+                            <i class="fas fa-arrow-right mr-2"></i> Tampilkan Detail
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @endif
         <!-- end row -->
-                        
+
 
   <!--end wrapper-->
 
@@ -104,5 +151,5 @@
     <script src="{{ asset('assets/admin/assets/js/pages/jquery.todo.js')}}"></script>
 
     <!-- Dashboard init JS -->
-    <script src="{{ asset('assets/admin/assets/js/pages/dashboard-3.init.js')}}"></script>  
+    <script src="{{ asset('assets/admin/assets/js/pages/dashboard-3.init.js')}}"></script>
   @endpush

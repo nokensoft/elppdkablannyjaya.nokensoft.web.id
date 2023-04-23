@@ -40,7 +40,7 @@
                                         </tr>
                                     </tbody>
                                 </table>
-                                
+
                             </div>
                             <!-- .col end -->
 
@@ -59,15 +59,19 @@
                                         </tr>
                                     </tbody>
                                 </table>
-                                
+
                             </div>
                             <!-- .col end -->
-                        
-                        <div class="mb-3">
-                            <a href="{{route('admin.profildaerah.pemerintahdaerah.edit')}}" class="btn btn-outline-info border-0 waves-effect waves-light fs-4">
-                                <i class="fas fa-edit me-1"></i> Ubah
-                            </a>
-                        </div>
+                            @if(Auth::user()->hasRole('administrator'))
+                                <div class="mb-3">
+                                    <a href="{{route('admin.profildaerah.pemerintahdaerah.edit')}}" class="btn btn-outline-info border-0 waves-effect waves-light fs-4">
+                                        <i class="fas fa-edit me-1"></i> Ubah
+                                    </a>
+                                </div>
+                            @else
+
+                            @endif
+
 
                         </div>
                         <!-- .row end -->
@@ -77,7 +81,7 @@
             </div>
         </div>
         <!-- end row -->
-                        
+
 
   <!--end wrapper-->
 
@@ -97,5 +101,5 @@
     <script src="{{ asset('assets/admin/assets/js/pages/jquery.todo.js')}}"></script>
 
     <!-- Dashboard init JS -->
-    <script src="{{ asset('assets/admin/assets/js/pages/dashboard-3.init.js')}}"></script>  
+    <script src="{{ asset('assets/admin/assets/js/pages/dashboard-3.init.js')}}"></script>
   @endpush

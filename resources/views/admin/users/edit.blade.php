@@ -1,69 +1,113 @@
 @extends('admin.layouts.app')
-
-
 @section('content')
-<div class="row">
-    <div class="col-lg-12 margin-tb">
-        <div class="pull-left">
-            <h2>Edit New User</h2>
+    <!-- start page content wrapper-->
+        <div class="row mb-3">
+            <div class="col-12">
+                <div class="page-title-box">
+                    <div class="page-title-right">
+                        <ol class="breadcrumb m-0">
+                            <li class="breadcrumb-item"><a href="{{asset('admin/beranda')}}">Beranda</a></li>
+                            <li class="breadcrumb-item"><a href="{{route('pengguna.index')}}">Pengguna</a></li>
+                            <li class="breadcrumb-item active">Edit</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="pull-right">
-            <a class="btn btn-primary" href="{{ route('users.index') }}"> Back</a>
-        </div>
-    </div>
-</div>
+        <!-- end row -->
 
 
-@if (count($errors) > 0)
-  <div class="alert alert-danger">
-    <strong>Whoops!</strong> There were some problems with your input.<br><br>
-    <ul>
-       @foreach ($errors->all() as $error)
-         <li>{{ $error }}</li>
-       @endforeach
-    </ul>
-  </div>
-@endif
+        <div class="row" id="ubah">
+            <div class="col">
+                <div class="card">
+                    <div class="card-body">
+
+                        <div class="row">
+
+                            <!-- .col start -->
+                            <div class="col-lg-6  mx-auto border border-4 border-info rounded shadow-lg p-5 my-5">
+
+                                <h1 class="fw-bold">Edit Pengguna</h1>
+
+                                <form action="{{route('pengguna.update',['pengguna' => $user->id])}}" method="POST" enctype="multipart/form-data">
+                                    @csrf
+                                    @method('put')
+
+                                    <div class="mb-3 fs-4">
+                                        <label for="" class="fw-bold">Nama</label>
+                                        <input type="text" class="form-control form-control-lg" placeholder="Nama Pengguna"
+                                        value="{{ old('name',$user->name)}}"  name="name">
+                                        @if($errors->has('name'))
+                                            <label class="text-danger"> {{ $errors->first('name') }} </label>
+                                        @endif
+                                    </div>
+
+                                    <div class="mb-3 fs-4">
+                                        <label for="" class="fw-bold">Email</label>
+                                        <input type="email" class="form-control form-control-lg" placeholder="Email Pengguna"
+                                        value="{{ old('email',$user->email)}}"  name="email">
+                                        @if($errors->has('email'))
+                                            <label class="text-danger"> {{ $errors->first('email') }} </label>
+                                        @endif
+                                    </div>
+                                    <div class="mb-3 fs-4">
+                                        <label for="" class="fw-bold">Peran</label>
+                                        <select id="role_id" name="role_id" class="form-control">
+                                            @foreach ($roles as $role )
+                                                <option value="{{ $role->id }}">{{ $role->display_name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="mb-3 fs-4">
+                                        <label for="" class="fw-bold">Kata Sandi</label>
+                                        {!! Form::password('password',['id'=>'password','class'=>'form-control','placeholder'=>'Kata sandi pengguna']) !!}
+                                    </div>
+                                    <div class="mb-3 fs-4">
+                                        <label for="" class="fw-bold">Konfirmasi Kata Sandi</label>
+                                        {!! Form::password('confirm-password',['id'=>'confirm-password','class'=>'form-control','placeholder'=>'Konfirmasi kata sandi pengguna']) !!}
+                                    </div>
+
+                                    <div class="border-top border-1 pt-3 mt-4">
+                                        <button type="submit" class="btn btn-info waves-effect waves-light fs-4">
+                                            <i class="fas fa-save me-1"></i> Simpan
+                                        </button>
+                                        <a href="{{URL::previous()}}" class="btn btn-outline-light waves-effect waves-light fs-4">
+                                            <i class="fas fa-arrow-left me-1"></i> Kembali
+                                        </a>
+                                    </div>
+
+                                </form>
+
+                            </div>
+                            <!-- .col end -->
+
+                        </div>
+                        <!-- .row end -->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end row -->
 
 
-{!! Form::model($user, ['method' => 'PATCH','route' => ['users.update', $user->id]]) !!}
-<div class="row">
-    <div class="col-xs-12 col-sm-12 col-md-12">
-        <div class="form-group">
-            <strong>Name:</strong>
-            {!! Form::text('name', null, array('placeholder' => 'Name','class' => 'form-control')) !!}
-        </div>
-    </div>
-    <div class="col-xs-12 col-sm-12 col-md-12">
-        <div class="form-group">
-            <strong>Email:</strong>
-            {!! Form::text('email', null, array('placeholder' => 'Email','class' => 'form-control')) !!}
-        </div>
-    </div>
-    <div class="col-xs-12 col-sm-12 col-md-12">
-        <div class="form-group">
-            <strong>Password:</strong>
-            {!! Form::password('password', array('placeholder' => 'Password','class' => 'form-control')) !!}
-        </div>
-    </div>
-    <div class="col-xs-12 col-sm-12 col-md-12">
-        <div class="form-group">
-            <strong>Confirm Password:</strong>
-            {!! Form::password('confirm-password', array('placeholder' => 'Confirm Password','class' => 'form-control')) !!}
-        </div>
-    </div>
-    <div class="col-xs-12 col-sm-12 col-md-12">
-        <div class="form-group">
-            <strong>Role:</strong>
-            {!! Form::select('roles[]', $roles,$userRole, array('class' => 'form-control','multiple')) !!}
-        </div>
-    </div>
-    <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </div>
-</div>
-{!! Form::close() !!}
+  <!--end wrapper-->
 
+  @stop
 
-<p class="text-center text-primary"><small>Tutorial by ItSolutionStuff.com</small></p>
-@endsection
+  @push('script-footer')
+   <!-- Chart JS -->
+   <script src="{{ asset('assets/admin/assets/libs/chart.js/Chart.bundle.min.js')}}"></script>
+
+    <script src="{{ asset('assets/admin/assets/libs/moment/min/moment.min.js')}}"></script>
+    <script src="{{ asset('assets/admin/assets/libs/jquery.scrollto/jquery.scrollTo.min.js')}}"></script>
+
+    <!-- Chat app -->
+    <script src="{{ asset('assets/admin/assets/js/pages/jquery.chat.js')}}"></script>
+
+    <!-- Todo app -->
+    <script src="{{ asset('assets/admin/assets/js/pages/jquery.todo.js')}}"></script>
+
+    <!-- Dashboard init JS -->
+    <script src="{{ asset('assets/admin/assets/js/pages/dashboard-3.init.js')}}"></script>
+  @endpush

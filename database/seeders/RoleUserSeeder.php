@@ -19,54 +19,72 @@ class RoleUserSeeder extends Seeder
         app()['cache']->forget('spatie.permission.cache');
 
         // ASIGN ROLES
+
         $adminRole = Role::create(
             [
             'guard_name'        => 'web',
             'name'              => 'administrator',
             'display_name'      => 'Administrator',
         ]);
-
-        $editorRole = Role::create(
+        $bpendidikanRole = Role::create(
             [
             'guard_name'        => 'web',
-            'name'              => 'editor',
-            'display_name'      => 'Editor',
+            'name'              => 'bidang_pendidikan',
+            'display_name'      => 'Bidang Pendidikan',
         ]);
-
-        $authorRole = Role::create(
+        $bkesehatanRole = Role::create(
             [
             'guard_name'        => 'web',
-            'name'              => 'author',
-            'display_name'      => 'Author',
+            'name'              => 'bidang_kesehatan',
+            'display_name'      => 'Bidang Kesehatan',
+        ]);
+        $bpekerjaanUmumRole = Role::create(
+            [
+            'guard_name'        => 'web',
+            'name'              => 'bidang_pu',
+            'display_name'      => 'Bidang Pekerjaan Umum',
         ]);
 
 
         // ADMIN
         $admin = User::create([
             'name'              => 'Admin',
+            'slug'              => 'admin',
             'email'             => 'admin@lannyjayakab.go.id',
             'password'          => bcrypt('admin@lannyjayakab.go.id'),
             'avatar'            => 'assets/images/avatars/user.png',
         ]);
         $admin->assignRole($adminRole);
 
-        // EDITOR
-        $editor = User::create([
-            'name'              => 'Editor',
-            'email'             => 'editor@lannyjayakab.go.id',
-            'password'          => bcrypt('editor@lannyjayakab.go.id'),
+        // Dinas Pendidikan
+        $pendidikan = User::create([
+            'name'              => 'Dinas Pendidikan',
+            'slug'              => 'dinas-pendidikan',
+            'email'             => 'dinaspendidikan@lannyjayakab.go.id',
+            'password'          => bcrypt('dinaspendidikan@lannyjayakab.go.id'),
             'avatar'            => 'assets/images/avatars/user2.png',
         ]);
-        $editor->assignRole($editorRole);
+        $pendidikan->assignRole($bpendidikanRole);
 
-        // AUTHOR
-        $author = User::create([
-            'name'              => 'Author',
-            'email'             => 'author@lannyjayakab.go.id',
-            'password'          => bcrypt('author@lannyjayakab.go.id'),
+        // Dinas Kesehatan
+        $kesehatan = User::create([
+            'name'              => 'Dinas Kesehatan',
+            'slug'              => 'dinas-kesehatan',
+            'email'             => 'dinaskesehatan@lannyjayakab.go.id',
+            'password'          => bcrypt('dinaskesehatan@lannyjayakab.go.id'),
             'avatar'            => 'assets/images/avatars/user3.png',
         ]);
-        $author->assignRole($authorRole);
+        $kesehatan->assignRole($bkesehatanRole);
+
+        // Dinas Pekerjaan umum
+        $kesehatan = User::create([
+            'name'              => 'Dinas PU',
+            'slug'              => 'dinas-pu',
+            'email'             => 'dinaspu@lannyjayakab.go.id',
+            'password'          => bcrypt('dinaspu@lannyjayakab.go.id'),
+            'avatar'            => 'assets/images/avatars/user3.png',
+        ]);
+        $kesehatan->assignRole($bkesehatanRole);
 
     }
 }

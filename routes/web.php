@@ -29,14 +29,23 @@ Auth::routes(['register' => false]);
 Route::redirect('/register', '/login');
 //Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-Route::group(['middleware' => ['auth']], function() {
+Route::group(['middleware' => ['auth','web']], function() {
     Route::get('/home', function () {
         return view('admin.pages.starter');
     });
 
-    Route::resource('roles', RoleController::class);
-    Route::resource('users', UserController::class);
-    Route::resource('products', ProductController::class);
+    // Route::resource('roles', RoleController::class);
+    // Route::resource('users', UserController::class);
+    // Route::resource('products', ProductController::class);
+
+     // Peran ADMIN
+     Route::group(['middleware' => ['role:administrator']], function () {
+        Route::resource('pengguna', UserController::class);
+
+        Route::get('/pengguna/hapus/{id}', [UserController::class, 'delete'])->name('pengguna.delete');
+
+    });
+
 });
 
 

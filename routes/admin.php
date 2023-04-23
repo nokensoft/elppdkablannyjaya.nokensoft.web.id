@@ -50,83 +50,83 @@ Route::prefix('admin')->middleware('auth')->group(function () {
 
         // PEMERINTAH DAERAH
         Route::get('profildaerah/pemerintahdaerah','pemerintahdaerah')->name('admin.profildaerah.pemerintahdaerah');
-        Route::get('profildaerah/pemerintahdaerah/edit','edit_pemerintahdaerah')->name('admin.profildaerah.pemerintahdaerah.edit');
-        Route::put('profildaerah/pemerintahdaerah/{id}','update_pemerintahdaerah')->name('admin.profildaerah.pemerintahdaerah.update');
+        Route::get('profildaerah/pemerintahdaerah/edit','edit_pemerintahdaerah')->name('admin.profildaerah.pemerintahdaerah.edit')->middleware(['role:administrator']);
+        Route::put('profildaerah/pemerintahdaerah/{id}','update_pemerintahdaerah')->name('admin.profildaerah.pemerintahdaerah.update')->middleware(['role:administrator']);
 
         // KEPALA DAERAH
         Route::get('profildaerah/kepaladaerah','kepaladaerah')->name('admin.profildaerah.kepaladaerah');
-        Route::get('profildaerah/kepaladaerah/edit','edit_kepaladaerah')->name('admin.profildaerah.kepaladaerah.edit');
-        Route::put('profildaerah/kepaladaerah/{id}','update_kepaladaerah')->name('admin.profildaerah.kepaladaerah.update');
+        Route::get('profildaerah/kepaladaerah/edit','edit_kepaladaerah')->name('admin.profildaerah.kepaladaerah.edit')->middleware(['role:administrator']);
+        Route::put('profildaerah/kepaladaerah/{id}','update_kepaladaerah')->name('admin.profildaerah.kepaladaerah.update')->middleware(['role:administrator']);
 
         // WAKIL KEPALA DAERAH
         Route::get('profildaerah/wakilkepaladaerah','wakilkepaladaerah')->name('admin.profildaerah.wakilkepaladaerah');
-        Route::get('profildaerah/wakilkepaladaerah/edit','edit_wakilkepaladaerah')->name('admin.profildaerah.wakilkepaladaerah.edit');
-        Route::put('profildaerah/wakilkepaladaerah/{id}','update_wakilkepaladaerah')->name('admin.profildaerah.wakilkepaladaerah.update');
+        Route::get('profildaerah/wakilkepaladaerah/edit','edit_wakilkepaladaerah')->name('admin.profildaerah.wakilkepaladaerah.edit')->middleware(['role:administrator']);
+        Route::put('profildaerah/wakilkepaladaerah/{id}','update_wakilkepaladaerah')->name('admin.profildaerah.wakilkepaladaerah.update')->middleware(['role:administrator']);
 
         // SEKRETARIS DAERAH
         Route::get('profildaerah/sekretarisdaerah','sekretarisdaerah')->name('admin.profildaerah.sekretarisdaerah');
-        Route::get('profildaerah/sekretarisdaerah/edit','edit_sekretarisdaerah')->name('admin.profildaerah.sekretarisdaerah.edit');
-        Route::put('profildaerah/sekretarisdaerah/{id}','update_sekretarisdaerah')->name('admin.profildaerah.sekretarisdaerah.update');
+        Route::get('profildaerah/sekretarisdaerah/edit','edit_sekretarisdaerah')->name('admin.profildaerah.sekretarisdaerah.edit')->middleware(['role:administrator']);
+        Route::put('profildaerah/sekretarisdaerah/{id}','update_sekretarisdaerah')->name('admin.profildaerah.sekretarisdaerah.update')->middleware(['role:administrator']);
 
     });
 
     // DPRD
     // Route::resource('/order', OrderController::class);
     Route::controller(DprdController::class)->group(function(){
-        Route::get('dprd','index')->name('admin.dprd');
-        Route::get('dprd/create','create')->name('admin.dprd.create');
-        Route::post('dprd','store')->name('admin.dprd.store');        
-        
-        Route::get('dprd/print','print')->name('admin.dprd.print');
-        
-        Route::get('dprd/{id}/edit','edit')->name('admin.dprd.edit');
+        Route::get('dprd','index')->name('admin.dprd')->middleware(['role:administrator']);
+        Route::get('dprd/create','create')->name('admin.dprd.create')->middleware(['role:administrator']);
+        Route::post('dprd','store')->name('admin.dprd.store')->middleware(['role:administrator']);
 
-        Route::get('dprd/show','show')->name('admin.dprd.show');
-        Route::get('dprd/delete/{id}','delete')->name('admin.dprd.delete');
-        
-        Route::put('dprd/{id}','update')->name('admin.dprd.update');
+        Route::get('dprd/print','print')->name('admin.dprd.print')->middleware(['role:administrator']);
 
-        Route::delete('dprd/{id}','destroy')->name('admin.dprd.destroy');
+        Route::get('dprd/{id}/edit','edit')->name('admin.dprd.edit')->middleware(['role:administrator']);
+
+        Route::get('dprd/show','show')->name('admin.dprd.show')->middleware(['role:administrator']);
+        Route::get('dprd/delete/{id}','delete')->name('admin.dprd.delete')->middleware(['role:administrator']);
+
+        Route::put('dprd/{id}','update')->name('admin.dprd.update')->middleware(['role:administrator']);
+
+        Route::delete('dprd/{id}','destroy')->name('admin.dprd.destroy')->middleware(['role:administrator']);
     });
 
     // DISTRIK
     Route::controller(DistrikController::class)->group(function(){
-        Route::get('distrik','index')->name('admin.distrik');
-        Route::get('distrik/create','create')->name('admin.distrik.create');
-        Route::post('distrik','store')->name('admin.distrik.store');   
-        
-        Route::get('distrik/print','print')->name('admin.distrik.print');
+        Route::get('distrik','index')->name('admin.distrik')->middleware(['role:administrator']);
+        Route::get('distrik/create','create')->name('admin.distrik.create')->middleware(['role:administrator']);
+        Route::post('distrik','store')->name('admin.distrik.store')->middleware(['role:administrator']);
 
-        Route::get('distrik/{id}/edit','edit')->name('admin.distrik.edit');
-        Route::get('distrik/show','show')->name('admin.distrik.show');
-        
-        Route::get('distrik/delete/{id}','delete')->name('admin.distrik.delete');
-        Route::put('distrik/{id}','update')->name('admin.distrik.update');
+        Route::get('distrik/print','print')->name('admin.distrik.print')->middleware(['role:administrator']);
 
-        Route::delete('distrik/{id}','destroy')->name('admin.distrik.destroy');
+        Route::get('distrik/{id}/edit','edit')->name('admin.distrik.edit')->middleware(['role:administrator']);
+        Route::get('distrik/show','show')->name('admin.distrik.show')->middleware(['role:administrator']);
+
+        Route::get('distrik/delete/{id}','delete')->name('admin.distrik.delete')->middleware(['role:administrator']);
+        Route::put('distrik/{id}','update')->name('admin.distrik.update')->middleware(['role:administrator']);
+
+        Route::delete('distrik/{id}','destroy')->name('admin.distrik.destroy')->middleware(['role:administrator']);
     });
 
     // DESA
     Route::controller(DesaController::class)->group(function(){
-        Route::get('desa','index')->name('admin.desa');
-        Route::get('desa/create','create')->name('admin.desa.create');
-        Route::post('desa','store')->name('admin.desa.store');
-        
-        Route::get('desa/print','print')->name('admin.desa.print');
+        Route::get('desa','index')->name('admin.desa')->middleware(['role:administrator']);
+        Route::get('desa/create','create')->name('admin.desa.create')->middleware(['role:administrator']);
+        Route::post('desa','store')->name('admin.desa.store')->middleware(['role:administrator']);
 
-        Route::get('desa/{id}/edit','edit')->name('admin.desa.edit');
-        Route::get('desa/show','show')->name('admin.desa.show');
-        Route::get('desa/delete/{id}','delete')->name('admin.desa.delete');
-        Route::put('desa/{id}','update')->name('admin.desa.update');
+        Route::get('desa/print','print')->name('admin.desa.print')->middleware(['role:administrator']);
 
-        Route::delete('desa/{id}','destroy')->name('admin.desa.destroy');
+        Route::get('desa/{id}/edit','edit')->name('admin.desa.edit')->middleware(['role:administrator']);
+        Route::get('desa/show','show')->name('admin.desa.show')->middleware(['role:administrator']);
+        Route::get('desa/delete/{id}','delete')->name('admin.desa.delete')->middleware(['role:administrator']);
+        Route::put('desa/{id}','update')->name('admin.desa.update')->middleware(['role:administrator']);
+
+        Route::delete('desa/{id}','destroy')->name('admin.desa.destroy')->middleware(['role:administrator']);
     });
 
     // PERANGKAT DAERAH
     Route::controller(PerangkatDaerahController::class)->group(function(){
         Route::get('lppd/perangkatdaerah','index')->name('admin.perangkatdaerah');
         Route::get('lppd/perangkatdaerah/create','create')->name('admin.perangkatdaerah.create');
-        
+
         Route::post('perangkatdaerah','store')->name('admin.perangkatdaerah.store');
         Route::get('perangkatdaerah/{id}/edit','edit')->name('admin.perangkatdaerah.edit');
         Route::get('perangkatdaerah/show','show')->name('admin.perangkatdaerah.show');
@@ -137,17 +137,17 @@ Route::prefix('admin')->middleware('auth')->group(function () {
 
     // PELAPORAN
     Route::controller(MonitoringController::class)->group(function(){
-        Route::get('lppd/monitoring','index')->name('admin.monitoring');
+        Route::get('lppd/monitoring','index')->name('admin.monitoring')->middleware(['role:administrator']);
     });
 
     // MONITORING
     Route::controller(PelaporanController::class)->group(function(){
-        Route::get('lppd/pelaporan','index')->name('admin.pelaporan');
+        Route::get('lppd/pelaporan','index')->name('admin.pelaporan')->middleware(['role:administrator']);
 
-        Route::get('lppd/pelaporan/2021','index2021')->name('admin.pelaporan.2021');
-        Route::get('lppd/pelaporan/2021/cover','index2021_cover')->name('admin.pelaporan.2021.cover');
-        
-        Route::get('lppd/pelaporan/edit/2021','edit2021')->name('admin.lppd.pelaporan.edit2021');
+        Route::get('lppd/pelaporan/2021','index2021')->name('admin.pelaporan.2021')->middleware(['role:administrator']);
+        Route::get('lppd/pelaporan/2021/cover','index2021_cover')->name('admin.pelaporan.2021.cover')->middleware(['role:administrator']);
+
+        Route::get('lppd/pelaporan/edit/2021','edit2021')->name('admin.lppd.pelaporan.edit2021')->middleware(['role:administrator']);
     });
 
     // IKK
@@ -156,7 +156,7 @@ Route::prefix('admin')->middleware('auth')->group(function () {
 
         Route::get('ikk/create','create')->name('admin.ikk.create');
         Route::post('ikk','store')->name('admin.ikk.store');
-        
+
         Route::get('ikk/print','print')->name('admin.ikk.print');
 
         Route::get('ikk/pendidikan','pendidikan')->name('admin.ikk.pendidikan');
@@ -168,17 +168,17 @@ Route::prefix('admin')->middleware('auth')->group(function () {
 
         Route::get('ikk/{id}/edit','edit')->name('admin.ikk.edit');
         Route::put('ikk/{id}','update')->name('admin.ikk.update');
-        
-        Route::get('ikk/delete/{id}','delete')->name('admin.ikk.delete');
-        Route::delete('ikk/{id}','destroy')->name('admin.ikk.destroy');
+
+        Route::get('ikk/delete/{id}','delete')->name('admin.ikk.delete')->middleware(['role:administrator']);
+        Route::delete('ikk/{id}','destroy')->name('admin.ikk.destroy')->middleware(['role:administrator']);
     });
 
 
     // PENGATURAN
     Route::controller(PengaturanController::class)->group(function(){
-        Route::get('pengaturan','index')->name('admin.pengaturan');
-        Route::get('pengaturan/ubah','edit')->name('admin.pengaturan.ubah');
-        Route::put('pengaturan/{id}','update')->name('admin.pengaturan.update');
+        Route::get('pengaturan','index')->name('admin.pengaturan')->middleware(['role:administrator']);;
+        Route::get('pengaturan/ubah','edit')->name('admin.pengaturan.ubah')->middleware(['role:administrator']);;
+        Route::put('pengaturan/{id}','update')->name('admin.pengaturan.update')->middleware(['role:administrator']);;
     });
 
 

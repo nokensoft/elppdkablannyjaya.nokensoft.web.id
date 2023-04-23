@@ -1,7 +1,7 @@
 <?php
-    
+
 namespace App\Http\Controllers;
-    
+
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\User;
@@ -9,6 +9,9 @@ use Spatie\Permission\Models\Role;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
+use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Str;
 
 class UserController extends Controller
 {
@@ -19,11 +22,10 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
-        $data = User::orderBy('id','DESC')->paginate(5);
-        return view('admin.users.index',compact('data'))
-            ->with('i', ($request->input('page', 1) - 1) * 5);
+        $datas = User::orderBy('id','Desc')->paginate(3);
+        return view('admin.users.index',compact('datas'));
     }
-    
+
     /**
      * Show the form for creating a new resource.
      *
@@ -31,10 +33,10 @@ class UserController extends Controller
      */
     public function create()
     {
-        $roles = Role::pluck('name','name')->all();
+        $roles = Role::where('name','administrator')->get();
         return view('admin.users.create',compact('roles'));
     }
-    
+
     /**
      * Store a newly created resource in storage.
      *
@@ -43,23 +45,35 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'name' => 'required',
-            'email' => 'required|email|unique:users,email',
-            'password' => 'required|same:confirm-password',
-            'roles' => 'required'
-        ]);
-    
-        $input = $request->all();
-        $input['password'] = Hash::make($input['password']);
-    
-        $user = User::create($input);
-        $user->assignRole($request->input('roles'));
-    
-        return redirect()->route('admin.users.index')
-                        ->with('success','User created successfully');
+        $validator = Validator::make($request->all(),
+            [
+                'name' => 'required',
+                'email' => 'required|email|unique:users,email',
+                'password' => 'required|same:confirm-password',
+                'role_id' => 'required',
+            ]);
+
+        if ($validator->fails() ) {
+            return redirect()->back()->withInput($request->all())->withErrors($validator);
+        } else {
+            try {
+                $account = new User();
+                $account->name = $request->name;
+                $account->email = $request->email;
+                $account->password = bcrypt($request->password);
+                $account->slug = Str::slug($request->name);
+                $account->save();
+                $account->assignRole($request->role_id);
+                Alert::toast('Pengguna Berhasil dibuat!', 'success');
+                return redirect()->route('pengguna.index');
+            } catch (\Throwable $th) {
+                Alert::toast('Gagal', 'error');
+                return redirect()->back();
+            }
+        }
+
     }
-    
+
     /**
      * Display the specified resource.
      *
@@ -68,10 +82,10 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        $user = User::find($id);
+        $user = User::where('slug',$id)->first();
         return view('admin.users.show',compact('user'));
     }
-    
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -80,13 +94,11 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $user = User::find($id);
-        $roles = Role::pluck('name','name')->all();
-        $userRole = $user->roles->pluck('name','name')->all();
-    
-        return view('admin.users.edit',compact('user','roles','userRole'));
+        $user = User::where('slug',$id)->first();
+        $roles = Role::where('name','administrator')->get();
+        return view('admin.users.edit',compact('user','roles'));
     }
-    
+
     /**
      * Update the specified resource in storage.
      *
@@ -96,30 +108,37 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request, [
+        $validator = Validator::make($request->all(),
+        [
             'name' => 'required',
             'email' => 'required|email|unique:users,email,'.$id,
             'password' => 'same:confirm-password',
-            'roles' => 'required'
+            'role_id' => 'required',
         ]);
-    
-        $input = $request->all();
-        if(!empty($input['password'])){ 
-            $input['password'] = Hash::make($input['password']);
-        }else{
-            $input = Arr::except($input,array('password'));    
+
+    if ($validator->fails() ) {
+        return redirect()->back()->withInput($request->all())->withErrors($validator);
+    } else {
+        try {
+            $account = User::find($id);
+            $account->name = $request->name;
+            $account->email = $request->email;
+            $account->slug = Str::slug($request->name);
+            if ($request->password) {
+                $account->password = Hash::make($request->password);
+            }
+            $account->update();
+            $account->syncRoles(explode(',', $request->role_id));
+            Alert::toast('Pengguna Berhasil diperbarui!', 'success');
+            return redirect()->route('pengguna.index');
+        } catch (\Throwable $th) {
+            dd($th);
+            Alert::toast('Failed', 'error');
+            return redirect()->back();
         }
-    
-        $user = User::find($id);
-        $user->update($input);
-        DB::table('model_has_roles')->where('model_id',$id)->delete();
-    
-        $user->assignRole($request->input('roles'));
-    
-        return redirect()->route('admin.users.index')
-                        ->with('success','User updated successfully');
     }
-    
+    }
+
     /**
      * Remove the specified resource from storage.
      *
@@ -129,7 +148,13 @@ class UserController extends Controller
     public function destroy($id)
     {
         User::find($id)->delete();
-        return redirect()->route('admin.users.index')
-                        ->with('success','User deleted successfully');
+        Alert::toast('Pengguna Berhasil dihapus!', 'success');
+        return redirect()->route('pengguna.index');
+    }
+
+    public function delete($id)
+    {
+        $data = User::where('slug',$id)->first();
+        return view('admin.users.delete',compact('data'));
     }
 }

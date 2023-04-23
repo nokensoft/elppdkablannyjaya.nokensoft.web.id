@@ -15,13 +15,14 @@ class PerangkatDaerahSeeder extends Seeder
      */
     public function run()
     {
-        
+
         PerangkatDaerah::insert([
             'nama_organisasi'       => 'Dinas Pendidikan dan Kebudayaan',
             'urusan'                => 'Pendidikan',
             'rumpun'                => 'Pendidikan',
             'alamat'                => 'Tiom, Lanny Jaya',
             'foto'                  => 'assets/images/image1.png',
+            'user_id'               => 2
         ]);
 
         PerangkatDaerah::insert([
@@ -30,7 +31,7 @@ class PerangkatDaerahSeeder extends Seeder
             'rumpun'                => 'Kesehatan',
             'alamat'                => 'Tiom, Lanny Jaya',
             'foto'                  => 'assets/images/image2.png',
-            'user_id'               => 1
+            'user_id'               => 2
         ]);
 
         PerangkatDaerah::insert([
@@ -39,7 +40,7 @@ class PerangkatDaerahSeeder extends Seeder
             'rumpun'                => 'Pekerjaan Umum',
             'alamat'                => 'Tiom, Lanny Jaya',
             'foto'                  => 'assets/images/image3.png',
-            'user_id'               => 2
+            'user_id'               => 3
         ]);
 
         PerangkatDaerah::insert([
@@ -48,7 +49,7 @@ class PerangkatDaerahSeeder extends Seeder
             'rumpun'                => 'Perumahan',
             'alamat'                => 'Tiom, Lanny Jaya',
             'foto'                  => 'assets/images/image4.png',
-            'user_id'               => '3'
+
         ]);
 
     }
