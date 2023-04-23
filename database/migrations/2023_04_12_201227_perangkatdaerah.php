@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('profil_perangkatdaerah', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('user_id')->unsigned()->nullable();
             $table->string('nama_organisasi');
             $table->string('urusan')->nullable();
             $table->string('rumpun')->nullable();
@@ -23,10 +24,11 @@ return new class extends Migration
             $table->string('nama_pimpinan')->nullable();
             $table->string('jumlah_pegawai')->nullable();
             $table->string('status')->nullable();
+
             $table->string('foto')->nullable();
-            
-            $table->string('slug')->nullable();
+            // $table->string('slug')->nullable();
             $table->timestamps();
+            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

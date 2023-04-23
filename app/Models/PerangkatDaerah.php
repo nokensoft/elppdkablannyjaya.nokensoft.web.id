@@ -9,5 +9,10 @@ class PerangkatDaerah extends Model
 {
     use HasFactory;
     protected $table = 'profil_perangkatdaerah';
-    protected $guarded  = ['id'];
+    protected $guarded  = [];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'id');
+    }
 }

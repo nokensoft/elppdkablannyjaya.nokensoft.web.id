@@ -20,10 +20,10 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             RoleUserSeeder::class,
+            PerangkatDaerahSeeder::class,
             IkkSeeder::class,
             DistrikSeeder::class,
             DesaSeeder::class,
-            PerangkatDaerahSeeder::class,
             PelaporanSeeder::class,
             DprdSeeder::class,
             PengaturanSeeder::class,
