@@ -7,8 +7,8 @@
                     <div class="page-title-right">
                         <ol class="breadcrumb m-0">
                             <li class="breadcrumb-item"><a href="{{asset('admin/beranda')}}">Beranda</a></li>
-                            <li class="breadcrumb-item"><a href="{{asset('admin/profil')}}">Profil</a></li>
-                            <li class="breadcrumb-item active">Perangkat Daerah</li>
+                            <li class="breadcrumb-item"><a href="{{asset('admin/lppd/perangkatdaerah')}}">Perangkat Daerah</a></li>
+                            <li class="breadcrumb-item active">Edit</li>
                         </ol>
                     </div>
                 </div>
@@ -27,31 +27,78 @@
                             <!-- .col start -->
                             <div class="col-lg-6  mx-auto border border-4 border-info rounded shadow-lg p-5 my-5">
 
-                                <h1 class="fw-bold">Ubah Perangkat Daerah</h1>
+                                <h3 class="fw-bold">Perbarui Perangkat Daerah</h3>
+                                <br>
+                                <form action="{{route('admin.perangkatdaerah.update',$data->id)}}" method="POST" enctype="multipart/form-data">
+                                    @csrf
+                                    @method('put')
 
-                                <form action="{{asset('admin/profil/pemerintah-daerah')}}" method="">
 
                                     <div class="mb-3 fs-4">
-                                        <label for="nama_organisasi" class="fw-bold">Nama Organisasi</label>
-                                        <input type="text" id="nama_organisasi" name="nama_organisasi" class="form-control form-control-lg" value="{{ $data->nama_organisasi }}">
+                                        <label for="" class="fw-bold">Nama Organisasi</label>
+                                        <input type="text" class="form-control form-control-lg" placeholder="Nama Instansi atau Organisasi"
+                                        value="{{ old('nama_organisasi',$data->nama_organisasi)}}"  name="nama_organisasi">
+                                        @if($errors->has('nama_organisasi'))
+                                            <label class="text-danger"> {{ $errors->first('nama_organisasi') }} </label>
+                                        @endif
                                     </div>
 
                                     <div class="mb-3 fs-4">
-                                        <label for="urusan" class="fw-bold">Urusan</label>
-                                        <input type="text" id="urusan" name="urusan" class="form-control form-control-lg" value="">
+                                        <label for="" class="fw-bold">Urusan</label>
+                                        <input type="text" class="form-control form-control-lg" placeholder="Urusan"
+                                        value="{{ old('urusan',$data->urusan)}}"  name="urusan">
+                                        @if($errors->has('urusan'))
+                                            <label class="text-danger"> {{ $errors->first('urusan') }} </label>
+                                        @endif
+                                    </div>
+
+                                    <div class="mb-3 fs-4">
+                                        <label for="" class="fw-bold">Rumpun</label>
+                                        <input type="text" class="form-control form-control-lg" placeholder="Rumpun"
+                                        value="{{ old('rumpun',$data->rumpun)}}"  name="rumpun">
+                                        @if($errors->has('rumpun'))
+                                            <label class="text-danger"> {{ $errors->first('rumpun') }} </label>
+                                        @endif
+                                    </div>
+
+                                    <div class="mb-3 fs-4">
+                                        <label for="" class="fw-bold">Alamat</label>
+                                        <textarea name="alamat" id="" rows="5" class="form-control form-control-lg" placeholder="Alamat Kantor">{{ old('alamat',$data->alamat)}}</textarea>
+                                        @if($errors->has('alamat'))
+                                            <label class="text-danger"> {{ $errors->first('alamat') }} </label>
+                                        @endif
+                                    </div>
+
+
+                                    <div class="mb-3 fs-4">
+                                        <label for="" class="fw-bold">Nama Pimpinan</label>
+                                        <input type="text" class="form-control form-control-lg" placeholder="Nama Pimpinan Dinas"
+                                        value="{{ old('nama_pimpinan',$data->nama_pimpinan)}}"  name="nama_pimpinan">
+                                        @if($errors->has('nama_pimpinan'))
+                                            <label class="text-danger"> {{ $errors->first('nama_pimpinan') }} </label>
+                                        @endif
+                                    </div>
+
+                                    <div class="mb-3 fs-4">
+                                        <label for="" class="fw-bold">Jumlah Pegawai</label>
+                                        <input type="text" class="form-control form-control-lg" placeholder="Jumlah Pegawai"
+                                        value="{{ old('jumlah_pegawai',$data->jumlah_pegawai)}}"  name="jumlah_pegawai">
+                                        @if($errors->has('jumlah_pegawai'))
+                                            <label class="text-danger"> {{ $errors->first('jumlah_pegawai') }} </label>
+                                        @endif
                                     </div>
 
                                     <div class="border-top border-1 pt-3 mt-4">
                                         <button type="submit" class="btn btn-info waves-effect waves-light fs-4">
                                             <i class="fas fa-save me-1"></i> Simpan
                                         </button>
-                                        <a href="{{ URL::previous() }}" class="btn btn-outline-light waves-effect waves-light fs-4">
+                                        <a href="{{URL::previous()}}" class="btn btn-outline-light waves-effect waves-light fs-4">
                                             <i class="fas fa-arrow-left me-1"></i> Kembali
                                         </a>
                                     </div>
 
                                 </form>
-                                
+
                             </div>
                             <!-- .col end -->
 
@@ -63,7 +110,7 @@
             </div>
         </div>
         <!-- end row -->
-                        
+
 
   <!--end wrapper-->
 
@@ -83,5 +130,5 @@
     <script src="{{ asset('assets/admin/assets/js/pages/jquery.todo.js')}}"></script>
 
     <!-- Dashboard init JS -->
-    <script src="{{ asset('assets/admin/assets/js/pages/dashboard-3.init.js')}}"></script>  
+    <script src="{{ asset('assets/admin/assets/js/pages/dashboard-3.init.js')}}"></script>
   @endpush

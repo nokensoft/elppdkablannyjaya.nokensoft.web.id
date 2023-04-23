@@ -7,8 +7,8 @@
                     <div class="page-title-right">
                         <ol class="breadcrumb m-0">
                             <li class="breadcrumb-item"><a href="{{asset('admin/beranda')}}">Beranda</a></li>
-                            <li class="breadcrumb-item"><a href="{{asset('admin/profil')}}">Profil</a></li>
-                            <li class="breadcrumb-item active">Perangkat Daerah</li>
+                            <li class="breadcrumb-item"><a href="{{asset('admin/lppd/perangkatdaerah')}}">Perangkat Daerah</a></li>
+                            <li class="breadcrumb-item active">Tambah</li>
                         </ol>
                     </div>
                 </div>
@@ -27,14 +27,56 @@
                             <!-- .col start -->
                             <div class="col-lg-6  mx-auto border border-4 border-info rounded shadow-lg p-5 my-5">
 
-                                <h1 class="fw-bold">Tambah Perangkat Daerah</h1>
+                                <h3 class="fw-bold">Tambah Perangkat Daerah</h3>
 
                                 <form action="{{route('admin.perangkatdaerah.store')}}" method="POST" enctype="multipart/form-data">
                                     @csrf
 
+                                    <div class="mb-2 fs-4">
+                                        <label for="" class="fw-bold">Peran Pengguna</label>
+                                        <select id="role_id" name="role_id" class="form-control">
+                                            @foreach ($roles as $role )
+                                                @if($role->name == 'administrator')
+                                                 @else
+                                                 <option value="{{ $role->id }}">{{ $role->display_name }}</option>
+                                                @endif
+                                            @endforeach
+                                        </select>
+                                        @if($errors->has('role_id'))
+                                            <label class="text-danger"> {{ $errors->first('role_id') }} </label>
+                                        @endif
+                                    </div>
+                                    <div class="mb-2 fs-4">
+                                        <label for="" class="fw-bold">Nama Pengguna</label>
+                                        <input type="text" class="form-control form-control-lg" placeholder="Nama Pengguna"
+                                        value="{{ old('name')}}"  name="name">
+                                        @if($errors->has('name'))
+                                            <label class="text-danger"> {{ $errors->first('name') }} </label>
+                                        @endif
+                                    </div>
+                                    <div class="mb-3 fs-4">
+                                        <label for="" class="fw-bold">Email Pengguna</label>
+                                        <input type="text" class="form-control form-control-lg" placeholder="Email Pengguna"
+                                        value="{{ old('email')}}"  name="email">
+                                        @if($errors->has('email'))
+                                            <label class="text-danger"> {{ $errors->first('email') }} </label>
+                                        @endif
+                                    </div>
+                                    <div class="mb-3 fs-4">
+                                        <label for="" class="fw-bold">Kata Sandi</label>
+                                        {!! Form::password('password',['id'=>'password','class'=>'form-control','placeholder'=>'Kata sandi pengguna']) !!}
+                                    </div>
+                                    <div class="mb-3 fs-4">
+                                        <label for="" class="fw-bold">Konfirmasi Kata Sandi</label>
+                                        {!! Form::password('confirm-password',['id'=>'confirm-password','class'=>'form-control','placeholder'=>'Konfirmasi kata sandi pengguna']) !!}
+                                    </div>
+
+                                    <div class="border-top border-1 pt-3 mt-4"></div>
+
                                     <div class="mb-3 fs-4">
                                         <label for="" class="fw-bold">Nama Organisasi</label>
-                                        <input type="text" class="form-control form-control-lg" value="{{ old('nama_organisasi')}}"  name="nama_organisasi">
+                                        <input type="text" class="form-control form-control-lg" placeholder="Nama Instansi atau Organisasi"
+                                        value="{{ old('nama_organisasi')}}"  name="nama_organisasi">
                                         @if($errors->has('nama_organisasi'))
                                             <label class="text-danger"> {{ $errors->first('nama_organisasi') }} </label>
                                         @endif
@@ -42,7 +84,8 @@
 
                                     <div class="mb-3 fs-4">
                                         <label for="" class="fw-bold">Urusan</label>
-                                        <input type="text" class="form-control form-control-lg" value="{{ old('urusan')}}"  name="urusan">
+                                        <input type="text" class="form-control form-control-lg" placeholder="Urusan"
+                                        value="{{ old('urusan')}}"  name="urusan">
                                         @if($errors->has('urusan'))
                                             <label class="text-danger"> {{ $errors->first('urusan') }} </label>
                                         @endif
@@ -50,7 +93,8 @@
 
                                     <div class="mb-3 fs-4">
                                         <label for="" class="fw-bold">Rumpun</label>
-                                        <input type="text" class="form-control form-control-lg" value="{{ old('rumpun')}}"  name="rumpun">
+                                        <input type="text" class="form-control form-control-lg" placeholder="Rumpun"
+                                        value="{{ old('rumpun')}}"  name="rumpun">
                                         @if($errors->has('rumpun'))
                                             <label class="text-danger"> {{ $errors->first('rumpun') }} </label>
                                         @endif
@@ -58,24 +102,26 @@
 
                                     <div class="mb-3 fs-4">
                                         <label for="" class="fw-bold">Alamat</label>
-                                        <textarea name="alamat" id="" rows="5" class="form-control form-control-lg">{{ old('alamat')}}</textarea>
+                                        <textarea name="alamat" id="" rows="5" class="form-control form-control-lg" placeholder="Alamat Kantor">{{ old('alamat')}}</textarea>
                                         @if($errors->has('alamat'))
                                             <label class="text-danger"> {{ $errors->first('alamat') }} </label>
                                         @endif
                                     </div>
-                                    
+
 
                                     <div class="mb-3 fs-4">
                                         <label for="" class="fw-bold">Nama Pimpinan</label>
-                                        <input type="text" class="form-control form-control-lg" value="{{ old('nama_pegawai')}}"  name="nama_pegawai">
-                                        @if($errors->has('nama_pegawai'))
-                                            <label class="text-danger"> {{ $errors->first('nama_pegawai') }} </label>
+                                        <input type="text" class="form-control form-control-lg" placeholder="Nama Pimpinan Dinas"
+                                        value="{{ old('nama_pimpinan')}}"  name="nama_pimpinan">
+                                        @if($errors->has('nama_pimpinan'))
+                                            <label class="text-danger"> {{ $errors->first('nama_pimpinan') }} </label>
                                         @endif
-                                    </div>                                    
+                                    </div>
 
                                     <div class="mb-3 fs-4">
                                         <label for="" class="fw-bold">Jumlah Pegawai</label>
-                                        <input type="text" class="form-control form-control-lg" value="{{ old('jumlah_pegawai')}}"  name="jumlah_pegawai">
+                                        <input type="text" class="form-control form-control-lg" placeholder="Jumlah Pegawai"
+                                        value="{{ old('jumlah_pegawai')}}"  name="jumlah_pegawai">
                                         @if($errors->has('jumlah_pegawai'))
                                             <label class="text-danger"> {{ $errors->first('jumlah_pegawai') }} </label>
                                         @endif

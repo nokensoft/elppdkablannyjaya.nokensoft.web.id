@@ -11,18 +11,18 @@
         <!-- App favicon -->
 
         <meta name="csrf-token" content="{{ csrf_token() }}">
-       
+
         @include('admin.includes.header')
-    </head> 
+    </head>
 
     <!-- body start -->
     <body data-layout-mode="detached" data-layout='{"mode": "light", "width": "fluid", "menuPosition": "fixed", "sidebar": { "color": "light", "size": "default", "showuser": true}, "topbar": {"color": "dark"}, "showRightSidebarOnPageLoad": true}'>
 
-@include('sweetalert::alert')
+
         <!-- Begin page -->
         <div id="wrapper">
 
-            
+
         @include('admin.includes.header-nav')
 
             @include('admin.includes.sidebar')
@@ -37,11 +37,11 @@
 
                     <!-- Start Content-->
                     <div class="container-fluid">
-                        
+
                         <!-- start page title -->
-                        @yield('content')  
-                        <!-- end page title --> 
-                        
+                        @yield('content')
+                        <!-- end page title -->
+
                     </div> <!-- container -->
 
                 </div> <!-- content -->
@@ -51,7 +51,7 @@
                     <div class="container-fluid">
                         <div class="row text-uppercase">
                             <div class="col-md-6">
-                                <script>document.write(new Date().getFullYear())</script> &copy; <a href="#" class="link-secondary">Sistem Informasi Laporan Penyelenggaraan Pemerintah Daerah, Kabupaten Lanny Jaya. </a> 
+                                <script>document.write(new Date().getFullYear())</script> &copy; <a href="#" class="link-secondary">Sistem Informasi Laporan Penyelenggaraan Pemerintah Daerah, Kabupaten Lanny Jaya. </a>
                             </div>
                             <div class="col-md-6 text-end">
                                 <span class="bg-outline-light">Versi 1.0</span>
@@ -71,8 +71,9 @@
         </div>
         <!-- END wrapper -->
 
+        @include('sweetalert::alert')
         @include('admin.includes.footer')
 
-        
+
     </body>
 </html>

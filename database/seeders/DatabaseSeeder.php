@@ -4,23 +4,19 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\User;
 use App\Models\Ikk;
 use App\Models\Distrik;
 use App\Models\Desa;
-use App\Models\PerangkatDaerah;
-use App\Models\Pelaporan;
-use App\Models\Dprd;
-use App\Models\Pengaturan;
 
 class DatabaseSeeder extends Seeder
 {
     public function run()
     {
 
+        $this->call(RoleUserSeeder::class);
+        $this->call(PerangkatDaerahSeeder::class);
+
         $this->call([
-            RoleUserSeeder::class,
-            PerangkatDaerahSeeder::class,
             IkkSeeder::class,
             DistrikSeeder::class,
             DesaSeeder::class,
@@ -29,6 +25,8 @@ class DatabaseSeeder extends Seeder
             PengaturanSeeder::class,
             ProfilDaerahSeeder::class,
         ]);
+
+
 
         // \App\Models\User::factory(10)->create();
 

@@ -52,12 +52,12 @@
                                                 <td>{{$data->nama_organisasi}}</td>
                                                 <td>{{$data->urusan}}</td>
                                                 <td>{{$data->rumpun}}</td>
-                                                <td>{{$data->tipe_kantor}}</td>
+                                                <td>{{$data->user->name ?? ''}}</td>
                                                 <td>{{$data->alamat}}</td>
                                                 <td>{{$data->nama_pimpinan}}</td>
                                                 <td>{{$data->jumlah_pegawai}}</td>
                                                 <td>
-                                                    @if ($data->foto == null)
+                                                    @if (!$data->foto)
                                                         <img src="{{asset('assets/images/1.jpg')}}" alt="Logo" width="150px" class="img-thumbnail">
                                                     @else
                                                      <img src="{{ url($data->foto)}}" alt="{{asset($data->foto)}}" class="img-fluid img-thumbnail" width="150px"></td>
@@ -66,18 +66,18 @@
                                                 <td class="d-flex justify-content-between gap-1">
                                                     <a href="{{route('admin.perangkatdaerah.show',$data->id)}}" class="btn btn-sm btn-dark border-0  waves-effect waves-light fs-4"> <i class="fas fa-eye"></i> </a>
                                                     <a href="{{route('admin.perangkatdaerah.edit',$data->id)}}" class="btn btn-sm btn-outline-dark border-0 waves-effect waves-light fs-4"> <i class="fas fa-edit"></i> </a>
-                                                    <a href="{{route('admin.perangkatdaerah.delete',$data->id)}}" class="btn btn-sm btn-outline-dark border-0 waves-effect waves-light fs-4"> <i class="fas fa-trash"></i> </a>                                                  
+                                                    <a href="{{route('admin.perangkatdaerah.delete',$data->id)}}" class="btn btn-sm btn-outline-dark border-0 waves-effect waves-light fs-4"> <i class="fas fa-trash"></i> </a>
                                                 </td>
                                             </tr>
                                         @endforeach
                                     </tbody>
                                 </table>
-                                
+
                             </div>
                             <!-- .col end -->
 
                         </div>
-                        <!-- .row end -->                        
+                        <!-- .row end -->
 
                         <!--pagination start-->
                         <div class="row">
@@ -92,12 +92,12 @@
             </div>
         </div>
         <!-- end row -->
-                        
+
 
   <!--end wrapper-->
 
   @stop
 
   @push('script-footer')
-  
+
   @endpush

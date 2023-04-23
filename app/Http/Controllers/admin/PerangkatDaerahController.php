@@ -4,109 +4,146 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\PerangkatDaerah;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-use Image;
-use Alert;
-use Storage;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
+use RealRashid\SweetAlert\Facades\Alert;
+use Spatie\Permission\Models\Role;
 
 class PerangkatDaerahController extends Controller
 {
     // INDEX
     public function index()
     {
-        $datas = PerangkatDaerah::orderBy('nama_organisasi','asc')->paginate(2);
+        $datas = PerangkatDaerah::orderBy('id','Desc')->paginate(2);
         return view('admin.pages.lppd.perangkatdaerah.index', ['datas' => $datas]);
     }
 
     // CREATE
     public function create()
     {
-        return view('admin.pages.lppd.perangkatdaerah.tambah');
+        $roles = Role::all();
+        return view('admin.pages.lppd.perangkatdaerah.tambah',compact('roles'));
     }
 
     // STORE
     public function store(Request $request)
     {
-        $request->validate([
-            'nama_organisasi' => 'required'
-        ],
+        $validator = Validator::make($request->all(),
         [
-            'nama_organisasi.required' => 'Nama tidak boleh kosong',
-        ]);
+            'name' => 'required',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|same:confirm-password',
+            'role_id' => 'required',
 
-        // $tahun = date("Y");
-        // $bulan = date("M");
+            'nama_organisasi' => 'required|unique:perangkat_daerahs'
+        ],[
+            'name.required' => 'Nama pengguna tidak boleh kosong',
+            'email.required' => 'Email pengguna tidak boleh kosong',
+            'email.unique' => 'Email ini telah digunakan',
+            'password.required' => 'Nama pengguna tidak boleh kosong',
+            'role_id.required' => 'Peran pengguna tidak boleh kosong',
 
-        // $filename  = 'profil-perangkatdaerah'.'-'.date('Y-m-d-H-i-s').$request->file('foto')->getClientOriginalName();
+            'nama_organisasi.required' => 'Nama instansi/Organisasi tidak boleh kosong',
+            'nama_organisasi.unique' => 'Nama instansi/Organisasi sudah ada',
+        ]
+    );
 
-        // $request->file('foto')->storeAs('public/resource/admin/perangkatdaerah/'.$tahun.'/'.$bulan,$filename);
-        // $namafoto = ('storage/resource/admin/perangkatdaerah/'.$tahun.'/'.$bulan.'/'.$filename);
+    if ($validator->fails()) {
+        return redirect()->back()->withInput($request->all())->withErrors($validator);
+    } else {
+        try {
+            $akun = new User();
 
-        $perangkatdaerah = new perangkatdaerah();
+            $akun->name              = $request->name;
+            $akun->email             = $request->email;
+            $akun->password          = bcrypt($request->password);
+            $akun->slug              = Str::slug($request->name);
+            $akun->save();
+            $akun->assignRole($request->role_id);
 
-        $perangkatdaerah->nama_organisasi   = $request->nama_organisasi;
-        $perangkatdaerah->urusan            = $request->urusan;
-        $perangkatdaerah->rumpun            = $request->rumpun;
-        $perangkatdaerah->tipe_kantor       = $request->tipe_kantor;
-        $perangkatdaerah->alamat            = $request->alamat;
-        $perangkatdaerah->nama_pimpinan     = $request->nama_pimpinan;
-        $perangkatdaerah->jumlah_pegawai    = $request->jumlah_pegawai;
-        $perangkatdaerah->jumlah_pegawai    = $request->jumlah_pegawai;
-        $perangkatdaerah->status            = $request->status;
-        // $perangkatdaerah->foto              = $namafoto;
-        $perangkatdaerah->slug              =  Str::slug($request->nama_organisasi);
+            $perangkatdaerah = new perangkatdaerah();
 
-        $perangkatdaerah->save();
+            $perangkatdaerah->nama_organisasi   = $request->nama_organisasi;
+            $perangkatdaerah->urusan            = $request->urusan;
+            $perangkatdaerah->rumpun            = $request->rumpun;
+            $perangkatdaerah->tipe_kantor       = $request->tipe_kantor;
+            $perangkatdaerah->alamat            = $request->alamat;
+            $perangkatdaerah->nama_pimpinan     = $request->nama_pimpinan;
+            $perangkatdaerah->jumlah_pegawai    = $request->jumlah_pegawai;
+            $perangkatdaerah->status            = $request->status;
+            // $perangkatdaerah->foto              = $namafoto;
+            $perangkatdaerah->slug              =  Str::slug($request->nama_organisasi);
+            $akun->perangkatdaerahs()->save($perangkatdaerah);
 
-        alert()->success('Berhasil', 'Sukses!!')->autoclose(1100);
-        return redirect()->route('admin.perangkatdaerah');
+            alert()->success('Berhasil', 'Sukses!!')->autoclose(1100);
+            return redirect()->route('admin.perangkatdaerah');
+        } catch (\Throwable $th) {
+            Alert::toast('Gagal', 'error');
+            return redirect()->back();
+        }
+    }
+
+
 
     }
 
     // SHOW
-    public function show(perangkatdaerah $perangkatdaerah)
+    public function show($id)
     {
-        return view('admin.pages.lppd.perangkatdaerah.detail');
+        $data = PerangkatDaerah::where('id',$id)->first();
+        return view('admin.pages.lppd.perangkatdaerah.show',compact('data'));
     }
 
     // EDIT
     public function edit($id)
     {
-        $data = PerangkatDaerah::whereId($id)->first();
-        return view('admin.pages.lppd.perangkatdaerah.edit', compact('data'));
+        $data = PerangkatDaerah::where('id',$id)->first();
+        $roles = Role::all();
+        return view('admin.pages.lppd.perangkatdaerah.edit', compact('data','roles'));
     }
 
     // UPDATE
-    public function update(Request $request,$slug)
+    public function update(Request $request,$id)
     {
-         $request->validate([
-            'nama_organisasi' => 'required'
-        ],
+        $validator = Validator::make($request->all(),
         [
-            'nama_organisasi.required' => 'Nama tidak boleh kosong',
-        ]);
+            'nama_organisasi' => 'required|unique:perangkat_daerahs,nama_organisasi,'.$id,
+        ],[
+            'nama_organisasi.required' => 'Nama instansi/Organisasi tidak boleh kosong',
+            'nama_organisasi.unique' => 'Nama instansi/Organisasi sudah ada',
+        ]
+    );
 
-        $perangkatdaerah = new perangkatdaerah();
+    if ($validator->fails()) {
+        return redirect()->back()->withInput($request->all())->withErrors($validator);
+    } else{
+        try {
 
-        $data['nama_organisasi']    = $request->nama_organisasi;
-        $data['urusan']             = $request->urusan;
-        $data['rumpun']             = $request->rumpun;
-        $data['tipe_kantor']        = $request->tipe_kantor;
-        $data['alamat']             = $request->alamat;
-        $data['nama_pimpinan']      = $request->nama_pimpinan;
-        $data['jumlah_pegawai']     = $request->jumlah_pegawai;
-        $data['status']             = $request->status;
-
-        $user = DB::table('profil_perangkatdaerah')
-            ->where('id', $slug)
-            ->update($data);
-
-        alert()->success('Berhasil', 'Sukses!!')->autoclose(1100);
-        return redirect()->route('admin.perangkatdaerah');
-
+            $perangkatdaerah =  PerangkatDaerah::find($id);
+            $perangkatdaerah->nama_organisasi   = $request->nama_organisasi;
+            $perangkatdaerah->urusan            = $request->urusan;
+            $perangkatdaerah->rumpun            = $request->rumpun;
+            $perangkatdaerah->tipe_kantor       = $request->tipe_kantor;
+            $perangkatdaerah->alamat            = $request->alamat;
+            $perangkatdaerah->nama_pimpinan     = $request->nama_pimpinan;
+            $perangkatdaerah->jumlah_pegawai    = $request->jumlah_pegawai;
+            $perangkatdaerah->status            = $request->status;
+            // $perangkatdaerah->foto              = $namafoto;
+            $perangkatdaerah->slug              =  Str::slug($request->nama_organisasi);
+            $perangkatdaerah->update();
+            alert()->success('Berhasil', 'Sukses!!')->autoclose(1100);
+            return redirect()->route('admin.perangkatdaerah');
+        } catch (\Throwable $th) {
+            dd($th);
+            Alert::toast('Gagal', 'error');
+            return redirect()->back();
+        }
+    }
     }
 
     // DELETE

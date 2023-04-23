@@ -33,6 +33,7 @@
                                 <table class="table table-bordered fs-4">
                                     <thead class="bg-dark text-light">
                                         <tr>
+                                            <th>ID</th>
                                             <th>Foto</th>
                                             <th>Nama</th>
                                             <th>Email</th>
@@ -43,6 +44,7 @@
                                     <tbody>
                                         @foreach ($datas as $user )
                                             <tr>
+                                                <td>{{ $user->id }}</td>
                                                 <td>
                                                     @if (!$user->avatar)
                                                         <img src="{{asset('assets/images/1.jpg')}}" alt="Logo" width="80px" class="img-thumbnail">

@@ -31,7 +31,7 @@ class PerangkatDaerahSeeder extends Seeder
             'rumpun'                => 'Kesehatan',
             'alamat'                => 'Tiom, Lanny Jaya',
             'foto'                  => 'assets/images/image2.png',
-            'user_id'               => 2
+            'user_id'               => 3
         ]);
 
         PerangkatDaerah::insert([
@@ -40,17 +40,17 @@ class PerangkatDaerahSeeder extends Seeder
             'rumpun'                => 'Pekerjaan Umum',
             'alamat'                => 'Tiom, Lanny Jaya',
             'foto'                  => 'assets/images/image3.png',
-            'user_id'               => 3
+            'user_id'               => 4
         ]);
 
-        PerangkatDaerah::insert([
-            'nama_organisasi'       => 'Perumahan Rakyat',
-            'urusan'                => 'Perumahan',
-            'rumpun'                => 'Perumahan',
-            'alamat'                => 'Tiom, Lanny Jaya',
-            'foto'                  => 'assets/images/image4.png',
+        // PerangkatDaerah::insert([
+        //     'nama_organisasi'       => 'Perumahan Rakyat',
+        //     'urusan'                => 'Perumahan',
+        //     'rumpun'                => 'Perumahan',
+        //     'alamat'                => 'Tiom, Lanny Jaya',
+        //     'foto'                  => 'assets/images/image4.png',
 
-        ]);
+        // ]);
 
     }
 }

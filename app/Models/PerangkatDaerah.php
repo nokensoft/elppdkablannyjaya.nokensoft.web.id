@@ -8,11 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class PerangkatDaerah extends Model
 {
     use HasFactory;
-    protected $table = 'profil_perangkatdaerah';
-    protected $guarded  = [];
+    public $guarded = [];
 
     public function user()
     {
-        return $this->belongsTo(User::class, 'id');
+        return $this->hasOne(User::class,'id','user_id');
     }
 }

@@ -7,7 +7,7 @@
                     <div class="page-title-right">
                         <ol class="breadcrumb m-0">
                             <li class="breadcrumb-item"><a href="{{asset('admin/beranda')}}">Beranda</a></li>
-                            <li class="breadcrumb-item"><a href="{{route('pengguna.index')}}">Pengguna</a></li>
+                            <li class="breadcrumb-item"><a href="{{asset('admin/lppd/perangkatdaerah')}}">Perangkat Daerah</a></li>
                             <li class="breadcrumb-item active">Detail</li>
                         </ol>
                     </div>
@@ -26,37 +26,29 @@
 
                             <!-- .col start -->
                             <div class="col-lg-6  mx-auto border border-4 border-info rounded shadow-lg p-5 my-5">
-                                <h1 class="fw-bold">Detail Pengguna</h1>
-                                <br>
+
+                                <h3 class="fw-bold">Detail Perangkat Daerah</h3>
+
                                 <form>
-                                    <div class="mb-3 fs-4">
-                                        <label for="" class="fw-bold">Nama</label>
-                                        <input type="text" class="form-control form-control-lg" readonly
-                                        value="{{ old('name',$user->name)}}"  name="name">
-                                        @if($errors->has('name'))
-                                            <label class="text-danger"> {{ $errors->first('name') }} </label>
-                                        @endif
+
+                                    <div class="mb-2 fs-4">
+                                        <label for="" class="fw-bold">Nama Pengguna</label>
+                                        <input type="text" class="form-control form-control-lg"value="{{ $data->user->name ?? '' }}" >
                                     </div>
+                                    <div class="mb-3 fs-4">
+                                        <label for="" class="fw-bold">Email Pengguna</label>
+                                        <input type="text" class="form-control form-control-lg"value="{{ $data->user->email ?? '' }}" >
+                                    </div>
+                                    <div class="border-top border-1 pt-3 mt-4"></div>
 
                                     <div class="mb-3 fs-4">
-                                        <label for="" class="fw-bold">Email</label>
-                                        <input type="email" class="form-control form-control-lg" readonly
-                                        value="{{ old('email',$user->email)}}"  name="email">
-                                        @if($errors->has('email'))
-                                            <label class="text-danger"> {{ $errors->first('email') }} </label>
-                                        @endif
+                                        <label for="" class="fw-bold">Nama Organisasi</label>
+                                        <input type="text" class="form-control form-control-lg"value="{{ $data->nama_organisasi }}" >
                                     </div>
-                                    <div class="mb-3 fs-4">
-                                        <label for="" class="fw-bold">Peran</label>
-                                        <input type="email" class="form-control form-control-lg" readonly
-                                        value="{{ implode('',$user->roles()->pluck('display_name')->toArray()) }}"  readonly>
-                                    </div>
-
 
                                     <div class="border-top border-1 pt-3 mt-4">
-
-                                        <a href="{{ route('pengguna.edit',['pengguna' => $user->slug]) }}" class="btn btn-outline-light waves-effect waves-light fs-4">
-                                            <i class="fas fa-edit me-1"></i>Ubah
+                                        <a href="{{route('admin.perangkatdaerah.edit',$data->id)}}" class="btn btn-outline-light waves-effect waves-light fs-4">
+                                            <i class="fas fa-edit me-1"></i> Ubah
                                         </a>
                                         <a href="{{URL::previous()}}" class="btn btn-outline-light waves-effect waves-light fs-4">
                                             <i class="fas fa-arrow-left me-1"></i> Kembali

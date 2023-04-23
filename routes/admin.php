@@ -128,10 +128,10 @@ Route::prefix('admin')->middleware('auth')->group(function () {
         Route::get('lppd/perangkatdaerah/create','create')->name('admin.perangkatdaerah.create');
 
         Route::post('perangkatdaerah','store')->name('admin.perangkatdaerah.store');
-        Route::get('perangkatdaerah/{id}/edit','edit')->name('admin.perangkatdaerah.edit');
-        Route::get('perangkatdaerah/show','show')->name('admin.perangkatdaerah.show');
+        Route::get('perangkatdaerah/edit/{id}','edit')->name('admin.perangkatdaerah.edit');
+        Route::get('perangkatdaerah/show/{id}','show')->name('admin.perangkatdaerah.show');
         Route::get('perangkatdaerah/delete/{id}','delete')->name('admin.perangkatdaerah.delete');
-        Route::put('perangkatdaerah/{id}','update')->name('admin.perangkatdaerah.update');
+        Route::put('perangkatdaerah/update/{id}','update')->name('admin.perangkatdaerah.update');
         Route::delete('perangkatdaerah/{id}','destroy')->name('admin.perangkatdaerah.destroy');
     });
 
