@@ -184,7 +184,7 @@
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="{{asset('admin/ikk/pendidikan')}}">
                     <i class="fa fa-laptop"></i>
                     <span> IKK Pendidikan </span>
                 </a>
@@ -245,7 +245,7 @@
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="{{asset('admin/ikk/kesehatan')}}">
                     <i class="fa fa-laptop"></i>
                     <span> IKK Kesehatan </span>
                 </a>
@@ -305,7 +305,7 @@
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="{{asset('admin/ikk/pekerjaanumum')}}">
                     <i class="fa fa-laptop"></i>
                     <span> IKK Pekerjaan Umum </span>
                 </a>

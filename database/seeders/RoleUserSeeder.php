@@ -84,7 +84,7 @@ class RoleUserSeeder extends Seeder
             'password'          => bcrypt('dinaspu@lannyjayakab.go.id'),
             'avatar'            => 'assets/images/avatars/user3.png',
         ]);
-        $kesehatan->assignRole($bkesehatanRole);
+        $kesehatan->assignRole($bpekerjaanUmumRole);
 
     }
 }

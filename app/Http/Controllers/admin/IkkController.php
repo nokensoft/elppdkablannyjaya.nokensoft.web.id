@@ -28,13 +28,14 @@ class IkkController extends Controller
 
     public function kesehatan()
     {
-        $all = DB::select('SELECT * FROM ikk WHERE urusan="kesehatan" ORDER BY id DESC');
+        $all = DB::table('ikk')->get()->where('urusan', 'kesehatan');
         return view('admin.pages.ikk.makro.index', ['all' => $all, 'bidang_ikk' => 'kesehatan']);
     }
 
     public function pekerjaanumum()
     {
-        $all = DB::select('SELECT * FROM ikk WHERE urusan="pekerjaanumum" ORDER BY id DESC  ');
+
+        $all = DB::table('ikk')->get()->where('urusan', 'pekerjaanumum');
         return view('admin.pages.ikk.makro.index', ['all' => $all, 'bidang_ikk' => 'pekerjaanumum']);
     }
 
