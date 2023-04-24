@@ -186,28 +186,14 @@
                     <span> Tentang Aplikasi </span>
                 </a>
             </li>
-            @if(Auth::user()->perangkatdaerah->rumpun == 'Pendidikan')
+
             <li>
-                <a href="{{asset('admin/ikk/pendidikan')}}">
+                <a href="{{asset('admin/ikk')}}">
                     <i class="fa fa-laptop"></i>
-                    <span> IKK Bidang Pendidikan </span>
+                    <span> IKK </span>
                 </a>
             </li>
-            @elseif(Auth::user()->perangkatdaerah->rumpun == 'Kesehatan')
-            <li>
-                <a href="{{asset('admin/ikk/kesehatan')}}">
-                    <i class="fa fa-laptop"></i>
-                    <span> IKK Bidang Kesehatan </span>
-                </a>
-            </li>
-            @elseif(Auth::user()->perangkatdaerah->rumpun == 'Pekerjaan Umum')
-            <li>
-                <a href="{{asset('admin/ikk/pekerjaanumum')}}">
-                    <i class="fa fa-laptop"></i>
-                    <span> IKK Bidang Pekerjaan Umum </span>
-                </a>
-            </li>
-            @endif
+
 
             <li class="menu-title mt-2">Profil</li>
             </li>
@@ -262,21 +248,9 @@
                 </a>
             </li>
             <li>
-                <a href="{{asset('admin/ikk/kesehatan')}}">
+                <a href="{{asset('admin/ikk')}}">
                     <i class="fa fa-laptop"></i>
-                    <span> IKK Bidang Kesehatan </span>
-                </a>
-            </li>
-            <li>
-                <a href="{{asset('admin/ikk/pendidikan')}}">
-                    <i class="fa fa-laptop"></i>
-                    <span> IKK Pendidikan </span>
-                </a>
-            </li>
-            <li>
-                <a href="{{asset('admin/ikk/pekerjaanumum')}}">
-                    <i class="fa fa-laptop"></i>
-                    <span> IKK Bidang PU </span>
+                    <span> IKK </span>
                 </a>
             </li>
 

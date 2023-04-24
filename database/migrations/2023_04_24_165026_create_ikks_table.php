@@ -13,8 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('ikk', function (Blueprint $table) {
+        Schema::create('ikks', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('user_id')->unsigned()->nullable();
             $table->string('no_ikk')->nullable();
             $table->string('urusan')->nullable();
             $table->string('ikk')->nullable();
@@ -27,6 +28,7 @@ return new class extends Migration
             $table->string('keterangan')->nullable();
             $table->enum('status',['review','revisi','approved'])->default('review')->nullable();
             $table->timestamps();
+            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 
@@ -37,6 +39,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ikk');
+        Schema::dropIfExists('ikks');
     }
 };

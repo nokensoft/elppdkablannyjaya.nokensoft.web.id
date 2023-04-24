@@ -26,18 +26,22 @@
                             <!-- .col start -->
                             <div class="col-lg-6  mx-auto border border-4 border-info rounded shadow-lg p-5 my-5">
 
-                                <h1 class="fw-bold">Hapus?</h1>
-                                <form action="{{route('admin.ikk.destroy',$data->id)}}" method="POST" enctype="multipart/form-data">
+                                <h1 class="fw-bold">Konfirmasi</h1>
+                                <form action="{{route('admin.ikk.status.update',$data->id)}}" method="POST">
                                     @csrf
-                                    @method('DELETE')
+                                    @method('put')
 
                                     <div class="mb-3 fs-4">
-                                        <label for="" class="fw-bold">{{ $data->ikk}}</label>
+                                        <label for="" class="fw-bold">Status</label>
+                                        <select name="status" class="form-select form-select-lg" required>
+                                            <option value="approved">Setujui</option>
+                                            <option value="revisi">Revisi</option>
+                                        </select>
                                     </div>
 
                                     <div class="border-top border-1 pt-3 mt-4">
                                         <button type="submit" class="btn btn-info waves-effect waves-light fs-4">
-                                            <i class="fas fa-save me-1"></i> Hapus
+                                            <i class="fas fa-save me-1"></i> Simpan
                                         </button>
                                         <a href="{{URL::previous()}}" class="btn btn-outline-light waves-effect waves-light fs-4">
                                             <i class="fas fa-arrow-left me-1"></i> Tidak

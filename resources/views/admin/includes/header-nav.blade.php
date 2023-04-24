@@ -126,23 +126,24 @@
                                 <!-- item-->
                                 <a href="{{asset('admin/ikk/pendidikan')}}" class="dropdown-item fs-4">
                                     <i class="fas fa-bookmark me-1"></i>
-                                    <span>IKK Bidang Pedidikan</span>
+                                    <span>IKK Pedidikan</span>
                                 </a>
                                 <!-- item-->
                                 <a href="{{asset('admin/ikk/kesehatan')}}" class="dropdown-item fs-4">
                                     <i class="fas fa-bookmark me-1"></i>
-                                    <span>IKK Bidang Kesehatan</span>
+                                    <span>IKK Kesehatan</span>
                                 </a>
                                 <!-- item-->
                                 <a href="{{asset('admin/ikk/pekerjaanumum')}}" class="dropdown-item fs-4">
                                     <i class="fas fa-bookmark me-1"></i>
-                                    <span>IKK Bidang Pekerjaan Umum</span>
+                                    <span>IKK Pekerjaan Umum</span>
                                 </a>
+                                <div class="border-top border-1 pt-3 mt-4"></div>
                                 <!-- item-->
-                                {{-- <a href="{{asset('admin/ikk/makro')}}" class="dropdown-item fs-4">
+                                <a href="{{asset('admin/ikk')}}" class="dropdown-item fs-4">
                                     <i class="fas fa-bookmark me-1"></i>
-                                    <span>Pelaporan IKK Makro</span>
-                                </a> --}}
+                                    <span>Liat Semua Data</span>
+                                </a>
                                 <!-- item-->
                                 {{-- <a href="{{asset('admin/ikk/output')}}" class="dropdown-item fs-4">
                                     <i class="fas fa-bookmark me-1"></i>

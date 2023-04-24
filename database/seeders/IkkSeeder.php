@@ -24,7 +24,8 @@ class IkkSeeder extends Seeder
             'jml1'              => '11.927',
             'ket_jml2'          => 'Panjang seluruh jalan kabupaten di daerah tersebut',
             'jml2'              => '235',
-            'capaian_kinerja'   => ''
+            'capaian_kinerja'   => '',
+            'user_id'           => 4
         ]);
 
         // KESEHATAN
@@ -32,7 +33,7 @@ class IkkSeeder extends Seeder
             'no_ikk'            => '1.a.2',
             'urusan'            => 'Kesehatan',
             'ikk'               => 'Persentase RS Rujukan tingkat Kabupaten yang terakreditasi',
-            
+
             'rumus'             => 'Jumlah RS Rujukan yang terakreditasi ---------------------------- x 100 % 1/1) x 100 % Jumlah RS di Kabupaten Lanny Jaya',
             'keterangan'        => 'Dinas Kesehatan',
 
@@ -40,14 +41,15 @@ class IkkSeeder extends Seeder
             'jml1'              => '1',
             'ket_jml2'          => 'Jumlah anak usia 7-12 tahun Kabupaten Lanny Jaya',
             'jml2'              => '1',
-            'capaian_kinerja'   => ''
+            'capaian_kinerja'   => '',
+            'user_id'           => 3
         ]);
 
         Ikk::insert([
             'no_ikk'            => '1.a.1',
             'urusan'            => 'Kesehatan',
             'ikk'               => 'Rasio daya tampung RS terhadap jumlah penduduk',
-            
+
             'rumus'             => 'Jumlah daya tampung rumah sakit rujukan ------------------ x 100 % (247/201.835) x 100 % = 0,005 Jumlah Penduduk Kabupaten Lanny Jaya',
             'keterangan'        => 'Dinas Kesehatan',
 
@@ -55,7 +57,8 @@ class IkkSeeder extends Seeder
             'jml1'              => '247',
             'ket_jml2'          => 'Jumlah Penduduk Kabupaten Lanny Jaya',
             'jml2'              => '201875',
-            'capaian_kinerja'   => ''
+            'capaian_kinerja'   => '',
+            'user_id'           => 3
         ]);
 
         // PENDIDIKAN
@@ -69,7 +72,8 @@ class IkkSeeder extends Seeder
             'jml1'              => '7012',
             'ket_jml2'          => 'Jumlah anak usia 5 – 6 tahun Kabupaten Lanny Jaya',
             'jml2'              => '10456',
-            'capaian_kinerja'   => ''
+            'capaian_kinerja'   => '',
+            'user_id'           => 2
         ]);
 
         Ikk::insert([
@@ -83,7 +87,8 @@ class IkkSeeder extends Seeder
             'jml1'              => '13979',
             'ket_jml2'          => 'Jumlah anak usia 7-12 tahun Kabupaten Lanny Jaya',
             'jml2'              => '15359',
-            'capaian_kinerja'   => ''
+            'capaian_kinerja'   => '',
+            'user_id'           => 2
         ]);
 
     }

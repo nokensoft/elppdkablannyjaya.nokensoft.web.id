@@ -8,7 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Ikk extends Model
 {
     use HasFactory;
-    protected $table = 'ikk';
-    protected $guarded  = ['id'];
+    public $guarded = [];
 
+    public function user()
+    {
+        return $this->hasOne(User::class,'id','user_id');
+    }
 }

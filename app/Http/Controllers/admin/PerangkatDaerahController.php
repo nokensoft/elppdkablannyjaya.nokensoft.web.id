@@ -150,9 +150,7 @@ class PerangkatDaerahController extends Controller
             return redirect()->route('admin.perangkatdaerah');
 
         } catch (\Throwable $th) {
-
-            dd($th);
-            Alert::toast('Gagal', 'error');
+            alert()->error('Gagal', 'Sukses!!')->autoclose(1100);
             return redirect()->back();
 
         }

@@ -166,11 +166,17 @@ Route::prefix('admin')->middleware('auth')->group(function () {
         Route::get('ikk/pekerjaanumum','pekerjaanumum')->name('admin.ikk.pekerjaanumum');
 
 
+        Route::get('ikk/{id}/detail','show')->name('admin.ikk.show');
+
         Route::get('ikk/{id}/edit','edit')->name('admin.ikk.edit');
         Route::put('ikk/{id}','update')->name('admin.ikk.update');
 
         Route::get('ikk/delete/{id}','delete')->name('admin.ikk.delete')->middleware(['role:administrator']);
         Route::delete('ikk/{id}','destroy')->name('admin.ikk.destroy')->middleware(['role:administrator']);
+
+        Route::get('ikk/status/{id}','statusIndex')->name('admin.ikk.status')->middleware(['role:supervisor']);
+        Route::put('ikk/status/update/{id}','statusUpdate')->name('admin.ikk.status.update')->middleware(['role:supervisor']);
+
     });
 
 

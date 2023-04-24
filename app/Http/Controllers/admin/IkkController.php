@@ -3,26 +3,39 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\ikk;
+use App\Models\Ikk;
+use App\Models\PerangkatDaerah;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 
 class IkkController extends Controller
 {
     public function index()
     {
-        // $all = DB::select('SELECT * FROM ikk ORDER BY id DESC');
+        if(Auth::user()->hasRole('administrator')){
+            $all = Ikk::orderBy('no_ikk','asc')->get();
+            return view('admin.pages.ikk.makro.index', ['all' => $all]);
+        } elseif (Auth::user()->hasRole('supervisor')){
+            $all = Ikk::orderBy('no_ikk','asc')->get();
+            return view('admin.pages.ikk.makro.index', ['all' => $all]);
+        } else {
+            $all = Ikk::orderBy('no_ikk','asc')->where('user_id',Auth::user()->id)->get();
+            return view('admin.pages.ikk.makro.index', ['all' => $all]);
+        }
 
-        $all = DB::table('ikk')->orderBy('no_ikk', 'asc')->get();
-        return view('admin.pages.ikk.makro.index', ['all' => $all]);
+
     }
 
     public function pendidikan()
     {
         // $all = DB::select('SELECT * FROM ikk WHERE urusan="pendidikan" ORDER BY id DESC');
 
-        $all = DB::table('ikk')->get()->where('urusan', 'pendidikan');
+        // $all = DB::table('ikk')->get()->where('id', 'pendidikan');
+        $all = Ikk::where('urusan','pendidikan')->get();
         return view('admin.pages.ikk.makro.index', ['all' => $all, 'bidang_ikk' => 'pendidikan']);
     }
 
@@ -52,7 +65,8 @@ class IkkController extends Controller
      */
     public function create()
     {
-        return view('admin.pages.ikk.makro.tambah');
+        $opd = User::all();
+        return view('admin.pages.ikk.makro.tambah',compact('opd'));
     }
 
     /**
@@ -63,97 +77,120 @@ class IkkController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'no_ikk' => 'required'
+        $validator = Validator::make($request->all(),
+        [
+            'no_ikk'                    => 'required',
+            'user_id'                   => 'required',
+            'capaian_kinerja'           => 'required',
+            'ikk'                       => 'required',
+            'jml2'                      => 'required',
+            'keterangan'                => 'required',
+            'rumus'                     => 'required',
+            'urusan'                    => 'required',
         ],
         [
-            'no_ikk.required' => 'Nomor IKK tidak boleh kosong',
-        ]);
+            'no_ikk.required'          => 'Nomor IKK tidak boleh kosong',
+            // 'no_ikk.unique'            => 'Nomor IKK sudah ada',
+            'user_id.required'         => 'OPD tidak boleh kosong',
+            'keterangan.required'      => 'Keterangan tidak boleh kosong',
+            'rumus.required'           => 'Rumus tidak boleh kosong',
+            'urusan.required'          => 'Urusan tidak boleh kosong',
+            'ikk.required'             => 'ikk tidak boleh kosong',
+            'jml2.required'            => 'Jumlah tidak boleh kosong',
 
-
-        $ikk = new ikk();
-
-        $ikk->no_ikk        = $request->no_ikk;
-        $ikk->urusan        = $request->urusan;
-        $ikk->ikk           = $request->ikk;
-        $ikk->rumus         = $request->rumus;
-        // $ikk->ket_jml1   = $request->ket_jml1;
-        $ikk->jml1          = $request->jml1;
-        // $ikk->ket_jml2   = $request->ket_jml2;
-        $ikk->jml2          = $request->jml2;
-        $ikk->capaian_kinerja    = $request->capaian_kinerja;
-        $ikk->keterangan    = $request->keterangan;
-
-        // $ikk->slug       =  Str::slug($request->nama_ikk);
-
-        $ikk->save();
-        alert()->success('Berhasil', 'Sukses!!')->autoclose(1100);
-        return redirect()->route('admin.ikk');
-
+        ]
+    );
+        if ($validator->fails()) {
+            return redirect()->back()->withInput($request->all())->withErrors($validator);
+        } else {
+            try {
+                $ikk = new Ikk();
+                $ikk->user_id        = $request->user_id;
+                $ikk->no_ikk        = $request->no_ikk;
+                $ikk->urusan        = $request->urusan;
+                $ikk->ikk           = $request->ikk;
+                $ikk->rumus         = $request->rumus;
+                // $ikk->ket_jml1   = $request->ket_jml1;
+                $ikk->jml1          = $request->jml1;
+                // $ikk->ket_jml2   = $request->ket_jml2;
+                $ikk->jml2          = $request->jml2;
+                $ikk->capaian_kinerja    = $request->capaian_kinerja;
+                $ikk->keterangan    = $request->keterangan;
+                $ikk->save();
+                alert()->success('Berhasil', 'Sukses!!')->autoclose(1100);
+                return redirect()->route('admin.ikk');
+            } catch (\Throwable $th) {
+                alert()->error('Gagal', 'Sukses!!')->autoclose(1100);
+                return redirect()->back();
+            }
+        }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\ikk  $ikk
-     * @return \Illuminate\Http\Response
-     */
-    public function show(ikk $id)
+
+    public function show($id)
     {
-        return view('admin.pages.profil.ikk.detail');
+        $data = Ikk::where('id',$id)->first();
+        return view('admin.pages.ikk.makro.detail',compact('data'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\disikktrik  $ikk
-     * @return \Illuminate\Http\Response
-     */
+
 
      public function edit($id)
      {
-         $data =DB::select("SELECT * FROM ikk WHERE id = '$id' ");
-         return view('admin.pages.ikk.makro.ubah',['data' => $data]);
+        $opd = User::all();
+         $data = Ikk::where('id',$id)->first();
+         return view('admin.pages.ikk.makro.ubah',compact('data','opd'));
      }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\ikk  $ikk
-     * @return \Illuminate\Http\Response
-     */
+
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'no_ikk' => 'required'
+        $validator = Validator::make($request->all(),
+        [
+            'no_ikk'                    => 'required',
+            'user_id'                   => 'required',
+            'capaian_kinerja'           => 'required',
+            'ikk'                       => 'required',
+            'jml2'                      => 'required',
+            'keterangan'                => 'required',
+            'rumus'                     => 'required',
+            'urusan'                    => 'required',
         ],
         [
-            'no_ikk.required' => 'Nomor IKK tidak boleh kosong',
+            'no_ikk.required'          => 'Nomor IKK tidak boleh kosong',
+            // 'no_ikk.unique'            => 'Nomor IKK sudah ada',
+            'user_id.required'         => 'OPD tidak boleh kosong',
+            'keterangan.required'      => 'Keterangan tidak boleh kosong',
+            'rumus.required'           => 'Rumus tidak boleh kosong',
+            'urusan.required'          => 'Urusan tidak boleh kosong',
+            'ikk.required'             => 'ikk tidak boleh kosong',
+            'jml2.required'            => 'Jumlah tidak boleh kosong',
         ]);
 
-
-        $ikk = new ikk();
-
-        $data['no_ikk']    = $request->no_ikk;
-        // $data['urusan']    = $request->urusan;
-        $data['ikk']    = $request->ikk;
-        $data['rumus']    = $request->rumus;
-        // $data['ket_jml1']    = $request->ket_jml1;
-        $data['jml1']    = $request->jml1;
-        // $data['ket_jml2']    = $request->ket_jml2;
-        $data['jml2']    = $request->jml2;
-        $data['capaian_kinerja']    = $request->capaian_kinerja;
-        $data['keterangan']    = $request->keterangan;
-
-        // $data['slug']                 =  Str::slug($request->nama_ikk);
-
-        $user = DB::table('ikk')
-            ->where('id', $id)
-            ->update($data);
-
-        alert()->success('Berhasil', 'Sukses!!')->autoclose(1100);
-        return redirect()->route('admin.ikk');
+        if ($validator->fails()) {
+            return redirect()->back()->withInput($request->all())->withErrors($validator);
+        } else {
+            try {
+                $ikk                = Ikk::find($id);
+                $ikk->user_id       = $request->user_id;
+                $ikk->no_ikk        = $request->no_ikk;
+                $ikk->urusan        = $request->urusan;
+                $ikk->ikk           = $request->ikk;
+                $ikk->rumus         = $request->rumus;
+                // $ikk->ket_jml1   = $request->ket_jml1;
+                $ikk->jml1          = $request->jml1;
+                // $ikk->ket_jml2   = $request->ket_jml2;
+                $ikk->jml2          = $request->jml2;
+                $ikk->capaian_kinerja    = $request->capaian_kinerja;
+                $ikk->keterangan    = $request->keterangan;
+                $ikk->update();
+                alert()->success('Berhasil', 'Sukses!!')->autoclose(1100);
+                return redirect()->route('admin.ikk');
+            } catch (\Throwable $th) {
+                alert()->error('Gagal', 'Sukses!!')->autoclose(1100);
+                return redirect()->back();
+            }
+        }
     }
 
 
@@ -165,13 +202,13 @@ class IkkController extends Controller
      */
     public function delete($id)
     {
-        $data =DB::select("SELECT * FROM ikk WHERE id = '$id' ");
-        return view('admin.pages.ikk.makro.delete',['data' => $data]);
+        $data = Ikk::where('id',$id)->first();
+        return view('admin.pages.ikk.makro.delete',compact('data'));
     }
 
     public function destroy($id)
     {
-        $data = ikk::findOrFail($id);
+        $data = Ikk::findOrFail($id);
 
         //dd($data);
         // if($data->foto){
@@ -182,5 +219,34 @@ class IkkController extends Controller
 
         alert()->success('Berhasil', 'Data terhapus!!')->autoclose(1500);
         return redirect()->route('admin.ikk');
+    }
+
+    // Status
+    public function statusIndex($id)
+    {
+        $data = Ikk::where('id',$id)->first();
+        return view('admin.pages.ikk.makro.status',['data' => $data]);
+    }
+    public function statusUpdate(Request $request, $id)
+    {
+        $validator = Validator::make($request->only('status'),
+        [
+            'status' => 'required'
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withInput($request->all())->withErrors($validator);
+        } else {
+            try {
+                 Ikk::where('id',$id)->update([
+                    'status' => $request->status
+                ]);
+                alert()->success('Berhasil', 'Sukses!!')->autoclose(1100);
+                return redirect()->route('admin.ikk');
+            } catch (\Throwable $th) {
+                alert()->error('Gagal', 'Sukses!!')->autoclose(1100);
+                return redirect()->back();
+            }
+        }
     }
 }
