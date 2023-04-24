@@ -19,15 +19,20 @@ class PerangkatDaerahController extends Controller
     // INDEX
     public function index()
     {
-        $datas = PerangkatDaerah::orderBy('id','Desc')->paginate(2);
+        // $datas = PerangkatDaerah::orderBy('id','Desc')->paginate(2);
+
+        $datas = PerangkatDaerah::join('perangkat_daerahs', 'users.id', '=', 'perangkat_daerahs.user_id')
+            // ->join('perangkat_daerahs', 'users.id', '=', 'perangkat_daerahs.user_id')
+            ->select('users.*', 'contacts.phone', 'perangkat_daerahs.price')
+            ->get();
+
         return view('admin.pages.lppd.perangkatdaerah.index', compact('datas'));
     }
 
     // CREATE
     public function create()
     {
-        $roles = Role::all();
-        return view('admin.pages.lppd.perangkatdaerah.tambah', compact('roles'));
+        return view('admin.pages.lppd.perangkatdaerah.tambah');
     }
 
     // STORE
@@ -35,19 +40,19 @@ class PerangkatDaerahController extends Controller
     {
         $validator = Validator::make($request->all(),
         [
-            'name'                              => 'required',
+            // 'name'                              => 'required',
             'email'                             => 'required|email|unique:users,email',
             'password'                          => 'required|same:confirm-password',
-            'role_id'                           => 'required',
+            // 'role_id'                           => 'required',
 
             'nama_organisasi'                   => 'required|unique:perangkat_daerahs'
         ],
         [
-            'name.required'                     => 'Nama pengguna tidak boleh kosong',
+            // 'name.required'                     => 'Nama pengguna tidak boleh kosong',
             'email.required'                    => 'Email pengguna tidak boleh kosong',
             'email.unique'                      => 'Email ini telah digunakan',
             'password.required'                 => 'Nama pengguna tidak boleh kosong',
-            'role_id.required'                  => 'Peran pengguna tidak boleh kosong',
+            // 'role_id.required'                  => 'Peran pengguna tidak boleh kosong',
 
             'nama_organisasi.required'          => 'Nama instansi/Organisasi tidak boleh kosong',
             'nama_organisasi.unique'            => 'Nama instansi/Organisasi sudah ada',
@@ -62,13 +67,13 @@ class PerangkatDaerahController extends Controller
         try {
             $akun = new User();
 
-            $akun->name                         = $request->name;
+            $akun->name                         = $request->nama_organisasi;
             $akun->email                        = $request->email;
             $akun->password                     = bcrypt($request->password);
             $akun->slug                         = Str::slug($request->name);
             
             $akun->save();
-            $akun->assignRole($request->role_id);
+            $akun->assignRole(2);
 
             $perangkatdaerah = new perangkatdaerah();
 

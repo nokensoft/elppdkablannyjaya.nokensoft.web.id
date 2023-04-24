@@ -8,14 +8,13 @@
                         <ol class="breadcrumb m-0">
                             <li class="breadcrumb-item"><a href="{{asset('admin/beranda')}}">Beranda</a></li>
                             <li class="breadcrumb-item"><a href="{{asset('admin/lppd/perangkatdaerah')}}">Perangkat Daerah</a></li>
-                            <li class="breadcrumb-item active">Edit</li>
+                            <li class="breadcrumb-item active">Ubah Perangkat Daerah</li>
                         </ol>
                     </div>
                 </div>
             </div>
         </div>
         <!-- end row -->
-
 
         <div class="row" id="ubah">
             <div class="col">
@@ -27,12 +26,11 @@
                             <!-- .col start -->
                             <div class="col-lg-6  mx-auto border border-4 border-info rounded shadow-lg p-5 my-5">
 
-                                <h3 class="fw-bold">Perbarui Perangkat Daerah</h3>
+                                <h3 class="fw-bold">Ubah Perangkat Daerah</h3>
                                 <br>
                                 <form action="{{route('admin.perangkatdaerah.update',$data->id)}}" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     @method('put')
-
 
                                     <div class="mb-3 fs-4">
                                         <label for="" class="fw-bold">Nama Organisasi</label>
@@ -42,6 +40,7 @@
                                             <label class="text-danger"> {{ $errors->first('nama_organisasi') }} </label>
                                         @endif
                                     </div>
+                                    <!-- input item end -->
 
                                     <div class="mb-3 fs-4">
                                         <label for="" class="fw-bold">Urusan</label>
@@ -51,6 +50,7 @@
                                             <label class="text-danger"> {{ $errors->first('urusan') }} </label>
                                         @endif
                                     </div>
+                                    <!-- input item end -->
 
                                     <div class="mb-3 fs-4">
                                         <label for="" class="fw-bold">Rumpun</label>
@@ -60,6 +60,7 @@
                                             <label class="text-danger"> {{ $errors->first('rumpun') }} </label>
                                         @endif
                                     </div>
+                                    <!-- input item end -->
 
                                     <div class="mb-3 fs-4">
                                         <label for="" class="fw-bold">Alamat</label>
@@ -68,6 +69,7 @@
                                             <label class="text-danger"> {{ $errors->first('alamat') }} </label>
                                         @endif
                                     </div>
+                                    <!-- input item end -->
 
 
                                     <div class="mb-3 fs-4">
@@ -78,15 +80,39 @@
                                             <label class="text-danger"> {{ $errors->first('nama_pimpinan') }} </label>
                                         @endif
                                     </div>
+                                    <!-- input item end -->
 
                                     <div class="mb-3 fs-4">
                                         <label for="" class="fw-bold">Jumlah Pegawai</label>
-                                        <input type="text" class="form-control form-control-lg" placeholder="Jumlah Pegawai"
-                                        value="{{ old('jumlah_pegawai',$data->jumlah_pegawai)}}"  name="jumlah_pegawai">
+                                        <input type="text" class="form-control form-control-lg" placeholder="Jumlah Pegawai" value="{{ old('jumlah_pegawai',$data->jumlah_pegawai)}}"  name="jumlah_pegawai">
                                         @if($errors->has('jumlah_pegawai'))
                                             <label class="text-danger"> {{ $errors->first('jumlah_pegawai') }} </label>
                                         @endif
                                     </div>
+                                    <!-- input item end -->
+
+                                    <div class="border-top border-1 pt-3 mt-4"></div>
+
+                                    <div class="mb-3 fs-4">
+                                        <label for="" class="fw-bold">Alamat Email</label>
+                                        <input type="text" class="form-control form-control-lg" placeholder="Alamat email" value="{{ old('email',$data->email)}}"  name="email">
+                                        @if($errors->has('email'))
+                                            <label class="text-danger"> {{ $errors->first('email') }} </label>
+                                        @endif
+                                    </div>
+                                    <!-- input item end -->
+
+                                    <div class="mb-3 fs-4">
+                                        <label for="" class="fw-bold">Kata Sandi</label>
+                                        {!! Form::password('password',['id'=>'password','class'=>'form-control form-control-lg','placeholder'=>'Kata sandi pengguna']) !!}
+                                    </div>
+                                    <!-- input item end -->
+
+                                    <div class="mb-3 fs-4">
+                                        <label for="" class="fw-bold">Konfirmasi Kata Sandi</label>
+                                        {!! Form::password('confirm-password',['id'=>'confirm-password','class'=>'form-control form-control-lg','placeholder'=>'Konfirmasi kata sandi pengguna']) !!}
+                                    </div>
+                                    <!-- input item end -->
 
                                     <div class="border-top border-1 pt-3 mt-4">
                                         <button type="submit" class="btn btn-info waves-effect waves-light fs-4">
@@ -96,6 +122,7 @@
                                             <i class="fas fa-arrow-left me-1"></i> Kembali
                                         </a>
                                     </div>
+                                    <!-- input item end -->
 
                                 </form>
 

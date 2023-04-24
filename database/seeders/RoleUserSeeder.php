@@ -22,13 +22,15 @@ class RoleUserSeeder extends Seeder
 
         $adminRole = Role::create(
             [
+            'id'                => 1,
             'guard_name'        => 'web',
             'name'              => 'administrator',
             'display_name'      => 'Administrator',
         ]);
-
+        
         $opdRole = Role::create(
             [
+            'id'                => 2,
             'guard_name'        => 'web',
             'name'              => 'opd',
             'display_name'      => 'Perangkat Daerah',

@@ -42,6 +42,7 @@
                                             <th>Alamat</th>
                                             <th>Nama Pimpinan</th>
                                             <th>Jumlah Pegawai</th>
+                                            <th>Email</th>
                                             <th>Foto Kantor</th>
                                             <th class="text-center">Aksi</th>
                                         </tr>
@@ -56,6 +57,7 @@
                                                 <td>{{$data->alamat}}</td>
                                                 <td>{{$data->nama_pimpinan}}</td>
                                                 <td>{{$data->jumlah_pegawai}}</td>
+                                                <td>{{$data->email}}</td>
                                                 <td>
                                                     @if (!$data->foto)
                                                         <img src="{{asset('assets/images/1.jpg')}}" alt="Logo" width="150px" class="img-thumbnail">
