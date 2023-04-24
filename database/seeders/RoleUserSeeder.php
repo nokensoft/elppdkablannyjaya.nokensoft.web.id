@@ -35,6 +35,14 @@ class RoleUserSeeder extends Seeder
             'name'              => 'opd',
             'display_name'      => 'Perangkat Daerah',
         ]);
+        
+        $supervisorRole = Role::create(
+            [
+            'id'                => 3,
+            'guard_name'        => 'web',
+            'name'              => 'supervisor',
+            'display_name'      => 'Supervisor',
+        ]);
 
         // CREATE USERS AND ASIGN ROLES
 
@@ -85,6 +93,18 @@ class RoleUserSeeder extends Seeder
 
         // Asign Role
         $kesehatan->assignRole($opdRole);
+
+        // Create User Pekerjaan umum
+        $supervisor = User::create([
+            'name'              => 'Supervisor',
+            'slug'              => 'supervisor',
+            'email'             => 'supervisor@lannyjayakab.go.id',
+            'password'          => bcrypt('supervisor@lannyjayakab.go.id'),
+            'avatar'            => 'assets/images/avatars/user3.png',
+        ]);
+
+        // Asign Role
+        $supervisor->assignRole($supervisorRole);
 
     }
 }

@@ -19,12 +19,7 @@ class PerangkatDaerahController extends Controller
     // INDEX
     public function index()
     {
-        // $datas = PerangkatDaerah::orderBy('id','Desc')->paginate(2);
-
-        $datas = PerangkatDaerah::join('perangkat_daerahs', 'users.id', '=', 'perangkat_daerahs.user_id')
-            // ->join('perangkat_daerahs', 'users.id', '=', 'perangkat_daerahs.user_id')
-            ->select('users.*', 'contacts.phone', 'perangkat_daerahs.price')
-            ->get();
+        $datas = PerangkatDaerah::orderBy('id','Desc')->paginate(2);
 
         return view('admin.pages.lppd.perangkatdaerah.index', compact('datas'));
     }
@@ -52,7 +47,6 @@ class PerangkatDaerahController extends Controller
             'email.required'                    => 'Email pengguna tidak boleh kosong',
             'email.unique'                      => 'Email ini telah digunakan',
             'password.required'                 => 'Nama pengguna tidak boleh kosong',
-            // 'role_id.required'                  => 'Peran pengguna tidak boleh kosong',
 
             'nama_organisasi.required'          => 'Nama instansi/Organisasi tidak boleh kosong',
             'nama_organisasi.unique'            => 'Nama instansi/Organisasi sudah ada',

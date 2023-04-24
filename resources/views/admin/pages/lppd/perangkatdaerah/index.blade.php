@@ -57,7 +57,7 @@
                                                 <td>{{$data->alamat}}</td>
                                                 <td>{{$data->nama_pimpinan}}</td>
                                                 <td>{{$data->jumlah_pegawai}}</td>
-                                                <td>{{$data->email}}</td>
+                                                <td>{{$data->user->email ?? ''}}</td>
                                                 <td>
                                                     @if (!$data->foto)
                                                         <img src="{{asset('assets/images/1.jpg')}}" alt="Logo" width="150px" class="img-thumbnail">
