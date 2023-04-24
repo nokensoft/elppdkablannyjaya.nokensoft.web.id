@@ -70,6 +70,7 @@ class PerangkatDaerahController extends Controller
 
             $perangkatdaerah = new perangkatdaerah();
 
+            $perangkatdaerah->user_id           = $akun->id;
             $perangkatdaerah->nama_organisasi   = $request->nama_organisasi;
             $perangkatdaerah->urusan            = $request->urusan;
             $perangkatdaerah->rumpun            = $request->rumpun;
@@ -140,6 +141,7 @@ class PerangkatDaerahController extends Controller
             $perangkatdaerah->nama_pimpinan     = $request->nama_pimpinan;
             $perangkatdaerah->jumlah_pegawai    = $request->jumlah_pegawai;
             $perangkatdaerah->status            = $request->status;
+            $perangkatdaerah->user_id           = $request->user_id;
             // $perangkatdaerah->foto              = $namafoto;
             $perangkatdaerah->slug              =  Str::slug($request->nama_organisasi);
 

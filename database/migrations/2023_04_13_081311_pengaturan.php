@@ -15,14 +15,14 @@ return new class extends Migration
     {
         Schema::create('pengaturan', function (Blueprint $table) {
             $table->id();
-            $table->string('judul_situs')->nullable(); 
-            $table->string('deskripsi_situs')->nullable(); 
-            $table->string('logo')->nullable(); 
-            $table->string('favicon')->nullable(); 
-            $table->string('termsconditions')->nullable(); 
-            $table->string('footerinformation')->nullable(); 
-            $table->longText('tentang_aplikasi')->nullable(); 
-            
+            $table->string('judul_situs')->nullable();
+            $table->string('deskripsi_situs')->nullable();
+            $table->string('logo')->nullable();
+            $table->string('favicon')->nullable();
+            $table->string('termsconditions')->nullable();
+            $table->string('footerinformation')->nullable();
+            $table->longText('tentang_aplikasi')->nullable();
+
             $table->timestamps();
         });
     }

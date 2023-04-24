@@ -22,14 +22,17 @@
                     <div class="card-body">
                         <h1 class="fw-bold">IKK @if(!empty($bidang_ikk)) {{$bidang_ikk}} @endif</h1>
                         <div class="mb-3">
+                            @if(Auth::user()->hasRole('administrator'))
+
                             <a href="{{ route('admin.ikk.create') }}" class="btn btn-info waves-effect waves-light fs-4">
                                 <i class="fas fa-plus me-1"></i> Tambah Data
                             </a>
-                            
+                            @endif
+
                             <a href="{{ route('admin.ikk.print') }}" target="_blank" class="btn btn-outline-info waves-effect waves-light fs-4">
                                 <i class="fas fa-print me-1"></i> Print
                             </a>
-                            
+
                             <a href="{{ route('admin.ikk.print') }}" target="_blank" class="btn btn-outline-info waves-effect waves-light fs-4">
                                 <i class="fas fa-file me-1"></i> Download Excel
                             </a>
@@ -63,15 +66,20 @@
                                                 <td>{{$data->capaian_kinerja}} %</td>
                                                 <td>{{$data->keterangan}}</td>
                                                 <td>
+                                                    @if(Auth::user()->hasRole('supervisor'))
+                                                    <a href="#" class="btn btn-sm btn-outline-dark waves-effect waves-light fs-4"> Detail </a>
+                                                    <a href="#" class="btn btn-sm btn-outline-dark waves-effect waves-light fs-4"> Ubah </a>
+                                                    @else
                                                     {{-- <a href="{{route('admin.ikk.show')}}" class="btn btn-sm btn-dark waves-effect waves-light fs-4"> Detail </a> --}}
                                                     <a href="{{route('admin.ikk.edit',$data->id)}}" class="btn btn-sm btn-outline-dark waves-effect waves-light fs-4"> Ubah </a>
                                                     <a href="{{route('admin.ikk.delete',$data->id)}}" class="btn btn-sm btn-outline-dark waves-effect waves-light fs-4"> Hapus </a>
+                                                    @endif
                                                 </td>
                                             </tr>
                                         @endforeach
                                     </tbody>
                                 </table>
-                                
+
                             </div>
                             <!-- .col end -->
 
@@ -82,7 +90,7 @@
             </div>
         </div>
         <!-- end row -->
-                        
+
 
   <!--end wrapper-->
 
@@ -102,5 +110,5 @@
     <script src="{{ asset('assets/admin/assets/js/pages/jquery.todo.js')}}"></script>
 
     <!-- Dashboard init JS -->
-    <script src="{{ asset('assets/admin/assets/js/pages/dashboard-3.init.js')}}"></script>  
+    <script src="{{ asset('assets/admin/assets/js/pages/dashboard-3.init.js')}}"></script>
   @endpush

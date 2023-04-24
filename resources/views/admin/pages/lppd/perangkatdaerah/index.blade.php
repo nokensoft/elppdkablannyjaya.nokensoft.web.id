@@ -54,7 +54,7 @@
                                                      <img src="{{ url($data->foto)}}" alt="{{asset($data->foto)}}" class="img-fluid img-thumbnail" width="80px"></td>
                                                     @endif
                                                 </td>
-                                                <td>{{$data->nama_organisasi}}</td>
+                                                <td>{{$data->nama_organisasi}}  </td>
                                                 <td>{{$data->nama_pimpinan}}</td>
                                                 <td>{{$data->rumpun}}</td>
                                                 <td>{{$data->user->name ?? ''}}</td>

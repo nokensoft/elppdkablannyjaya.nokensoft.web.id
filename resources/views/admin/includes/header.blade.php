@@ -1,3 +1,4 @@
+
         <link rel="shortcut icon" href="{{ asset('assets/admin/assets/images/favicon.png')}}">
         @stack('script-header')
 

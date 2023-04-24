@@ -22,9 +22,11 @@
                     <div class="card-body">
                         <h1 class="fw-bold">IKK</h1>
                         <div class="mb-3">
+                            @if(Auth::user()->hasRole('opd'))
                             <a href="{{ route('admin.dprd.create') }}" class="btn btn-info waves-effect waves-light fs-4">
                                 <i class="fas fa-plus me-1"></i> Tambah Data
                             </a>
+                            @endif
                         </div>
 
                         <div class="row">
@@ -62,7 +64,7 @@
                                         @endforeach
                                     </tbody>
                                 </table>
-                                
+
                             </div>
                             <!-- .col end -->
 
@@ -73,7 +75,7 @@
             </div>
         </div>
         <!-- end row -->
-                        
+
 
   <!--end wrapper-->
 
@@ -93,5 +95,5 @@
     <script src="{{ asset('assets/admin/assets/js/pages/jquery.todo.js')}}"></script>
 
     <!-- Dashboard init JS -->
-    <script src="{{ asset('assets/admin/assets/js/pages/dashboard-3.init.js')}}"></script>  
+    <script src="{{ asset('assets/admin/assets/js/pages/dashboard-3.init.js')}}"></script>
   @endpush

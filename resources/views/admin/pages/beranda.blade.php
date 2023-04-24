@@ -20,8 +20,13 @@
                 <div class="card">
                     <div class="card-body">
                         <h1 class="fw-bold display-1">Selamat Datang!</h1>
-                        <p class="">Aplikas SIPPID Kabupaten Lanny Jaya dibuat untuk mempermudah Pemerintah Kabupaten Lanny Jaya dalam mengumpulan dan mengelola LPPD secara online.</p>
-                        <p>Sistem ini digunakan oleh Pemerintah Daerah Kabupaten Lanny Jaya dengan sistem basis data (database) yang terpusat agar memudahkan petugas dan pejabat dalam mengelola data. Dengan sistem basis data secara online dan terpusat, membuat proses penyampaikan laporan kinerja lebih efisien dan konsisten. Selain itu, data tersebut juga mudah diakses dari mana saja dan kapan saja.</p>
+                        @foreach ($pdata as $text )
+
+                        <p class="">
+                            {!! $text->tentang_aplikasi !!}
+                        </p>
+                        @endforeach
+
                     </div>
                 </div>
             </div>
@@ -84,13 +89,37 @@
 
         </div>
 
-        @elseif(Auth::user()->hasRole('bidang_pendidikan'))
+        @elseif(Auth::user()->hasRole('supervisor'))
         <div class="row">
             <div class="col-md-6 col-xl-3">
                 <div class="card" id="tooltip-container2">
                     <div class="card-body">
                         <i class="fa fa-info-circle text-muted float-end" data-bs-container="#tooltip-container2" data-bs-toggle="tooltip" data-bs-placement="bottom" title="More Info"></i>
-                        <h4 class="mt-0 font-16">Jumlah Data</h4>
+                        <h4 class="mt-0 font-16">Jumlah Data Pendidikan</h4>
+                        <h2 class="text-dark my-3 text-center display-1 fw-bold"><span data-plugin="counterup">{{ $totalDprd }}</span></h2>
+                        <a href="#" class="btn btn-lg w-100">
+                            <i class="fas fa-arrow-right mr-2"></i> Tampilkan Detail
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-xl-3">
+                <div class="card" id="tooltip-container2">
+                    <div class="card-body">
+                        <i class="fa fa-info-circle text-muted float-end" data-bs-container="#tooltip-container2" data-bs-toggle="tooltip" data-bs-placement="bottom" title="More Info"></i>
+                        <h4 class="mt-0 font-16">Jumlah Data Kesehatan</h4>
+                        <h2 class="text-dark my-3 text-center display-1 fw-bold"><span data-plugin="counterup">{{ $totalDprd }}</span></h2>
+                        <a href="#" class="btn btn-lg w-100">
+                            <i class="fas fa-arrow-right mr-2"></i> Tampilkan Detail
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-xl-3">
+                <div class="card" id="tooltip-container2">
+                    <div class="card-body">
+                        <i class="fa fa-info-circle text-muted float-end" data-bs-container="#tooltip-container2" data-bs-toggle="tooltip" data-bs-placement="bottom" title="More Info"></i>
+                        <h4 class="mt-0 font-16">Jumlah Data PU</h4>
                         <h2 class="text-dark my-3 text-center display-1 fw-bold"><span data-plugin="counterup">{{ $totalDprd }}</span></h2>
                         <a href="#" class="btn btn-lg w-100">
                             <i class="fas fa-arrow-right mr-2"></i> Tampilkan Detail
@@ -99,36 +128,8 @@
                 </div>
             </div>
         </div>
-        @elseif(Auth::user()->hasRole('bidang_kesehatan'))
-        <div class="row">
-            <div class="col-md-6 col-xl-3">
-                <div class="card" id="tooltip-container2">
-                    <div class="card-body">
-                        <i class="fa fa-info-circle text-muted float-end" data-bs-container="#tooltip-container2" data-bs-toggle="tooltip" data-bs-placement="bottom" title="More Info"></i>
-                        <h4 class="mt-0 font-16">Jumlah Data</h4>
-                        <h2 class="text-dark my-3 text-center display-1 fw-bold"><span data-plugin="counterup">{{ $totalDprd }}</span></h2>
-                        <a href="#" class="btn btn-lg w-100">
-                            <i class="fas fa-arrow-right mr-2"></i> Tampilkan Detail
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        @elseif(Auth::user()->hasRole('bidang_pu'))
-        <div class="row">
-            <div class="col-md-6 col-xl-3">
-                <div class="card" id="tooltip-container2">
-                    <div class="card-body">
-                        <i class="fa fa-info-circle text-muted float-end" data-bs-container="#tooltip-container2" data-bs-toggle="tooltip" data-bs-placement="bottom" title="More Info"></i>
-                        <h4 class="mt-0 font-16">Jumlah Data</h4>
-                        <h2 class="text-dark my-3 text-center display-1 fw-bold"><span data-plugin="counterup">{{ $totalDprd }}</span></h2>
-                        <a href="#" class="btn btn-lg w-100">
-                            <i class="fas fa-arrow-right mr-2"></i> Tampilkan Detail
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
+        @elseif(Auth::user()->hasRole('opd'))
+
         @endif
         <!-- end row -->
 

@@ -11,7 +11,6 @@
         <!-- App favicon -->
 
         <meta name="csrf-token" content="{{ csrf_token() }}">
-
         @include('admin.includes.header')
     </head>
 

@@ -56,6 +56,11 @@
                                         <label for="" class="fw-bold">Rumpun</label>
                                         <input type="text" class="form-control form-control-lg" placeholder="Rumpun"
                                         value="{{ old('rumpun')}}"  name="rumpun">
+                                        {{-- <select name="rumpun" class="form-control form-control-lg" required>
+                                            <option value="Pendidikan">Dinas Pendidikan</option>
+                                            <option value="Kesehatan">Dinas Kesehatan</option>
+                                            <option value="Pekerjaan Umum">Dinas Pekerjaan Umum</option>
+                                        </select> --}}
                                         @if($errors->has('rumpun'))
                                             <label class="text-danger"> {{ $errors->first('rumpun') }} </label>
                                         @endif

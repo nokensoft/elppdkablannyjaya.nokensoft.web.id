@@ -198,6 +198,7 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     });
 
 
+
     Route::get('/artikel', function () {
         return view('admin.pages.artikel.list');
     });

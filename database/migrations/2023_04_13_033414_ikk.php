@@ -15,17 +15,17 @@ return new class extends Migration
     {
         Schema::create('ikk', function (Blueprint $table) {
             $table->id();
-            $table->string('no_ikk')->nullable(); 
-            $table->string('urusan')->nullable(); 
-            $table->string('ikk')->nullable(); 
-            $table->string('rumus')->nullable(); 
-            $table->string('ket_jml1')->nullable(); 
-            $table->string('jml1')->nullable(); 
-            $table->string('ket_jml2')->nullable(); 
-            $table->string('jml2')->nullable(); 
-            $table->string('capaian_kinerja')->nullable(); 
-            $table->string('keterangan')->nullable(); 
-            
+            $table->string('no_ikk')->nullable();
+            $table->string('urusan')->nullable();
+            $table->string('ikk')->nullable();
+            $table->string('rumus')->nullable();
+            $table->string('ket_jml1')->nullable();
+            $table->string('jml1')->nullable();
+            $table->string('ket_jml2')->nullable();
+            $table->string('jml2')->nullable();
+            $table->string('capaian_kinerja')->nullable();
+            $table->string('keterangan')->nullable();
+            $table->enum('status',['review','revisi','approved'])->default('review')->nullable();
             $table->timestamps();
         });
     }
