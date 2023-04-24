@@ -49,6 +49,20 @@
                                     </div>
 
                                     <div class="mb-3 fs-4">
+                                        <label for="" class="fw-bold">Nama Distrik</label>
+                                        <select name="distrik_id" class="form-select form-select-lg">
+                                            <option hidden selected value="{{ $data->distrik_id }}">{{ $data->distrik->nama_distrik ?? '' }}</option>
+                                            @foreach ($distriks as $distrik)
+                                                 <option value="{{ $distrik->id }}">{{ $distrik->nama_distrik }}</option>
+                                            @endforeach
+
+                                        </select>
+                                        @if($errors->has('distrik_id'))
+                                            <label class="text-danger"> {{ $errors->first('distrik_id') }} </label>
+                                        @endif
+                                    </div>
+
+                                    <div class="mb-3 fs-4">
                                         <label for="" class="fw-bold">Alamat</label>
                                         <textarea name="alamat" id="" rows="5" class="form-control form-control-lg">{{old('alamat') ? old('alamat') : $data->alamat }}</textarea>
                                         @if($errors->has('alamat'))

@@ -13,7 +13,7 @@ class Desa extends Model
 
     public function distrik()
     {
-        return $this->hasOne(Distrik::class,'id');
+        return $this->hasOne(Distrik::class,'id','distrik_id');
     }
 
 }

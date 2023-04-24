@@ -33,7 +33,8 @@
 
                                     <div class="mb-3 fs-4">
                                         <label for="" class="fw-bold">Nama Desa</label>
-                                        <input type="text" class="form-control form-control-lg" value="{{ old('nama_desa')}}"  name="nama_desa">
+                                        <input type="text" class="form-control form-control-lg"
+                                        value="{{ old('nama_desa')}}"  name="nama_desa">
                                         @if($errors->has('nama_desa'))
                                             <label class="text-danger"> {{ $errors->first('nama_desa') }} </label>
                                         @endif
@@ -44,6 +45,20 @@
                                         <input type="text" class="form-control form-control-lg" value="{{ old('nama_kepala_desa')}}"  name="nama_kepala_desa">
                                         @if($errors->has('nama_kepala_desa'))
                                             <label class="text-danger"> {{ $errors->first('nama_kepala_desa') }} </label>
+                                        @endif
+                                    </div>
+
+                                    <div class="mb-3 fs-4">
+                                        <label for="" class="fw-bold">Nama Distrik</label>
+                                        <select name="distrik_id" class="form-select form-select-lg">
+                                            <option hidden>Pillih</option>
+                                            @foreach ($data as $distrik)
+                                                 <option value="{{ $distrik->id }}">{{ $distrik->nama_distrik }}</option>
+                                            @endforeach
+
+                                        </select>
+                                        @if($errors->has('distrik_id'))
+                                            <label class="text-danger"> {{ $errors->first('distrik_id') }} </label>
                                         @endif
                                     </div>
 

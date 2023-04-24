@@ -39,6 +39,13 @@
                                             <label class="text-danger"> {{ $errors->first('nama_distrik') }} </label>
                                         @endif
                                     </div>
+                                    <div class="mb-3 fs-4">
+                                        <label for="" class="fw-bold">Nama ibu kota distrik</label>
+                                        <input type="text" class="form-control form-control-lg"  name="ibu_kota_distrik" value="{{old('ibu_kota_distrik') ? old('ibu_kota_distrik') : $data->ibu_kota_distrik }}">
+                                        @if($errors->has('ibu_kota_distrik'))
+                                            <label class="text-danger"> {{ $errors->first('ibu_kota_distrik') }} </label>
+                                        @endif
+                                    </div>
 
                                     <div class="mb-3 fs-4">
                                         <label for="" class="fw-bold">Nama Kepala Distrik</label>
