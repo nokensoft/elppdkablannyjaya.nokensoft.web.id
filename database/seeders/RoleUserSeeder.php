@@ -18,7 +18,7 @@ class RoleUserSeeder extends Seeder
     {
         app()['cache']->forget('spatie.permission.cache');
 
-        // ASIGN ROLES
+        // CREATE ROLES
 
         $adminRole = Role::create(
             [
@@ -26,27 +26,17 @@ class RoleUserSeeder extends Seeder
             'name'              => 'administrator',
             'display_name'      => 'Administrator',
         ]);
-        $bpendidikanRole = Role::create(
+
+        $opdRole = Role::create(
             [
             'guard_name'        => 'web',
-            'name'              => 'bidang_pendidikan',
-            'display_name'      => 'Bidang Pendidikan',
-        ]);
-        $bkesehatanRole = Role::create(
-            [
-            'guard_name'        => 'web',
-            'name'              => 'bidang_kesehatan',
-            'display_name'      => 'Bidang Kesehatan',
-        ]);
-        $bpekerjaanUmumRole = Role::create(
-            [
-            'guard_name'        => 'web',
-            'name'              => 'bidang_pu',
-            'display_name'      => 'Bidang Pekerjaan Umum',
+            'name'              => 'opd',
+            'display_name'      => 'Perangkat Daerah',
         ]);
 
+        // CREATE USERS AND ASIGN ROLES
 
-        // ADMIN
+        // Create User Admin
         $admin = User::create([
             'name'              => 'Admin',
             'slug'              => 'admin',
@@ -54,9 +44,11 @@ class RoleUserSeeder extends Seeder
             'password'          => bcrypt('admin@lannyjayakab.go.id'),
             'avatar'            => 'assets/images/avatars/user.png',
         ]);
+
+        // Asign Role
         $admin->assignRole($adminRole);
 
-        // Dinas Pendidikan
+        // Create User Pendidikan
         $pendidikan = User::create([
             'name'              => 'Dinas Pendidikan',
             'slug'              => 'dinas-pendidikan',
@@ -64,7 +56,9 @@ class RoleUserSeeder extends Seeder
             'password'          => bcrypt('dinaspendidikan@lannyjayakab.go.id'),
             'avatar'            => 'assets/images/avatars/user2.png',
         ]);
-        $pendidikan->assignRole($bpendidikanRole);
+
+        // Asign Role
+        $pendidikan->assignRole($opdRole);
 
         // Dinas Kesehatan
         $kesehatan = User::create([
@@ -74,17 +68,21 @@ class RoleUserSeeder extends Seeder
             'password'          => bcrypt('dinaskesehatan@lannyjayakab.go.id'),
             'avatar'            => 'assets/images/avatars/user3.png',
         ]);
-        $kesehatan->assignRole($bkesehatanRole);
 
-        // Dinas Pekerjaan umum
+        // Asign Role
+        $kesehatan->assignRole($opdRole);
+
+        // Create User Pekerjaan umum
         $kesehatan = User::create([
-            'name'              => 'Dinas PU',
-            'slug'              => 'dinas-pu',
+            'name'              => 'Dinas Pekerjaan Umum',
+            'slug'              => 'dinas-pekerjaan-umum',
             'email'             => 'dinaspu@lannyjayakab.go.id',
             'password'          => bcrypt('dinaspu@lannyjayakab.go.id'),
             'avatar'            => 'assets/images/avatars/user3.png',
         ]);
-        $kesehatan->assignRole($bpekerjaanUmumRole);
+
+        // Asign Role
+        $kesehatan->assignRole($opdRole);
 
     }
 }
