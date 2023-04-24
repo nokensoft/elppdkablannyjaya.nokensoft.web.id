@@ -46,6 +46,7 @@
                                             <label class="text-danger"> {{ $errors->first('role_id') }} </label>
                                         @endif
                                     </div>
+
                                     <div class="mb-2 fs-4">
                                         <label for="" class="fw-bold">Nama Pengguna</label>
                                         <input type="text" class="form-control form-control-lg" placeholder="Nama Pengguna"
@@ -54,6 +55,7 @@
                                             <label class="text-danger"> {{ $errors->first('name') }} </label>
                                         @endif
                                     </div>
+
                                     <div class="mb-3 fs-4">
                                         <label for="" class="fw-bold">Email Pengguna</label>
                                         <input type="text" class="form-control form-control-lg" placeholder="Email Pengguna"
@@ -62,10 +64,12 @@
                                             <label class="text-danger"> {{ $errors->first('email') }} </label>
                                         @endif
                                     </div>
+
                                     <div class="mb-3 fs-4">
                                         <label for="" class="fw-bold">Kata Sandi</label>
                                         {!! Form::password('password',['id'=>'password','class'=>'form-control','placeholder'=>'Kata sandi pengguna']) !!}
                                     </div>
+
                                     <div class="mb-3 fs-4">
                                         <label for="" class="fw-bold">Konfirmasi Kata Sandi</label>
                                         {!! Form::password('confirm-password',['id'=>'confirm-password','class'=>'form-control','placeholder'=>'Konfirmasi kata sandi pengguna']) !!}
@@ -107,7 +111,6 @@
                                             <label class="text-danger"> {{ $errors->first('alamat') }} </label>
                                         @endif
                                     </div>
-
 
                                     <div class="mb-3 fs-4">
                                         <label for="" class="fw-bold">Nama Pimpinan</label>

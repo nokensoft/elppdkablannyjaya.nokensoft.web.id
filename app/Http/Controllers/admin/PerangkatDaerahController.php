@@ -20,14 +20,14 @@ class PerangkatDaerahController extends Controller
     public function index()
     {
         $datas = PerangkatDaerah::orderBy('id','Desc')->paginate(2);
-        return view('admin.pages.lppd.perangkatdaerah.index', ['datas' => $datas]);
+        return view('admin.pages.lppd.perangkatdaerah.index', compact('datas'));
     }
 
     // CREATE
     public function create()
     {
         $roles = Role::all();
-        return view('admin.pages.lppd.perangkatdaerah.tambah',compact('roles'));
+        return view('admin.pages.lppd.perangkatdaerah.tambah', compact('roles'));
     }
 
     // STORE
@@ -35,34 +35,38 @@ class PerangkatDaerahController extends Controller
     {
         $validator = Validator::make($request->all(),
         [
-            'name' => 'required',
-            'email' => 'required|email|unique:users,email',
-            'password' => 'required|same:confirm-password',
-            'role_id' => 'required',
+            'name'                              => 'required',
+            'email'                             => 'required|email|unique:users,email',
+            'password'                          => 'required|same:confirm-password',
+            'role_id'                           => 'required',
 
-            'nama_organisasi' => 'required|unique:perangkat_daerahs'
-        ],[
-            'name.required' => 'Nama pengguna tidak boleh kosong',
-            'email.required' => 'Email pengguna tidak boleh kosong',
-            'email.unique' => 'Email ini telah digunakan',
-            'password.required' => 'Nama pengguna tidak boleh kosong',
-            'role_id.required' => 'Peran pengguna tidak boleh kosong',
+            'nama_organisasi'                   => 'required|unique:perangkat_daerahs'
+        ],
+        [
+            'name.required'                     => 'Nama pengguna tidak boleh kosong',
+            'email.required'                    => 'Email pengguna tidak boleh kosong',
+            'email.unique'                      => 'Email ini telah digunakan',
+            'password.required'                 => 'Nama pengguna tidak boleh kosong',
+            'role_id.required'                  => 'Peran pengguna tidak boleh kosong',
 
-            'nama_organisasi.required' => 'Nama instansi/Organisasi tidak boleh kosong',
-            'nama_organisasi.unique' => 'Nama instansi/Organisasi sudah ada',
+            'nama_organisasi.required'          => 'Nama instansi/Organisasi tidak boleh kosong',
+            'nama_organisasi.unique'            => 'Nama instansi/Organisasi sudah ada',
         ]
     );
 
     if ($validator->fails()) {
+
         return redirect()->back()->withInput($request->all())->withErrors($validator);
+
     } else {
         try {
             $akun = new User();
 
-            $akun->name              = $request->name;
-            $akun->email             = $request->email;
-            $akun->password          = bcrypt($request->password);
-            $akun->slug              = Str::slug($request->name);
+            $akun->name                         = $request->name;
+            $akun->email                        = $request->email;
+            $akun->password                     = bcrypt($request->password);
+            $akun->slug                         = Str::slug($request->name);
+            
             $akun->save();
             $akun->assignRole($request->role_id);
 
@@ -78,10 +82,12 @@ class PerangkatDaerahController extends Controller
             $perangkatdaerah->status            = $request->status;
             // $perangkatdaerah->foto              = $namafoto;
             $perangkatdaerah->slug              =  Str::slug($request->nama_organisasi);
+
             $akun->perangkatdaerahs()->save($perangkatdaerah);
 
             alert()->success('Berhasil', 'Sukses!!')->autoclose(1100);
             return redirect()->route('admin.perangkatdaerah');
+            
         } catch (\Throwable $th) {
             Alert::toast('Gagal', 'error');
             return redirect()->back();
@@ -102,8 +108,9 @@ class PerangkatDaerahController extends Controller
     // EDIT
     public function edit($id)
     {
-        $data = PerangkatDaerah::where('id',$id)->first();
-        $roles = Role::all();
+        $data       = PerangkatDaerah::whereId($id)->first();
+        $roles      = Role::all();
+
         return view('admin.pages.lppd.perangkatdaerah.edit', compact('data','roles'));
     }
 
@@ -112,10 +119,11 @@ class PerangkatDaerahController extends Controller
     {
         $validator = Validator::make($request->all(),
         [
-            'nama_organisasi' => 'required|unique:perangkat_daerahs,nama_organisasi,'.$id,
-        ],[
-            'nama_organisasi.required' => 'Nama instansi/Organisasi tidak boleh kosong',
-            'nama_organisasi.unique' => 'Nama instansi/Organisasi sudah ada',
+            'nama_organisasi'                   => 'required|unique:perangkat_daerahs,nama_organisasi,'.$id,
+        ],
+        [
+            'nama_organisasi.required'          => 'Nama instansi/Organisasi tidak boleh kosong',
+            'nama_organisasi.unique'            => 'Nama instansi/Organisasi sudah ada',
         ]
     );
 
@@ -124,7 +132,8 @@ class PerangkatDaerahController extends Controller
     } else{
         try {
 
-            $perangkatdaerah =  PerangkatDaerah::find($id);
+            $perangkatdaerah                    =  PerangkatDaerah::find($id);
+            
             $perangkatdaerah->nama_organisasi   = $request->nama_organisasi;
             $perangkatdaerah->urusan            = $request->urusan;
             $perangkatdaerah->rumpun            = $request->rumpun;
@@ -135,13 +144,17 @@ class PerangkatDaerahController extends Controller
             $perangkatdaerah->status            = $request->status;
             // $perangkatdaerah->foto              = $namafoto;
             $perangkatdaerah->slug              =  Str::slug($request->nama_organisasi);
+
             $perangkatdaerah->update();
             alert()->success('Berhasil', 'Sukses!!')->autoclose(1100);
             return redirect()->route('admin.perangkatdaerah');
+            
         } catch (\Throwable $th) {
+
             dd($th);
             Alert::toast('Gagal', 'error');
             return redirect()->back();
+
         }
     }
     }
@@ -156,7 +169,7 @@ class PerangkatDaerahController extends Controller
     // DESTROY
     public function destroy($id)
     {
-        $data = perangkatdaerah::findOrFail($id);
+        $data = PerangkatDaerah::findOrFail($id);
 
         if($data->foto){
             File::delete($data->foto);
