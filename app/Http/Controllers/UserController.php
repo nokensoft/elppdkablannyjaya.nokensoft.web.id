@@ -6,8 +6,6 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Spatie\Permission\Models\Role;
-use Illuminate\Support\Arr;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -18,16 +16,19 @@ class UserController extends Controller
     // INDEX
     public function index(Request $request)
     {
-        $datas = User::orderBy('id','Desc')->whereHas('roles', function($q){
-            $q->whereNotIn('name', 'opd');
-        })->paginate(3);
+        $datas = User::with('roles')->whereHas('roles',function($q){
+            $q->where('name','supervisor');
+        })->orWhereHas('roles', function ( $query ) {
+            $query->where('name', 'administrator' );
+        })->orderBy('id','Desc')->paginate(3);
+
         return view('admin.users.index',compact('datas'));
     }
 
     // CREATE
     public function create()
     {
-        $roles = Role::where('name','administrator')->get();
+        $roles = Role::all();
         return view('admin.users.create',compact('roles'));
     }
 

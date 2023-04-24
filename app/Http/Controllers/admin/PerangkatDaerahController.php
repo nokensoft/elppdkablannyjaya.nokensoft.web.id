@@ -19,8 +19,7 @@ class PerangkatDaerahController extends Controller
     // INDEX
     public function index()
     {
-        $datas = PerangkatDaerah::orderBy('id','Desc')->paginate(2);
-
+        $datas = PerangkatDaerah::orderBy('id','Desc')->paginate(3);
         return view('admin.pages.lppd.perangkatdaerah.index', compact('datas'));
     }
 
@@ -65,7 +64,7 @@ class PerangkatDaerahController extends Controller
             $akun->email                        = $request->email;
             $akun->password                     = bcrypt($request->password);
             $akun->slug                         = Str::slug($request->name);
-            
+
             $akun->save();
             $akun->assignRole(2);
 
@@ -86,7 +85,7 @@ class PerangkatDaerahController extends Controller
 
             alert()->success('Berhasil', 'Sukses!!')->autoclose(1100);
             return redirect()->route('admin.perangkatdaerah');
-            
+
         } catch (\Throwable $th) {
             Alert::toast('Gagal', 'error');
             return redirect()->back();
@@ -132,7 +131,7 @@ class PerangkatDaerahController extends Controller
         try {
 
             $perangkatdaerah                    =  PerangkatDaerah::find($id);
-            
+
             $perangkatdaerah->nama_organisasi   = $request->nama_organisasi;
             $perangkatdaerah->urusan            = $request->urusan;
             $perangkatdaerah->rumpun            = $request->rumpun;
@@ -147,7 +146,7 @@ class PerangkatDaerahController extends Controller
             $perangkatdaerah->update();
             alert()->success('Berhasil', 'Sukses!!')->autoclose(1100);
             return redirect()->route('admin.perangkatdaerah');
-            
+
         } catch (\Throwable $th) {
 
             dd($th);

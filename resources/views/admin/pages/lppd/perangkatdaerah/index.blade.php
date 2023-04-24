@@ -35,36 +35,31 @@
                                 <table class="table table-bordered fs-4">
                                     <thead class="bg-dark text-light">
                                         <tr>
-                                            <th>Nama Organisasi</th>
-                                            <th>Urusan</th>
-                                            <th>Rumpun</th>
-                                            <th>Tipe Kantor</th>
-                                            <th>Alamat</th>
-                                            <th>Nama Pimpinan</th>
-                                            <th>Jumlah Pegawai</th>
-                                            <th>Email</th>
                                             <th>Foto Kantor</th>
+                                            <th>Nama Organisasi</th>
+                                            <th>Nama Pimpinan</th>
+                                            <th>Rumpun</th>
+                                            <th>Nama Pengguna</th>
+                                            <th>Email</th>
                                             <th class="text-center">Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach ($datas as $data )
                                             <tr>
-                                                <td>{{$data->nama_organisasi}}</td>
-                                                <td>{{$data->urusan}}</td>
-                                                <td>{{$data->rumpun}}</td>
-                                                <td>{{$data->user->name ?? ''}}</td>
-                                                <td>{{$data->alamat}}</td>
-                                                <td>{{$data->nama_pimpinan}}</td>
-                                                <td>{{$data->jumlah_pegawai}}</td>
-                                                <td>{{$data->user->email ?? ''}}</td>
                                                 <td>
                                                     @if (!$data->foto)
-                                                        <img src="{{asset('assets/images/1.jpg')}}" alt="Logo" width="150px" class="img-thumbnail">
+                                                        <img src="{{asset('assets/images/1.jpg')}}" alt="Logo" width="80px" class="img-thumbnail">
                                                     @else
-                                                     <img src="{{ url($data->foto)}}" alt="{{asset($data->foto)}}" class="img-fluid img-thumbnail" width="150px"></td>
+                                                     <img src="{{ url($data->foto)}}" alt="{{asset($data->foto)}}" class="img-fluid img-thumbnail" width="80px"></td>
                                                     @endif
                                                 </td>
+                                                <td>{{$data->nama_organisasi}}</td>
+                                                <td>{{$data->nama_pimpinan}}</td>
+                                                <td>{{$data->rumpun}}</td>
+                                                <td>{{$data->user->name ?? ''}}</td>
+                                                <td>{{$data->user->email ?? ''}}</td>
+
                                                 <td class="d-flex justify-content-between gap-1">
                                                     <a href="{{route('admin.perangkatdaerah.show',$data->id)}}" class="btn btn-sm btn-dark border-0  waves-effect waves-light fs-4"> <i class="fas fa-eye"></i> </a>
                                                     <a href="{{route('admin.perangkatdaerah.edit',$data->id)}}" class="btn btn-sm btn-outline-dark border-0 waves-effect waves-light fs-4"> <i class="fas fa-edit"></i> </a>

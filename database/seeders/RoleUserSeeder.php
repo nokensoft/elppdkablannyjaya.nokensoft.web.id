@@ -27,7 +27,7 @@ class RoleUserSeeder extends Seeder
             'name'              => 'administrator',
             'display_name'      => 'Administrator',
         ]);
-        
+
         $opdRole = Role::create(
             [
             'id'                => 2,
@@ -35,7 +35,7 @@ class RoleUserSeeder extends Seeder
             'name'              => 'opd',
             'display_name'      => 'Perangkat Daerah',
         ]);
-        
+
         $supervisorRole = Role::create(
             [
             'id'                => 3,

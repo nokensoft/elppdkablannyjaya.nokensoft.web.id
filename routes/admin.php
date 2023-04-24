@@ -25,7 +25,7 @@ use App\Http\Controllers\admin\MonitoringController;
 use App\Http\Controllers\admin\IkkController;
 use App\Http\Controllers\admin\PengaturanController;
 use App\Http\Controllers\admin\ProfilDaerahController;
-
+use App\Models\Pengaturan;
 
 Route::prefix('admin')->middleware('auth')->group(function () {
 
@@ -185,7 +185,8 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     // TENTANG APLIKASI
 
     Route::get('/tentang-aplikasi', function () {
-        return view('admin.pages.tentang-aplikasi');
+        $data = Pengaturan::get();
+        return view('admin.pages.tentang-aplikasi',compact('data'));
     });
 
     Route::get('/bantuan', function () {

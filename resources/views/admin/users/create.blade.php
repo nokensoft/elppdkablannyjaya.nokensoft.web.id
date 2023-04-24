@@ -53,7 +53,10 @@
                                         <label for="" class="fw-bold">Peran</label>
                                         <select id="role_id" name="role_id" class="form-control">
                                             @foreach ($roles as $role )
-                                                <option value="{{ $role->id }}">{{ $role->display_name }}</option>
+                                                @if($role->name == 'opd')
+                                                @else
+                                                    <option value="{{ $role->id }}">{{ $role->display_name }}</option>
+                                                @endif
                                             @endforeach
                                         </select>
                                     </div>

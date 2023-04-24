@@ -111,11 +111,7 @@
                                     <i class="fas fa-bookmark me-1"></i>
                                     <span>Pelaporan</span>
                                 </a>
-                                <!-- item-->
-                                <a href="{{asset('admin/lppd/perangkatdaerah')}}" class="dropdown-item fs-4">
-                                    <i class="fas fa-bookmark me-1"></i>
-                                    <span>Perangkat Daerah</span>
-                                </a>
+
 
                             </div>
                         </li>

@@ -39,7 +39,7 @@ class PerangkatDaerahSeeder extends Seeder
             'urusan'                => 'Pekerjaan Umum',
             'rumpun'                => 'Pekerjaan Umum',
             'alamat'                => 'Tiom, Lanny Jaya',
-            'foto'                  => 'assets/images/image3.png',
+            'foto'                  => 'assets/images/image2.png',
             'user_id'               => 4
         ]);
 
