@@ -16,41 +16,30 @@ class PerangkatDaerahSeeder extends Seeder
     public function run()
     {
 
-        PerangkatDaerah::insert([
-            'nama_organisasi'       => 'Dinas Pendidikan dan Kebudayaan',
-            'urusan'                => 'Pendidikan',
-            'rumpun'                => 'Pendidikan',
-            'alamat'                => 'Tiom, Lanny Jaya',
-            'foto'                  => 'assets/images/image1.png',
-            'user_id'               => 2
-        ]);
-
-        PerangkatDaerah::insert([
-            'nama_organisasi'       => 'Dinas Kesehatan',
-            'urusan'                => 'Kesehatan',
-            'rumpun'                => 'Kesehatan',
-            'alamat'                => 'Tiom, Lanny Jaya',
-            'foto'                  => 'assets/images/image2.png',
-            'user_id'               => 3
-        ]);
-
-        PerangkatDaerah::insert([
-            'nama_organisasi'       => 'Dinas Pekerjaan Umum',
-            'urusan'                => 'Pekerjaan Umum',
-            'rumpun'                => 'Pekerjaan Umum',
-            'alamat'                => 'Tiom, Lanny Jaya',
-            'foto'                  => 'assets/images/image2.png',
-            'user_id'               => 4
-        ]);
-
-        // PerangkatDaerah::insert([
-        //     'nama_organisasi'       => 'Perumahan Rakyat',
-        //     'urusan'                => 'Perumahan',
-        //     'rumpun'                => 'Perumahan',
-        //     'alamat'                => 'Tiom, Lanny Jaya',
-        //     'foto'                  => 'assets/images/image4.png',
-
-        // ]);
-
+        PerangkatDaerah::insert(
+            [
+                [
+                    'nama_organisasi'       => 'Dinas Kesehatan',
+                    'urusan'                => 'Kesehatan',
+                    'alamat'                => 'Tiom, Lanny Jaya',
+                    'foto_gedung'           => 'assets/images/image2.png',
+                    'user_id'               => 3
+                ],
+                [
+                    'nama_organisasi'       => 'Dinas Pendidikan dan Kebudayaan',
+                    'urusan'                => 'Pendidikan',
+                    'alamat'                => 'Tiom, Lanny Jaya',
+                    'foto_gedung'           => 'assets/images/image1.png',
+                    'user_id'               => 2
+                ],
+                [
+                    'nama_organisasi'       => 'Dinas Pekerjaan Umum',
+                    'urusan'                => 'Pekerjaan Umum',
+                    'alamat'                => 'Tiom, Lanny Jaya',
+                    'foto_gedung'           => 'assets/images/image2.png',
+                    'user_id'               => 4
+                ]
+            ]
+        );
     }
 }

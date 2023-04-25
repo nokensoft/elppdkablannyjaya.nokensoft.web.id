@@ -15,19 +15,21 @@ return new class extends Migration
     {
         Schema::create('perangkat_daerahs', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('user_id')->unsigned()->nullable();
             $table->string('nama_organisasi');
             $table->string('urusan')->nullable();
-            $table->string('rumpun')->nullable();
             $table->string('tipe_kantor')->nullable();
             $table->string('alamat')->nullable();
-            $table->string('nama_pimpinan')->nullable();
             $table->string('jumlah_pegawai')->nullable();
             $table->string('status')->nullable();
-            $table->string('foto')->nullable();
+            
+            $table->string('nama_pimpinan')->nullable();
+            $table->string('foto_gedung')->nullable();
             $table->string('slug')->nullable();
-            $table->timestamps();
+
+            $table->bigInteger('user_id')->unsigned()->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
+            
+            $table->timestamps();
 
         });
     }
