@@ -11,13 +11,14 @@ use Alert;
 use Storage;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Validator;
 
 class DprdController extends Controller
 {
     // INDEX
     public function index()
     {
-        $datas = Dprd::orderBy('nama_lengkap','asc')->paginate(2);
+        $datas = Dprd::orderBy('nama_lengkap','asc')->paginate(4);
         return view('admin.pages.profil.dprd.index', ['datas' => $datas]);
     }
 
@@ -37,120 +38,156 @@ class DprdController extends Controller
     // STORE PROCESS
     public function store(Request $request)
     {
-        $request->validate([
-            'nama_lengkap' => 'required'
+        $validator = Validator::make($request->all(),
+        [
+            'nama_lengkap'              => 'required',
+            'jabatan'                   => 'required',
+            'nik'                       => 'required|unique:dprds,nik',
+            'alamat'                    => 'required',
+            'ttl'                       => 'required',
+            'pendidikan'                => 'required',
+            'foto'                      => 'mimes:jpeg,png,jpg',
         ],
         [
-            'nama_lengkap.required' => 'Nama tidak boleh kosong',
-        ]);
+            'nama_lengkap.required'      => 'Nom tidak boleh kosong',
+            'nik.unique'                 => 'NIK sudah ada',
+            'jabatan.required'           => 'Jabatan tidak boleh kosong',
+            'alamat.required'            => 'Alamat tidak boleh kosong',
+            'ttl.required'               => 'TTL tidak boleh kosong',
+            'pendidikan.required'        => 'Pendidikan tidak boleh kosong',
+            'foto.mimes'                 => 'Foto harus dengan jenis JPEG,JPG,PNG',
+        ]
+    );
 
-        $dprd = new Dprd();
+        if ($validator->fails()) {
+            return redirect()->back()->withInput($request->all())->withErrors($validator);
+        } else {
+            try {
+                $dprd = new Dprd();
+                $dprd->nama_lengkap     = $request->nama_lengkap;
+                $dprd->jabatan          = $request->jabatan;
+                $dprd->nik              = $request->nik;
+                $dprd->alamat           = $request->alamat;
+                $dprd->ttl              = $request->ttl;
+                $dprd->nama_partai      = $request->nama_partai;
+                $dprd->pendidikan       = $request->pendidikan;
+                $dprd->slug             = Str::slug($request->nama_lengkap);
 
-        // jika field input foto tidak kosong
-        if(!empty($request->file('foto'))){
-            
-            $tahun = date("Y");
-            $bulan = date("M");
+                $posterName = time() . '.' . $request->foto->extension();
+                $path = public_path('file/foto/dprd');
+                if (!empty($dprd->foto) && file_exists($path . '/' . $dprd->foto)) :
+                    unlink($path . '/' . $dprd->foto);
+                endif;
+                $dprd->foto = $posterName;
+                $request->foto->move(public_path('file/foto/dprd'), $posterName);
 
-            $filename  = 'profil-dprd'.'-'.date('Y-m-d-H-i-s').$request->file('foto')->getClientOriginalName();
-            $request->file('foto')->storeAs('public/resource/admin/dprd/'.$tahun.'/'.$bulan,$filename);
-            $file_url = ('storage/resource/admin/dprd/'.$tahun.'/'.$bulan.'/'.$filename);
-            
-            $dprd->foto             = $file_url;
-        };
+                $dprd->save();
 
-        $dprd->nama_lengkap     = $request->nama_lengkap;
-        $dprd->jabatan          = $request->jabatan;
-        $dprd->nik              = $request->nik;
-        $dprd->alamat           = $request->alamat;
-        $dprd->ttl              = $request->ttl;
-        $dprd->nama_partai      = $request->nama_partai;
-        $dprd->pendidikan       = $request->pendidikan;
-        $dprd->slug             = Str::slug($request->nama_lengkap);
-
-        $dprd->save();
-
-        alert()->success('Berhasil', 'Sukses!!')->autoclose(1100);
-        return redirect()->route('admin.dprd');
-
+                alert()->success('Berhasil', 'Sukses!!')->autoclose(1100);
+                return redirect()->route('admin.dprd');
+            } catch (\Throwable $th) {
+                alert()->error('Gagal', 'Sukses!!')->autoclose(1100);
+                return redirect()->back();
+            }
+        }
     }
 
     // SHOW
-    public function show(Dprd $dprd)
+    public function show($id)
     {
-        return view('admin.pages.profil.dprd.detail');
+        $data = Dprd::where('id',$id)->first();
+        return view('admin.pages.profil.dprd.detail',compact('data'));
     }
 
     // EDIT
     public function edit($id)
     {
-        $data = Dprd::whereId($id)->first();
+        $data = Dprd::where('id',$id)->first();
         return view('admin.pages.profil.dprd.ubah', compact('data'));
     }
 
     // UPDATE PROCESS
     public function update(Request $request, $id)
     {
-         $request->validate([
-            'nama_lengkap' => 'required'
+        $validator = Validator::make($request->only('nama_lengkap','jabatan','nik','alamat','ttl','pendidikan'),
+        [
+            'nama_lengkap'              => 'required',
+            'jabatan'                   => 'required',
+            'nik'                       => 'required|string|unique:dprds,nik,'.$id,
+            'alamat'                    => 'required',
+            'ttl'                       => 'required',
+            'pendidikan'                => 'required',
+            'foto'                      => 'mimes:jpg,png,jpeg'
+
         ],
         [
-            'nama_lengkap.required' => 'Nama tidak boleh kosong',
-        ]);
+            'nama_lengkap.required'      => 'Nom tidak boleh kosong',
+            'nik.unique'                 => 'NIK sudah ada',
+            'jabatan.required'           => 'Jabatan tidak boleh kosong',
+            'alamat.required'            => 'Alamat tidak boleh kosong',
+            'ttl.required'               => 'TTL tidak boleh kosong',
+            'pendidikan.required'        => 'Pendidikan tidak boleh kosong',
+            'foto.mimes'                 => 'Foto harus dengan jenis JPEG,JPG,PNG',
+        ]
+    );
 
-        $dprd = new Dprd();
-
-        if(!empty($request->file('foto'))){
-
-            $tahun = date("Y");
-            $bulan = date("M");
-
-            $filename  = 'profil-dprd'.'-'.date('Y-m-d-H-i-s').$request->file('foto')->getClientOriginalName();
-            $request->file('foto')->storeAs('public/resource/admin/dprd/'.$tahun.'/'.$bulan,$filename);
-            $file_url = ('storage/resource/admin/dprd/'.$tahun.'/'.$bulan.'/'.$filename);
-            $datalama =DB::select("SELECT * FROM profil_dprd WHERE id = '$id' ");
-
-            if($datalama[0]->foto){
-             File::delete($datalama[0]->foto);
+        if ($validator->fails()) {
+            return redirect()->back()->withInput($request->all())->withErrors($validator);
+        } else {
+            try {
+                $dprd                   = Dprd::find($id);
+                $dprd->nama_lengkap     = $request->nama_lengkap;
+                $dprd->jabatan          = $request->jabatan;
+                $dprd->nik              = $request->nik;
+                $dprd->alamat           = $request->alamat;
+                $dprd->ttl              = $request->ttl;
+                $dprd->nama_partai      = $request->nama_partai;
+                $dprd->pendidikan       = $request->pendidikan;
+                $dprd->slug             = Str::slug($request->nama_lengkap);
+                if($request->foto){
+                    $posterName = time() . '.' . $request->foto->extension();
+                    $path = public_path('file/foto/dprd');
+                    if (!empty($dprd->foto) && file_exists($path . '/' . $dprd->foto)) :
+                        unlink($path . '/' . $dprd->foto);
+                    endif;
+                    $dprd->foto = $posterName;
+                    $request->foto->move(public_path('file/foto/dprd'), $posterName);
+                }
+                $dprd->update();
+                alert()->success('Berhasil', 'Sukses!!')->autoclose(1100);
+                return redirect()->route('admin.dprd');
+            } catch (\Throwable $th) {
+                alert()->error('Gagal', 'Sukses!!')->autoclose(1100);
+                return redirect()->back();
             }
-            
-            $data['foto']           = $file_url;
-
-        };
-
-        $data['nama_lengkap']       = $request->nama_lengkap;
-        $data['jabatan']            = $request->jabatan;
-        $data['nik']                = $request->nik;
-        $data['alamat']             = $request->alamat;
-        $data['ttl']                = $request->ttl;
-        $data['nama_partai']        = $request->nama_partai;
-        $data['pendidikan']         = $request->pendidikan;
-
-        Dprd::where('id', $id)->update($data);
-
-        alert()->success('Berhasil', 'Sukses!!')->autoclose(1100);
-        return redirect()->route('admin.dprd');
+        }
 
     }
 
     // DELETE CONFIRMATION
     public function delete($id)
     {
-        $data = Dprd::whereId($id)->first();
+        $data = Dprd::where('id',$id)->first();
         return view('admin.pages.profil.dprd.delete', compact('data'));
     }
 
     // DESTORY PROCESS
     public function destroy($id)
     {
-        $data = Dprd::findOrFail($id);
-        if($data->foto){
-            File::delete($data->foto);
+        try {
+            $dprd = Dprd::find($id);
+            $path = public_path('file/foto/dprd/' . $dprd->foto);
+
+            if (file_exists($path)) {
+                File::delete($path);
+            }
+            $dprd->delete();
+            alert()->success('Berhasil', 'Terhapus!!')->autoclose(1500);
+            return redirect()->route('admin.dprd');
+        } catch (\Throwable $e) {
+            alert()->error('Gagal', 'Sukses!!')->autoclose(1100);
+            return redirect()->back();
         }
-
-        $data->forceDelete();
-
-        alert()->success('Berhasil', 'Terhapus!!')->autoclose(1500);
-        return redirect()->route('admin.dprd');
     }
+
 }

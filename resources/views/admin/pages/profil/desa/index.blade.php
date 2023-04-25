@@ -52,9 +52,7 @@
                                             <th>Nama Distrik</th>
                                             <th>Nama Desa</th>
                                             <th>Nama Kepala Desa</th>
-                                            <th>Alamat</th>
-                                            <th>Telp</th>
-                                            <th>Email</th>
+                                            <th>Kontak</th>
                                             <th>Opsi</th>
                                         </tr>
                                     </thead>
@@ -64,9 +62,14 @@
                                                 <td>{{ $data->distrik->nama_distrik ?? 'Nama distrik belum ada!' }}</td>
                                                 <td>{{$data->nama_desa}}</td>
                                                 <td>{{$data->nama_kepala_desa}}</td>
-                                                <td>{{ Str::limit($data->alamat, 10) }}</td>
-                                                <td>{{$data->telp}}</td>
-                                                <td>{{ Str::limit($data->email, 8) }}</td>
+                                                <td>
+                                                    <i class="mdi mdi-phone-outline"></i> {{$data->telp}}
+                                                    <br>
+                                                    <i class="mdi mdi-email-outline"></i> {{ Str::limit($data->email, 15) }}
+                                                    <br>
+                                                    <i class="mdi mdi-map-marker"></i>  {{ Str::limit($data->alamat, 18) }}
+                                                </td>
+
                                                 <td class="d-flex justify-content-between gap-1">
                                                     <a href="{{route('admin.desa.show',$data->id)}}" class="btn btn-sm btn-info border-0  waves-effect waves-light fs-4"> <i class="fas fa-eye"></i> </a>
                                                     <a href="{{route('admin.desa.edit',$data->id)}}" class="btn btn-sm btn-outline-info border-0 waves-effect waves-light fs-4"> <i class="fas fa-edit"></i> </a>

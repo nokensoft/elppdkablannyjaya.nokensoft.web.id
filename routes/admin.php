@@ -81,7 +81,7 @@ Route::prefix('admin')->middleware('auth')->group(function () {
 
         Route::get('dprd/{id}/edit','edit')->name('admin.dprd.edit')->middleware(['role:administrator']);
 
-        Route::get('dprd/show','show')->name('admin.dprd.show')->middleware(['role:administrator']);
+        Route::get('dprd/{id}/show','show')->name('admin.dprd.show')->middleware(['role:administrator']);
         Route::get('dprd/delete/{id}','delete')->name('admin.dprd.delete')->middleware(['role:administrator']);
 
         Route::put('dprd/{id}','update')->name('admin.dprd.update')->middleware(['role:administrator']);

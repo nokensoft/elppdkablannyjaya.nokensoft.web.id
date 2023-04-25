@@ -47,7 +47,7 @@
 
                                     <div class="mb-3 fs-4">
                                         <label for="" class="fw-bold">Alamat</label>
-                                        <textarea  id="" rows="5" class="form-control form-control-lg" readonly>{{$data->alamat }}</textarea>
+                                        <textarea  rows="2" class="form-control form-control-lg" readonly>{{$data->alamat }}</textarea>
                                     </div>
 
                                     <div class="mb-3 fs-4">

@@ -19,7 +19,7 @@
             <div class="col">
                 <div class="card">
                     <div class="card-body">
-                        
+
                         <div class="row">
                             <div class="col-md-6">
                                 <h1 class="fw-bold">Profil DPRD</h1>
@@ -29,15 +29,15 @@
                                 <a href="{{ route('admin.dprd.create') }}" class="btn btn-info waves-effect waves-light fs-4">
                                     <i class="fas fa-plus me-1"></i> Tambah Data
                                 </a>
-                                
+
                                 <a href="{{ route('admin.dprd.print') }}" target="_blank" class="btn btn-outline-info border-0 waves-effect waves-light fs-4" title="Cetak file atau export ke file PDF">
                                     <i class="fas fa-print me-1"></i> Print
                                 </a>
-                                
+
                                 <a target="_blank" class="btn btn-outline-info border-0 waves-effect waves-light fs-4" title="Download file excel">
                                     <i class="fas fa-file me-1"></i> Download Excel
                                 </a>
-                                
+
                             </div>
                         </div>
 
@@ -49,8 +49,8 @@
                                 <table class="table table-bordered fs-4">
                                     <thead class="bg-dark text-light">
                                         <tr>
-                                            <th>Nama Lengkap</th>
                                             <th>Foto</th>
+                                            <th>Nama Lengkap</th>
                                             <th>Jabatan</th>
                                             <th>NIK</th>
                                             <th>Alamat</th>
@@ -63,24 +63,24 @@
                                     <tbody>
                                         @foreach ($datas as $data )
                                             <tr>
-                                                <td>{{$data->nama_lengkap}}</td>
                                                 <td>
-                                                    @if ($data->foto == null)
+                                                    @if (!$data->foto)
                                                         <img src="{{asset('assets/images/user.png')}}" alt="Logo" class="img-fluid img-thumbnail" width="100">
                                                     @else
-                                                        <img src="{{ url($data->foto)}}" alt="{{$data->foto}}" class="img-fluid img-thumbnail" width="100"></td>
+                                                        <img src="{{asset('file/foto/dprd')}}/{{ $data->foto }}" class="img-fluid img-thumbnail" width="150"></td>
                                                     @endif
                                                 </td>
+                                                <td>{{$data->nama_lengkap}}</td>
                                                 <td>{{$data->jabatan}}</td>
                                                 <td>{{$data->nik}}</td>
-                                                <td>{{$data->alamat}}</td>
+                                                <td>{{ Str::limit($data->alamat, 18) }}</td>
                                                 <td>{{$data->ttl}}</td>
                                                 <td>{{$data->nama_partai}}</td>
                                                 <td>{{$data->pendidikan}}</td>
                                                 <td class="d-flex justify-content-between gap-1">
                                                     <a href="{{route('admin.dprd.show',$data->id)}}" class="btn btn-sm btn-info border-0  waves-effect waves-light fs-4"> <i class="fas fa-eye"></i> </a>
                                                     <a href="{{route('admin.dprd.edit',$data->id)}}" class="btn btn-sm btn-outline-info border-0 waves-effect waves-light fs-4"> <i class="fas fa-edit"></i> </a>
-                                                    <a href="{{route('admin.dprd.delete',$data->id)}}" class="btn btn-sm btn-outline-info border-0 waves-effect waves-light fs-4"> <i class="fas fa-trash"></i> </a>                                                  
+                                                    <a href="{{route('admin.dprd.delete',$data->id)}}" class="btn btn-sm btn-outline-info border-0 waves-effect waves-light fs-4"> <i class="fas fa-trash"></i> </a>
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -89,7 +89,7 @@
                             </div>
                             <!-- .col end -->
                         </div>
-                        <!-- .row end -->                        
+                        <!-- .row end -->
 
                         <!--pagination start-->
                         <div class="row">
