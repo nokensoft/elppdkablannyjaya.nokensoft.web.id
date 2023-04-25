@@ -27,17 +27,17 @@
                             <div class="col-lg-6  mx-auto border border-4 border-info rounded shadow-lg p-5 my-5">
 
                                 <h1 class="fw-bold">Hapus?</h1>
-                                <form action="{{route('admin.distrik.destroy',$data[0]->id)}}" method="POST" enctype="multipart/form-data">
+                                <form action="{{route('admin.distrik.destroy',$data->id)}}" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     @method('DELETE')
 
                                     <div class="mb-3 fs-4">
-                                        <label for="" class="fw-bold">{{$data[0]->nama_distrik}}</label>
+                                        <label for="" class="fw-bold"> Data Distrik {{$data->nama_distrik}}</label>
                                     </div>
 
                                     <div class="border-top border-1 pt-3 mt-4">
-                                        <button type="submit" class="btn btn-info waves-effect waves-light fs-4">
-                                            <i class="fas fa-save me-1"></i> Hapus
+                                        <button type="submit" class="btn btn-danger waves-effect waves-light fs-4">
+                                            <i class="fas fa-trash me-1"></i> Hapus
                                         </button>
                                         <a href="{{URL::previous()}}" class="btn btn-outline-light waves-effect waves-light fs-4">
                                             <i class="fas fa-arrow-left me-1"></i> Tidak

@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Image;
 use Alert;
+use App\Models\Desa;
+use App\Models\Distrik;
 use App\Models\Pengaturan;
 use Storage;
 use Illuminate\Support\Facades\DB;
@@ -17,9 +19,9 @@ class BerandaController extends Controller
 
     public function index()
     {
-        $dprd =DB::select('SELECT * FROM profil_dprd');
-        $distrik =DB::select('SELECT * FROM profil_distrik');
-        $desa =DB::select('SELECT * FROM profil_desa');
+        $dprd = Dprd::all();
+        $distrik = Distrik::all();
+        $desa = Desa::all();
         $pdata = Pengaturan::get();
         // var_dump($totalDprd);
 

@@ -55,15 +55,15 @@
                                                     @endif
                                                 </td>
                                                 <td>{{$data->nama_organisasi}}  </td>
-                                                <td>{{$data->nama_pimpinan}}</td>
-                                                <td>{{$data->rumpun}}</td>
+                                                <td>{{$data->nama_pimpinan ?? 'Data belum ada' }}</td>
+                                                <td>{{$data->rumpun ?? 'Data belum ada'}}</td>
                                                 <td>{{$data->user->name ?? ''}}</td>
                                                 <td>{{$data->user->email ?? ''}}</td>
 
                                                 <td class="d-flex justify-content-between gap-1">
-                                                    <a href="{{route('admin.perangkatdaerah.show',$data->id)}}" class="btn btn-sm btn-dark border-0  waves-effect waves-light fs-4"> <i class="fas fa-eye"></i> </a>
-                                                    <a href="{{route('admin.perangkatdaerah.edit',$data->id)}}" class="btn btn-sm btn-outline-dark border-0 waves-effect waves-light fs-4"> <i class="fas fa-edit"></i> </a>
-                                                    <a href="{{route('admin.perangkatdaerah.delete',$data->id)}}" class="btn btn-sm btn-outline-dark border-0 waves-effect waves-light fs-4"> <i class="fas fa-trash"></i> </a>
+                                                    <a href="{{route('admin.perangkatdaerah.show',$data->id)}}" class="btn btn-sm btn-info border-0  waves-effect waves-light fs-4"> <i class="fas fa-eye"></i> </a>
+                                                    <a href="{{route('admin.perangkatdaerah.edit',$data->id)}}" class="btn btn-sm btn-outline-info border-0 waves-effect waves-light fs-4"> <i class="fas fa-edit"></i> </a>
+                                                    <a href="{{route('admin.perangkatdaerah.delete',$data->id)}}" class="btn btn-sm btn-outline-info border-0 waves-effect waves-light fs-4"> <i class="fas fa-trash"></i> </a>
                                                 </td>
                                             </tr>
                                         @endforeach

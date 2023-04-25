@@ -62,23 +62,23 @@
 
                                                     @if (Auth::id() == $user->id)
                                                     <a href="{{route('pengguna.show',$user->slug)}}"
-                                                        class="btn btn-sm btn-dark border-0  waves-effect waves-light fs-4">
+                                                        class="btn btn-sm btn-info border-0  waves-effect waves-light fs-4">
                                                         <i class="fas fa-eye"></i>
                                                     </a>
                                                     <a href="{{route('pengguna.edit',$user->slug)}}"
-                                                        class="btn btn-sm btn-outline-dark border-0 waves-effect waves-light fs-4">
+                                                        class="btn btn-sm btn-outline-info border-0 waves-effect waves-light fs-4">
                                                         <i class="fas fa-edit"></i>
                                                     </a>
                                                     @else
                                                     <a href="{{route('pengguna.show',$user->slug)}}"
-                                                        class="btn btn-sm btn-dark border-0  waves-effect waves-light fs-4">
+                                                        class="btn btn-sm btn-info border-0  waves-effect waves-light fs-4">
                                                         <i class="fas fa-eye"></i>
                                                     </a>
                                                     <a href="{{route('pengguna.edit',$user->slug)}}"
-                                                        class="btn btn-sm btn-outline-dark border-0 waves-effect waves-light fs-4">
+                                                        class="btn btn-sm btn-outline-info border-0 waves-effect waves-light fs-4">
                                                         <i class="fas fa-edit"></i>
                                                     </a>
-                                                    <a href="{{route('pengguna.delete',$user->slug)}}" class="btn btn-sm btn-outline-dark border-0 waves-effect waves-light fs-4">
+                                                    <a href="{{route('pengguna.delete',$user->slug)}}" class="btn btn-sm btn-outline-info border-0 waves-effect waves-light fs-4">
                                                         <i class="fas fa-trash"></i>
                                                     </a>
                                                     @endif

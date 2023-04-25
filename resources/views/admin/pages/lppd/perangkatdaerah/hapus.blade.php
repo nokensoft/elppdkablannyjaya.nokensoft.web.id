@@ -34,12 +34,12 @@
                                     @method('DELETE')
 
                                     <div class="mb-3 fs-4">
-                                        <label for="" class="fw-bold">{{ ($data->nama_organisasi) }}</label>
+                                        <label for="" class="fw-bold">Data {{ $data->nama_organisasi }}</label>
                                     </div>
 
                                     <div class="border-top border-1 pt-3 mt-4">
-                                        <button type="submit" class="btn btn-info waves-effect waves-light fs-4">
-                                            <i class="fas fa-save me-1"></i> Hapus
+                                        <button type="submit" class="btn btn-danger waves-effect waves-light fs-4">
+                                            <i class="fas fa-trash me-1"></i> Hapus
                                         </button>
                                         <a href="{{URL::previous()}}" class="btn btn-outline-light waves-effect waves-light fs-4">
                                             <i class="fas fa-arrow-left me-1"></i> Tidak
