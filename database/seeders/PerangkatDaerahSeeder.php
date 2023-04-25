@@ -15,7 +15,6 @@ class PerangkatDaerahSeeder extends Seeder
      */
     public function run()
     {
-
         PerangkatDaerah::insert(
             [
                 [
