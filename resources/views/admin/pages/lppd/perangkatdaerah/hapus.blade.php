@@ -34,7 +34,7 @@
                                     @method('DELETE')
 
                                     <div class="mb-3 fs-4">
-                                        <label for="" class="fw-bold">Data {{ $data->nama_organisasi }}</label>
+                                        <label for="" class="fw-bold">Data {{ $data->perangkatdaerah->nama_organisasi ?? '' }}</label>
                                     </div>
 
                                     <div class="border-top border-1 pt-3 mt-4">

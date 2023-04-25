@@ -103,11 +103,10 @@ class UserController extends Controller
             }
             $account->update();
             $account->syncRoles(explode(',', $request->role_id));
-            Alert::toast('Pengguna Berhasil diperbarui!', 'success');
+            alert()->success('Berhasil', 'Sukses!!')->autoclose(1100);
             return redirect()->route('pengguna.index');
         } catch (\Throwable $th) {
-            dd($th);
-            Alert::toast('Failed', 'error');
+            alert()->error('Gagal', 'Gagal!!')->autoclose(1100);
             return redirect()->back();
         }
     }

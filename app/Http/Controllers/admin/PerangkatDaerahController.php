@@ -19,7 +19,10 @@ class PerangkatDaerahController extends Controller
     // INDEX
     public function index()
     {
-        $datas = PerangkatDaerah::orderBy('id','Desc')->paginate(3);
+        $datas = User::whereHas('roles',function($q){
+            $q->where('name','opd');
+        })
+        ->orderBy('id','Desc')->paginate(4);
         return view('admin.pages.lppd.perangkatdaerah.index', compact('datas'));
     }
 
@@ -38,8 +41,8 @@ class PerangkatDaerahController extends Controller
             'email'                             => 'required|email|unique:users,email',
             'password'                          => 'required|same:confirm-password',
             // 'role_id'                           => 'required',
-
-            'nama_organisasi'                   => 'required|unique:perangkat_daerahs'
+            'nama_organisasi'                   => 'required|unique:perangkat_daerahs',
+            'foto_gedung'                       => 'mimes:jpeg,png,jpg',
         ],
         [
             // 'name.required'                     => 'Nama pengguna tidak boleh kosong',
@@ -49,80 +52,83 @@ class PerangkatDaerahController extends Controller
 
             'nama_organisasi.required'          => 'Nama instansi/Organisasi tidak boleh kosong',
             'nama_organisasi.unique'            => 'Nama instansi/Organisasi sudah ada',
+            'foto_gedung.mimes'                 => 'Foto Gedung harus dengan jenis JPEG,JPG,PNG',
         ]
     );
 
-    if ($validator->fails()) {
+        if ($validator->fails()) {
+            return redirect()->back()->withInput($request->all())->withErrors($validator);
+        } else {
+            try {
+                $akun                               = new User();
+                $akun->name                         = $request->nama_organisasi;
+                $akun->email                        = $request->email;
+                $akun->password                     = bcrypt($request->password);
+                $akun->slug                         = Str::slug($request->name);
 
-        return redirect()->back()->withInput($request->all())->withErrors($validator);
+                $akun->save();
+                $akun->assignRole(2);
 
-    } else {
-        try {
-            $akun = new User();
+                $perangkatdaerah                    = new perangkatdaerah();
+                $perangkatdaerah->user_id           = $akun->id;
+                $perangkatdaerah->nama_organisasi   = $request->nama_organisasi;
+                $perangkatdaerah->urusan            = $request->urusan;
+                $perangkatdaerah->rumpun            = $request->rumpun;
+                $perangkatdaerah->tipe_kantor       = $request->tipe_kantor;
+                $perangkatdaerah->alamat            = $request->alamat;
+                $perangkatdaerah->nama_pimpinan     = $request->nama_pimpinan;
+                $perangkatdaerah->jumlah_pegawai    = $request->jumlah_pegawai;
+                $perangkatdaerah->status            = $request->status;
+                $perangkatdaerah->slug              =  Str::slug($request->nama_organisasi);
 
-            $akun->name                         = $request->nama_organisasi;
-            $akun->email                        = $request->email;
-            $akun->password                     = bcrypt($request->password);
-            $akun->slug                         = Str::slug($request->name);
+                $posterName = time() . '.' . $request->foto_gedung->extension();
+                $path = public_path('file/foto/perangkatdaerah');
+                if (!empty($perangkatdaerah->foto_gedung) && file_exists($path . '/' . $perangkatdaerah->foto_gedung)) :
+                    unlink($path . '/' . $perangkatdaerah->foto_gedung);
+                endif;
+                $perangkatdaerah->foto_gedung = $posterName;
+                $request->foto_gedung->move(public_path('file/foto/perangkatdaerah'), $posterName);
 
-            $akun->save();
-            $akun->assignRole(2);
+                $akun->perangkatdaerahs()->save($perangkatdaerah);
 
-            $perangkatdaerah = new perangkatdaerah();
+                alert()->success('Berhasil', 'Sukses!!')->autoclose(1100);
+                return redirect()->route('admin.perangkatdaerah');
 
-            $perangkatdaerah->user_id           = $akun->id;
-            $perangkatdaerah->nama_organisasi   = $request->nama_organisasi;
-            $perangkatdaerah->urusan            = $request->urusan;
-            $perangkatdaerah->rumpun            = $request->rumpun;
-            $perangkatdaerah->tipe_kantor       = $request->tipe_kantor;
-            $perangkatdaerah->alamat            = $request->alamat;
-            $perangkatdaerah->nama_pimpinan     = $request->nama_pimpinan;
-            $perangkatdaerah->jumlah_pegawai    = $request->jumlah_pegawai;
-            $perangkatdaerah->status            = $request->status;
-            // $perangkatdaerah->foto              = $namafoto;
-            $perangkatdaerah->slug              =  Str::slug($request->nama_organisasi);
-
-            $akun->perangkatdaerahs()->save($perangkatdaerah);
-
-            alert()->success('Berhasil', 'Sukses!!')->autoclose(1100);
-            return redirect()->route('admin.perangkatdaerah');
-
-        } catch (\Throwable $th) {
-            Alert::toast('Gagal', 'error');
-            return redirect()->back();
+            } catch (\Throwable $th) {
+                alert()->error('Gagal', 'Gagal!!')->autoclose(1100);
+                return redirect()->back();
+            }
         }
-    }
-
-
 
     }
 
     // SHOW
     public function show($id)
     {
-        $data = PerangkatDaerah::where('id',$id)->first();
+        $data = User::where('id',$id)->first();
         return view('admin.pages.lppd.perangkatdaerah.show',compact('data'));
     }
 
     // EDIT
     public function edit($id)
     {
-        $data       = PerangkatDaerah::whereId($id)->first();
-        $roles      = Role::all();
-
-        return view('admin.pages.lppd.perangkatdaerah.edit', compact('data','roles'));
+        $data       = User::where('id',$id)->first();
+        return view('admin.pages.lppd.perangkatdaerah.edit', compact('data'));
     }
 
     // UPDATE
     public function update(Request $request,$id)
     {
-        $validator = Validator::make($request->all(),
+        $validator = Validator::make($request->only('nama_organisasi','foto_gedung','email'),
         [
-            'nama_organisasi'                   => 'required|unique:perangkat_daerahs,nama_organisasi,'.$id,
+            'nama_organisasi'                   => 'required',
+            'foto_gedung'                       => 'mimes:jpeg,png,jpg',
+            'email'                             => 'required|email|unique:users,email,'.$id,
         ],
         [
             'nama_organisasi.required'          => 'Nama instansi/Organisasi tidak boleh kosong',
             'nama_organisasi.unique'            => 'Nama instansi/Organisasi sudah ada',
+            'foto_gedung.mimes'                 => 'Foto Gedung harus dengan jenis JPEG,JPG,PNG',
         ]
     );
 
@@ -131,26 +137,46 @@ class PerangkatDaerahController extends Controller
     } else{
         try {
 
-            $perangkatdaerah                    =  PerangkatDaerah::find($id);
+            $akun                               = User::find($id);
+            $akun->name                         = $request->nama_organisasi;
+            $akun->email                        = $request->email;
+            if ($request->password) {
+                $akun->password = Hash::make($request->password);
+            }
+
+            $akun->slug                         = Str::slug($request->name);
+
+            $akun->update();
+            $akun->assignRole(2);
+
+
+            $perangkatdaerah                    =  $akun->perangkatdaerah ?? new PerangkatDaerah();
 
             $perangkatdaerah->nama_organisasi   = $request->nama_organisasi;
             $perangkatdaerah->urusan            = $request->urusan;
-            $perangkatdaerah->rumpun            = $request->rumpun;
             $perangkatdaerah->tipe_kantor       = $request->tipe_kantor;
             $perangkatdaerah->alamat            = $request->alamat;
             $perangkatdaerah->nama_pimpinan     = $request->nama_pimpinan;
             $perangkatdaerah->jumlah_pegawai    = $request->jumlah_pegawai;
             $perangkatdaerah->status            = $request->status;
             $perangkatdaerah->user_id           = $request->user_id;
-            // $perangkatdaerah->foto              = $namafoto;
             $perangkatdaerah->slug              =  Str::slug($request->nama_organisasi);
-
-            $perangkatdaerah->update();
+            if($request->foto_gedung){
+                $posterName = time() . '.' . $request->foto_gedung->extension();
+                $path = public_path('file/foto/perangkatdaerah');
+                if (!empty($perangkatdaerah->foto_gedung) && file_exists($path . '/' . $perangkatdaerah->foto_gedung)) :
+                    unlink($path . '/' . $perangkatdaerah->foto_gedung);
+                endif;
+                $perangkatdaerah->foto_gedung = $posterName;
+                $request->foto_gedung->move(public_path('file/foto/perangkatdaerah'), $posterName);
+            }
+            $akun->perangkatdaerahs()->save($perangkatdaerah);
             alert()->success('Berhasil', 'Sukses!!')->autoclose(1100);
             return redirect()->route('admin.perangkatdaerah');
 
         } catch (\Throwable $th) {
-            alert()->error('Gagal', 'Sukses!!')->autoclose(1100);
+            dd($th);
+            alert()->error('Gagal', 'Gagal!!')->autoclose(1100);
             return redirect()->back();
 
         }
@@ -160,22 +186,26 @@ class PerangkatDaerahController extends Controller
     // DELETE
     public function delete($id)
     {
-        $data = PerangkatDaerah::whereId($id)->first();
+        $data = User::where('id',$id)->first();
         return view('admin.pages.lppd.perangkatdaerah.hapus', compact('data'));
     }
 
     // DESTROY
     public function destroy($id)
     {
-        $data = PerangkatDaerah::findOrFail($id);
+        try {
+            $perangkatdaerah = PerangkatDaerah::find($id);
+            $path = public_path('file/foto/perangkatdaerah/' . $perangkatdaerah->foto_gedung);
 
-        if($data->foto){
-            File::delete($data->foto);
+            if (file_exists($path)) {
+                File::delete($path);
+            }
+            $perangkatdaerah->delete();
+            alert()->success('Berhasil', 'Sukses!!')->autoclose(1500);
+            return redirect()->route('admin.perangkatdaerah');
+        } catch (\Throwable $e) {
+            alert()->error('Gagal', 'Gagal!!')->autoclose(1100);
+            return redirect()->back();
         }
-
-        $data->forceDelete();
-
-        alert()->success('Berhasil', 'Sukses!!')->autoclose(1500);
-        return redirect()->route('admin.perangkatdaerah');
     }
 }

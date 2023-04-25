@@ -48,17 +48,17 @@
                                         @foreach ($datas as $data )
                                             <tr>
                                                 <td>
-                                                    @if (!$data->foto)
+                                                    @if (!$data->perangkatdaerah->foto_gedung)
                                                         <img src="{{asset('assets/images/1.jpg')}}" alt="Logo" width="80px" class="img-thumbnail">
                                                     @else
-                                                     <img src="{{ url($data->foto)}}" alt="{{asset($data->foto)}}" class="img-fluid img-thumbnail" width="80px"></td>
+                                                     <img src="{{asset('file/foto/perangkatdaerah')}}/{{ $data->perangkatdaerah->foto_gedung }}" class="img-fluid img-thumbnail" width="80px"></td>
                                                     @endif
                                                 </td>
-                                                <td>{{$data->nama_organisasi}}  </td>
-                                                <td>{{$data->nama_pimpinan ?? 'Data belum ada' }}</td>
-                                                <td>{{$data->rumpun ?? 'Data belum ada'}}</td>
-                                                <td>{{$data->user->name ?? ''}}</td>
-                                                <td>{{$data->user->email ?? ''}}</td>
+                                                <td>{{$data->perangkatdaerah->nama_organisasi ?? ''}}  </td>
+                                                <td>{{$data->perangkatdaerah->nama_pimpinan ?? 'Data belum ada' }}</td>
+                                                <td>{{$data->perangkatdaerah->rumpun ?? 'Data belum ada'}}</td>
+                                                <td>{{$data->name ?? ''}}</td>
+                                                <td>{{$data->email ?? ''}}</td>
 
                                                 <td class="d-flex justify-content-between gap-1">
                                                     <a href="{{route('admin.perangkatdaerah.show',$data->id)}}" class="btn btn-sm btn-info border-0  waves-effect waves-light fs-4"> <i class="fas fa-eye"></i> </a>

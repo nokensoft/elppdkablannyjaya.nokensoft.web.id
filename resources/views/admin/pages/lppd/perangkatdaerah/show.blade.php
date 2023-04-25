@@ -27,27 +27,60 @@
                             <!-- .col start -->
                             <div class="col-lg-6  mx-auto border border-4 border-info rounded shadow-lg p-5 my-5">
 
-                                <h3 class="fw-bold">Detail Perangkat Daerah</h3>
-
+                                <h3 class="text-center fw-bold">Detail Data {{ $data->perangkatdaerah->nama_organisasi ?? '' }}</h3>
+                                <br>
                                 <form>
-
-                                    <div class="mb-2 fs-4">
-                                        <label for="" class="fw-bold">Nama Pengguna</label>
-                                        <input type="text" class="form-control form-control-lg"value="{{ $data->user->name ?? '' }}" >
+                                    <div class="mb-3 fs-4 text-center">
+                                        @if(!$data->perangkatdaerah->foto_gedung)
+                                        <img src="{{asset('assets/admin/assets/images/users/user-default.png')}}"
+                                        alt="Logo" width="250px" class="img-thumbnail mb-1">
+                                        @else
+                                        <img src="{{asset('file/foto/perangkatdaerah')}}/{{ $data->perangkatdaerah->foto_gedung }}"
+                                        alt="Logo" width="250px" class="img-thumbnail mb-1">
+                                        @endif
                                     </div>
-                                    <div class="mb-3 fs-4">
-                                        <label for="" class="fw-bold">Email Pengguna</label>
-                                        <input type="text" class="form-control form-control-lg"value="{{ $data->user->email ?? '' }}" >
-                                    </div>
-                                    <div class="border-top border-1 pt-3 mt-4"></div>
 
                                     <div class="mb-3 fs-4">
                                         <label for="" class="fw-bold">Nama Organisasi</label>
-                                        <input type="text" class="form-control form-control-lg"value="{{ $data->nama_organisasi }}" >
+                                        <input type="text" class="form-control form-control-lg" readonly value="{{ $data->perangkatdaerah->nama_organisasi ?? '' }}" >
+                                    </div>
+                                    <div class="mb-3 fs-4">
+                                        <label for="" class="fw-bold">Urusan</label>
+                                        <input type="text" class="form-control form-control-lg" readonly value="{{ $data->perangkatdaerah->urusan ?? '' }}" >
+                                    </div>
+                                    <div class="mb-3 fs-4">
+                                        <label for="" class="fw-bold">Tipe Kantor</label>
+                                        <input type="text" class="form-control form-control-lg" readonly value="{{ $data->perangkatdaerah->tipe_kantor ?? '' }}" >
+                                    </div>
+                                    <div class="mb-3 fs-4">
+                                        <label for="" class="fw-bold">Alamat</label>
+                                        <textarea ows="5" class="form-control form-control-lg" readonly>{{ $data->perangkatdaerah->alamat ?? ''}}</textarea>
                                     </div>
 
+
+                                    <div class="mb-2 fs-4">
+                                        <label for="" class="fw-bold">Nama Pimpinan</label>
+                                        <input type="text" class="form-control form-control-lg" readonly value="{{ $data->perangkatdaerah->nama_pimpinan ?? '' }}" >
+                                    </div>
+                                    <div class="mb-2 fs-4">
+                                        <label for="" class="fw-bold">Jumlah Pegawai</label>
+                                        <input type="text" class="form-control form-control-lg" readonly value="{{ $data->perangkatdaerah->jumlah_pegawai ?? '' }}" >
+                                    </div>
+                                    <div class="border-top border-1 pt-3 mt-4"></div>
+                                    <div class="mb-3 fs-4">
+                                        <label for="" class="fw-bold">Nama Pengguna</label>
+                                        <input type="text" class="form-control form-control-lg" readonly value="{{ $data->name ?? '' }}">
+                                    </div>
+                                    <div class="mb-3 fs-4">
+                                        <label for="" class="fw-bold">Email Pengguna</label>
+                                        <input type="text" class="form-control form-control-lg" readonly value="{{ $data->email ?? '' }}" >
+                                    </div>
+
+
+
+
                                     <div class="border-top border-1 pt-3 mt-4">
-                                        <a href="{{route('admin.perangkatdaerah.edit',$data->id)}}" class="btn btn-outline-light waves-effect waves-light fs-4">
+                                        <a href="{{route('admin.perangkatdaerah.edit',$data->id)}}" class="btn btn-outline-warning waves-effect waves-light fs-4">
                                             <i class="fas fa-edit me-1"></i> Ubah
                                         </a>
                                         <a href="{{URL::previous()}}" class="btn btn-outline-light waves-effect waves-light fs-4">
