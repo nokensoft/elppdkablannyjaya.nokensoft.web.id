@@ -26,6 +26,7 @@ class DesaSeeder extends Seeder
             'telp'                      => '082112341234',
             'email'                     => $faker->email(),
             'foto'                      => 'assets/images/user.png',
+            'distrik_id'                => 1
         ]);
 
         Desa::insert([
@@ -35,6 +36,7 @@ class DesaSeeder extends Seeder
             'telp'                      => '082112341234',
             'email'                     => $faker->email(),
             'foto'                      => 'assets/images/user.png',
+            'distrik_id'                => 2
         ]);
 
         Desa::insert([
@@ -44,6 +46,7 @@ class DesaSeeder extends Seeder
             'telp'                      => '082112341234',
             'email'                     => $faker->email(),
             'foto'                      => 'assets/images/user.png',
+            'distrik_id'                => 3
         ]);
 
     }

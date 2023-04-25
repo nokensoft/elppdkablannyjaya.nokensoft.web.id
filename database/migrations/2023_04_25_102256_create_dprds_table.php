@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('profil_dprd', function (Blueprint $table) {
+        Schema::create('dprds', function (Blueprint $table) {
             $table->id();
             $table->string('nama_lengkap')->nullable();
             $table->string('jabatan')->nullable();
@@ -23,10 +23,9 @@ return new class extends Migration
             $table->string('nama_partai')->nullable();
             $table->string('pendidikan')->nullable();
             $table->string('foto')->nullable();
-            
+
             $table->string('slug')->nullable();
             $table->timestamps();
-            // $table->softDeletes();
         });
     }
 
@@ -37,6 +36,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('profil_dprd');
+        Schema::dropIfExists('dprds');
     }
 };

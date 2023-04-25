@@ -8,6 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Dprd extends Model
 {
     use HasFactory;
-    protected $table = 'profil_dprd';
-    protected $guarded  = ['id'];
+    public $guarded  = [];
 }

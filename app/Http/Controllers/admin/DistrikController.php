@@ -10,6 +10,7 @@ use Image;
 use Alert;
 use Storage;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Validator;
 
 class DistrikController extends Controller
@@ -47,6 +48,7 @@ class DistrikController extends Controller
             'nama_kepala_distrik'       => 'required',
             'alamat'                    => 'required',
             'telp'                      => 'required',
+            'foto'                      => 'mimes:jpeg,png,jpg',
         ],
         [
             'nama_distrik.required'       => 'Nama desa tidak boleh kosong',
@@ -54,6 +56,7 @@ class DistrikController extends Controller
             'nama_kepala_distrik.required'=> 'Nama kepala desa tidak boleh kosong',
             'alamat.required'             => 'Alamat tidak boleh kosong',
             'telp.required'               => 'Telp tidak boleh kosong',
+            'foto.mimes'                  => 'Foto harus dengan jenis JPEG,JPG,PNG',
         ]);
 
         if ($validator->fails()) {
@@ -68,6 +71,14 @@ class DistrikController extends Controller
                 $distrik->telp                  = $request->telp;
                 $distrik->email                 = $request->email;
                 $distrik->slug                  =  Str::slug($request->nama_distrik);
+
+                $posterName = time() . '.' . $request->foto->extension();
+                $path = public_path('file/foto/distrik');
+                if (!empty($distrik->foto) && file_exists($path . '/' . $distrik->foto)) :
+                    unlink($path . '/' . $distrik->foto);
+                endif;
+                $distrik->foto = $posterName;
+                $request->foto->move(public_path('file/foto/distrik'), $posterName);
                 $distrik->save();
 
                 alert()->success('Berhasil', 'Sukses!!')->autoclose(1100);
@@ -104,6 +115,7 @@ class DistrikController extends Controller
             'nama_kepala_distrik'       => 'required',
             'alamat'                    => 'required',
             'telp'                      => 'required',
+            'foto'                      => 'mimes:jpeg,png,jpg',
         ],
         [
             'nama_distrik.required'       => 'Nama desa tidak boleh kosong',
@@ -111,6 +123,7 @@ class DistrikController extends Controller
             'nama_kepala_distrik.required'=> 'Nama kepala desa tidak boleh kosong',
             'alamat.required'             => 'Alamat tidak boleh kosong',
             'telp.required'               => 'Telp tidak boleh kosong',
+            'foto.mimes'                  => 'Foto harus dengan jenis JPEG,JPG,PNG',
         ]);
 
         if ($validator->fails()) {
@@ -125,6 +138,15 @@ class DistrikController extends Controller
                 $distrik->telp                  = $request->telp;
                 $distrik->email                 = $request->email;
                 $distrik->slug                  =  Str::slug($request->nama_distrik);
+                if($request->foto){
+                    $posterName = time() . '.' . $request->foto->extension();
+                    $path = public_path('file/foto/distrik');
+                    if (!empty($distrik->foto) && file_exists($path . '/' . $distrik->foto)) :
+                        unlink($path . '/' . $distrik->foto);
+                    endif;
+                    $distrik->foto = $posterName;
+                    $request->foto->move(public_path('file/foto/distrik'), $posterName);
+                }
                 $distrik->update();
                 alert()->success('Berhasil', 'Sukses!!')->autoclose(1100);
                 return redirect()->route('admin.distrik');
@@ -145,9 +167,19 @@ class DistrikController extends Controller
 
     public function destroy($id)
     {
-        Distrik::findOrFail($id)->forceDelete();
+        try {
+            $distrik = Distrik::find($id);
+            $path = public_path('file/foto/distrik/' . $distrik->foto);
 
-        alert()->success('Berhasil', 'Data terhapus!!')->autoclose(1500);
-        return redirect()->route('admin.distrik');
+            if (file_exists($path)) {
+                File::delete($path);
+            }
+            $distrik->delete();
+            alert()->success('Berhasil', 'Data terhapus!!')->autoclose(1500);
+            return redirect()->route('admin.distrik');
+        } catch (\Throwable $e) {
+            alert()->error('Gagal', 'Gagal!!')->autoclose(1100);
+            return redirect()->back();
+        }
     }
 }

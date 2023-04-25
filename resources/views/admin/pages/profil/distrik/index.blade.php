@@ -52,7 +52,6 @@
                                             <th>Nama Distrik</th>
                                             <th>Ibu Kota</th>
                                             <th>Nama Kepala Distrik</th>
-                                            <th>Alamat</th>
                                             <th>Kontak</th>
                                             <th>Desa</th>
                                             <th>Opsi</th>
@@ -64,10 +63,12 @@
                                                 <td>{{$data->nama_distrik}}</td>
                                                 <td>{{$data->ibu_kota_distrik}}</td>
                                                 <td>{{$data->nama_kepala_distrik}}</td>
-
-                                                <td>{{$data->alamat}}</td>
-                                                <td>{{$data->telp}}
-                                                <p>{{$data->email}}</p>
+                                                <td>
+                                                    <i class="mdi mdi-phone-outline"></i> {{$data->telp}}
+                                                    <br>
+                                                    <i class="mdi mdi-email-outline"></i> {{ Str::limit($data->email, 10) }}
+                                                    <br>
+                                                    <i class="mdi mdi-map-marker"></i> {{ Str::limit($data->alamat, 18) }}
                                                 </td>
 
                                                 <td>
