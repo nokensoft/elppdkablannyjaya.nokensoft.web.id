@@ -73,6 +73,9 @@
 
 
                                     <div class="border-top border-1 pt-3 mt-4">
+                                        <a href="{{ route('admin.dprd.edit',$data->id) }}" class="btn btn-outline-light waves-effect waves-light fs-4">
+                                            <i class="fas fa-edit me-1"></i> Edit
+                                        </a>
                                         <a href="{{URL::previous()}}" class="btn btn-outline-light waves-effect waves-light fs-4">
                                             <i class="fas fa-arrow-left me-1"></i> Kembali
                                         </a>
