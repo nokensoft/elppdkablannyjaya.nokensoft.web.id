@@ -200,7 +200,7 @@ class PerangkatDaerahController extends Controller
             if (file_exists($path)) {
                 File::delete($path);
             }
-            $perangkatdaerah->delete();
+            $perangkatdaerah->user->delete();
             alert()->success('Berhasil', 'Sukses!!')->autoclose(1500);
             return redirect()->route('admin.perangkatdaerah');
         } catch (\Throwable $e) {
