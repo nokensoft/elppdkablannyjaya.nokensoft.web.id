@@ -61,26 +61,28 @@
 
 
                                                     @if (Auth::id() == $user->id)
-                                                    <a href="{{route('pengguna.show',$user->slug)}}"
-                                                        class="btn btn-sm btn-info border-0  waves-effect waves-light fs-4">
-                                                        <i class="fas fa-eye"></i>
-                                                    </a>
-                                                    <a href="{{route('pengguna.edit',$user->slug)}}"
-                                                        class="btn btn-sm btn-outline-info border-0 waves-effect waves-light fs-4">
-                                                        <i class="fas fa-edit"></i>
-                                                    </a>
+                                                        @if(Cache::has('user-is-online-' . $user->id))
+                                                            <a href="{{route('pengguna.show',$user->slug)}}"
+                                                                class="btn btn-sm btn-info border-0  waves-effect waves-light fs-4">
+                                                                <i class="fas fa-eye"></i>
+                                                            </a>
+                                                            <a href="{{route('pengguna.edit',$user->slug)}}"
+                                                                class="btn btn-sm btn-outline-info border-0 waves-effect waves-light fs-4">
+                                                                <i class="fas fa-edit"></i>
+                                                            </a>
+                                                        @endif
                                                     @else
-                                                    <a href="{{route('pengguna.show',$user->slug)}}"
-                                                        class="btn btn-sm btn-info border-0  waves-effect waves-light fs-4">
-                                                        <i class="fas fa-eye"></i>
-                                                    </a>
-                                                    <a href="{{route('pengguna.edit',$user->slug)}}"
-                                                        class="btn btn-sm btn-outline-info border-0 waves-effect waves-light fs-4">
-                                                        <i class="fas fa-edit"></i>
-                                                    </a>
-                                                    <a href="{{route('pengguna.delete',$user->slug)}}" class="btn btn-sm btn-outline-info border-0 waves-effect waves-light fs-4">
-                                                        <i class="fas fa-trash"></i>
-                                                    </a>
+                                                        <a href="{{route('pengguna.show',$user->slug)}}"
+                                                            class="btn btn-sm btn-info border-0  waves-effect waves-light fs-4">
+                                                            <i class="fas fa-eye"></i>
+                                                        </a>
+                                                        <a href="{{route('pengguna.edit',$user->slug)}}"
+                                                            class="btn btn-sm btn-outline-info border-0 waves-effect waves-light fs-4">
+                                                            <i class="fas fa-edit"></i>
+                                                        </a>
+                                                        <a href="{{route('pengguna.delete',$user->slug)}}" class="btn btn-sm btn-outline-info border-0 waves-effect waves-light fs-4">
+                                                            <i class="fas fa-trash"></i>
+                                                        </a>
                                                     @endif
                                                 </td>
                                             </tr>
