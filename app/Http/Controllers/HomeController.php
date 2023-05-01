@@ -31,6 +31,10 @@ class HomeController extends Controller
     {
         return view('admin.profile.index');
     }
+    public function indexFilemanager()
+    {
+        return view('admin.pages.filemanage.index');
+    }
 
 
 

@@ -225,10 +225,13 @@ Route::controller(HomeController::class)->group(function(){
 
     Route::get('akun-saya','indexProfil')->name('app.profilIndex');
 
+
 });
 
 
-
+Route::group(['prefix' => 'filemanager', 'middleware' => ['web', 'auth']], function (){
+    \UniSharp\LaravelFilemanager\Lfm::routes();
+});
 
 
 

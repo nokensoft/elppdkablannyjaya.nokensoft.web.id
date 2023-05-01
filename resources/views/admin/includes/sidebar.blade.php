@@ -159,6 +159,13 @@
                 </a>
             </li>
 
+            <li>
+                <a href="/filemanager">
+                    <i class="fa fa-laptop"></i>
+                    <span> File Manager </span>
+                </a>
+            </li>
+
         </ul>
 
     </div>
@@ -221,6 +228,9 @@
                     </ul>
                 </div>
             </li>
+
+
+
 
         </ul>
 
