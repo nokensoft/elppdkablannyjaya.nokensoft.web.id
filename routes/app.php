@@ -14,7 +14,7 @@ use App\Http\Controllers\admin\PersonController;
 use App\Http\Controllers\admin\RoleController;
 use App\Http\Controllers\admin\UserController;
 use App\Http\Controllers\admin\ProductController;
-
+use App\Http\Controllers\HomeController;
 
 Route::prefix('app')->middleware('auth')->group(function () {
     Route::get('/', function () {
@@ -221,6 +221,11 @@ Route::controller(RoleController::class)->group(function(){
 });
 
 
+Route::controller(HomeController::class)->group(function(){
+
+    Route::get('akun-saya','indexProfil')->name('app.profilIndex');
+
+});
 
 
 

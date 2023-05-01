@@ -27,6 +27,12 @@ class HomeController extends Controller
     {
         return view('home');
     }
+    public function indexProfil()
+    {
+        return view('admin.profile.index');
+    }
+
+
 
 
 }

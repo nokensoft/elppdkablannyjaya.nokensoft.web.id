@@ -49,14 +49,16 @@
                                             <tr>
                                                 <td>
                                                     @if (!$data->perangkatdaerah->foto_gedung)
-                                                        <img src="{{asset('assets/images/1.jpg')}}" alt="Logo" width="80px" class="img-thumbnail">
+                                                        <img src="{{asset('assets/images/image1.png')}}" alt="Logo" width="380px"
+                                                         class="img-thumbnail">
                                                     @else
-                                                     <img src="{{asset('file/foto/perangkatdaerah')}}/{{ $data->perangkatdaerah->foto_gedung }}" class="img-fluid img-thumbnail" width="80px"></td>
+                                                     <img src="{{asset('file/foto/perangkatdaerah')}}/{{ $data->perangkatdaerah->foto_gedung }}"
+                                                     class="img-fluid img-thumbnail" width="100px"></td>
                                                     @endif
                                                 </td>
                                                 <td>{{$data->perangkatdaerah->nama_organisasi ?? ''}}  </td>
                                                 <td>{{$data->perangkatdaerah->nama_pimpinan ?? 'Data belum ada' }}</td>
-                                                <td>{{$data->perangkatdaerah->rumpun ?? 'Data belum ada'}}</td>
+                                                <td>{{$data->perangkatdaerah->urusan ?? 'Data belum ada'}}</td>
                                                 <td>{{$data->name ?? ''}}</td>
                                                 <td>{{$data->email ?? ''}}</td>
 
