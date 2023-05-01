@@ -18,10 +18,11 @@ return new class extends Migration
             $table->bigInteger('distrik_id')->unsigned()->nullable();
             $table->string('nama_desa');
             $table->string('nama_kepala_desa')->nullable();
+            $table->string('foto_kepala_desa')->nullable();
             $table->string('alamat')->nullable();
             $table->string('telp')->nullable();
             $table->string('email')->nullable();
-            $table->string('foto')->nullable();
+            $table->string('foto_kantor')->nullable();
             
             $table->string('slug')->nullable();
             $table->timestamps();

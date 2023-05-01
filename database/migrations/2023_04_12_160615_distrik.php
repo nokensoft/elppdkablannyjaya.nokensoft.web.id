@@ -18,10 +18,11 @@ return new class extends Migration
             $table->string('nama_distrik');
             $table->string('ibu_kota_distrik');
             $table->string('nama_kepala_distrik')->nullable();
+            $table->string('foto_kepala_distrik')->nullable();
             $table->string('alamat')->nullable();
             $table->string('telp')->nullable();
             $table->string('email')->nullable();
-            $table->string('foto')->nullable();
+            $table->string('foto_kantor')->nullable();
             
             $table->string('slug')->nullable();
             $table->timestamps();

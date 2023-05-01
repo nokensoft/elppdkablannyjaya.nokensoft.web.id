@@ -64,11 +64,13 @@
                                         @foreach ($datas as $data )
                                             <tr>
                                                 <td>
-                                                    @if (!$data->foto)
+                                                    {{ $data->foto }}
+                                                    @if(!$data->foto)
                                                         <img src="{{asset('assets/images/user.png')}}" alt="Logo" class="img-fluid img-thumbnail" width="100">
                                                     @else
                                                         <img src="{{asset('file/foto/dprd')}}/{{ $data->foto }}" class="img-fluid img-thumbnail" width="150"></td>
                                                     @endif
+                                                    
                                                 </td>
                                                 <td>{{$data->nama_lengkap}}</td>
                                                 <td>{{$data->jabatan}}</td>

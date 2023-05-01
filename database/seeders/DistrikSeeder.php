@@ -25,7 +25,6 @@ class DistrikSeeder extends Seeder
             'alamat'                    => 'Lanny Jaya.',
             'telp'                      => '082112341234',
             'email'                     => $faker->email(),
-            'foto'                      => 'assets/images/user.png',
         ]);
         
         Distrik::insert([
@@ -35,7 +34,6 @@ class DistrikSeeder extends Seeder
             'alamat'                    => 'Lanny Jaya.',
             'telp'                      => '082112341234',
             'email'                     => $faker->email(),
-            'foto'                      => 'assets/images/user.png',
         ]);
         
         Distrik::insert([
@@ -45,7 +43,6 @@ class DistrikSeeder extends Seeder
             'alamat'                    => 'Lanny Jaya.',
             'telp'                      => '082112341234',
             'email'                     => $faker->email(),
-            'foto'                      => 'assets/images/user.png',
         ]);
         
         
@@ -56,7 +53,6 @@ class DistrikSeeder extends Seeder
             'alamat'                    => 'Lanny Jaya.',
             'telp'                      => '082112341234',
             'email'                     => $faker->email(),
-            'foto'                      => 'assets/images/user.png',
         ]);
                       
         

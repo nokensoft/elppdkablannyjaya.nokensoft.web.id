@@ -24,7 +24,7 @@ class DprdSeeder extends Seeder
             'ttl'               => 'tempat lahir, tt/bb/yyyy',
             'nama_partai'       => 'nama partai',
             'pendidikan'        => 'tingkatan pendidikan',
-            'foto'              => 'assets/images/user.png',
+            // 'foto'              => 'assets/images/user.png',
         ]);
 
         Dprd::insert([
@@ -35,7 +35,7 @@ class DprdSeeder extends Seeder
             'ttl'               => 'tempat lahir, tt/bb/yyyy',
             'nama_partai'       => 'nama partai',
             'pendidikan'        => 'tingkatan pendidikan',
-            'foto'              => 'assets/images/user.png',
+            // 'foto'              => 'assets/images/user.png',
         ]);
 
         Dprd::insert([
@@ -46,7 +46,7 @@ class DprdSeeder extends Seeder
             'ttl'               => 'tempat lahir, tt/bb/yyyy',
             'nama_partai'       => 'nama partai',
             'pendidikan'        => 'tingkatan pendidikan',
-            'foto'              => 'assets/images/user.png',
+            // 'foto'              => 'assets/images/user.png',
         ]);
 
         Dprd::insert([
@@ -57,7 +57,7 @@ class DprdSeeder extends Seeder
             'ttl'               => 'tempat lahir, tt/bb/yyyy',
             'nama_partai'       => 'nama partai',
             'pendidikan'        => 'tingkatan pendidikan',
-            'foto'              => 'assets/images/user.png',
+            // 'foto'              => 'assets/images/user.png',
         ]);
 
         Dprd::insert([
@@ -68,7 +68,7 @@ class DprdSeeder extends Seeder
             'ttl'               => 'tempat lahir, tt/bb/yyyy',
             'nama_partai'       => 'nama partai',
             'pendidikan'        => 'tingkatan pendidikan',
-            'foto'              => 'assets/images/user.png',
+            // 'foto'              => 'assets/images/user.png',
         ]);
 
         Dprd::insert([
@@ -79,7 +79,7 @@ class DprdSeeder extends Seeder
             'ttl'               => 'tempat lahir, tt/bb/yyyy',
             'nama_partai'       => 'nama partai',
             'pendidikan'        => 'tingkatan pendidikan',
-            'foto'              => 'assets/images/user.png',
+            // 'foto'              => 'assets/images/user.png',
         ]);
 
     }
