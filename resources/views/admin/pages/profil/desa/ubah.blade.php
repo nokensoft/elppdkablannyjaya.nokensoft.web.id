@@ -31,7 +31,37 @@
                                 <form action="{{route('admin.desa.update',$data->id)}}" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     @method('PUT')
+                                    <hr class="border my-4">
+                                    <h4 class="fw-bold text-uppercase mb-3 text-secondary">Upload Foto</h4>
 
+                                    <label for="" class="fw-bold">Foto Kantor Desa</label>
+                                    <div class="mb-3 fs-4 text-center">
+                                        @if(!$data->foto_kantor)
+                                            <img src="{{asset('assets/images/image1.png')}}"
+                                            alt="Logo" width="100px" class="img-thumbnail mb-1">
+                                        @else
+                                        <img src="{{asset('file/foto/kantor/desa')}}/{{ $data->foto_kantor }}"
+                                        alt="Logo" width="100px" class="img-thumbnail mb-1">
+                                        @endif
+                                        <input type="file" name="foto_kantor" class="form-control form-control-lg">
+                                        @if($errors->has('foto_kantor'))
+                                            <label class="text-danger"> {{ $errors->first('foto_kantor') }} </label>
+                                        @endif
+                                    </div>
+                                    <label for="" class="fw-bold">Foto Kepala Desa</label>
+                                    <div class="mb-3 fs-4 text-center">
+                                        @if(!$data->foto_kepala_desa)
+                                            <img src="{{asset('assets/admin/assets/images/users/user-default.png')}}"
+                                            alt="Logo" width="100px" class="img-thumbnail mb-1">
+                                        @else
+                                        <img src="{{asset('file/foto/kepala/desa')}}/{{ $data->foto_kepala_desa }}"
+                                        alt="Logo" width="100px" class="img-thumbnail mb-1">
+                                        @endif
+                                        <input type="file" name="foto_kepala_desa" class="form-control form-control-lg">
+                                        @if($errors->has('foto_kepala_desa'))
+                                            <label class="text-danger"> {{ $errors->first('foto_kepala_desa') }} </label>
+                                        @endif
+                                    </div>
                                     <div class="mb-3 fs-4">
                                         <label for="" class="fw-bold">Nama Desa</label>
                                         <input type="text" class="form-control form-control-lg"  name="nama_desa" value="{{old('nama_desa') ? old('nama_desa') : $data->nama_desa }}">

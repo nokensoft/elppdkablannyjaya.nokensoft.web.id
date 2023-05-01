@@ -25,7 +25,6 @@ class DesaSeeder extends Seeder
             'alamat'                    => 'Lanny Jaya.',
             'telp'                      => '082112341234',
             'email'                     => $faker->email(),
-            // 'foto'                      => 'assets/images/user.png',
             'distrik_id'                => 1
         ]);
 
@@ -35,7 +34,6 @@ class DesaSeeder extends Seeder
             'alamat'                    => 'Lanny Jaya.',
             'telp'                      => '082112341234',
             'email'                     => $faker->email(),
-            // 'foto'                      => 'assets/images/user.png',
             'distrik_id'                => 2
         ]);
 
@@ -45,7 +43,6 @@ class DesaSeeder extends Seeder
             'alamat'                    => 'Lanny Jaya.',
             'telp'                      => '082112341234',
             'email'                     => $faker->email(),
-            // 'foto'                      => 'assets/images/user.png',
             'distrik_id'                => 3
         ]);
 

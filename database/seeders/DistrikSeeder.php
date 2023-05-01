@@ -26,7 +26,7 @@ class DistrikSeeder extends Seeder
             'telp'                      => '082112341234',
             'email'                     => $faker->email(),
         ]);
-        
+
         Distrik::insert([
             'nama_distrik'              => 'Pirime',
             'ibu_kota_distrik'          => 'Umbanume',
@@ -35,7 +35,7 @@ class DistrikSeeder extends Seeder
             'telp'                      => '082112341234',
             'email'                     => $faker->email(),
         ]);
-        
+
         Distrik::insert([
             'nama_distrik'              => 'Dimba',
             'ibu_kota_distrik'          => 'Dimba',
@@ -44,8 +44,8 @@ class DistrikSeeder extends Seeder
             'telp'                      => '082112341234',
             'email'                     => $faker->email(),
         ]);
-        
-        
+
+
         Distrik::insert([
             'nama_distrik'              => 'Gamelia',
             'ibu_kota_distrik'          => 'Gamelia',
@@ -54,7 +54,7 @@ class DistrikSeeder extends Seeder
             'telp'                      => '082112341234',
             'email'                     => $faker->email(),
         ]);
-                      
-        
+
+
     }
 }

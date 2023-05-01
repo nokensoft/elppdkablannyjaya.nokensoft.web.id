@@ -27,8 +27,27 @@
                             <div class="col-lg-6  mx-auto border border-4 border-info rounded shadow-lg p-5 my-5">
 
                                 <h1 class="fw-bold">Detaill Distrik {{ $data->nama_distrik }} </h1>
-
+                                <br>
                                 <form >
+                                    <label for="" class="fw-bold">Foto Kantor dan Kepala Distrik</label>
+                                    <div class="mb-3 fs-4 text-center">
+
+                                        @if (!$data->foto_kepala_distrik)
+                                            <img src="{{asset('assets/admin/assets/images/users/user-man.png')}}" alt="{{$data->slug}}"
+                                            width="100px" class="img-thumbnail mb-1">
+                                        @else
+                                            <img src="{{asset('file/foto/kepala/distrik')}}/{{ $data->foto_kepala_distrik}}"
+                                            class="img-fluid img-thumbnail"  width="130px" class="img-thumbnail mb-1"></td>
+                                        @endif
+
+                                        @if (!$data->foto_kantor)
+                                            <img src="{{asset('assets/images/image1.png')}}" alt="{{$data->slug}}"
+                                            width="100px" class="img-thumbnail mb-1">
+                                        @else
+                                            <img src="{{asset('file/foto/kantor/distrik')}}/{{ $data->foto_kantor}}"
+                                            class="img-fluid img-thumbnail"  width="130px" class="img-thumbnail mb-1"></td>
+                                        @endif
+                                    </div>
                                     <div class="mb-3 fs-4">
                                         <label for="" class="fw-bold">Nama Distrik</label>
                                         <input type="text" class="form-control form-control-lg"

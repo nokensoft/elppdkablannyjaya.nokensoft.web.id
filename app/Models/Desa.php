@@ -8,8 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Desa extends Model
 {
     use HasFactory;
-    protected $table = 'profil_desa';
-    protected $guarded  = ['id'];
+    public $guarded = [];
 
     public function distrik()
     {

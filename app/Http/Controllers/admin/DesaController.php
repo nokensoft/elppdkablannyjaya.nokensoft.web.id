@@ -11,6 +11,7 @@ use Alert;
 use App\Models\Distrik;
 use Storage;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Validator;
 
 class DesaController extends Controller
@@ -47,6 +48,8 @@ class DesaController extends Controller
             'nama_kepala_desa'          => 'required',
             'alamat'                    => 'required',
             'telp'                      => 'required',
+            'foto_kepala_desa'          => 'mimes:jpeg,png,jpg',
+            'foto_kantor'               => 'mimes:jpeg,png,jpg',
         ],
         [
             'nama_desa.required'          => 'Nama desa tidak boleh kosong',
@@ -54,6 +57,8 @@ class DesaController extends Controller
             'nama_kepala_desa.required'   => 'Nama kepala desa tidak boleh kosong',
             'alamat.required'             => 'Alamat tidak boleh kosong',
             'telp.required'               => 'Telp tidak boleh kosong',
+            'foto_kepala_desa.mimes'      => 'Foto kepala Desa harus dengan jenis JPEG,JPG,PNG',
+            'foto_kantor.mimes'           => 'Foto Kantor harus dengan jenis JPEG,JPG,PNG',
         ]);
 
         if ($validator->fails()) {
@@ -68,6 +73,25 @@ class DesaController extends Controller
                 $desa->telp              = $request->telp;
                 $desa->email             = $request->email;
                 $desa->slug              =  Str::slug($request->nama_desa);
+
+                // kepal distrik upload
+                $posterName = time() . '.' . $request->foto_kepala_distrik->extension();
+                $path = public_path('file/foto/kepala/desa');
+                if (!empty($desa->foto_kepala_desa) && file_exists($path . '/' . $desa->foto_kepala_desa)) :
+                    unlink($path . '/' . $desa->foto_kepala_desa);
+                endif;
+                $desa->foto_kepala_desa = $posterName;
+                $request->foto_kepala_desa->move(public_path('file/foto/kepala/desa'), $posterName);
+
+                // Foto kantor Distrik
+                $posterName = time() . '.' . $request->foto_kantor->extension();
+                $path = public_path('file/foto/kantor/desa');
+                if (!empty($desa->foto_kantor) && file_exists($path . '/' . $desa->foto_kantor)) :
+                    unlink($path . '/' . $desa->foto_kantor);
+                endif;
+                $desa->foto_kantor = $posterName;
+                $request->foto_kantor->move(public_path('file/foto/kantor/desa'), $posterName);
+
                 $desa->save();
                 alert()->success('Berhasil', 'Sukses!!')->autoclose(1100);
                 return redirect()->route('admin.desa');
@@ -103,6 +127,8 @@ class DesaController extends Controller
             'nama_kepala_desa'          => 'required',
             'alamat'                    => 'required',
             'telp'                      => 'required',
+            'foto_kepala_desa'          => 'mimes:jpeg,png,jpg',
+            'foto_kantor'               => 'mimes:jpeg,png,jpg',
         ],
         [
             'nama_desa.required'          => 'Nama desa tidak boleh kosong',
@@ -110,6 +136,8 @@ class DesaController extends Controller
             'nama_kepala_desa.required'   => 'Nama kepala desa tidak boleh kosong',
             'alamat.required'             => 'Alamat tidak boleh kosong',
             'telp.required'               => 'Telp tidak boleh kosong',
+            'foto_kepala_desa.mimes'      => 'Foto kepala Desa harus dengan jenis JPEG,JPG,PNG',
+            'foto_kantor.mimes'           => 'Foto Kantor harus dengan jenis JPEG,JPG,PNG',
         ]);
 
         if ($validator->fails()) {
@@ -124,6 +152,27 @@ class DesaController extends Controller
                 $desa->telp              = $request->telp;
                 $desa->email             = $request->email;
                 $desa->slug              =  Str::slug($request->nama_desa);
+
+                if($request->foto_kepala_desa){
+                    $posterName = time() . '.' . $request->foto_kepala_desa->extension();
+                    $path = public_path('file/foto/kepala/desa');
+                    if (!empty($desa->foto_kepala_desa) && file_exists($path . '/' . $desa->foto_kepala_desa)) :
+                        unlink($path . '/' . $desa->foto_kepala_desa);
+                    endif;
+                    $desa->foto_kepala_desa = $posterName;
+                    $request->foto_kepala_desa->move(public_path('file/foto/kepala/desa'), $posterName);
+                }
+
+                if($request->foto_kantor){
+                    $posterName = time() . '.' . $request->foto_kantor->extension();
+                    $path = public_path('file/foto/kantor/desa');
+                    if (!empty($desa->foto_kantor) && file_exists($path . '/' . $desa->foto_kantor)) :
+                        unlink($path . '/' . $desa->foto_kantor);
+                    endif;
+                    $desa->foto_kantor = $posterName;
+                    $request->foto_kantor->move(public_path('file/foto/kantor/desa'), $posterName);
+                }
+
                 $desa->update();
                 alert()->success('Berhasil', 'Sukses!!')->autoclose(1100);
                 return redirect()->route('admin.desa');
@@ -145,9 +194,21 @@ class DesaController extends Controller
     // DESTROY
     public function destroy($id)
     {
-        Desa::findOrFail($id)->forceDelete();
+        try {
+            $desa = Desa::find($id);
+            $path_kepala_distrik = public_path('file/foto/kepala/desa/' . $desa->foto_kepala_desa);
 
-        alert()->success('Berhasil', 'Data terhapus!!')->autoclose(1500);
-        return redirect()->route('admin.desa');
+            if (file_exists($path_kepala_distrik)) {
+                File::delete($path_kepala_distrik);
+            }
+            $path_kantor_distrik = public_path('file/foto/kantor/desa/' . $desa->foto_kantor);
+            if (file_exists($path_kantor_distrik)) {
+                File::delete($path_kantor_distrik);
+            }
+            alert()->success('Berhasil', 'Data terhapus!!')->autoclose(1500);
+            return redirect()->route('admin.desa');
+        } catch (\Throwable $th) {
+            //throw $th;
+        }
     }
 }

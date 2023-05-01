@@ -28,6 +28,24 @@
                                 <h1 class="fw-bold">Detail Desa {{ $data->nama_desa}} </h1>
                                 <p>{{ $data->ikk}}</p>
                                 <form>
+                                    <label for="" class="fw-bold">Foto Kantor dan Kepala Desa</label>
+                                    <div class="mb-3 fs-4 text-center">
+                                        @if (!$data->foto_kepala_desa)
+                                            <img src="{{asset('assets/admin/assets/images/users/user-man.png')}}" alt="{{$data->slug}}"
+                                            width="100px" class="img-thumbnail mb-1">
+                                        @else
+                                            <img src="{{asset('file/foto/kepala/desa')}}/{{ $data->foto_kepala_desa}}"
+                                            class="img-fluid img-thumbnail"  width="130px" class="img-thumbnail mb-1"></td>
+                                        @endif
+
+                                        @if (!$data->foto_kantor)
+                                            <img src="{{asset('assets/images/image1.png')}}" alt="{{$data->slug}}"
+                                            width="100px" class="img-thumbnail mb-1">
+                                        @else
+                                            <img src="{{asset('file/foto/kantor/desa')}}/{{ $data->foto_kantor}}"
+                                            class="img-fluid img-thumbnail"  width="130px" class="img-thumbnail mb-1"></td>
+                                        @endif
+                                    </div>
                                     <div class="mb-3 fs-4">
                                         <label for="" class="fw-bold">Nama Distrik</label>
                                         <input type="text" class="form-control form-control-lg"

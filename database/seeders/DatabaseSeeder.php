@@ -32,8 +32,8 @@ class DatabaseSeeder extends Seeder
 
         // User::factory(3)->create();
         Ikk::factory(3)->create();
-        Distrik::factory(3)->create();
-        Desa::factory(3)->create();
+        // Distrik::factory(3)->create();
+        // Desa::factory(3)->create();
 
     }
 }

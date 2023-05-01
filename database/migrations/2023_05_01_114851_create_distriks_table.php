@@ -13,17 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('profil_desa', function (Blueprint $table) {
+        Schema::create('distriks', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('distrik_id')->unsigned()->nullable();
-            $table->string('nama_desa');
-            $table->string('nama_kepala_desa')->nullable();
-            $table->string('foto_kepala_desa')->nullable();
+            $table->string('nama_distrik');
+            $table->string('ibu_kota_distrik');
+            $table->string('nama_kepala_distrik')->nullable();
+            $table->string('foto_kepala_distrik')->nullable();
             $table->string('alamat')->nullable();
             $table->string('telp')->nullable();
             $table->string('email')->nullable();
             $table->string('foto_kantor')->nullable();
-            
             $table->string('slug')->nullable();
             $table->timestamps();
         });
@@ -36,6 +35,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('profil_desa');
+        Schema::dropIfExists('distriks');
     }
 };

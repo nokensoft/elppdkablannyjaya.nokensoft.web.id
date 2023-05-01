@@ -49,6 +49,7 @@
                                 <table class="table table-bordered fs-4">
                                     <thead class="bg-dark text-light">
                                         <tr>
+                                            <th>Foto Kepala Distrik</th>
                                             <th>Nama Distrik</th>
                                             <th>Ibu Kota</th>
                                             <th>Nama Kepala Distrik</th>
@@ -60,6 +61,13 @@
                                     <tbody>
                                         @foreach ($datas as $data )
                                             <tr>
+                                                <td>
+                                                    @if(!$data->foto_kepala_distrik)
+                                                    <img src="{{asset('assets/images/user.png')}}" alt="Logo" class="img-fluid img-thumbnail" width="100">
+                                                     @else
+                                                    <img src="{{asset('file/foto/kepala/distrik')}}/{{ $data->foto_kepala_distrik }}" class="img-fluid img-thumbnail" width="150"></td>
+                                                    @endif
+                                                </td>
                                                 <td>{{$data->nama_distrik}}</td>
                                                 <td>{{$data->ibu_kota_distrik}}</td>
                                                 <td>{{$data->nama_kepala_distrik}}</td>
