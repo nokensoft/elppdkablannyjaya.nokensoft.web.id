@@ -22,7 +22,7 @@
         <div id="wrapper">
 
 
-        @include('admin.includes.header-nav')
+            @include('admin.includes.header-nav')
 
             @include('admin.includes.sidebar')
 
