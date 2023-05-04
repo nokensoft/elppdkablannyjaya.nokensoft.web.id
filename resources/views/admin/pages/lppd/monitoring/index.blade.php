@@ -1,6 +1,7 @@
 @extends('admin.layouts.app')
 @section('content')
-    <!-- start page content wrapper-->
+        
+        <!-- row -->
         <div class="row mb-3">
             <div class="col-12">
                 <div class="page-title-box">
@@ -15,7 +16,8 @@
             </div>
         </div>
         <!-- end row -->
-
+        
+        <!-- row -->
         <div class="row">
             <div class="col">
                 <div class="card">
@@ -43,35 +45,6 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td>2023</td>
-                                            <td>
-                                                <i class="fas fa-times"></i>
-                                            </td>
-                                            <td>
-                                                <i class="fas fa-times"></i>
-                                            </td>
-                                            <td>
-                                                <i class="fas fa-times"></i>
-                                            </td>
-                                            <td>
-                                                <i class="fas fa-times"></i>
-                                            </td>
-                                            <td>
-                                                <i class="fas fa-times"></i>
-                                            </td>
-                                            <td>
-                                                <i class="fas fa-times"></i>
-                                            </td>
-                                            <td>
-                                                <i class="fas fa-times"></i>
-                                            </td>
-                                            <td>
-                                                <a href="#" class="btn btn-sm btn-outline-dark waves-effect waves-light fs-4">
-                                                    Detail
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
                                             <td>2022</td>
                                             <td>
                                                 <i class="fas fa-times"></i>
@@ -81,64 +54,6 @@
                                             </td>
                                             <td class="bg-success text-light">
                                                 <i class="fas fa-check"></i>
-                                            </td>
-                                            <td>
-                                                <i class="fas fa-times"></i>
-                                            </td>
-                                            <td>
-                                                <i class="fas fa-times"></i>
-                                            </td>
-                                            <td>
-                                                <i class="fas fa-times"></i>
-                                            </td>
-                                            <td>
-                                                <i class="fas fa-times"></i>
-                                            </td>
-                                            <td>
-                                                <a href="#" class="btn btn-sm btn-outline-dark waves-effect waves-light fs-4">
-                                                    Detail
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="bg-success text-light">2021</td>
-                                            <td class="bg-success text-light">
-                                                <i class="fas fa-check"></i>
-                                            </td>
-                                            <td class="bg-success text-light">
-                                                <i class="fas fa-check"></i>
-                                            </td>
-                                            <td class="bg-success text-light">
-                                                <i class="fas fa-check"></i>
-                                            </td>
-                                            <td class="bg-success text-light">
-                                                <i class="fas fa-check"></i>
-                                            </td>
-                                            <td class="bg-success text-light">
-                                                <i class="fas fa-check"></i>
-                                            </td>
-                                            <td class="bg-success text-light">
-                                                <i class="fas fa-check"></i>
-                                            </td>
-                                            <td class="bg-success text-light">
-                                                <i class="fas fa-check"></i>
-                                            </td>
-                                            <td class="bg-success text-light">
-                                                <a href="#" class="btn btn-sm btn-success waves-effect waves-light fs-4">
-                                                    Detail
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>2019</td>
-                                            <td>
-                                                <i class="fas fa-times"></i>
-                                            </td>
-                                            <td>
-                                                <i class="fas fa-times"></i>
-                                            </td>
-                                            <td>
-                                                <i class="fas fa-times"></i>
                                             </td>
                                             <td>
                                                 <i class="fas fa-times"></i>
@@ -172,24 +87,21 @@
         </div>
         <!-- end row -->
                         
-
-  <!--end wrapper-->
-
   @stop
 
   @push('script-footer')
-   <!-- Chart JS -->
-   <script src="{{ asset('assets/admin/assets/libs/chart.js/Chart.bundle.min.js')}}"></script>
+    <!-- Chart JS -->
+    <script src="{{ asset('assets/admin/assets/libs/chart.js/Chart.bundle.min.js')}}"></script>
 
-    <script src="{{ asset('assets/admin/assets/libs/moment/min/moment.min.js')}}"></script>
-    <script src="{{ asset('assets/admin/assets/libs/jquery.scrollto/jquery.scrollTo.min.js')}}"></script>
+        <script src="{{ asset('assets/admin/assets/libs/moment/min/moment.min.js')}}"></script>
+        <script src="{{ asset('assets/admin/assets/libs/jquery.scrollto/jquery.scrollTo.min.js')}}"></script>
 
-    <!-- Chat app -->
-    <script src="{{ asset('assets/admin/assets/js/pages/jquery.chat.js')}}"></script>
+        <!-- Chat app -->
+        <script src="{{ asset('assets/admin/assets/js/pages/jquery.chat.js')}}"></script>
 
-    <!-- Todo app -->
-    <script src="{{ asset('assets/admin/assets/js/pages/jquery.todo.js')}}"></script>
+        <!-- Todo app -->
+        <script src="{{ asset('assets/admin/assets/js/pages/jquery.todo.js')}}"></script>
 
-    <!-- Dashboard init JS -->
-    <script src="{{ asset('assets/admin/assets/js/pages/dashboard-3.init.js')}}"></script>  
+        <!-- Dashboard init JS -->
+        <script src="{{ asset('assets/admin/assets/js/pages/dashboard-3.init.js')}}"></script>  
   @endpush

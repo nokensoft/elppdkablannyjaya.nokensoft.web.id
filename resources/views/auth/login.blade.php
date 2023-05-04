@@ -3,7 +3,7 @@
 
     <head>
         <meta charset="utf-8" />
-        <title> SILPPD Kabupaten Lanny Jaya</title>
+        <title> SILANNY</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
         <meta content="Coderthemes" name="author" />
@@ -104,8 +104,8 @@
             <div class="auth-fluid-right text-center">
                 <div class="auth-user-testimonial">
                     <img src="assets/admin/assets/images/logo-kab-lanny-jaya.png" alt="Logo Kabupaten Lanny Jaya" class="col-lg-2 mx-auto">
-                    <h2 class="mb-3 text-white display-1 fw-bold">SILPPD</h2>
-                    <p class="text-uppercase display-6 fw-bold">Sistem Informasi Laporan Penyelenggaraan Pemerintah Daerah <br> Kabupaten Lanny Jaya</p>
+                    <h2 class="my-3 text-white display-1 fw-bold">SILANNY</h2>
+                    <p class="text-uppercase display-6 fw-bold">Sistem Informasi Laporan Penyelenggaraan Pemerintahan <br> Kabupaten Lanny Jaya</p>
                 </div> <!-- end auth-user-testimonial-->
             </div>
             <!-- end Auth fluid right content -->

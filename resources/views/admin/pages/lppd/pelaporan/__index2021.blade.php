@@ -1,6 +1,7 @@
 @extends('admin.layouts.app')
 @section('content')
-    <!-- start page content wrapper-->
+            
+        <!-- row -->
         <div class="row mb-3">
             <div class="col-12">
                 <div class="page-title-box">
@@ -16,6 +17,7 @@
         </div>
         <!-- end row -->
 
+        <!-- row -->
         <div class="row">
             <div class="col">
                 <div class="card">
@@ -162,15 +164,12 @@
             </div>
         </div>
         <!-- end row -->
-                        
 
-  <!--end wrapper-->
+    @stop
 
-  @stop
-
-  @push('script-footer')
-   <!-- Chart JS -->
-   <script src="{{ asset('assets/admin/assets/libs/chart.js/Chart.bundle.min.js')}}"></script>
+    @push('script-footer')
+    <!-- Chart JS -->
+    <script src="{{ asset('assets/admin/assets/libs/chart.js/Chart.bundle.min.js')}}"></script>
 
     <script src="{{ asset('assets/admin/assets/libs/moment/min/moment.min.js')}}"></script>
     <script src="{{ asset('assets/admin/assets/libs/jquery.scrollto/jquery.scrollTo.min.js')}}"></script>
@@ -183,4 +182,4 @@
 
     <!-- Dashboard init JS -->
     <script src="{{ asset('assets/admin/assets/js/pages/dashboard-3.init.js')}}"></script>  
-  @endpush
+    @endpush

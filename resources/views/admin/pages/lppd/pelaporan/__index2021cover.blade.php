@@ -1,6 +1,7 @@
 @extends('admin.layouts.app')
 @section('content')
-    <!-- start page content wrapper-->
+
+        <!-- row -->
         <div class="row mb-3">
             <div class="col-12">
                 <div class="page-title-box">
@@ -16,7 +17,7 @@
         </div>
         <!-- end row -->
 
-
+        <!-- row -->
         <div class="row" id="ubah">
             <div class="col">
                 <div class="card">
@@ -61,24 +62,21 @@
         </div>
         <!-- end row -->
 
+    @stop
 
-  <!--end wrapper-->
+    @push('script-footer')
+    <!-- Chart JS -->
+    <script src="{{ asset('assets/admin/assets/libs/chart.js/Chart.bundle.min.js')}}"></script>
 
-  @stop
+        <script src="{{ asset('assets/admin/assets/libs/moment/min/moment.min.js')}}"></script>
+        <script src="{{ asset('assets/admin/assets/libs/jquery.scrollto/jquery.scrollTo.min.js')}}"></script>
 
-  @push('script-footer')
-   <!-- Chart JS -->
-   <script src="{{ asset('assets/admin/assets/libs/chart.js/Chart.bundle.min.js')}}"></script>
+        <!-- Chat app -->
+        <script src="{{ asset('assets/admin/assets/js/pages/jquery.chat.js')}}"></script>
 
-    <script src="{{ asset('assets/admin/assets/libs/moment/min/moment.min.js')}}"></script>
-    <script src="{{ asset('assets/admin/assets/libs/jquery.scrollto/jquery.scrollTo.min.js')}}"></script>
+        <!-- Todo app -->
+        <script src="{{ asset('assets/admin/assets/js/pages/jquery.todo.js')}}"></script>
 
-    <!-- Chat app -->
-    <script src="{{ asset('assets/admin/assets/js/pages/jquery.chat.js')}}"></script>
-
-    <!-- Todo app -->
-    <script src="{{ asset('assets/admin/assets/js/pages/jquery.todo.js')}}"></script>
-
-    <!-- Dashboard init JS -->
-    <script src="{{ asset('assets/admin/assets/js/pages/dashboard-3.init.js')}}"></script>
-  @endpush
+        <!-- Dashboard init JS -->
+        <script src="{{ asset('assets/admin/assets/js/pages/dashboard-3.init.js')}}"></script>
+    @endpush

@@ -59,24 +59,18 @@
 
                                     <div class="mb-3 fs-4">
                                         <label for="" class="fw-bold">TTL</label>
-                                        <input type="text" class="form-control form-control-lg"  name="ttl" value="Nama Tempat, 01 Bulan 1970">
+                                        <input type="text" class="form-control form-control-lg"  name="ttl" placeholder="Tempat, Tanggal Lahir">
                                     </div>
 
                                     <div class="mb-3 fs-4">
                                         <label for="" class="fw-bold">Nama Partai</label>
-                                        <input type="text" class="form-control form-control-lg" name="nama_partai"  value="Nama Partai">
+                                        <input type="text" class="form-control form-control-lg" name="nama_partai"  placeholder="Nama Partai">
                                     </div>
 
                                     <div class="mb-3 fs-4">
                                         <label for="" class="fw-bold">Pendidikan</label>
-                                        <input type="text" class="form-control form-control-lg" name="pendidikan" value="Strata Satu (S1)">
+                                        <input type="text" class="form-control form-control-lg" name="pendidikan" placeholder="Pendidikan Terakhir">
                                     </div>
-
-                                    {{-- <div class="mb-3 fs-4">
-                                        <label for="" class="fw-bold">Perjalanan Dinas</label>
-                                        <input type="text" class="form-control form-control-lg bg-secondary text-light" value="33 Kali" disabled>
-                                        <a href="#" class="link-info mt-1 d-block">Olah Data</a>
-                                    </div> --}}
 
                                     <div class="border-top border-1 pt-3 mt-4">
                                         <button type="submit" class="btn btn-info waves-effect waves-light fs-4">

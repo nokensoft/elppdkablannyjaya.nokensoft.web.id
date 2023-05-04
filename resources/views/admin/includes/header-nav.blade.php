@@ -1,5 +1,5 @@
-   <!-- Topbar Start -->
-   <div class="navbar-custom">
+            <!-- Topbar Start -->
+            <div class="navbar-custom">
                 <div class="container-fluid">
                     <ul class="list-unstyled topnav-menu float-end mb-0">
 
@@ -28,6 +28,7 @@
                                     <span>Profil</span>
                                 </a>
                                 <!-- item-->
+                                
                                 @if(Auth::user()->hasRole('administrator'))
                                 <a href="javascript:void(0);" class="dropdown-item notify-item">
                                     <i class="fe-settings"></i>
@@ -49,7 +50,6 @@
 
                             </div>
                         </li>
-
                     </ul>
 
                     <!-- LOGO -->
@@ -111,8 +111,7 @@
                                     <i class="fas fa-bookmark me-1"></i>
                                     <span>Pelaporan</span>
                                 </a>
-
-
+                                <!-- item-->
                             </div>
                         </li>
 
@@ -123,39 +122,40 @@
                                 <i class="mdi mdi-chevron-down"></i>
                             </a>
                             <div class="dropdown-menu">
-                                <!-- item-->
+
                                 <a href="{{asset('admin/ikk/pendidikan')}}" class="dropdown-item fs-4">
                                     <i class="fas fa-bookmark me-1"></i>
                                     <span>IKK Pedidikan</span>
                                 </a>
                                 <!-- item-->
+
                                 <a href="{{asset('admin/ikk/kesehatan')}}" class="dropdown-item fs-4">
                                     <i class="fas fa-bookmark me-1"></i>
                                     <span>IKK Kesehatan</span>
                                 </a>
                                 <!-- item-->
+
                                 <a href="{{asset('admin/ikk/pekerjaanumum')}}" class="dropdown-item fs-4">
                                     <i class="fas fa-bookmark me-1"></i>
                                     <span>IKK Pekerjaan Umum</span>
                                 </a>
                                 <div class="border-top border-1 pt-3 mt-4"></div>
                                 <!-- item-->
+
                                 <a href="{{asset('admin/ikk')}}" class="dropdown-item fs-4">
                                     <i class="fas fa-bookmark me-1"></i>
                                     <span>Liat Semua Data</span>
                                 </a>
                                 <!-- item-->
-                                {{-- <a href="{{asset('admin/ikk/output')}}" class="dropdown-item fs-4">
-                                    <i class="fas fa-bookmark me-1"></i>
-                                    <span>Pelaporan IKK Output</span>
-                                </a> --}}
 
                             </div>
                         </li>
+                        
                         @endif
 
                     </ul>
                     <div class="clearfix"></div>
+
                 </div>
             </div>
             <!-- end Topbar -->

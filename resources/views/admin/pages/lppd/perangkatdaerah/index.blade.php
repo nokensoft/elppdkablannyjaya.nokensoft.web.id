@@ -22,7 +22,7 @@
                     <div class="card-body">
                         <h1 class="fw-bold">Perangkat Daerah</h1>
                         <div class="mb-3">
-                            <a href="{{asset('admin/lppd/perangkatdaerah/create')}}" class="btn btn-info waves-effect waves-light fs-4">
+                            <a href="{{route('admin.perangkatdaerah.create')}}" class="btn btn-info waves-effect waves-light fs-4">
                                 <i class="fas fa-plus me-1"></i> Tambah Data
                             </a>
                         </div>

@@ -21,7 +21,7 @@ https://dashboard.heroku.com/apps/elppd-kab-lanny-jaya
     php artisan migrate:refresh --seed
     ```
 
-## Instalation
+## Importan Laravel Commands
 
     Composer update
     ```composer update```
@@ -33,6 +33,11 @@ https://dashboard.heroku.com/apps/elppd-kab-lanny-jaya
 
     Link the storage
     ```php artisan storage:link ```
+
+## Important Git Commands
+
+    Reset commit 
+    ```git reset hard ```
 
 ## Faker documentation
 

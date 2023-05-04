@@ -58,6 +58,7 @@ class RoleUserSeeder extends Seeder
         // Asign Role
         $admin->assignRole($adminRole);
 
+        // PERANGKAT DAERAH
         // Create User Pendidikan
         $pendidikan = User::create([
             'name'              => 'Dinas Pendidikan',

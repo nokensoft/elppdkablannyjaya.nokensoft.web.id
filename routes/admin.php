@@ -124,8 +124,8 @@ Route::prefix('admin')->middleware('auth')->group(function () {
 
     // PERANGKAT DAERAH
     Route::controller(PerangkatDaerahController::class)->group(function(){
-        Route::get('lppd/perangkatdaerah','index')->name('admin.perangkatdaerah');
-        Route::get('lppd/perangkatdaerah/create','create')->name('admin.perangkatdaerah.create');
+        Route::get('perangkatdaerah','index')->name('admin.perangkatdaerah');
+        Route::get('perangkatdaerah/create','create')->name('admin.perangkatdaerah.create');
 
         Route::post('perangkatdaerah','store')->name('admin.perangkatdaerah.store');
         Route::get('perangkatdaerah/edit/{id}','edit')->name('admin.perangkatdaerah.edit');

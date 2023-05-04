@@ -3,7 +3,7 @@
 
     <head>
         <meta charset="utf-8" />
-        <title>SILPPD Kabupaten Lanny Jaya</title>
+        <title>SILANNY</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
         <meta content="Coderthemes" name="author" />
@@ -50,7 +50,7 @@
                     <div class="container-fluid">
                         <div class="row text-uppercase">
                             <div class="col-md-6">
-                                <script>document.write(new Date().getFullYear())</script> &copy; <a href="#" class="link-secondary">Sistem Informasi Laporan Penyelenggaraan Pemerintah Daerah, Kabupaten Lanny Jaya. </a>
+                                <script>document.write(new Date().getFullYear())</script> &copy; <a href="#" class="link-secondary">Sistem Informasi Laporan Penyelenggaraan Pemerintahan Kabupaten Lanny Jaya</a>
                             </div>
                             <div class="col-md-6 text-end">
                                 <span class="bg-outline-light">Versi 1.0</span>

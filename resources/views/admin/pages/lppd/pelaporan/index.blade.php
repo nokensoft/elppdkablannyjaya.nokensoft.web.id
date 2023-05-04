@@ -1,6 +1,8 @@
 @extends('admin.layouts.app')
 @section('content')
     <!-- start page content wrapper-->
+
+        <!-- row -->
         <div class="row mb-3">
             <div class="col-12">
                 <div class="page-title-box">
@@ -16,33 +18,12 @@
         </div>
         <!-- end row -->
 
+        <!-- row -->
         <div class="row">
             <div class="col">
                 <div class="card">
                     <div class="card-body">
                         <h1 class="fw-bold">LPPD Pelaporan</h1>
-
-                        <div class="mb-3">
-                            <a href="{{asset('admin/lppd/pelaporan')}}" class="btn btn-info waves-effect waves-light fs-4">
-                                <i class="fas fa-file me-1"></i> 2019
-                            </a>
-                            
-                            <a href="#" class="btn btn-outline-info waves-effect waves-light fs-4">
-                                <i class="fas fa-file me-1"></i> 2020
-                            </a>
-                            
-                            <a href="{{asset('admin/lppd/pelaporan/2021')}}" class="btn btn-outline-info waves-effect waves-light fs-4">
-                                <i class="fas fa-file me-1"></i> 2021
-                            </a>
-                            
-                            <a href="#" class="btn btn-outline-info waves-effect waves-light fs-4">
-                                <i class="fas fa-file me-1"></i> 2022
-                            </a>
-                            
-                            <a href="#" class="btn btn-outline-info waves-effect waves-light fs-4">
-                                <i class="fas fa-file me-1"></i> 2023
-                            </a>
-                        </div>
 
                         <div class="row">
 
@@ -57,7 +38,6 @@
                                             <th class="text-center">Aksi</th>
                                         </tr>
                                     </thead>
-
                                     
                                     <tbody>
                                         @foreach ($all as $data )
@@ -168,9 +148,9 @@
 
   @stop
 
-  @push('script-footer')
-   <!-- Chart JS -->
-   <script src="{{ asset('assets/admin/assets/libs/chart.js/Chart.bundle.min.js')}}"></script>
+    @push('script-footer')
+    <!-- Chart JS -->
+    <script src="{{ asset('assets/admin/assets/libs/chart.js/Chart.bundle.min.js')}}"></script>
 
     <script src="{{ asset('assets/admin/assets/libs/moment/min/moment.min.js')}}"></script>
     <script src="{{ asset('assets/admin/assets/libs/jquery.scrollto/jquery.scrollTo.min.js')}}"></script>
@@ -183,4 +163,4 @@
 
     <!-- Dashboard init JS -->
     <script src="{{ asset('assets/admin/assets/js/pages/dashboard-3.init.js')}}"></script>  
-  @endpush
+    @endpush

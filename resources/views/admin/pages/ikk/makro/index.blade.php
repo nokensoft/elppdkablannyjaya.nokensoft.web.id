@@ -80,6 +80,11 @@
                                                     @if(Auth::user()->hasRole('supervisor'))
                                                         <a href="{{ route('admin.ikk.show',$data->id) }}" class="btn btn-sm btn-outline-dark waves-effect waves-light fs-4"> Detail </a>
                                                         <a href="{{ route('admin.ikk.status',$data->id) }}" class="btn btn-sm btn-outline-dark waves-effect waves-light fs-4"> Ubah </a>
+
+                                                    @elseif(Auth::user()->hasRole('opd'))
+                                                        <a href="{{ route('admin.ikk.show',$data->id) }}" class="btn btn-sm btn-outline-dark waves-effect waves-light fs-4"> Detail </a>
+                                                        <a href="{{ route('admin.ikk.status',$data->id) }}" class="btn btn-sm btn-outline-dark waves-effect waves-light fs-4"> Ubah </a>
+
                                                     @else
                                                         @if($data->status == 'approved')
                                                             <a href="{{ route('admin.ikk.show',$data->id) }}" class="btn btn-sm btn-outline-dark waves-effect waves-light fs-4"> Detail </a>
