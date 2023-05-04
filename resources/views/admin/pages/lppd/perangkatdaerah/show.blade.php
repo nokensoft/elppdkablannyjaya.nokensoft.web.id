@@ -57,7 +57,6 @@
                                         <textarea ows="5" class="form-control form-control-lg" readonly>{{ $data->perangkatdaerah->alamat ?? ''}}</textarea>
                                     </div>
 
-
                                     <div class="mb-2 fs-4">
                                         <label for="" class="fw-bold">Nama Pimpinan</label>
                                         <input type="text" class="form-control form-control-lg" readonly value="{{ $data->perangkatdaerah->nama_pimpinan ?? '' }}" >

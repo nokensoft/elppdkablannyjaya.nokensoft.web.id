@@ -32,8 +32,8 @@
                                 <form action="{{route('admin.perangkatdaerah.store')}}" method="POST" enctype="multipart/form-data">
                                     @csrf
 
-                                    <label for="" class="fw-bold">Foto Kantor</label>
                                     <div class="mb-3 fs-4">
+                                        <label for="" class="fw-bold d-block">Foto Kantor</label>
                                         <img src="{{asset('assets/admin/assets/images/users/user-default.png')}}"
                                         alt="Logo" width="250px" class="img-thumbnail mb-1">
                                         <input type="file" name="foto_gedung" class="form-control form-control-lg">

@@ -32,9 +32,7 @@
                                     @csrf
                                     <div class="mb-3 fs-4">
                                         <img src="{{asset('assets/admin/assets/images/users/user-default.png')}}" alt="Logo" width="250px" class="img-thumbnail mb-1">
-
                                         <input type="file" name="foto" class="form-control form-control-lg">
-
                                     </div>
 
                                     <div class="mb-3 fs-4">
