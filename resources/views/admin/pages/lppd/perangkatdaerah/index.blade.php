@@ -48,7 +48,7 @@
                                             <tr>
                                                 <td>
                                                     @if (!$data->perangkatdaerah->foto_gedung)
-                                                        <img src="{{asset('assets/images/image1.png')}}" alt="Logo" width="380px"
+                                                        <img src="{{asset('assets/images/image1.png')}}" alt="Foto Kantor" width="150px"
                                                          class="img-thumbnail">
                                                     @else
                                                      <img src="{{asset('file/foto/perangkatdaerah')}}/{{ $data->perangkatdaerah->foto_gedung }}"
