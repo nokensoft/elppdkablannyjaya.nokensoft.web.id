@@ -35,7 +35,7 @@ Route::prefix('admin')->middleware('auth')->group(function () {
         return redirect('admin/beranda');;
     });
 
-    
+
 
 
     Route::controller(HomeController::class)->group(function(){
@@ -136,9 +136,17 @@ Route::prefix('admin')->middleware('auth')->group(function () {
 
     // GAMBAR
     Route::controller(GambarController::class)->group(function(){
+
         Route::get('gambar','index')->name('admin.gambar')->middleware(['role:administrator']);
         Route::get('gambar/create','create')->name('admin.gambar.create')->middleware(['role:administrator']);
+        Route::get('gambar/{id}/edit','edit')->name('admin.gambar.edit')->middleware(['role:administrator']);
         Route::post('gambar','store')->name('admin.gambar.store')->middleware(['role:administrator']);
+
+        Route::put('gambar/update/{id}','update')->name('admin.gambar.update')->middleware(['role:administrator']);
+
+        Route::get('gambar/{id}/delete','delete')->name('admin.gambar.delete')->middleware(['role:administrator']);
+        Route::delete('gambar/destroy/{id}','destroy')->name('admin.gambar.destroy')->middleware(['role:administrator']);
+
     });
 
     // PERANGKAT DAERAH

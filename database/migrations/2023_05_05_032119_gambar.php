@@ -17,7 +17,8 @@ return new class extends Migration
             $table->id();
             $table->string('nama_file');
             $table->string('alamat_file')->nullable();
-            
+            $table->string('slug')->nullable();
+
             $table->timestamps();
         });
     }

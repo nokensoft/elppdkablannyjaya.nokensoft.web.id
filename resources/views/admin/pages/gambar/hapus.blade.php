@@ -7,7 +7,8 @@
                     <div class="page-title-right">
                         <ol class="breadcrumb m-0">
                             <li class="breadcrumb-item"><a href="{{asset('admin/beranda')}}">Beranda</a></li>
-                            <li class="breadcrumb-item active">Manajemen Gambar</li>
+                            <li class="breadcrumb-item"><a href="{{asset('admin/profil')}}">Data Master</a></li>
+                            <li class="breadcrumb-item active">Kelolah Gambar</li>
                         </ol>
                     </div>
                 </div>
@@ -26,53 +27,34 @@
                             <!-- .col start -->
                             <div class="col-lg-6  mx-auto border border-4 border-info rounded shadow-lg p-5 my-5">
 
-                                <h1 class="fw-bold">Tambah Gambar</h1>
+                                <h1 class="fw-bold">Hapus?</h1>
 
-                                <form action="{{route('admin.gambar.store')}}" method="POST" enctype="multipart/form-data">
+                                <form action="{{route('admin.gambar.destroy', $data->id)}}" method="POST" enctype="multipart/form-data">
                                     @csrf
+                                    @method('DELETE')
 
                                     <div class="mb-3 fs-4">
-                                        <label for="" class="fw-bold">Judul Gambar</label>
-                                        <input type="text" class="form-control form-control-lg" value="{{ old('nama_file')}}"  name="nama_file" placeholder="Nama File">
-                                        @if($errors->has('nama_file'))
-                                            <label class="text-danger"> {{ $errors->first('nama_file') }} </label>
-                                        @endif
+                                        <label for="" class="fw-bold">Gambar {{$data->nama_file}}</label>
                                     </div>
-                                    <!-- input item end -->
-
-                                    <div class="mb-3 fs-4">
-                                        <label for="" class="fw-bold d-block">Pilih Gambar</label>
-                                        <input type="file" name="alamat_file" class="form-control form-control-lg">
-                                        @if($errors->has('alamat_file'))
-                                            <label class="text-danger"> {{ $errors->first('alamat_file') }} </label>
-                                        @endif
-                                    </div>
-                                    <!-- input item end -->
 
                                     <div class="border-top border-1 pt-3 mt-4">
-                                        <button type="submit" class="btn btn-info waves-effect waves-light fs-4">
-                                            <i class="fas fa-save me-1"></i> Simpan
+                                        <button type="submit" class="btn btn-danger waves-effect waves-light fs-4">
+                                            <i class="fas fa-trash me-1"></i> Hapus
                                         </button>
                                         <a href="{{URL::previous()}}" class="btn btn-outline-light waves-effect waves-light fs-4">
-                                            <i class="fas fa-arrow-left me-1"></i> Kembali
+                                            <i class="fas fa-arrow-left me-1"></i> Tidak
                                         </a>
                                     </div>
-                                    <!-- input button end -->
-
                                 </form>
-
                             </div>
                             <!-- .col end -->
-
                         </div>
                         <!-- .row end -->
-
                     </div>
                 </div>
             </div>
         </div>
         <!-- end row -->
-
 
   <!--end wrapper-->
 

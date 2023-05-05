@@ -43,21 +43,26 @@
                         <div class="row mt-4">
                             @foreach ($datas as $data )
                             <div class="col-md-3">
-                                
+
                                     <div class="card">
                                         <div class="card-image-top">
-                                            @if(empty($data->alamat_file))
-                                            <img src="{{asset('assets/images/image1.jpg')}}" alt="Logo" class="img-fluid img-thumbnail p-3">
+                                            @if(!$data->alamat_file)
+                                                <img src="{{asset('assets/images/image1.jpg')}}" alt="Logo" class="img-fluid img-thumbnail p-3">
                                             @else
-                                            <a @if(!empty($data->alamat_file)) href="{{asset($data->alamat_file)}}" target="_blank" @endif>
-                                                <img src="{{asset($data->alamat_file)}}" class="img-fluid img-thumbnail p-3">
-                                            </a>
+                                                <a @if(!empty($data->alamat_file)) href="{{asset('file/kelolah_gambar')}}/{{ $data->alamat_file }}" target="_blank" @endif>
+                                                    <img src="{{asset($data->alamat_file)}}" class="img-fluid img-thumbnail p-3">
+                                                </a>
                                             <span class="d-block mt-2 fw-bold">
                                                 {{$data->nama_file}}
                                             </span>
                                             <input type="text" class="form-control form-control-sm mt-2" value="{{$data->alamat_file}}">
 
-                                            <a href="#" class="btn btn-outline-light mt-2"><i class="fas fa-trash"></i></a>
+                                            <a href="{{ route('admin.gambar.delete',['id' => $data->slug]) }}" class="btn btn-outline-light mt-2">
+                                                <i class="fas fa-trash"></i>
+                                            </a>
+                                            <a href="{{ route('admin.gambar.edit',['id' => $data->slug]) }}" class="btn btn-outline-light mt-2">
+                                                <i class="fas fa-edit"></i>
+                                            </a>
 
                                             @endif
                                         </div>

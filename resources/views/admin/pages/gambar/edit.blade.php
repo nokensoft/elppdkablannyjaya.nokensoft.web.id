@@ -26,7 +26,7 @@
                             <!-- .col start -->
                             <div class="col-lg-6  mx-auto border border-4 border-info rounded shadow-lg p-5 my-5">
 
-                                <h1 class="fw-bold">Tambah Gambar</h1>
+                                <h1 class="fw-bold">Edit Gambar</h1>
 
                                 <form action="{{route('admin.gambar.store')}}" method="POST" enctype="multipart/form-data">
                                     @csrf
