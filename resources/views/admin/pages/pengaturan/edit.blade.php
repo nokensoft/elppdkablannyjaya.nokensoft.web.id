@@ -66,12 +66,14 @@
                                     
                                     <div class="mb-3 fs-4">
                                         @if ($data->logo == null)
-                                            <img src="{{asset('assets/images/profildaerah/kepala.png')}}" alt="{{$data->slug}}"  width="250px" class="img-thumbnail">
+                                            <img src="{{asset('assets/images/profildaerah/kepala.png')}}" alt="{{$data->logo}}"  width="250px" class="img-thumbnail">
                                         @else
                                             <img src="{{ url($data->logo)}}" alt="{{$data->logo}}" class="img-fluid img-thumbnail"  width="250px" class="img-thumbnail"></td>
                                         @endif
                                        
-                                        <input type="file" name="logo_situs" class="form-control form-control-lg">
+                                        <input type="text" class="form-control form-control-lg mt-2" name="logo" value="{{old('logo') ? old('logo') : $data->logo }}">
+
+                                        {{-- <input type="file" name="logo_situs" class="form-control form-control-lg"> --}}
 
                                         @if($errors->has('logo'))
                                             <label class="text-danger"> {{ $errors->first('logo') }} </label>
@@ -82,11 +84,15 @@
                                     
                                     <div class="mb-3 fs-4">
                                         @if ($data->favicon == null)
-                                            <img src="{{asset('assets/images/profildaerah/kepala.png')}}" alt="{{$data->slug}}"  width="100px" class="img-thumbnail">
+                                            <img src="{{asset('assets/images/profildaerah/kepala.png')}}" alt="{{$data->favicon}}"  width="100px" class="img-thumbnail">
                                         @else
                                             <img src="{{ url($data->favicon)}}" alt="{{$data->favicon}}" class="img-fluid img-thumbnail"  width="100px" class="img-thumbnail"></td>
                                         @endif
-                                        <input type="file" name="logo" class="form-control form-control-lg mt-2" name="favicon">
+
+                                        <input type="text" class="form-control form-control-lg mt-2" name="favicon" value="{{old('favicon') ? old('favicon') : $data->favicon }}">
+
+                                        {{-- <input type="file" name="logo" class="form-control form-control-lg mt-2" name="favicon"> --}}
+
                                     </div>
                                     <!-- input item end -->
 

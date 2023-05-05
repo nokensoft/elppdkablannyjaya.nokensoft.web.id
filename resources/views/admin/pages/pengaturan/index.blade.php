@@ -37,9 +37,27 @@
                                             <td class="fw-bold">{!! $data->deskripsi_situs !!}</td>
                                         </tr>
                                         <tr>
-                                            <td>Logo</td>
+                                            <td>Logo Small Dark</td>
                                             <td class="fw-bold">
-                                                <img src="{{ asset($data->logo) }}" alt="Logo" width="250px">
+                                                <img src="{{ asset($data->logo_sm_dark) }}" alt="Logo sm dark" width="250px">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Logo Large Dark</td>
+                                            <td class="fw-bold">
+                                                <img src="{{ asset($data->logo_lg_dark) }}" alt="Logo large dark" width="250px">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Logo Small Light</td>
+                                            <td class="fw-bold">
+                                                <img src="{{ asset($data->logo_sm_light) }}" alt="Logo sm light" width="250px">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Logo Large Dark</td>
+                                            <td class="fw-bold">
+                                                <img src="{{ asset($data->logo_lg_light) }}" alt="Logo lg light" width="250px">
                                             </td>
                                         </tr>
                                         <tr>

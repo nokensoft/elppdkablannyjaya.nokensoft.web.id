@@ -39,21 +39,23 @@ class PengaturanController extends Controller
 
        $pengaturan = new Pengaturan();
 
-       $data['judul_situs']     = $request->judul_situs;
-       $data['deskripsi_situs'] = $request->deskripsi_situs;
-       $data['tentang_aplikasi'] = $request->tentang_aplikasi;
+       $data['judul_situs']         = $request->judul_situs;
+       $data['deskripsi_situs']     = $request->deskripsi_situs;
+       $data['tentang_aplikasi']    = $request->tentang_aplikasi;
+       $data['logo']                = $request->logo;
+       $data['favicon']             = $request->favicon;
 
     //    dd($data['logo']);
 
-       if($request->logo_situs){
-        $logo_situs = time() . '.' . $request->logo_situs->extension();
-        $path = public_path('file/pengaturan');
-        if (!empty($data['logo']) && file_exists($path . '/' . $data['logo'])) :
-            unlink($path . 'file/pengaturan' . $data['logo_situs']);
-        endif;
-        $data['logo'] = ('file/pengaturan/') . $logo_situs;
-        $request->logo_situs->move(public_path('file/pengaturan'), $logo_situs);
-    }
+    //    if($request->logo_situs){
+    //     $logo_situs = time() . '.' . $request->logo_situs->extension();
+    //     $path = public_path('file/pengaturan');
+    //     if (!empty($data['logo']) && file_exists($path . '/' . $data['logo'])) :
+    //         unlink($path . 'file/pengaturan' . $data['logo_situs']);
+    //     endif;
+    //     $data['logo'] = ('file/pengaturan/') . $logo_situs;
+    //     $request->logo_situs->move(public_path('file/pengaturan'), $logo_situs);
+    //     }
 
        Pengaturan::whereId($id)->update($data);
 

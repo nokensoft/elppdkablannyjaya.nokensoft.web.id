@@ -137,8 +137,8 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     // IMAGES
     Route::controller(ImageController::class)->group(function(){
         Route::get('images','index')->name('admin.images')->middleware(['role:administrator']);
-        // Route::get('desa/create','create')->name('admin.desa.create')->middleware(['role:administrator']);
-        // Route::post('desa','store')->name('admin.desa.store')->middleware(['role:administrator']);
+        Route::get('images/create','create')->name('admin.images.create')->middleware(['role:administrator']);
+        Route::post('images','store')->name('admin.images.store')->middleware(['role:administrator']);
 
         // Route::get('desa/print','print')->name('admin.desa.print')->middleware(['role:administrator']);
 

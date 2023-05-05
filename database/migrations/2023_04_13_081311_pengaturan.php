@@ -17,7 +17,13 @@ return new class extends Migration
             $table->id();
             $table->string('judul_situs')->nullable();
             $table->string('deskripsi_situs')->nullable();
-            $table->string('logo')->nullable();
+
+            $table->string('logo_sm_light')->nullable();
+            $table->string('logo_sm_dark')->nullable();
+
+            $table->string('logo_lg_light')->nullable();
+            $table->string('logo_lg_dark')->nullable();
+
             $table->string('favicon')->nullable();
             $table->string('termsconditions')->nullable();
             $table->string('footerinformation')->nullable();
