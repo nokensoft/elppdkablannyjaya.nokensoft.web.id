@@ -25,12 +25,23 @@ use App\Http\Controllers\admin\MonitoringController;
 use App\Http\Controllers\admin\IkkController;
 use App\Http\Controllers\admin\PengaturanController;
 use App\Http\Controllers\admin\ProfilDaerahController;
+use App\Http\Controllers\HomeController;
 use App\Models\Pengaturan;
 
 Route::prefix('admin')->middleware('auth')->group(function () {
 
     Route::get('/', function () {
         return redirect('admin/beranda');;
+    });
+
+    
+
+
+    Route::controller(HomeController::class)->group(function(){
+
+        Route::get('profil','profil')->name('admin.profil');
+
+
     });
 
 

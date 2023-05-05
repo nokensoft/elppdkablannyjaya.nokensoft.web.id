@@ -23,7 +23,7 @@
                                 </div>
 
                                 <!-- item-->
-                                <a href="{{ route('app.profilIndex') }}" class="dropdown-item notify-item">
+                                <a href="{{ route('admin.profil') }}" class="dropdown-item notify-item">
                                     <i class="fe-user"></i>
                                     <span>Profil</span>
                                 </a>
