@@ -26,6 +26,28 @@ class GambarController extends Controller
     }
 
     // STORE
+    public function store(Request $request)
+    {
+        $this->validate($request, [
+            'nama_file' => 'required',
+        ],
+        [
+            'nama_file.required' => 'Judul gambar tidak boleh kosong',
+        ]
+
+    );
+
+        $input = $request->all();
+
+        dd($request->all());
+
+        Gambar::create($input);
+        
+        // $user->assignRole($request->input('roles'));
+
+        alert()->success('Berhasil', 'Sukses!!')->autoclose(1100);
+        return redirect()->route('admin.gambar');
+    }
 
     // DELETE
 

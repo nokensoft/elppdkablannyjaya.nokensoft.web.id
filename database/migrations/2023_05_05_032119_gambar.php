@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('gambars', function (Blueprint $table) {
             $table->id();
             $table->string('nama_file');
-            $table->string('alamat_file');
+            $table->string('alamat_file')->nullable();
             
             $table->timestamps();
         });

@@ -56,6 +56,9 @@
                                                 {{$data->nama_file}}
                                             </span>
                                             <input type="text" class="form-control form-control-sm mt-2" value="{{$data->alamat_file}}">
+
+                                            <a href="#" class="btn btn-outline-light mt-2"><i class="fas fa-trash"></i></a>
+
                                             @endif
                                         </div>
                                     </div>
