@@ -125,12 +125,12 @@
                     </a>
                 </li>
 
-                <li>
+                {{-- <li>
                     <a href="/filemanager">
                         <i class="fa fa-laptop"></i>
                         <span> File Manager </span>
                     </a>
-                </li>
+                </li> --}}
 
                 {{-- <li>
                     <a href="#sidebarEcommerce" data-bs-toggle="collapse">

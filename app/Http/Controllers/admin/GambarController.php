@@ -60,12 +60,12 @@ class GambarController extends Controller
                 $gambar->slug = $random;
 
                 $posterName = $request->nama_file.'.'.time() . '.' . $request->alamat_file->extension();
-                $path = public_path('file/kelolah_gambar');
+                $path = public_path('file/pengaturan');
                 if (!empty($gambar->alamat_file) && file_exists($path . '/' . $gambar->alamat_file)) :
                     unlink($path . '/' . $gambar->alamat_file);
                 endif;
                 $gambar->alamat_file = $posterName;
-                $request->alamat_file->move(public_path('file/kelolah_gambar'), $posterName);
+                $request->alamat_file->move(public_path('file/pengaturan'), $posterName);
 
                 $gambar->save();
 
@@ -106,13 +106,13 @@ class GambarController extends Controller
                  $gambar->slug = $random;
                  if ($request->alamat_file) {
 
-                    $posterName = $request->nama_fille.time() . '.' . $request->alamat_file->extension();
-                    $path = public_path('file/kelolah_gambar');
+                    $posterName = $request->nama_file.'.'.time() . '.' . $request->alamat_file->extension();
+                    $path = public_path('file/pengaturan');
                     if (!empty($gambar->alamat_file) && file_exists($path . '/' . $gambar->alamat_file)) :
                         unlink($path . '/' . $gambar->alamat_file);
                     endif;
                     $gambar->alamat_file = $posterName;
-                    $request->alamat_file->move(public_path('file/kelolah_gambar'), $posterName);
+                    $request->alamat_file->move(public_path('file/pengaturan'), $posterName);
                  }
                  $gambar->update();
 
@@ -138,7 +138,7 @@ class GambarController extends Controller
     {
         try {
             $gambar = Gambar::find($id);
-            $path = public_path('file/kelolah_gambar' . $gambar->foto_gedung);
+            $path = public_path('file/pengaturan/' . $gambar->foto_gedung);
 
             if (file_exists($path)) {
                 File::delete($path);
