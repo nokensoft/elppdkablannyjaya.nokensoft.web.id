@@ -161,6 +161,7 @@ class PerangkatDaerahController extends Controller
             $perangkatdaerah->status            = $request->status;
             $perangkatdaerah->user_id           = $request->user_id;
             $perangkatdaerah->slug              =  Str::slug($request->nama_organisasi);
+
             if($request->foto_gedung){
                 $posterName = time() . '.' . $request->foto_gedung->extension();
                 $path = public_path('file/foto/perangkatdaerah');
@@ -170,7 +171,9 @@ class PerangkatDaerahController extends Controller
                 $perangkatdaerah->foto_gedung = $posterName;
                 $request->foto_gedung->move(public_path('file/foto/perangkatdaerah'), $posterName);
             }
+
             $akun->perangkatdaerahs()->save($perangkatdaerah);
+            
             alert()->success('Berhasil', 'Sukses!!')->autoclose(1100);
             return redirect()->route('admin.perangkatdaerah');
 
@@ -203,6 +206,7 @@ class PerangkatDaerahController extends Controller
             $perangkatdaerah->user->delete();
             alert()->success('Berhasil', 'Sukses!!')->autoclose(1500);
             return redirect()->route('admin.perangkatdaerah');
+            
         } catch (\Throwable $e) {
             alert()->error('Gagal', 'Gagal!!')->autoclose(1100);
             return redirect()->back();

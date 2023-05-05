@@ -28,9 +28,11 @@
 
                                 <h1 class="fw-bold">Ubah Pengaturan</h1>
 
+
                                 <form action="{{route('admin.pengaturan.update',$data->id)}}" method="POST" enctype="multipart/form-data">
                                     @csrf
-                                    @method('PUT')
+                                    @method('put')
+
                                     {{-- <div class="mb-3 fs-4">
                                         @if ($data->foto == null)
                                             <img src="{{asset('assets/admin/assets/images/users/user-man.png')}}" alt="{{$data->slug}}"  width="250px" class="img-thumbnail mb-1">
@@ -68,7 +70,13 @@
                                         @else
                                             <img src="{{ url($data->logo)}}" alt="{{$data->logo}}" class="img-fluid img-thumbnail"  width="250px" class="img-thumbnail"></td>
                                         @endif
-                                        <input type="file" class="form-control form-control-lg mt-2" name="logo">
+                                       
+                                        <input type="file" name="logo_situs" class="form-control form-control-lg">
+
+                                        @if($errors->has('logo'))
+                                            <label class="text-danger"> {{ $errors->first('logo') }} </label>
+                                        @endif
+                                        
                                     </div>
                                     <!-- input item end -->
                                     
@@ -78,7 +86,7 @@
                                         @else
                                             <img src="{{ url($data->favicon)}}" alt="{{$data->favicon}}" class="img-fluid img-thumbnail"  width="100px" class="img-thumbnail"></td>
                                         @endif
-                                        <input type="file" class="form-control form-control-lg mt-2" name="favicon">
+                                        <input type="file" name="logo" class="form-control form-control-lg mt-2" name="favicon">
                                     </div>
                                     <!-- input item end -->
 

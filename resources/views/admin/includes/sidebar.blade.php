@@ -111,6 +111,9 @@
                             <li>
                                 <a href="{{ route('pengguna.index') }}">Pengguna</a>
                             </li>
+                            <li>
+                                <a href="{{ route('admin.images') }}">Images Manager</a>
+                            </li>
                         </ul>
                     </div>
                 </li>
