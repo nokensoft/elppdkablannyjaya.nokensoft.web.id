@@ -28,7 +28,7 @@
                 <div class="card">
                     <div class="card-body text-center">
                         @if(!Auth::user()->perangkatdaerah->foto_gedung ?? '')
-                        <img src="{{asset('assets/images/image1.png')}}" alt="Logo" width="80px" class="img-thumbnail">
+                        <img src="{{asset('assets/images/image1.png')}}" alt="Logo"  class="img-thumbnail">
                         @else
 
                         <img src="{{asset('file/foto/perangkatdaerah')}}/{{ Auth::user()->perangkatdaerah->foto_gedung ?? '' }}"
@@ -43,19 +43,21 @@
                <div class="card">
                 <div class="card-body">
                     <form>
-                        <h5 class="mb-4 text-uppercase"><i class="mdi mdi-account-circle mr-1"></i> Personal Info</h5>
+                        <h5 class="mb-3 text-uppercase bg-light p-2"><i class="mdi mdi-account-circle mr-1"></i> Informasi Profil</h5>
                         <div class="row">
                             <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="firstname">First Name</label>
-                                    <input type="text" class="form-control" value="{{  Auth::user()->name }}" readonly>
+                                <div class="form-group mb-3">
+                                    <label for="firstname" class="fw-bold">Nama Penggguna</label>
+                                    <input type="text" class="form-control border-0 p-0" value="{{ Auth::user()->name }}" readonly>
                                 </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="lastname">Email</label>
-                                    <input type="text" class="form-control" value="{{  Auth::user()->email }}" readonly>
+                                <!-- input item end -->
+                                
+                                <div class="form-group mb-3">
+                                    <label for="lastname" class="fw-bold">Alamat Email</label>
+                                    <input type="text" class="form-control border-0 p-0" value="{{ Auth::user()->email }}" readonly>
                                 </div>
+                                <!-- input item end -->
+
                             </div> <!-- end col -->
                         </div> <!-- end row -->
                         <br>
@@ -64,57 +66,50 @@
 
                             <h5 class="mb-3 text-uppercase bg-light p-2"><i class="mdi mdi-office-building mr-1"></i> Data OPD</h5>
                             <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label for="companyname">Nama Pimpinan</label>
-                                        <input type="text" class="form-control" value="{{ Auth::user()->perangkatdaerah->nama_pimpinan ?? '' }}" readonly>
-                                    </div>
-                                </div>
-                            </div> <!-- end row -->
-                            <br>
-                            <div class="row">
                                 <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="companyname">Nama OPD</label>
-                                        <input type="text" class="form-control" value="{{ Auth::user()->perangkatdaerah->nama_organisasi ?? '' }}" readonly>
+                                    <div class="form-group mb-3">
+                                        <label for="companyname" class="fw-bold">Nama Pimpinan</label>
+                                        <input type="text" class="form-control border-0 p-0" value="{{ Auth::user()->perangkatdaerah->nama_pimpinan ?? '' }}" readonly>
                                     </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="cwebsite">Urusan</label>
-                                        <input type="text" class="form-control"  value="{{ Auth::user()->perangkatdaerah->urusan ?? '' }}" readonly>
+                                    <!-- input item end -->
+                                    
+                                    <div class="form-group mb-3">
+                                        <label for="companyname" class="fw-bold">Nama OPD</label>
+                                        <input type="text" class="form-control border-0 p-0" value="{{ Auth::user()->perangkatdaerah->nama_organisasi ?? '' }}" readonly>
                                     </div>
-                                </div> <!-- end col -->
-                            </div> <!-- end row -->
-                            <br>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="companyname">Tipe Kantor</label>
-                                        <input type="text" class="form-control" value="{{ Auth::user()->perangkatdaerah->nama_organisasi ?? '' }}" readonly>
+                                    <!-- input item end -->
+                                    
+                                    <div class="form-group mb-3">
+                                        <label for="cwebsite" class="fw-bold">Urusan</label>
+                                        <input type="text" class="form-control border-0 p-0"  value="{{ Auth::user()->perangkatdaerah->urusan ?? '' }}" readonly>
                                     </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="cwebsite">Jumlah Pegawai</label>
-                                        <input type="text" class="form-control" value="{{ Auth::user()->perangkatdaerah->jumlah_pegawai ?? ''  }}" readonly>
+                                    <!-- input item end -->
+                                    
+                                    <div class="form-group mb-3">
+                                        <label for="companyname" class="fw-bold">Tipe Kantor</label>
+                                        <input type="text" class="form-control border-0 p-0" value="{{ Auth::user()->perangkatdaerah->nama_organisasi ?? '' }}" readonly>
                                     </div>
-                                </div> <!-- end col -->
-                            </div> <!-- end row -->
-                            <br>
-                            <div class="row">
-                                <div class="col-12">
-                                    <div class="form-group">
-                                        <label for="userbio">Alamat</label>
-                                        <textarea class="form-control"  rows="4" readonly>{{  Auth::user()->perangkatdaerah->alamat ?? '' }}</textarea>
+                                    <!-- input item end -->
+                                    
+                                    <div class="form-group mb-3">
+                                        <label for="cwebsite" class="fw-bold">Jumlah Pegawai</label>
+                                        <input type="text" class="form-control border-0 p-0" value="{{ Auth::user()->perangkatdaerah->jumlah_pegawai ?? ''  }}" readonly>
                                     </div>
+                                    <!-- input item end -->
+                                    
+                                    <div class="form-group mb-3">
+                                        <label for="userbio" class="fw-bold">Alamat</label>
+                                        <textarea class="form-control border-0 p-0"  rows="3" readonly>{{  Auth::user()->perangkatdaerah->alamat ?? '' }}</textarea>
+                                    </div>
+                                    <!-- input item end -->
+                                    
                                 </div> <!-- end col -->
                             </div> <!-- end row -->
 
 
                             <div class="text-right">
-                                <a href="#" class="btn btn-success waves-effect waves-light mt-2">
-                                    <i class="mdi mdi-content-save"></i> Edit
+                                <a href="#" class="btn btn-outline-info border-0 waves-effect waves-light fs-4">
+                                    <i class="fas fa-edit me-1"></i> Ubah
                                 </a>
                             </div>
 

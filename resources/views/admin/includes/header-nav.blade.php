@@ -123,7 +123,15 @@
                             </a>
                             <div class="dropdown-menu">
 
+                                @foreach ($PerangkatDaerah as $dataPerangkatDaerah )
                                 <a href="{{asset('admin/ikk/pendidikan')}}" class="dropdown-item fs-4">
+                                    <i class="fas fa-bookmark me-1"></i>
+                                    <span>{{ $dataPerangkatDaerah->nama_organisasi }}</span>
+                                </a>
+                                <!-- item-->
+                                @endforeach
+
+                                {{-- <a href="{{asset('admin/ikk/pendidikan')}}" class="dropdown-item fs-4">
                                     <i class="fas fa-bookmark me-1"></i>
                                     <span>IKK Pedidikan</span>
                                 </a>
@@ -146,7 +154,7 @@
                                     <i class="fas fa-bookmark me-1"></i>
                                     <span>Liat Semua Data</span>
                                 </a>
-                                <!-- item-->
+                                <!-- item--> --}}
 
                             </div>
                         </li>

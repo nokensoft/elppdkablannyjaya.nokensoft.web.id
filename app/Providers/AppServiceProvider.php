@@ -5,6 +5,7 @@ use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\ServiceProvider;
 use App\Models\Pengaturan;
+use App\Models\PerangkatDaerah;
 use Illuminate\Support\Facades\URL;
 
 use Illuminate\Support\Facades\View;
@@ -38,8 +39,13 @@ class AppServiceProvider extends ServiceProvider
             URL::forceScheme('http');
         }
 
-        $data = Pengaturan::first();
-        view::share('pengaturan', $data);
+        $pengaturan = Pengaturan::first();
+        $PerangkatDaerah = PerangkatDaerah::get();
+
+        view::share([
+            'pengaturan' => $pengaturan,
+            'PerangkatDaerah' => $PerangkatDaerah,
+        ]);
 
     }
 }

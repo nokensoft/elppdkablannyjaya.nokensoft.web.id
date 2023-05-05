@@ -62,9 +62,9 @@
                                         @foreach ($datas as $data )
                                             <tr>
                                                 <td>
-                                                    @if(!$data->foto_kepala_distrik)
+                                                    @if(empty($data->foto_kepala_distrik))
                                                     <img src="{{asset('assets/images/user.png')}}" alt="Logo" class="img-fluid img-thumbnail" width="100">
-                                                     @else
+                                                    @else
                                                     <img src="{{asset('file/foto/kepala/distrik')}}/{{ $data->foto_kepala_distrik }}" class="img-fluid img-thumbnail" width="150"></td>
                                                     @endif
                                                 </td>

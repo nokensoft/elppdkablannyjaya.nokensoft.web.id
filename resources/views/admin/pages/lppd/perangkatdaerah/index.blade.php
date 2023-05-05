@@ -47,11 +47,11 @@
                                         @foreach ($datas as $data )
                                             <tr>
                                                 <td>
-                                                    @if (!$data->perangkatdaerah->foto_gedung)
-                                                        <img src="{{asset('assets/images/image1.png')}}" alt="Foto Kantor" width="150px"
+                                                    @if (empty($data->perangkatdaerah->foto_gedung))
+                                                        <img src="{{ asset('assets/images/image1.png') }}" alt="Foto Kantor" width="150px"
                                                          class="img-thumbnail">
                                                     @else
-                                                     <img src="{{asset('file/foto/perangkatdaerah')}}/{{ $data->perangkatdaerah->foto_gedung }}"
+                                                     <img src="{{asset('file/foto/perangkatdaerah')}}/{{ $data->perangkatdaerah->foto_gedung ?? '' }}"
                                                      class="img-fluid img-thumbnail" width="100px"></td>
                                                     @endif
                                                 </td>
