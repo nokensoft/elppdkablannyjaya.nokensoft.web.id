@@ -3,7 +3,7 @@
 
     <head>
         <meta charset="utf-8" />
-        <title>SILANNY</title>
+        <title>{{ $pengaturan->judul_situs }}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
         <meta content="Coderthemes" name="author" />
@@ -49,11 +49,11 @@
                 <footer class="footer">
                     <div class="container-fluid">
                         <div class="row text-uppercase">
-                            <div class="col-md-6">
+                            <div class="col-md-8">
                                 <script>document.write(new Date().getFullYear())</script> &copy; <a href="#" class="link-secondary">Sistem Informasi Laporan Penyelenggaraan Pemerintahan Kabupaten Lanny Jaya</a>
                             </div>
-                            <div class="col-md-6 text-end">
-                                <span class="bg-outline-light">Versi 1.0</span>
+                            <div class="col-md-4 text-end">
+                                <span class="bg-outline-light">Versi 1.0 </span>
                             </div>
                         </div>
                     </div>

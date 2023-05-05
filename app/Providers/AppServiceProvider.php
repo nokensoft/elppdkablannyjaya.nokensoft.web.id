@@ -4,7 +4,10 @@ namespace App\Providers;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\ServiceProvider;
+use App\Models\Pengaturan;
 use Illuminate\Support\Facades\URL;
+
+use Illuminate\Support\Facades\View;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -34,6 +37,9 @@ class AppServiceProvider extends ServiceProvider
         } elseif(App::environment('local')){
             URL::forceScheme('http');
         }
+
+        $data = Pengaturan::first();
+        view::share('pengaturan', $data);
 
     }
 }
