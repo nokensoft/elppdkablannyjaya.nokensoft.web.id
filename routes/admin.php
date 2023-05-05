@@ -25,7 +25,7 @@ use App\Http\Controllers\admin\MonitoringController;
 use App\Http\Controllers\admin\IkkController;
 use App\Http\Controllers\admin\PengaturanController;
 use App\Http\Controllers\admin\ProfilDaerahController;
-use App\Http\Controllers\admin\ImageController;
+use App\Http\Controllers\admin\GambarController;
 use App\Http\Controllers\HomeController;
 use App\Models\Pengaturan;
 
@@ -134,20 +134,11 @@ Route::prefix('admin')->middleware('auth')->group(function () {
         Route::delete('desa/{id}','destroy')->name('admin.desa.destroy')->middleware(['role:administrator']);
     });
 
-    // IMAGES
-    Route::controller(ImageController::class)->group(function(){
-        Route::get('images','index')->name('admin.images')->middleware(['role:administrator']);
-        Route::get('images/create','create')->name('admin.images.create')->middleware(['role:administrator']);
-        Route::post('images','store')->name('admin.images.store')->middleware(['role:administrator']);
-
-        // Route::get('desa/print','print')->name('admin.desa.print')->middleware(['role:administrator']);
-
-        Route::get('images/{id}/edit','edit')->name('admin.images.edit')->middleware(['role:administrator']);
-        Route::get('images/{id}/show','show')->name('admin.images.show')->middleware(['role:administrator']);
-        Route::get('images/delete/{id}','delete')->name('admin.images.delete')->middleware(['role:administrator']);
-        // Route::put('desa/{id}','update')->name('admin.desa.update')->middleware(['role:administrator']);
-
-        // Route::delete('desa/{id}','destroy')->name('admin.desa.destroy')->middleware(['role:administrator']);
+    // GAMBAR
+    Route::controller(GambarController::class)->group(function(){
+        Route::get('gambar','index')->name('admin.gambar')->middleware(['role:administrator']);
+        Route::get('gambar/create','create')->name('admin.gambar.create')->middleware(['role:administrator']);
+        Route::post('gambar','store')->name('admin.gambar.store')->middleware(['role:administrator']);
     });
 
     // PERANGKAT DAERAH

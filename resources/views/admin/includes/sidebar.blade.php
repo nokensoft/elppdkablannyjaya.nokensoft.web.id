@@ -112,7 +112,7 @@
                                 <a href="{{ route('pengguna.index') }}">Pengguna</a>
                             </li>
                             <li>
-                                <a href="{{ route('admin.images') }}">Images Manager</a>
+                                <a href="{{ route('admin.gambar') }}">Kelolah Gambar</a>
                             </li>
                         </ul>
                     </div>

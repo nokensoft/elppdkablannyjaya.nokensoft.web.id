@@ -25,7 +25,7 @@
                                 <h1 class="fw-bold">Image Manager</h1>
                             </div>
                             <div class="col-md-6 text-md-end">
-                                <a href="{{ route('admin.images.create') }}" class="btn btn-info waves-effect waves-light fs-4">
+                                <a href="{{ route('admin.gambar.create') }}" class="btn btn-info waves-effect waves-light fs-4">
                                     <i class="fas fa-plus me-1"></i> Tambah Data
                                 </a>
 
