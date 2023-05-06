@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\admin;
 
+use App\Exports\IkkExport;
 use App\Http\Controllers\Controller;
 use App\Models\Ikk;
 use App\Models\PerangkatDaerah;
@@ -11,6 +12,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
+use Maatwebsite\Excel\Facades\Excel;
 
 class IkkController extends Controller
 {
@@ -57,6 +59,10 @@ class IkkController extends Controller
         // $all = DB::select('SELECT * FROM ikk ORDER BY id DESC  ');
         $all = Ikk::orderBy('id','desc')->get();
         return view('admin.pages.ikk.makro.print', ['all' => $all]);
+    }
+    public function download_excel()
+    {
+        return Excel::download(new IkkExport, 'ikk.xlsx');
     }
 
     /**

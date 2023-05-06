@@ -186,6 +186,8 @@ Route::prefix('admin')->middleware('auth')->group(function () {
 
         Route::get('ikk/print','print')->name('admin.ikk.print');
 
+        Route::get('ikk/unduh','download_excel')->name('admin.ikk.download_excel');
+
         Route::get('ikk/pendidikan','pendidikan')->name('admin.ikk.pendidikan');
 
         Route::get('ikk/kesehatan','kesehatan')->name('admin.ikk.kesehatan');

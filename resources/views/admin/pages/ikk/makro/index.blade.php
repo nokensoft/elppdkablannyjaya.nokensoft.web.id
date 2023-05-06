@@ -33,7 +33,7 @@
                                 <i class="fas fa-print me-1"></i> Print
                             </a>
 
-                            <a href="{{ route('admin.ikk.print') }}" target="_blank" class="btn btn-outline-info waves-effect waves-light fs-4">
+                            <a href="{{ route('admin.ikk.download_excel') }}" target="_blank" class="btn btn-outline-info waves-effect waves-light fs-4">
                                 <i class="fas fa-file me-1"></i> Download Excel
                             </a>
 
