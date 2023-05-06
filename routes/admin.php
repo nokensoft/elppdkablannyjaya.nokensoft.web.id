@@ -179,7 +179,10 @@ Route::prefix('admin')->middleware('auth')->group(function () {
 
     // IKK
     Route::controller(IkkController::class)->group(function(){
+
         Route::get('ikk','index')->name('admin.ikk');
+
+        Route::get('ikk/bidang/{method}','ikkMethod')->name('admin.ikk.method');
 
         Route::get('ikk/create','create')->name('admin.ikk.create');
         Route::post('ikk','store')->name('admin.ikk.store');

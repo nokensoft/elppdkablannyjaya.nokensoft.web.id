@@ -40,11 +40,11 @@ class AppServiceProvider extends ServiceProvider
         }
 
         $pengaturan = Pengaturan::first();
-        $PerangkatDaerah = PerangkatDaerah::get();
+        $perangkatDaerah = PerangkatDaerah::get();
 
         view::share([
             'pengaturan' => $pengaturan,
-            'PerangkatDaerah' => $PerangkatDaerah,
+            'perangkatDaerah' => $perangkatDaerah,
         ]);
 
     }

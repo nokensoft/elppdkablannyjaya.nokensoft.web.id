@@ -28,7 +28,7 @@
                                     <span>Profil</span>
                                 </a>
                                 <!-- item-->
-                                
+
                                 @if(Auth::user()->hasRole('administrator'))
                                 <a href="javascript:void(0);" class="dropdown-item notify-item">
                                     <i class="fe-settings"></i>
@@ -123,12 +123,14 @@
                             </a>
                             <div class="dropdown-menu">
 
-                                @foreach ($PerangkatDaerah as $dataPerangkatDaerah )
-                                <a href="{{asset('admin/ikk/pendidikan')}}" class="dropdown-item fs-4">
+                                @foreach ($perangkatDaerah as $dataPerangkatDaerah )
+                                <a href="{{route('admin.ikk.method',['method' => $dataPerangkatDaerah->urusan])}}" class="dropdown-item fs-4">
                                     <i class="fas fa-bookmark me-1"></i>
                                     <span>{{ $dataPerangkatDaerah->nama_organisasi }}</span>
                                 </a>
                                 <!-- item-->
+                                <br>
+
                                 @endforeach
 
                                 {{-- <a href="{{asset('admin/ikk/pendidikan')}}" class="dropdown-item fs-4">
@@ -158,7 +160,7 @@
 
                             </div>
                         </li>
-                        
+
                         @endif
 
                     </ul>

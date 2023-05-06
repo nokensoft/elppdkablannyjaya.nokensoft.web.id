@@ -32,6 +32,12 @@ class IkkController extends Controller
 
     }
 
+    public function ikkMethod($method){
+        $all = Ikk::where('urusan',$method)->get();
+        return view('admin.pages.ikk.makro.index',['all' => $all, 'bidang_ikk' => $method]);
+
+    }
+
     public function pendidikan()
     {
         // $all = DB::select('SELECT * FROM ikk WHERE urusan="pendidikan" ORDER BY id DESC');
