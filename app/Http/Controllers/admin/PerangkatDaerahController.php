@@ -37,15 +37,12 @@ class PerangkatDaerahController extends Controller
     {
         $validator = Validator::make($request->all(),
         [
-            // 'name'                              => 'required',
             'email'                             => 'required|email|unique:users,email',
             'password'                          => 'required|same:confirm-password',
-            // 'role_id'                           => 'required',
             'nama_organisasi'                   => 'required|unique:perangkat_daerahs',
             'foto_gedung'                       => 'mimes:jpeg,png,jpg',
         ],
         [
-            // 'name.required'                     => 'Nama pengguna tidak boleh kosong',
             'email.required'                    => 'Email pengguna tidak boleh kosong',
             'email.unique'                      => 'Email ini telah digunakan',
             'password.required'                 => 'Nama pengguna tidak boleh kosong',
@@ -73,7 +70,6 @@ class PerangkatDaerahController extends Controller
                 $perangkatdaerah->user_id           = $akun->id;
                 $perangkatdaerah->nama_organisasi   = $request->nama_organisasi;
                 $perangkatdaerah->urusan            = $request->urusan;
-                $perangkatdaerah->rumpun            = $request->rumpun;
                 $perangkatdaerah->tipe_kantor       = $request->tipe_kantor;
                 $perangkatdaerah->alamat            = $request->alamat;
                 $perangkatdaerah->nama_pimpinan     = $request->nama_pimpinan;
@@ -95,6 +91,7 @@ class PerangkatDaerahController extends Controller
                 return redirect()->route('admin.perangkatdaerah');
 
             } catch (\Throwable $th) {
+                dd($th);
                 alert()->error('Gagal', 'Gagal!!')->autoclose(1100);
                 return redirect()->back();
             }
@@ -173,7 +170,7 @@ class PerangkatDaerahController extends Controller
             }
 
             $akun->perangkatdaerahs()->save($perangkatdaerah);
-            
+
             alert()->success('Berhasil', 'Sukses!!')->autoclose(1100);
             return redirect()->route('admin.perangkatdaerah');
 
@@ -206,7 +203,7 @@ class PerangkatDaerahController extends Controller
             $perangkatdaerah->user->delete();
             alert()->success('Berhasil', 'Sukses!!')->autoclose(1500);
             return redirect()->route('admin.perangkatdaerah');
-            
+
         } catch (\Throwable $e) {
             alert()->error('Gagal', 'Gagal!!')->autoclose(1100);
             return redirect()->back();

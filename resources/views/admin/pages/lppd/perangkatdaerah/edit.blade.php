@@ -34,13 +34,10 @@
 
                                     <label for="" class="fw-bold">Foto Kantor</label>
                                     <div class="mb-3 fs-4 text-center">
-                                        @if(!$data->perangkatdaerah->foto_gedung)
-                                        <img src="{{asset('assets/images/image1.png')}}"
+
+                                        <img src="{{asset('file/foto/perangkatdaerah')}}/{{ $data->perangkatdaerah->foto_gedung ?? ''}}"
                                         alt="Logo" width="250px" class="img-thumbnail mb-1">
-                                        @else
-                                        <img src="{{asset('file/foto/perangkatdaerah')}}/{{ $data->perangkatdaerah->foto_gedung }}"
-                                        alt="Logo" width="250px" class="img-thumbnail mb-1">
-                                        @endif
+
                                         <input type="file" name="foto_gedung" class="form-control form-control-lg">
                                         @if($errors->has('foto_gedung'))
                                             <label class="text-danger"> {{ $errors->first('foto_gedung') }} </label>
