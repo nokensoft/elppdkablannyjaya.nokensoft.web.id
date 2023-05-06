@@ -67,10 +67,10 @@
                                                     @if(empty($data->foto))
                                                         <img src="{{asset('assets/images/user.png')}}" alt="Logo" class="img-fluid img-thumbnail" width="100">
                                                     @else
-                                                        <img src="{{asset('file/foto/dprd')}}/{{ $data->foto }}" class="img-fluid img-thumbnail" width="150"></td>
+                                                        <img src="{{asset('gambar/' . $data->foto)}}" class="img-fluid img-thumbnail" width="150"></td>
                                                     @endif
                                                 </td>
-                                                <td>{{$data->nama_lengkap}}</td>
+                                                <td>{{$data->nama_lengkap}} </td>
                                                 <td>{{$data->jabatan}}</td>
                                                 <td>{{$data->nik}}</td>
                                                 <td>{{ Str::limit($data->alamat, 18) }}</td>

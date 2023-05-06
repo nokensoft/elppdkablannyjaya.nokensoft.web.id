@@ -44,8 +44,15 @@
                                     <!-- input item end -->
 
                                     <div class="mb-3 fs-4">
-                                        <label for="pemda_lambang" class="fw-bold">Lambang Pemerintah Darah</label>
-                                        <input type="text" class="form-control form-control-lg" id="pemda_lambang" name="pemda_lambang" value="{{old('pemda_lambang') ? old('pemda_lambang') : $data->pemda_lambang }}">
+                                        <label for="pemda_lambang" class="fw-bold d-block">Lambang Pemerintah Darah</label>
+
+                                        @if (empty($data->pemda_peta))
+                                            <img src="{{ asset('gambar/default.png') }}" alt="{{$data->pemda_lambang}}"  class="img-thumbnail">
+                                        @else
+                                            <img src="{{ asset('gambar/'. $data->pemda_lambang)}}" alt="{{$data->pemda_lambang}}" class="img-fluid img-thumbnail mt-2" ></td>
+                                        @endif
+
+                                        <input type="text" class="form-control form-control-lg mt-2" id="pemda_lambang" name="pemda_lambang" value="{{old('pemda_lambang') ? old('pemda_lambang') : $data->pemda_lambang }}">
                                         
                                         @if($errors->has('pemda_lambang'))
                                             <small class="text-danger"> {{ $errors->first('pemda_lambang') }} </small>
@@ -54,8 +61,15 @@
                                     <!-- input item end -->
 
                                     <div class="mb-3 fs-4">
-                                        <label for="pemda_peta" class="fw-bold">Gambar Peta Wilayah</label>
-                                        <input type="text" class="form-control form-control-lg" id="pemda_peta" name="pemda_peta" value="{{old('pemda_peta') ? old('pemda_peta') : $data->pemda_peta }}">
+                                        <label for="pemda_peta" class="fw-bold d-block">Gambar Peta Wilayah</label>
+
+                                        @if (empty($data->pemda_peta))
+                                            <img src="{{ asset('gambar/default.png') }}" alt="{{$data->pemda_peta}}"  class="img-thumbnail">
+                                        @else
+                                            <img src="{{ asset('gambar/'. $data->pemda_peta)}}" alt="{{$data->pemda_peta}}" class="img-fluid img-thumbnail mt-2"></td>
+                                        @endif
+
+                                        <input type="text" class="form-control form-control-lg mt-2" id="pemda_peta" name="pemda_peta" value="{{old('pemda_peta') ? old('pemda_peta') : $data->pemda_peta }}">
                                         
                                         @if($errors->has('pemda_peta'))
                                             <small class="text-danger"> {{ $errors->first('pemda_peta') }} </small>

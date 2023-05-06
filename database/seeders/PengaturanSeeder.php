@@ -14,11 +14,11 @@ class PengaturanSeeder extends Seeder
             'judul_situs'           => 'SILPPD',
             'deskripsi_situs'       => 'Sistem Informasi Laporan Penyelenggaraan Pengelolaan Daerah',
 
-            'logo_sm_dark'                  => 'assets/images/logo/logo.png',
-            'logo_lg_dark'                  => 'assets/images/logo/logo.png',
+            'logo_sm_dark'          => 'assets/images/logo/logo.png',
+            'logo_lg_dark'          => 'assets/images/logo/logo.png',
             
-            'logo_sm_light'                  => 'assets/images/logo/logo.png',
-            'logo_lg_light'                  => 'assets/images/logo/logo.png',
+            'logo_sm_light'         => 'assets/images/logo/logo.png',
+            'logo_lg_light'         => 'assets/images/logo/logo.png',
 
             'favicon'               => 'assets/images/logo/favicon.png',
             'termsconditions'       => '',

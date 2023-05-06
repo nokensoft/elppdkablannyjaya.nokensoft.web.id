@@ -26,78 +26,90 @@
                             <!-- .col start -->
                             <div class="col-lg-6  mx-auto border border-4 border-info rounded shadow-lg p-5 my-5">
 
-                                <h1 class="fw-bold">Ubah Profil DPRD</h1>
+                                <h1 class="fw-bold mb-4">Ubah Profil DPRD</h1>
 
                                 <form action="{{route('admin.dprd.update',$data->id)}}" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     @method('put')
+
                                     <div class="mb-3 fs-4">
-                                        @if (!$data->foto)
-                                            <img src="{{asset('assets/admin/assets/images/users/user-man.png')}}" alt="{{$data->slug}}"  width="250px" class="img-thumbnail mb-1">
-                                        @else
-                                                <img src="{{asset('file/foto/dprd')}}/{{ $data->foto }}" class="img-fluid img-thumbnail"  width="250px" class="img-thumbnail mb-1"></td>
-                                        @endif
-                                        <input type="file" class="form-control form-control-lg" name="foto">
-                                        @if($errors->has('foto'))
-                                            <label class="text-danger"> {{ $errors->first('foto') }} </label>
+                                        <img src="{{asset('gambar/' . $data->foto)}}" alt="Foto" width="250px" class="img-thumbnail mb-1">
+                                        <label for="" class="fw-bold d-block">Foto</label>
+                                        <input type="text" class="form-control form-control-lg" placeholder="Alamat file gambar" name="foto" value="{{old('', $data->foto)}}">
+                                        <small class="text-muted">Sisipkan alamat file gambar. Gambar diunggah terlebih dahulu  pada halaman <a href="{{route('admin.gambar')}}" target="_blank">Kelolah Gambar</a></small>
+                                        
+                                        @if($errors->has('foto '))
+                                            <label class="text-danger"> {{ $errors->first('foto ') }} </label>
                                         @endif
                                     </div>
+                                    <!-- input item end -->
 
                                     <div class="mb-3 fs-4">
                                         <label for="" class="fw-bold">Nama Lengkap</label>
                                         <input type="text" class="form-control form-control-lg"
                                         name="nama_lengkap" value="{{old('nama_lengkap',$data->nama_lengkap)}}">
+
                                         @if($errors->has('nama_lengkap'))
                                             <label class="text-danger"> {{ $errors->first('nama_lengkap') }} </label>
                                         @endif
                                     </div>
+                                    <!-- input item end -->
 
                                     <div class="mb-3 fs-4">
                                         <label for="" class="fw-bold">Jabatan</label>
-                                        <input type="text" class="form-control form-control-lg" name="jabatan" value="{{old('jabatan',$data->jabatan)}}">
+                                        <input type="text" class="form-control form-control-lg" name="jabatan" value="{{old('jabatan', $data->jabatan)}}">
+
                                         @if($errors->has('jabatan'))
                                             <label class="text-danger"> {{ $errors->first('jabatan') }} </label>
                                         @endif
                                     </div>
+                                    <!-- input item end -->
 
                                     <div class="mb-3 fs-4">
                                         <label for="" class="fw-bold">NIK</label>
-                                        <input type="text" class="form-control form-control-lg"
-                                        name="nik" value="{{old('nik',$data->nik)}}">
+                                        <input type="text" class="form-control form-control-lg"  name="nik" value="{{old('nik',$data->nik)}}">
+
                                         @if($errors->has('nik'))
                                             <label class="text-danger"> {{ $errors->first('nik') }} </label>
                                         @endif
                                     </div>
+                                    <!-- input item end -->
 
                                     <div class="mb-3 fs-4">
                                         <label for="" class="fw-bold">Alamat</label>
-                                        <textarea name="alamat" class="form-control form-control-lg" rows="2">{{ old('alamat',$data->alamat) }}</textarea>
+                                        <textarea name="alamat" class="form-control form-control-lg" rows="2">{{ old('',$data->alamat) }}</textarea>
+
                                         @if($errors->has('alamat'))
                                         <label class="text-danger"> {{ $errors->first('alamat') }} </label>
-                                    @endif
+                                        @endif
                                     </div>
+                                    <!-- input item end -->
 
                                     <div class="mb-3 fs-4">
                                         <label for="" class="fw-bold">TTL</label>
-                                        <input type="text" class="form-control form-control-lg" value="{{old('ttl',$data->ttl)}}" name="ttl">
+                                        <input type="text" class="form-control form-control-lg" value="{{old('',$data->ttl)}}" name="ttl">
+
                                         @if($errors->has('ttl'))
                                             <label class="text-danger"> {{ $errors->first('ttl') }} </label>
                                         @endif
                                     </div>
+                                    <!-- input item end -->
 
                                     <div class="mb-3 fs-4">
                                         <label for="" class="fw-bold">Nama Partai</label>
-                                        <input type="text" class="form-control form-control-lg" value="{{old('nama_partai',$data->nama_partai)}}" name="nama_partai">
+                                        <input type="text" class="form-control form-control-lg" value="{{old('',$data->nama_partai)}}" name="nama_partai">
                                     </div>
+                                    <!-- input item end -->
 
                                     <div class="mb-3 fs-4">
                                         <label for="" class="fw-bold">Pendidikan</label>
-                                        <input type="text" class="form-control form-control-lg" value="{{old('pendidikan', $data->pendidikan)}}" name="pendidikan">
+                                        <input type="text" class="form-control form-control-lg" value="{{old('', $data->pendidikan)}}" name="pendidikan">
+
                                         @if($errors->has('pendidikan'))
                                             <label class="text-danger"> {{ $errors->first('pendidikan') }} </label>
                                          @endif
                                     </div>
-
+                                    <!-- input item end -->
 
                                     <div class="border-top border-1 pt-3 mt-4">
                                         <button type="submit" class="btn btn-info waves-effect waves-light fs-4">

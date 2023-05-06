@@ -39,12 +39,12 @@ class GambarController extends Controller
         $validator = Validator::make($request->all(),
         [
             'nama_file' => 'required',
-            'alamat_file' => 'required|image|mimes:png,jpg,jpeg|max:4028'
+            'alamat_file' => 'required|image|mimes:png,jpg,jpeg,svg|max:4028'
         ],
         [
             'nama_file.required'     => 'Judul gambar tidak boleh kosong',
             'alamat_file.required'   => 'Gambar tidak boleh kosong',
-            'alamat_file.mimes'      => 'Gambar dengan jenis JPEG,JPG,PNG',
+            'alamat_file.mimes'      => 'Gambar dengan jenis JPEG,JPG,PNG,SVG',
             'alamat_file.max'        => 'Gambar dengan maximal 2MB'
         ]
         );

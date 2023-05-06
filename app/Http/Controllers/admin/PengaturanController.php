@@ -42,7 +42,13 @@ class PengaturanController extends Controller
        $data['judul_situs']         = $request->judul_situs;
        $data['deskripsi_situs']     = $request->deskripsi_situs;
        $data['tentang_aplikasi']    = $request->tentang_aplikasi;
-       $data['logo']                = $request->logo;
+       
+       $data['logo_sm_dark']        = $request->logo_sm_dark;
+       $data['logo_lg_dark']        = $request->logo_lg_dark;
+
+       $data['logo_sm_light']       = $request->logo_sm_light;
+       $data['logo_lg_light']       = $request->logo_lg_light;
+
        $data['favicon']             = $request->favicon;
 
     //    dd($data['logo']);

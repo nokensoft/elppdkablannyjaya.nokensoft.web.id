@@ -26,24 +26,15 @@
                             <!-- .col start -->
                             <div class="col-lg-6  mx-auto border border-4 border-info rounded shadow-lg p-5 my-5">
 
-                                <h1 class="fw-bold">Ubah Pengaturan</h1>
+                                <h1 class="fw-bold mb-4">Ubah Pengaturan</h1>
 
 
                                 <form action="{{route('admin.pengaturan.update',$data->id)}}" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     @method('put')
 
-                                    {{-- <div class="mb-3 fs-4">
-                                        @if ($data->foto == null)
-                                            <img src="{{asset('assets/admin/assets/images/users/user-man.png')}}" alt="{{$data->slug}}"  width="250px" class="img-thumbnail mb-1">
-                                        @else
-                                                <img src="{{ url($data->foto)}}" alt="{{$data->foto}}" class="img-fluid img-thumbnail"  width="250px" class="img-thumbnail mb-1"></td>
-                                        @endif
-                                        <input type="file" class="form-control form-control-lg" name="foto">
-                                    </div> --}}
-
                                     <div class="mb-3 fs-4">
-                                        <label for="judul_situs" class="fw-bold">Judl Situs</label>
+                                        <label for="judul_situs" class="fw-bold">Judul Situs</label>
                                         <input type="text" class="form-control form-control-lg" name="judul_situs" value="{{old('judul_situs') ? old('judul_situs') : $data->judul_situs }}">
 
                                         @if($errors->has('judul_situs'))
@@ -54,7 +45,7 @@
                                     <!-- input item end -->
 
                                     <div class="mb-3 fs-4">
-                                        <label for="deskripsi_situs" class="fw-bold">Deskripsi Situs</label>
+                                        <label for="deskripsi_situs" class="fw-bold">Deskripsi</label>
                                         <input type="text" class="form-control form-control-lg" name="deskripsi_situs" value="{{old('deskripsi_situs') ? old('deskripsi_situs') : $data->deskripsi_situs }}">
 
                                         @if($errors->has('deskripsi_situs'))
@@ -65,33 +56,71 @@
                                     <!-- input item end -->
                                     
                                     <div class="mb-3 fs-4">
-                                        @if ($data->logo == null)
-                                            <img src="{{asset('assets/images/profildaerah/kepala.png')}}" alt="{{$data->logo}}"  width="250px" class="img-thumbnail">
-                                        @else
-                                            <img src="{{ url($data->logo)}}" alt="{{$data->logo}}" class="img-fluid img-thumbnail"  width="250px" class="img-thumbnail"></td>
-                                        @endif
+                                        <label for="logo_sm_dark" class="fw-bold d-block mb-2">Logo Small Dark {{ asset('gambar/'.$data->logo_sm_dark)}}</label>
                                        
-                                        <input type="text" class="form-control form-control-lg mt-2" name="logo" value="{{old('logo') ? old('logo') : $data->logo }}">
-
-                                        {{-- <input type="file" name="logo_situs" class="form-control form-control-lg"> --}}
-
-                                        @if($errors->has('logo'))
-                                            <label class="text-danger"> {{ $errors->first('logo') }} </label>
+                                        @if (empty($data->logo_sm_dark))
+                                            <img src="{{ asset('gambar/default.png') }}" alt="{{$data->logo_sm_dark}}"  class="img-thumbnail">
+                                        @else
+                                            <img src="{{ asset('gambar/'. $data->logo_sm_dark)}}" alt="{{$data->logo_sm_dark}}" class="img-fluid img-thumbnail"  class="img-thumbnail"></td>
                                         @endif
-                                        
+
+                                        <input type="text" class="form-control form-control-lg mt-2" name="logo_sm_dark" value="{{old('logo_sm_dark') ? old('logo_sm_dark') : $data->logo_sm_dark }}">
+
                                     </div>
                                     <!-- input item end -->
                                     
                                     <div class="mb-3 fs-4">
-                                        @if ($data->favicon == null)
-                                            <img src="{{asset('assets/images/profildaerah/kepala.png')}}" alt="{{$data->favicon}}"  width="100px" class="img-thumbnail">
+                                        <label for="logo_lg_dark" class="fw-bold d-block mb-2">Logo Large Dark</label>
+                                        
+                                        @if (empty($data->logo_lg_dark))
+                                            <img src="{{ asset('gambar/default.png') }}" alt="{{$data->logo_lg_dark}}"  class="img-thumbnail">
                                         @else
-                                            <img src="{{ url($data->favicon)}}" alt="{{$data->favicon}}" class="img-fluid img-thumbnail"  width="100px" class="img-thumbnail"></td>
+                                            <img src="{{ asset('gambar/'. $data->logo_lg_dark)}}" alt="{{$data->logo_lg_dark}}" class="img-fluid img-thumbnail"  class="img-thumbnail"></td>
                                         @endif
 
-                                        <input type="text" class="form-control form-control-lg mt-2" name="favicon" value="{{old('favicon') ? old('favicon') : $data->favicon }}">
+                                        <input type="text" class="form-control form-control-lg mt-2" name="logo_lg_dark" value="{{old('logo_lg_dark') ? old('logo_lg_dark') : $data->logo_lg_dark }}">
 
-                                        {{-- <input type="file" name="logo" class="form-control form-control-lg mt-2" name="favicon"> --}}
+                                    </div>
+                                    <!-- input item end -->
+                                    
+                                    <div class="mb-3 fs-4">
+                                        <label for="logo_sm_light" class="fw-bold d-block mb-2">Logo Small Light</label>
+                                        
+                                        @if (empty($data->logo_sm_light))
+                                            <img src="{{ asset('gambar/default.png') }}" alt="{{$data->logo_sm_light}}"  class="img-thumbnail">
+                                        @else
+                                            <img src="{{ asset('gambar/'. $data->logo_sm_light)}}" alt="{{$data->logo_sm_light}}" class="img-fluid img-thumbnail"  class="img-thumbnail"></td>
+                                        @endif
+
+                                        <input type="text" class="form-control form-control-lg mt-2" name="logo_sm_light" value="{{old('logo_sm_light') ? old('logo_sm_light') : $data->logo_sm_light }}">
+
+                                    </div>
+                                    <!-- input item end -->
+                                    
+                                    <div class="mb-3 fs-4">
+                                        <label for="logo_lg_light" class="fw-bold d-block mb-2">Logo Large Light</label>
+                                        
+                                        @if (empty($data->logo_lg_light))
+                                            <img src="{{ asset('gambar/default.png') }}" alt="{{$data->logo_lg_light}}"  class="img-thumbnail">
+                                        @else
+                                            <img src="{{ asset('gambar/'. $data->logo_lg_light)}}" alt="{{$data->logo_lg_light}}" class="img-fluid img-thumbnail"  class="img-thumbnail"></td>
+                                        @endif
+
+                                        <input type="text" class="form-control form-control-lg mt-2" name="logo_lg_light" value="{{old('logo_lg_light') ? old('logo_lg_light') : $data->logo_lg_light }}">
+
+                                    </div>
+                                    <!-- input item end -->
+                                    
+                                    <div class="mb-3 fs-4">
+                                        <label for="favicon" class="fw-bold d-block mb-2">Favicon</label>
+                                        
+                                        @if (empty($data->favicon))
+                                            <img src="{{ asset('gambar/default.png') }}" alt="{{$data->favicon}}"  class="img-thumbnail">
+                                        @else
+                                            <img src="{{ asset('gambar/'. $data->favicon)}}" alt="{{$data->favicon}}" class="img-fluid img-thumbnail"  class="img-thumbnail"></td>
+                                        @endif
+
+                                        <input type="text" id="favicon" class="form-control form-control-lg mt-2" name="favicon" value="{{old('favicon') ? old('favicon') : $data->favicon }}">
 
                                     </div>
                                     <!-- input item end -->

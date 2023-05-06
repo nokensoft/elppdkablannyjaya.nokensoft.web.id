@@ -56,19 +56,19 @@
                     <div class="logo-box">
                         <a href="{{url('admin/beranda')}}" class="logo logo-dark text-center">
                             <span class="logo-sm">
-                                <img src="{{ asset($pengaturan->logo_sm_dark ? $pengaturan->logo_sm_dark : 'Logo sm dark')}}" alt="" height="40">
+                                <img src="{{ asset('gambar/' . $pengaturan->logo_sm_dark ? 'gambar/' . $pengaturan->logo_sm_dark : 'Logo sm dark')}}" alt="" height="40">
                             </span>
                             <span class="logo-lg">
-                                <img src="{{ asset($pengaturan->logo_sm_dark ? $pengaturan->logo_lg_dark : 'Logo lg dark')}}" alt="" height="40">
+                                <img src="{{ asset('gambar/' . $pengaturan->logo_sm_dark ? 'gambar/' . $pengaturan->logo_lg_dark : 'Logo lg dark')}}" alt="" height="40">
                             </span>
                         </a>
 
                         <a href="{{url('admin/beranda')}}" class="logo logo-light text-center">
                             <span class="logo-sm">
-                                <img src="{{ asset($pengaturan->logo_sm_dark ? $pengaturan->logo_sm_light : 'Logo sm light')}}" alt="" height="40">
+                                <img src="{{ asset('gambar/' . $pengaturan->logo_sm_dark ? 'gambar/' . $pengaturan->logo_sm_light : 'Logo sm light')}}" alt="" height="40">
                             </span>
                             <span class="logo-lg">
-                                <img src="{{ asset($pengaturan->logo_sm_dark ? $pengaturan->logo_lg_light : 'Logo lg light')}}" alt="" height="40">
+                                <img src="{{ asset('gambar/' . $pengaturan->logo_sm_dark ? 'gambar/' . $pengaturan->logo_lg_light : 'Logo lg light')}}" alt="" height="40">
                             </span>
                         </a>
                     </div>

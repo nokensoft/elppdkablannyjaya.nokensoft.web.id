@@ -19,56 +19,56 @@
             <div class="col">
                 <div class="card">
                     <div class="card-body">
-                        <h1 class="fw-bold">Pengaturan</h1>
+                        <h1 class="fw-bold mb-4">Pengaturan</h1>
 
                         <div class="row">
 
                             <!-- .col start -->
-                            <div class="col-lg-6">
+                            <div class="col-lg-8">
 
                                 <table class="table table-bordered fs-4">
                                     <tbody>
                                         <tr>
-                                            <td>Informasi Situs</td>
-                                            <td class="fw-bold">{!! $data->judul_situs !!}</td>
+                                            <td class="fw-bold" width="200px">Judul Situs</td>
+                                            <td>{!! $data->judul_situs !!}</td>
                                         </tr>
                                         <tr>
-                                            <td>Desktripsi</td>
-                                            <td class="fw-bold">{!! $data->deskripsi_situs !!}</td>
+                                            <td class="fw-bold">Desktripsi</td>
+                                            <td>{!! $data->deskripsi_situs !!}</td>
                                         </tr>
                                         <tr>
-                                            <td>Logo Small Dark</td>
-                                            <td class="fw-bold">
-                                                <img src="{{ asset($data->logo_sm_dark) }}" alt="Logo sm dark" width="250px">
+                                            <td class="fw-bold">Logo Small Dark</td>
+                                            <td>
+                                                <img src="{{ asset('gambar/'. $data->logo_sm_dark) }}" alt="Logo sm dark">
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td>Logo Large Dark</td>
-                                            <td class="fw-bold">
-                                                <img src="{{ asset($data->logo_lg_dark) }}" alt="Logo large dark" width="250px">
+                                            <td class="fw-bold">Logo Large Dark</td>
+                                            <td>
+                                                <img src="{{ asset('gambar/'. $data->logo_lg_dark) }}" alt="Logo large dark">
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td>Logo Small Light</td>
-                                            <td class="fw-bold">
-                                                <img src="{{ asset($data->logo_sm_light) }}" alt="Logo sm light" width="250px">
+                                            <td class="fw-bold">Logo Small Light</td>
+                                            <td>
+                                                <img src="{{ asset('gambar/'. $data->logo_sm_light) }}" alt="Logo sm light">
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td>Logo Large Dark</td>
-                                            <td class="fw-bold">
-                                                <img src="{{ asset($data->logo_lg_light) }}" alt="Logo lg light" width="250px">
+                                            <td class="fw-bold">Logo Large Dark</td>
+                                            <td>
+                                                <img src="{{ asset('gambar/'. $data->logo_lg_light) }}" alt="Logo lg light">
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td>Favicon</td>
-                                            <td class="fw-bold">
-                                                <img src="{{ asset($data->favicon) }}" alt="Favicon" width="50px">
+                                            <td class="fw-bold">Favicon</td>
+                                            <td>
+                                                <img src="{{ asset('gambar/'. $data->favicon) }}" alt="Favicon" width="50px">
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td>Tentang Aplikasi</td>
-                                            <td class="fw-bold">{!! $data->tentang_aplikasi !!}</td>
+                                            <td class="fw-bold">Tentang Aplikasi</td>
+                                            <td>{!! $data->tentang_aplikasi !!}</td>
                                         </tr>
                                     </tbody>
                                 </table>
