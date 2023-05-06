@@ -21,49 +21,55 @@ class GambarSeeder extends Seeder
 
         Gambar::insert([
             'nama_file'             => 'Logo Pemerintah Daerah Kabupaten Lanny Jaya',
-            'alamat_file'           => 'file/pengaturan/logo_pemerintah_daerah_lanny_jaya.png',
+            'alamat_file'           => 'gambar/default-logo.png',
             'slug'                  => $random.+.1
         ]);
 
         Gambar::insert([
             'nama_file'             => 'Favicon',
-            'alamat_file'           => 'file/pengaturan/favicon.png',
+            'alamat_file'           => 'gambar/default-favicon.png',
             'slug'                  => $random.+.2
         ]);
 
         Gambar::insert([
             'nama_file'             => 'Foto Kepala Daerah',
-            'alamat_file'           => 'file/pengaturan/user-biru.png',
+            'alamat_file'           => 'gambar/default-user1.png',
             'slug'                  => $random.+.3
         ]);
 
         Gambar::insert([
             'nama_file'             => 'Foto Wakil Kepala Daerah',
-            'alamat_file'           => 'file/pengaturan/user-merah.png',
+            'alamat_file'           => 'gambar/default-user2.png',
             'slug'                  => $random.+.4
         ]);
 
         Gambar::insert([
             'nama_file'             => 'Foto Sekretaris Daerah',
-            'alamat_file'           => 'file/pengaturan/user-orange.png',
+            'alamat_file'           => 'gambar/default-user3.png',
             'slug'                  => $random.+.5
         ]);
 
         Gambar::insert([
-            'nama_file'             => 'Nama File',
-            'alamat_file'           => 'file/pengaturan/image2.png',
+            'nama_file'             => 'Logo Small Dark',
+            'alamat_file'           => 'gambar/default-logo.png',
             'slug'                  => $random.+.5
         ]);
 
         Gambar::insert([
-            'nama_file'             => 'Nama File',
-            'alamat_file'           => 'file/pengaturan/image1.png',
+            'nama_file'             => 'Logo Large Dark',
+            'alamat_file'           => 'gambar/default-logo.png',
             'slug'                  => $random.+.6
         ]);
 
         Gambar::insert([
-            'nama_file'             => 'Nama File',
-            'alamat_file'           => 'file/pengaturan/image2.png',
+            'nama_file'             => 'Logo Small Light',
+            'alamat_file'           => 'gambar/default-logo.png',
+            'slug'                  => $random.+.7
+        ]);
+
+        Gambar::insert([
+            'nama_file'             => 'Logo Large Light',
+            'alamat_file'           => 'gambar/default-logo.png',
             'slug'                  => $random.+.7
         ]);
 

@@ -44,10 +44,10 @@
                                         <label for="" class="fw-bold d-block">Pilih Gambar</label>
                                         <div class="d-block mb-3">
                                             @if(!$data->alamat_file)
-                                            <img src="{{asset('assets/images/image1.jpg')}}" id="preview-picture"
+                                            <img src="{{ asset($data->alamat_file) }}" id="preview-picture"
                                             alt="image" class="img-thumbnail w-100">
                                             @else
-                                            <img src="{{asset('file/pengaturan/')}}/{{$data->alamat_file}}" id="preview-picture"
+                                            <img src="{{ asset($data->alamat_file) }}" id="preview-picture"
                                             alt="image" class="img-thumbnail w-50">
                                             @endif
                                         </div>

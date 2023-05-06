@@ -60,12 +60,12 @@ class GambarController extends Controller
                 $gambar->slug = $random;
 
                 $posterName = $request->nama_file.'.'.time() . '.' . $request->alamat_file->extension();
-                $path = public_path('file/pengaturan');
+                $path = public_path('gambar');
                 if (!empty($gambar->alamat_file) && file_exists($path . '/' . $gambar->alamat_file)) :
                     unlink($path . '/' . $gambar->alamat_file);
                 endif;
                 $gambar->alamat_file = $posterName;
-                $request->alamat_file->move(public_path('file/pengaturan'), $posterName);
+                $request->alamat_file->move(public_path('gambar'), $posterName);
 
                 $gambar->save();
 
