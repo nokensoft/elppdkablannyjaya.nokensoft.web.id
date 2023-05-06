@@ -54,7 +54,8 @@ class IkkController extends Controller
 
     public function print()
     {
-        $all = DB::select('SELECT * FROM ikk ORDER BY id DESC  ');
+        // $all = DB::select('SELECT * FROM ikk ORDER BY id DESC  ');
+        $all = Ikk::orderBy('id','desc')->get();
         return view('admin.pages.ikk.makro.print', ['all' => $all]);
     }
 
@@ -99,7 +100,7 @@ class IkkController extends Controller
             'jml2.required'            => 'Jumlah tidak boleh kosong',
 
         ]
-    );
+        );
         if ($validator->fails()) {
             return redirect()->back()->withInput($request->all())->withErrors($validator);
         } else {
