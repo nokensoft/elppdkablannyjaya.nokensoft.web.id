@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\pelapoarn;
+use App\Models\Pelaporan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
@@ -18,19 +19,22 @@ class PelaporanController extends Controller
      */
     public function index()
     {
-        $all =DB::select('SELECT * FROM lppd_pelaporan WHERE tahun = 2021  ');
+        // $all =DB::select('SELECT * FROM lppd_pelaporan WHERE tahun = 2021  ');
+        $all = Pelaporan::where('tahun','2021')->get();
         return view('admin.pages.lppd.pelaporan.index', ['all' => $all]);
     }
 
     public function index2021()
     {
-        $all =DB::select('SELECT * FROM lppd_pelaporan WHERE tahun = 2021  ');
+        // $all =DB::select('SELECT * FROM lppd_pelaporan WHERE tahun = 2021  ');
+        $all = Pelaporan::where('tahun','2021')->get();
         return view('admin.pages.lppd.pelaporan.index2021', ['all' => $all]);
     }
 
     public function index2021Cover()
     {
-        $all =DB::select('SELECT * FROM lppd_pelaporan WHERE tahun = 2021  ');
+        // $all =DB::select('SELECT * FROM lppd_pelaporan WHERE tahun = 2021  ');
+        $all = Pelaporan::where('tahun','2021')->get();
         return view('admin.pages.lppd.pelaporan.index2021cover', ['all' => $all]);
     }
 

@@ -72,10 +72,10 @@
                                         </tr>
                                     </tbody>
                                 </table>
-                                
+
                             </div>
                             <!-- .col end -->
-                        
+
                         <div class="mb-3">
                             <a href="{{asset('admin/pengaturan/ubah')}}" class="btn btn-outline-info border-0 waves-effect waves-light fs-4">
                                 <i class="fas fa-edit me-1"></i> Ubah
@@ -90,7 +90,7 @@
             </div>
         </div>
         <!-- end row -->
-                        
+
 
   <!--end wrapper-->
 
@@ -110,5 +110,5 @@
     <script src="{{ asset('assets/admin/assets/js/pages/jquery.todo.js')}}"></script>
 
     <!-- Dashboard init JS -->
-    <script src="{{ asset('assets/admin/assets/js/pages/dashboard-3.init.js')}}"></script>  
+    <script src="{{ asset('assets/admin/assets/js/pages/dashboard-3.init.js')}}"></script>
   @endpush
