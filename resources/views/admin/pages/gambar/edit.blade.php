@@ -26,11 +26,12 @@
                             <!-- .col start -->
                             <div class="col-lg-6  mx-auto border border-4 border-info rounded shadow-lg p-5 my-5">
 
-                                <h1 class="fw-bold">Edit Gambar</h1>
+                                <h1 class="fw-bold">Ubah Gambar</h1>
 
                                 <form action="{{route('admin.gambar.update',['id' => $data->id])}}" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     @method('put')
+
                                     <div class="mb-3 fs-4">
                                         <label for="" class="fw-bold">Judul Gambar</label>
                                         <input type="text" class="form-control form-control-lg" value="{{ old('nama_file',$data->nama_file)}}"  name="nama_file" placeholder="Nama File">
@@ -44,11 +45,9 @@
                                         <label for="" class="fw-bold d-block">Pilih Gambar</label>
                                         <div class="d-block mb-3">
                                             @if(!$data->alamat_file)
-                                            <img src="{{ asset($data->alamat_file) }}" id="preview-picture"
-                                            alt="image" class="img-thumbnail w-100">
+                                            <img src="{{ asset('gambar/' . $data->alamat_file) }}" id="preview-picture"  alt="image" class="img-thumbnail w-100">
                                             @else
-                                            <img src="{{ asset($data->alamat_file) }}" id="preview-picture"
-                                            alt="image" class="img-thumbnail w-50">
+                                            <img src="{{ asset('gambar/' . $data->alamat_file) }}" id="preview-picture" alt="image" class="img-thumbnail w-50">
                                             @endif
                                         </div>
                                         <input type="file" name="alamat_file" class="form-control form-control-lg">

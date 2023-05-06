@@ -16,7 +16,6 @@
         </div>
         <!-- end row -->
 
-
         <div class="row" id="ubah">
             <div class="col">
                 <div class="card">
@@ -45,6 +44,7 @@
                                             <i class="fas fa-arrow-left me-1"></i> Tidak
                                         </a>
                                     </div>
+                                    
                                 </form>
                             </div>
                             <!-- .col end -->

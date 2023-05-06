@@ -22,19 +22,11 @@
 
                         <div class="row">
                             <div class="col-md-6">
-                                <h1 class="fw-bold">Image Manager</h1>
+                                <h1 class="fw-bold">Kelolah Gambar</h1>
                             </div>
                             <div class="col-md-6 text-md-end">
                                 <a href="{{ route('admin.gambar.create') }}" class="btn btn-info waves-effect waves-light fs-4">
-                                    <i class="fas fa-plus me-1"></i> Tambah Data
-                                </a>
-
-                                <a href="#" target="_blank" class="btn btn-outline-info border-0 waves-effect waves-light fs-4" title="Cetak file atau export ke file PDF">
-                                    <i class="fas fa-print me-1"></i> Print
-                                </a>
-
-                                <a target="_blank" class="btn btn-outline-info border-0 waves-effect waves-light fs-4" title="Download file excel">
-                                    <i class="fas fa-file me-1"></i> Download Excel
+                                    <i class="fas fa-plus me-1"></i> Gambar Baru
                                 </a>
 
                             </div>
@@ -46,13 +38,12 @@
 
                                     <div class="card">
                                         <div class="card-image-top">
-                                            @if(!$data->alamat_file)
+                                            @if(empty($data->alamat_file))
                                                 <img src="{{asset('assets/images/image1.jpg')}}" alt="image" class="img-fluid img-thumbnail p-3">
                                             @else
-                                                <a @if(!$data->alamat_file) href="{{ asset($data->alamat_file) }} "
+                                                <a @if(!empty($data->alamat_file)) href="{{ asset('gambar/' . $data->alamat_file) }} "
                                                     target="_blank" @endif>
-                                                    <img src="{{ asset($data->alamat_file) }} "
-                                                    class="img-fluid img-thumbnail p-3">
+                                                    <img src="{{ asset('gambar/' . $data->alamat_file) }} " class="img-fluid img-thumbnail p-3">
                                                 </a>
                                             <span class="d-block mt-2 fw-bold">
                                                 {{$data->nama_file}}
