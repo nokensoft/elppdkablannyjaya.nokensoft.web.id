@@ -29,40 +29,44 @@
                         <table class="table table-bordered fs-4">
                             <tbody>
                                 <tr>
-                                    <td>Nama Sekretaris Daerah</td>
-                                    <td class="fw-bold">{{$data->sekretaris_nama}}</td>
+                                    <td class="fw-bold">Nama Sekretaris Daerah</td>
+                                    <td>{{$data->sekretaris_nama}}</td>
                                 </tr>
                                 <tr>
-                                    <td>NIK</td>
-                                    <td class="fw-bold">{{$data->sekretaris_nik}}</td>
+                                    <td class="fw-bold">NIK</td>
+                                    <td>{{$data->sekretaris_nik}}</td>
                                 </tr>
                                 <tr>
-                                    <td>NP</td>
-                                    <td class="fw-bold">{{$data->sekretaris_nip}}</td>
+                                    <td class="fw-bold">Tanggal Lahir</td>
+                                    <td>{{$data->sekretaris_tgl_lahir}}</td>
                                 </tr>
                                 <tr>
-                                    <td>Nomor Telepon</td>
-                                    <td class="fw-bold">{{$data->sekretaris_telp}}</td>
+                                    <td class="fw-bold">NIP</td>
+                                    <td>{{$data->sekretaris_nip}}</td>
                                 </tr>
                                 <tr>
-                                    <td>Pangkat</td>
-                                    <td class="fw-bold">{{$data->sekretaris_pangkat}}</td>
+                                    <td class="fw-bold">Nomor Telepon</td>
+                                    <td>{{$data->sekretaris_telp}}</td>
                                 </tr>
                                 <tr>
-                                    <td>Golongan</td>
-                                    <td class="fw-bold">{{$data->sekretaris_golongan}}</td>
+                                    <td class="fw-bold">Pangkat</td>
+                                    <td>{{$data->sekretaris_pangkat}}</td>
                                 </tr>
                                 <tr>
-                                    <td>Nomor SK</td>
-                                    <td class="fw-bold">{{$data->sekretaris_no_sk}}</td>
+                                    <td class="fw-bold">Golongan</td>
+                                    <td>{{$data->sekretaris_golongan}}</td>
                                 </tr>
                                 <tr>
-                                    <td>File SK</td>
-                                    <td class="fw-bold">{{$data->sekretaris_file_sk}}</td>
+                                    <td class="fw-bold">Nomor SK</td>
+                                    <td>{{$data->sekretaris_no_sk}}</td>
                                 </tr>
                                 <tr>
-                                    <td>TMT</td>
-                                    <td class="fw-bold">{{$data->sekretaris_tmt}}</td>
+                                    <td class="fw-bold">File SK</td>
+                                    <td>{{$data->sekretaris_file_sk}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="fw-bold">TMT</td>
+                                    <td>{{$data->sekretaris_tmt}}</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -77,7 +81,7 @@
                             <tbody>
                                 <tr>
                                     <td class="fw-bold text-center">
-                                        <img src="{{ asset($data->sekretaris_foto) }}" class="img-thumbnail" alt="Foto">
+                                        <img src="{{ asset('gambar/' . $data->sekretaris_foto) }}" class="img-thumbnail" alt="gambar">
                                     </td>
                                 </tr>
                             </tbody>

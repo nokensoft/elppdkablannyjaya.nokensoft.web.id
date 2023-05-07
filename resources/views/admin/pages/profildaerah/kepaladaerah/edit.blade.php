@@ -141,7 +141,7 @@
                             <!-- input item end -->
 
                             <div class="mb-3 fs-4">
-                                <label for="kepala_riwayat" class="fw-bold d-block mb-2">Foto Kepala Daerah</label>
+                                <label for="kepala_foto" class="fw-bold d-block mb-2">Foto Kepala Daerah</label>
                                 @if ($data->kepala_foto == null)
                                 <img src="{{asset('gambar/default.png')}}" alt="gambar" width="250px" class="img-thumbnail">
                                 @else

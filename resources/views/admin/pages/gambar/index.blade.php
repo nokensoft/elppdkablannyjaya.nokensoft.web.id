@@ -36,7 +36,7 @@
                             @foreach ($datas as $data )
                             <div class="col-md-3">
 
-                                    <div class="card">
+                                    <div class="card shadow border p-3">
                                         <div class="card-image-top">
                                             @if(empty($data->alamat_file))
                                                 <img src="{{asset('assets/images/image1.jpg')}}" alt="image" class="img-fluid img-thumbnail p-3">

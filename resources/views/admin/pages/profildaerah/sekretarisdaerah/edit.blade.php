@@ -35,10 +35,8 @@
                             @method('PUT')
 
                             <div class="mb-3 fs-4">
-                                <label for="sekretaris_nama" class="fw-bold">Nama Sekretaris Daerah</label>
-                                <input type="text" class="form-control form-control-lg" id="sekretaris_nama"
-                                    name="sekretaris_nama"
-                                    value="{{old('sekretaris_nama') ? old('sekretaris_nama') : $data->sekretaris_nama }}">
+                                <label for="sekretaris_nama" class="fw-bold d-block mb-2">Nama Sekretaris Daerah</label>
+                                <input type="text" class="form-control form-control-lg" id="sekretaris_nama" name="sekretaris_nama" value="{{old('sekretaris_nama') ? old('sekretaris_nama') : $data->sekretaris_nama }}">
 
                                 @if($errors->has('sekretaris_nama'))
                                 <small class="text-danger"> {{ $errors->first('sekretaris_nama') }} </small>
@@ -48,122 +46,117 @@
                             <!-- input item end -->
 
                             <div class="mb-3 fs-4">
-                                <label for="sekretaris_nik" class="fw-bold">NIK</label>
-                                <input type="text" class="form-control form-control-lg" id="sekretaris_nik"
-                                    name="sekretaris_nik"
-                                    value="{{old('sekretaris_nik') ? old('sekretaris_nik') : $data->sekretaris_nik }}">
+                                <label for="sekretaris_nik" class="fw-bold d-block mb-2">NIK</label>
+                                <input type="text" class="form-control form-control-lg" id="sekretaris_nik" name="sekretaris_nik" value="{{old('sekretaris_nik') ? old('sekretaris_nik') : $data->sekretaris_nik }}">
 
                                 @if($errors->has('sekretaris_nik'))
                                 <small class="text-danger"> {{ $errors->first('sekretaris_nik') }} </small>
                                 @endif
+
                             </div>
                             <!-- input item end -->
 
                             <div class="mb-3 fs-4">
-                                <label for="sekretaris_nip" class="fw-bold">NIP</label>
-                                <input type="text" class="form-control form-control-lg" id="sekretaris_nip"
-                                    name="sekretaris_nip"
-                                    value="{{old('sekretaris_nip') ? old('sekretaris_nip') : $data->sekretaris_nip }}">
-
-                                @if($errors->has('sekretaris_nip'))
-                                <small class="text-danger"> {{ $errors->first('sekretaris_nip') }} </small>
-                                @endif
-                            </div>
-                            <!-- input item end -->
-
-                            <div class="mb-3 fs-4">
-                                <label for="sekretaris_telp" class="fw-bold">Nomor Telepon</label>
-                                <input type="text" class="form-control form-control-lg" id="sekretaris_telp"
-                                    name="sekretaris_telp"
-                                    value="{{old('sekretaris_telp') ? old('sekretaris_telp') : $data->sekretaris_telp }}">
-
-                                @if($errors->has('sekretaris_telp'))
-                                <small class="text-danger"> {{ $errors->first('sekretaris_telp') }} </small>
-                                @endif
-                            </div>
-                            <!-- input item end -->
-
-                            <div class="mb-3 fs-4">
-                                <label for="sekretaris_pangkat" class="fw-bold">Pangkat</label>
-                                <input type="text" class="form-control form-control-lg" id="sekretaris_pangkat"
-                                    name="sekretaris_pangkat"
-                                    value="{{old('sekretaris_pangkat') ? old('sekretaris_pangkat') : $data->sekretaris_pangkat }}">
-
-                                @if($errors->has('sekretaris_pangkat'))
-                                <small class="text-danger"> {{ $errors->first('sekretaris_pangkat') }} </small>
-                                @endif
-                            </div>
-                            <!-- input item end -->
-
-                            <div class="mb-3 fs-4">
-                                <label for="sekretaris_golongan" class="fw-bold">Golongan</label>
-                                <input type="text" class="form-control form-control-lg" id="sekretaris_golongan"
-                                    name="sekretaris_golongan"
-                                    value="{{old('sekretaris_golongan') ? old('sekretaris_golongan') : $data->sekretaris_golongan }}">
-
-                                @if($errors->has('sekretaris_golongan'))
-                                <small class="text-danger"> {{ $errors->first('sekretaris_golongan') }} </small>
-                                @endif
-                            </div>
-                            <!-- input item end -->
-
-                            <div class="mb-3 fs-4">
-                                <label for="sekretaris_tgl_lahir" class="fw-bold">Tanggal Lahir</label>
-                                <input type="text" class="form-control form-control-lg" id="sekretaris_tgl_lahir"
-                                    name="sekretaris_tgl_lahir"
-                                    value="{{old('sekretaris_tgl_lahir') ? old('sekretaris_tgl_lahir') : $data->sekretaris_tgl_lahir }}">
+                                <label for="sekretaris_tgl_lahir" class="fw-bold d-block mb-2">Tanggal Lahir</label>
+                                <input type="text" class="form-control form-control-lg" id="sekretaris_tgl_lahir" name="sekretaris_tgl_lahir" value="{{old('sekretaris_tgl_lahir') ? old('sekretaris_tgl_lahir') : $data->sekretaris_tgl_lahir }}">
 
                                 @if($errors->has('sekretaris_tgl_lahir'))
                                 <small class="text-danger"> {{ $errors->first('sekretaris_tgl_lahir') }} </small>
                                 @endif
+
                             </div>
                             <!-- input item end -->
 
                             <div class="mb-3 fs-4">
-                                <label for="sekretaris_no_sk" class="fw-bold">Nomor SK</label>
-                                <input type="text" class="form-control form-control-lg" id="sekretaris_no_sk"
-                                    name="sekretaris_no_sk"
-                                    value="{{old('sekretaris_no_sk') ? old('sekretaris_no_sk') : $data->sekretaris_no_sk }}">
+                                <label for="sekretaris_nip" class="fw-bold d-block mb-2">NIP</label>
+                                <input type="text" class="form-control form-control-lg" id="sekretaris_nip" name="sekretaris_nip" value="{{old('sekretaris_nip') ? old('sekretaris_nip') : $data->sekretaris_nip }}">
+
+                                @if($errors->has('sekretaris_nip'))
+                                <small class="text-danger"> {{ $errors->first('sekretaris_nip') }} </small>
+                                @endif
+
+                            </div>
+                            <!-- input item end -->
+
+                            <div class="mb-3 fs-4">
+                                <label for="sekretaris_telp" class="fw-bold d-block mb-2">Nomor Telepon</label>
+                                <input type="text" class="form-control form-control-lg" id="sekretaris_telp" name="sekretaris_telp" value="{{old('sekretaris_telp') ? old('sekretaris_telp') : $data->sekretaris_telp }}">
+
+                                @if($errors->has('sekretaris_telp'))
+                                <small class="text-danger"> {{ $errors->first('sekretaris_telp') }} </small>
+                                @endif
+
+                            </div>
+                            <!-- input item end -->
+
+                            <div class="mb-3 fs-4">
+                                <label for="sekretaris_pangkat" class="fw-bold d-block mb-2">Pangkat</label>
+                                <input type="text" class="form-control form-control-lg" id="sekretaris_pangkat" name="sekretaris_pangkat" value="{{old('sekretaris_pangkat') ? old('sekretaris_pangkat') : $data->sekretaris_pangkat }}">
+
+                                @if($errors->has('sekretaris_pangkat'))
+                                <small class="text-danger"> {{ $errors->first('sekretaris_pangkat') }} </small>
+                                @endif
+
+                            </div>
+                            <!-- input item end -->
+
+                            <div class="mb-3 fs-4">
+                                <label for="sekretaris_golongan" class="fw-bold d-block mb-2">Golongan</label>
+                                <input type="text" class="form-control form-control-lg" id="sekretaris_golongan" name="sekretaris_golongan" value="{{old('sekretaris_golongan') ? old('sekretaris_golongan') : $data->sekretaris_golongan }}">
+
+                                @if($errors->has('sekretaris_golongan'))
+                                <small class="text-danger"> {{ $errors->first('sekretaris_golongan') }} </small>
+                                @endif
+
+                            </div>
+                            <!-- input item end -->
+
+                            <div class="mb-3 fs-4">
+                                <label for="sekretaris_no_sk" class="fw-bold d-block mb-2">Nomor SK</label>
+                                <input type="text" class="form-control form-control-lg" id="sekretaris_no_sk" name="sekretaris_no_sk" value="{{old('sekretaris_no_sk') ? old('sekretaris_no_sk') : $data->sekretaris_no_sk }}">
 
                                 @if($errors->has('sekretaris_no_sk'))
                                 <small class="text-danger"> {{ $errors->first('sekretaris_no_sk') }} </small>
                                 @endif
+
                             </div>
                             <!-- input item end -->
 
                             <div class="mb-3 fs-4">
-                                <label for="sekretaris_file_sk" class="fw-bold">File SK</label>
-                                <input type="text" class="form-control form-control-lg" id="sekretaris_file_sk"
-                                    name="sekretaris_file_sk"
-                                    value="{{old('sekretaris_file_sk') ? old('sekretaris_file_sk') : $data->sekretaris_file_sk }}">
+                                <label for="sekretaris_file_sk" class="fw-bold d-block mb-2">File SK</label>
+                                <input type="text" class="form-control form-control-lg" id="sekretaris_file_sk" name="sekretaris_file_sk" value="{{old('sekretaris_file_sk') ? old('sekretaris_file_sk') : $data->sekretaris_file_sk }}">
 
                                 @if($errors->has('sekretaris_file_sk'))
                                 <small class="text-danger"> {{ $errors->first('sekretaris_file_sk') }} </small>
                                 @endif
+
                             </div>
                             <!-- input item end -->
 
                             <div class="mb-3 fs-4">
-                                <label for="sekretaris_tmt" class="fw-bold">TMT</label>
-                                <input type="text" class="form-control form-control-lg" id="sekretaris_tmt"
-                                    name="sekretaris_tmt"
-                                    value="{{old('sekretaris_tmt') ? old('sekretaris_tmt') : $data->sekretaris_tmt }}">
+                                <label for="sekretaris_tmt" class="fw-bold d-block mb-2">TMT</label>
+                                <input type="text" class="form-control form-control-lg" id="sekretaris_tmt" name="sekretaris_tmt" value="{{old('sekretaris_tmt') ? old('sekretaris_tmt') : $data->sekretaris_tmt }}">
 
                                 @if($errors->has('sekretaris_tmt'))
                                 <small class="text-danger"> {{ $errors->first('sekretaris_tmt') }} </small>
                                 @endif
+
                             </div>
                             <!-- input item end -->
 
                             <div class="mb-3 fs-4">
+                                <label for="sekretaris_foto" class="fw-bold d-block mb-2">Foto Sekretaris Daerah</label>
                                 @if ($data->sekretaris_foto == null)
-                                <img src="{{asset('assets/images/profildaerah/sekretaris.png')}}" alt="{{$data->slug}}"
-                                    width="250px" class="img-thumbnail">
+                                <img src="{{asset('gambar/default.png')}}" alt="gambar" width="250px" class="img-thumbnail">
                                 @else
-                                <img src="{{ url($data->sekretaris_foto)}}" alt="{{$data->sekretaris_foto}}"
-                                    class="img-fluid img-thumbnail" width="250px" class="img-thumbnail"></td>
+                                <img src="{{ asset('gambar/' . $data->sekretaris_foto)}}" alt="gambar" class="img-fluid img-thumbnail" width="250px" class="img-thumbnail"></td>
                                 @endif
-                                <input type="file" class="form-control form-control-lg mt-2" name="sekretaris_foto">
+
+                                <input type="text" class="form-control form-control-lg mt-2" id="sekretaris_foto" name="sekretaris_foto" value="{{old('sekretaris_foto') ? old('sekretaris_foto') : $data->sekretaris_foto }}">
+                                <small class="text-muted">Gambar diunggah terlebih dahulu pada halaman <a href="{{route('admin.gambar')}}" target="_blank" class="link-info">Kelolah Gambar</a>, kemudian copy & paste alamat gambarnya.</small>
+
+                                {{-- <input type="file" class="form-control form-control-lg mt-2" name="sekretaris_foto"> --}}
+
                             </div>
                             <!-- input item end -->
 
@@ -171,8 +164,7 @@
                                 <button type="submit" class="btn btn-info waves-effect waves-light fs-4">
                                     <i class="fas fa-save me-1"></i> Simpan
                                 </button>
-                                <a href="{{URL::previous()}}"
-                                    class="btn btn-outline-light waves-effect waves-light fs-4">
+                                <a href="{{URL::previous()}}" class="btn btn-outline-light waves-effect waves-light fs-4">
                                     <i class="fas fa-arrow-left me-1"></i> Kembali
                                 </a>
                             </div>
@@ -192,7 +184,6 @@
     </div>
 </div>
 <!-- end row -->
-
 
 <!--end wrapper-->
 

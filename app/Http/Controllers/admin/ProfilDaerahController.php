@@ -132,13 +132,13 @@ class ProfilDaerahController extends Controller
         $data['wakil_nama']                 = $request->wakil_nama;
         $data['wakil_nik']                  = $request->wakil_nik;
         $data['wakil_tgl_lahir']            = $request->wakil_tgl_lahir;
-        $data['wakil_tgl_pelantikan']            = $request->wakil_tgl_pelantikan;
-        $data['wakil_no_sk']            = $request->wakil_no_sk;
-        $data['wakil_file_sk']            = $request->wakil_file_sk;
-        $data['wakil_asal_partai']            = $request->wakil_asal_partai;
+        $data['wakil_tgl_pelantikan']       = $request->wakil_tgl_pelantikan;
+        $data['wakil_no_sk']                = $request->wakil_no_sk;
+        $data['wakil_file_sk']              = $request->wakil_file_sk;
+        $data['wakil_asal_partai']          = $request->wakil_asal_partai;
         $data['wakil_visi_misi']            = $request->wakil_visi_misi;
-        $data['wakil_riwayat']            = $request->wakil_riwayat;
-        // $data['wakil_foto']            = $request->wakil_foto;
+        $data['wakil_riwayat']              = $request->wakil_riwayat;
+        $data['wakil_foto']                 = $request->wakil_foto;
 
         ProfilDaerah::whereId($id)->update($data);
 
@@ -176,16 +176,17 @@ class ProfilDaerahController extends Controller
 
         $pengaturan = new ProfilDaerah();
 
-        $data['sekretaris_nama']                 = $request->sekretaris_nama;
-        $data['sekretaris_nik']                  = $request->sekretaris_nik;
-        $data['sekretaris_nip']            = $request->sekretaris_nip;
+        $data['sekretaris_nama']            = $request->sekretaris_nama;
+        $data['sekretaris_nik']             = $request->sekretaris_nik;
+        $data['sekretaris_tgl_lahir']       = $request->sekretaris_tgl_lahir;
+        $data['sekretaris_nip']             = $request->sekretaris_nip;
         $data['sekretaris_telp']            = $request->sekretaris_telp;
-        $data['sekretaris_pangkat']            = $request->sekretaris_pangkat;
-        $data['sekretaris_golongan']            = $request->sekretaris_golongan;
-        $data['sekretaris_no_sk']            = $request->sekretaris_no_sk;
-        $data['sekretaris_file_sk']            = $request->sekretaris_file_sk;
-        $data['sekretaris_tmt']            = $request->sekretaris_tmt;
-        // $data['sekretaris_foto']            = $request->sekretaris_foto;
+        $data['sekretaris_pangkat']         = $request->sekretaris_pangkat;
+        $data['sekretaris_golongan']        = $request->sekretaris_golongan;
+        $data['sekretaris_no_sk']           = $request->sekretaris_no_sk;
+        $data['sekretaris_file_sk']         = $request->sekretaris_file_sk;
+        $data['sekretaris_tmt']             = $request->sekretaris_tmt;
+        $data['sekretaris_foto']            = $request->sekretaris_foto;
 
         ProfilDaerah::whereId($id)->update($data);
 
