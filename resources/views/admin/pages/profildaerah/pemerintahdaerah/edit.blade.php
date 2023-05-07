@@ -51,20 +51,20 @@
                                 <label for="pemda_lambang" class="fw-bold d-block">Lambang Pemerintah Darah</label>
 
                                 @if (empty($data->pemda_peta))
-                                <img src="{{ asset('gambar/default.png') }}" alt="{{$data->pemda_lambang}}"
-                                    class="img-thumbnail">
+                                <img src="{{ asset('gambar/default.png') }}" alt="{{$data->pemda_lambang}}" alt="gambar" class="img-thumbnail" width="250px">
                                 @else
-                                <img src="{{ asset('gambar/'. $data->pemda_lambang)}}" alt="{{$data->pemda_lambang}}"
-                                    class="img-fluid img-thumbnail mt-2"></td>
+                                <a href="{{asset('gambar/' . $data->pemda_lambang)}}" target="_blank">
+                                    <img src="{{ asset('gambar/'. $data->pemda_lambang)}}" alt="{{$data->pemda_lambang}}" alt="gambar" class="img-fluid img-thumbnail mt-2" width="250px">
+                                </a>
                                 @endif
 
-                                <input type="text" class="form-control form-control-lg mt-2" id="pemda_lambang"
-                                    name="pemda_lambang"
-                                    value="{{old('pemda_lambang') ? old('pemda_lambang') : $data->pemda_lambang }}">
+                                <input type="text" class="form-control form-control-lg mt-2" id="pemda_lambang" name="pemda_lambang" value="{{old('pemda_lambang') ? old('pemda_lambang') : $data->pemda_lambang }}">
+                                <small class="text-muted">Gambar diunggah terlebih dahulu pada halaman <a href="{{route('admin.gambar')}}" target="_blank" class="link-info">Kelolah Gambar</a>, kemudian copy & paste alamat gambarnya.</small>
 
                                 @if($errors->has('pemda_lambang'))
                                 <small class="text-danger"> {{ $errors->first('pemda_lambang') }} </small>
                                 @endif
+
                             </div>
                             <!-- input item end -->
 
@@ -72,16 +72,15 @@
                                 <label for="pemda_peta" class="fw-bold d-block">Gambar Peta Wilayah</label>
 
                                 @if (empty($data->pemda_peta))
-                                <img src="{{ asset('gambar/default.png') }}" alt="{{$data->pemda_peta}}"
-                                    class="img-thumbnail">
+                                <img src="{{ asset('gambar/default.png') }}" alt="{{$data->pemda_peta}}" alt="gambar" width="250px" class="img-thumbnail">
                                 @else
-                                <img src="{{ asset('gambar/'. $data->pemda_peta)}}" alt="{{$data->pemda_peta}}"
-                                    class="img-fluid img-thumbnail mt-2"></td>
+                                <a href="{{asset('gambar/' . $data->pemda_peta)}}" target="_blank">
+                                    <img src="{{ asset('gambar/'. $data->pemda_peta)}}" alt="{{$data->pemda_peta}}" alt="gambar" width="250px" class="img-fluid img-thumbnail mt-2">
+                                </a>
                                 @endif
 
-                                <input type="text" class="form-control form-control-lg mt-2" id="pemda_peta"
-                                    name="pemda_peta"
-                                    value="{{old('pemda_peta') ? old('pemda_peta') : $data->pemda_peta }}">
+                                <input type="text" class="form-control form-control-lg mt-2" id="pemda_peta" name="pemda_peta" value="{{old('pemda_peta') ? old('pemda_peta') : $data->pemda_peta }}">
+                                <small class="text-muted">Gambar diunggah terlebih dahulu pada halaman <a href="{{route('admin.gambar')}}" target="_blank" class="link-info">Kelolah Gambar</a>, kemudian copy & paste alamat gambarnya.</small>
 
                                 @if($errors->has('pemda_peta'))
                                 <small class="text-danger"> {{ $errors->first('pemda_peta') }} </small>

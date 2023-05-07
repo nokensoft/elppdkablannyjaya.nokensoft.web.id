@@ -24,39 +24,25 @@
                 <div class="row">
 
                     <!-- .col start -->
-                    <div class="col-lg-6">
+                    <div class="col-md-8">
 
                         <table class="table table-bordered fs-4">
                             <tbody>
                                 <tr>
-                                    <td>Nama Instansi</td>
-                                    <td class="fw-bold">{{ $data->pemda_namainstansi }}</td>
+                                    <td class="fw-bold" width="200px">Nama Instansi</td>
+                                    <td>{{ $data->pemda_namainstansi }}</td>
                                 </tr>
                                 <tr>
-                                    <td>Lambang Daerah</td>
+                                    <td class="fw-bold">Lambang Daerah</td>
                                     <td>
                                         <img src="{{ asset('gambar/' . $data->pemda_lambang) }}"
                                             class="img-thumbnail col-lg-6" alt="Foto">
                                     </td>
                                 </tr>
-                            </tbody>
-                        </table>
-
-                    </div>
-                    <!-- .col end -->
-
-                    <!-- .col start -->
-                    <div class="col-lg-6">
-
-                        <table class="table table-bordered fs-4">
-                            <tbody>
                                 <tr>
-                                    <td>Peta Wilayah</td>
-                                </tr>
-                                <tr>
-                                    <td class="fw-bold">
-                                        <img src="{{ asset('gambar/' . $data->pemda_peta) }}"
-                                            class="img-thumbnail w-100" alt="Foto">
+                                    <td class="fw-bold">Peta Wilayah</td>
+                                    <td>
+                                        <img src="{{ asset('gambar/' . $data->pemda_peta) }}" class="img-thumbnail w-100" alt="Foto">
                                     </td>
                                 </tr>
                             </tbody>
