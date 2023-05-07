@@ -171,12 +171,29 @@ Route::prefix('admin')->middleware('auth')->group(function () {
 
     // MONITORING
     Route::controller(PelaporanController::class)->group(function(){
+
         Route::get('lppd/pelaporan','index')->name('admin.pelaporan')->middleware(['role:administrator']);
 
-        Route::get('lppd/pelaporan/2021','index2021')->name('admin.pelaporan.2021')->middleware(['role:administrator']);
-        Route::get('lppd/pelaporan/2021/cover','index2021_cover')->name('admin.pelaporan.2021.cover')->middleware(['role:administrator']);
+        Route::get('lppd/pelaporan/upload-cover/{id}','createCover')->name('admin.pelaporan.uploadCover')->middleware(['role:administrator']);
+        // Route::get('lppd/pelaporan/upload-babsatu','createBabSatu')->name('admin.pelaporan.uploadBabSatu')->middleware(['role:administrator']);
+        // Route::get('lppd/pelaporan/upload-babdua','createBabDua')->name('admin.pelaporan.uploadBabDua')->middleware(['role:administrator']);
+        // Route::get('lppd/pelaporan/upload-babtiga','createBabTiga')->name('admin.pelaporan.uploadBabTiga')->middleware(['role:administrator']);
+        // Route::get('lppd/pelaporan/upload-babempat','createBabEmpat')->name('admin.pelaporan.uploadBabEmpat')->middleware(['role:administrator']);
+        // Route::get('lppd/pelaporan/upload-bablima','createBabLima')->name('admin.pelaporan.uploadBabLima')->middleware(['role:administrator']);
+        // Route::get('lppd/pelaporan/upload-lampiran','createLampiran')->name('admin.pelaporan.uploadLampiran')->middleware(['role:administrator']);
 
-        Route::get('lppd/pelaporan/edit/2021','edit2021')->name('admin.lppd.pelaporan.edit2021')->middleware(['role:administrator']);
+        Route::put('lppd/pelaporan/upload-cover/{id}','storeCover')->name('admin.pelaporan.uploadCover.store')->middleware(['role:administrator']);
+        // Route::post('lppd/pelaporan/upload-babsatu','storeBabSatu')->name('admin.pelaporan.uploadBabSatu')->middleware(['role:administrator']);
+        // Route::post('lppd/pelaporan/upload-babdua','storeBabDua')->name('admin.pelaporan.uploadBabDua')->middleware(['role:administrator']);
+        // Route::post('lppd/pelaporan/upload-babtiga','storeBabTiga')->name('admin.pelaporan.uploadBabTiga')->middleware(['role:administrator']);
+        // Route::post('lppd/pelaporan/upload-babempat','storeBabEmpat')->name('admin.pelaporan.uploadBabEmpat')->middleware(['role:administrator']);
+        // Route::post('lppd/pelaporan/upload-bablima','storeBabLima')->name('admin.pelaporan.uploadBabLima')->middleware(['role:administrator']);
+        // Route::post('lppd/pelaporan/upload-lampiran','storeLampiran')->name('admin.pelaporan.uploadLampiran')->middleware(['role:administrator']);
+
+        // Route::get('lppd/pelaporan/2021','index2021')->name('admin.pelaporan.2021')->middleware(['role:administrator']);
+        // Route::get('lppd/pelaporan/2021/cover','index2021_cover')->name('admin.pelaporan.2021.cover')->middleware(['role:administrator']);
+        // Route::get('lppd/pelaporan/edit/2021','edit2021')->name('admin.lppd.pelaporan.edit2021')->middleware(['role:administrator']);
+
     });
 
     // IKK

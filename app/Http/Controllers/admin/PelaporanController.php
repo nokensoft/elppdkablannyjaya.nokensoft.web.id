@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers\admin;
 
-use App\Http\Controllers\Controller;
 use App\Models\Pelaporan;
-use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
+use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Facades\Validator;
 
 class PelaporanController extends Controller
 {
@@ -18,137 +20,160 @@ class PelaporanController extends Controller
         return view('admin.pages.lppd.pelaporan.index', ['all' => $all]);
     }
 
-    public function index2023()
-    {
-        $all = Pelaporan::where('tahun','2023')->get();
-        return view('admin.pages.lppd.pelaporan.index2023', ['all' => $all]);
-    }
-
-    public function index2023Cover()
-    {
-        $all = Pelaporan::where('tahun','2023')->get();
-        return view('admin.pages.lppd.pelaporan.index2023cover', ['all' => $all]);
-    }
-
     // CREATE
-    public function create()
-    {
-        return view('admin.pages.profil.Pelaporan.tambah');
-    }
+        public function createCover($id)
+        {
+            $data = Pelaporan::where('id',$id)->first();
+            return view('admin.pages.lppd.pelaporan.create.cover',compact('data'));
+        }
+        public function createBabSatu()
+        {
+            return view('admin.pages.lppd.pelaporan.create.bab_satu');
+        }
+        public function createBabDua()
+        {
+            return view('admin.pages.lppd.pelaporan.create.bab_dua');
+        }
+        public function createBabTiga()
+        {
+            return view('admin.pages.lppd.pelaporan.create.bab_tiga');
+        }
+        public function createBabEmpat()
+        {
+            return view('admin.pages.lppd.pelaporan.create.bab_empat');
+        }
+        public function createBabLima()
+        {
+            return view('admin.pages.lppd.pelaporan.create.bab_empat');
+        }
+        public function createLampiran()
+        {
+            return view('admin.pages.lppd.pelaporan.create.lampiran');
+        }
+    // End
 
     // STORE
-    public function store(Request $request)
+    public function storeCover(Request $request,$id)
     {
-        $request->validate([
-            'nama_instansi' => 'required'
-        ],
-        [
-            'nama_instansi.required' => 'Nama tidak boleh kosong',
+        $validator = Validator::make($request->only('cover','cover_file'),[
+            'cover' => 'required',
+            'cover_file' => 'mimes:pdf',
+        ],[
+            'cover.required'        => 'Judul Cover tidak boleh kosong',
+            'cover_file.required'   => 'File Upload Cover tidak boleh kosong',
+            'cover_file.mimes'      => 'File Upload Cover harus dengan extensi pdf',
         ]);
 
-        $tahun = date("Y");
-        $bulan = date("M");
+        if($validator->fails()){
+            return redirect()->back()->withInput($request->all())->withErrors($validator);
+        } else {
+            try {
+                $cover = Pelaporan::find($id);
+                $cover->cover = $request->cover;
 
-        $filename  = 'profil-Pelaporan'.'-'.date('Y-m-d-H-i-s').$request->file('foto')->getClientOriginalName();
+                if ($request->cover_file) {
+                    $fileName = $request->cover_file . '-'.time() . '.' . $request->cover_file->extension();
+                    $path = public_path('file/lppd/cover');
+                    if (!empty($cover->cover_file) && file_exists($path.$cover->cover_file)) :
+                        unlink($path.$cover->cover_file);
+                    endif;
 
-        $request->file('foto')->storeAs('public/resource/admin/Pelaporan/'.$tahun.'/'.$bulan,$filename);
-        $url = ('storage/resource/admin/Pelaporan/'.$tahun.'/'.$bulan.'/'.$filename);
+                    $cover->cover_file = $fileName;
+                    $request->cover_file->move($path, $fileName);
+                }
 
-        $Pelaporan = new Pelaporan();
+                $cover->update();
+                Alert::toast('Cover Berhasil disimpan!', 'success');
+                return redirect()->route('admin.pelaporan');
 
-        $Pelaporan->nama_instansi    = $request->nama_instansi;
-        $Pelaporan->jabatan          = $request->jabatan;
-        $Pelaporan->nama_lengkap     = $request->nama_lengkap;
-        $Pelaporan->nik              = $request->nik;
-        $Pelaporan->alamat           = $request->alamat;
-        $Pelaporan->ttl              = $request->ttl;
-        $Pelaporan->nama_partai      = $request->nama_partai;
-        $Pelaporan->pendidikan       = $request->pendidikan;
-        $Pelaporan->foto             = $url;
-        $Pelaporan->slug             =  Str::slug($request->nama_lengkap);
-
-
-        $Pelaporan->save();
-        alert()->success('Berhasil', 'Sukses!!')->autoclose(1100);
-        return redirect()->route('admin.Pelaporan');
-
-    }
-
-    // SHOW
-    public function show(Pelaporan $Pelaporan)
-    {
-        return view('admin.pages.profil.Pelaporan.detail');
-    }
-
-    // EDIT
-    public function edit_2023()
-    {
-        $data =DB::select("SELECT * FROM lppd_pelaporan WHERE tahun = '2023' ");
-        return view('admin.pages.profil.Pelaporan.ubah',['data' => $data]);
-    }
-
-    // UPDATE
-    public function update(Request $request,$slug)
-    {
-         $request->validate([
-            'nama_instansi' => 'required'
-        ],
-        [
-            'nama_instansi.required' => 'Nama tidak boleh kosong',
-        ]);
-
-        $tahun = date("Y");
-        $bulan = date("M");
-
-        $Pelaporan = new Pelaporan();
-
-        if(!empty($request->file('foto'))){
-            $filename  = 'profil-Pelaporan'.'-'.date('Y-m-d-H-i-s').$request->file('foto')->getClientOriginalName();
-            $request->file('foto')->storeAs('public/resource/admin/Pelaporan/'.$tahun.'/'.$bulan,$filename);
-            $url = ('storage/resource/admin/Pelaporan/'.$tahun.'/'.$bulan.'/'.$filename);
-            $datalama =DB::select("SELECT * FROM lppd_pelaporan WHERE id = '$slug' ");
-            if($datalama[0]->foto){
-             \File::delete($datalama[0]->foto);
+            } catch (\Throwable $th) {
+                dd($th);
+                Alert::toast('Gagal', 'error');
+                return redirect()->back();
             }
-            $data['foto']             = $url;
-        };
-
-        $data['nama_instansi']    = $request->nama_instansi;
-        $data['jabatan']          = $request->jabatan;
-        $data['nama_lengkap']     = $request->nama_lengkap;
-        $data['nik']              = $request->nik;
-        $data['alamat']           = $request->alamat;
-        $data['ttl']              = $request->ttl;
-        $data['nama_partai']      = $request->nama_partai;
-        $data['pendidikan']       = $request->pendidikan;
-
-        $user = DB::table('lppd_pelaporan')
-            ->where('id', $slug)
-            ->update($data);
-
-        alert()->success('Berhasil', 'Sukses!!')->autoclose(1100);
-        return redirect()->route('admin.Pelaporan');
-
-    }
-
-    // DELETE
-    public function delete($Pelaporan)
-    {
-        $data =DB::select("SELECT * FROM lppd_pelaporan WHERE slug = '$Pelaporan' ");
-        return view('admin.pages.profil.Pelaporan.delete',['data' => $data]);
-    }
-    public function destroy($id)
-    {
-        $data = Pelaporan::findOrFail($id);
-
-        //dd($data);
-        if($data->foto){
-            File::delete($data->foto);
         }
-
-        $data->forceDelete();
-
-        alert()->success('Berhasil', 'Sukses!!')->autoclose(1500);
-        return redirect()->route('admin.Pelaporan');
     }
+    public function storeBabSatu(Request $request)
+    {
+        $validator = Validator::make($request->only('babi','babi_file'),[
+            'babi' => 'required',
+            'babi_file' => 'required|image|mimes:pdf',
+        ]);
+
+        if($validator->fails()){
+            return redirect()->back()->withInput($request->all())->withErrors($validator);
+        } else {
+
+        }
+    }
+    public function storeBabDua(Request $request)
+    {
+        $validator = Validator::make($request->only('babii','babii_file'),[
+            'babii' => 'required',
+            'babii_file' => 'required|image|mimes:pdf',
+        ]);
+
+        if($validator()->fails()){
+             return redirect()->back()->withInput($request->all())->withErrors($validator);
+        } else {
+
+        }
+    }
+    public function storeBabTiga(Request $request)
+    {
+        $validator = Validator::make($request->only('babiii','babiii_file'),[
+            'babiii' => 'required',
+            'babiii_file' => 'required|image|mimes:pdf',
+        ]);
+
+        if($validator->fails()){
+            return redirect()->back()->withInput($request->all())->withErrors($validator);
+        } else {
+
+        }
+    }
+    public function storeBabEmpat(Request $request)
+    {
+       $validator = Validator::make($request->only('babiv','babiv_file'),[
+        'babiv' => 'required',
+        'babiv_file' => 'required|image|mimes:pdf',
+       ]);
+
+       if($validator->fails()){
+            return redirect()->back()->withInput($request->all())->withErrors($validator);
+       } else {
+
+       }
+    }
+    public function storeBabLima(Request $request)
+    {
+        $validator = Validator::make($request->only('babv','babv_file'),[
+            'babv' => 'required',
+            'babv_file' => 'required|image|mimes:pdf',
+        ]);
+
+        if($validator->fails()){
+            return redirect()->back()->withInput($request->all())->withErrors($validator);
+        } else {
+
+        }
+    }
+    public function storeLampiran(Request $request)
+    {
+       $validator = Validator::make($request->only('lampiran','lampiran_file'),[
+        'lampiran' => 'required',
+        'lampiran_file' => 'required|image|mimes:pdf',
+       ]);
+
+       if($validator->fails()){
+            return redirect()->back()->withInput($request->all())->withErrors($validator);
+       } else {
+
+       }
+    }
+
+
+
+
+
 }

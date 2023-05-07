@@ -38,28 +38,46 @@
                                             <th class="text-center">Aksi</th>
                                         </tr>
                                     </thead>
-                                    
+
                                     <tbody>
                                         @foreach ($all as $data )
+
                                             <tr class="@if ($data->cover != '') bg-success text-light @endif">
                                                 <td>{{$data->cover}}</td>
                                                 <td class="text-center">
-                                                    @if ($data->cover != '') <i class="fas fa-check mr-1"></i> @else <i class="fas fa-check mr-1"></i> @endif
+                                                    @if(!$data->cover)
+                                                    <i class="fas fa-times"></i>
+                                                    @else
+                                                    <i class="fas fa-check mr-1"></i>
+                                                    @endif
                                                 </td>
                                                 <td>
-                                                    <a href="#" class="btn btn-sm btn-outline-dark waves-effect waves-light fs-4">
+                                                    @if (!$data->cover_file)
+                                                    <a href="{{ route('admin.pelaporan.uploadCover',['id' => $data->id]) }}" class="btn btn-sm btn-outline-dark waves-effect waves-light fs-4">
+                                                        <i class="fas fa-upload mr-1"></i>
+                                                        Unduh Dokumen
+                                                    </a>
+                                                    @else
+                                                    <a href="" class="btn btn-sm btn-outline-dark waves-effect waves-light fs-4">
                                                         <i class="fas fa-download mr-1"></i>
                                                         Unduh Dokumen
                                                     </a>
+                                                    <a href="{{ route('admin.pelaporan.uploadCover',['id' => $data->id]) }}"
+                                                        class="btn btn-sm btn-outline-dark waves-effect waves-light fs-4">
+                                                        <i class="fas fa-edit mr-1"></i>
+                                                    </a>
+                                                    @endif
+
                                                 </td>
                                             </tr>
+
                                             <tr>
                                                 <td>{{$data->babi}}</td>
                                                 <td class="text-center">
                                                     <i class="fas fa-times"></i>
                                                 </td>
                                                 <td>
-                                                    <a href="#" class="btn btn-sm btn-outline-dark waves-effect waves-light fs-4">
+                                                    <a href="{{ route('admin.pelaporan.uploadBabSatu') }}" class="btn btn-sm btn-outline-dark waves-effect waves-light fs-4">
                                                         <i class="fas fa-upload mr-1"></i>
                                                         Unggah Dokumen
                                                     </a>
@@ -71,7 +89,7 @@
                                                     <i class="fas fa-times"></i>
                                                 </td>
                                                 <td>
-                                                    <a href="#" class="btn btn-sm btn-outline-dark waves-effect waves-light fs-4">
+                                                    <a href="{{ route('admin.pelaporan.uploadBabDua') }}" class="btn btn-sm btn-outline-dark waves-effect waves-light fs-4">
                                                         <i class="fas fa-upload mr-1"></i>
                                                         Unggah Dokumen
                                                     </a>
@@ -83,7 +101,7 @@
                                                     <i class="fas fa-times"></i>
                                                 </td>
                                                 <td>
-                                                    <a href="#" class="btn btn-sm btn-outline-dark waves-effect waves-light fs-4">
+                                                    <a href="{{ route('admin.pelaporan.uploadBabTiga') }}" class="btn btn-sm btn-outline-dark waves-effect waves-light fs-4">
                                                         <i class="fas fa-upload mr-1"></i>
                                                         Unggah Dokumen
                                                     </a>
@@ -95,7 +113,7 @@
                                                     <i class="fas fa-times"></i>
                                                 </td>
                                                 <td>
-                                                    <a href="#" class="btn btn-sm btn-outline-dark waves-effect waves-light fs-4">
+                                                    <a href="{{ route('admin.pelaporan.uploadBabEmpat') }}" class="btn btn-sm btn-outline-dark waves-effect waves-light fs-4">
                                                         <i class="fas fa-upload mr-1"></i>
                                                         Unggah Dokumen
                                                     </a>
@@ -107,7 +125,7 @@
                                                     <i class="fas fa-times"></i>
                                                 </td>
                                                 <td>
-                                                    <a href="#" class="btn btn-sm btn-outline-dark waves-effect waves-light fs-4">
+                                                    <a href="{{ route('admin.pelaporan.uploadBabLima') }}" class="btn btn-sm btn-outline-dark waves-effect waves-light fs-4">
                                                         <i class="fas fa-upload mr-1"></i>
                                                         Unggah Dokumen
                                                     </a>
@@ -119,7 +137,7 @@
                                                     <i class="fas fa-times"></i>
                                                 </td>
                                                 <td>
-                                                    <a href="#" class="btn btn-sm btn-outline-dark waves-effect waves-light fs-4">
+                                                    <a href="{{ route('admin.pelaporan.uploadLampiran') }}" class="btn btn-sm btn-outline-dark waves-effect waves-light fs-4">
                                                         <i class="fas fa-upload mr-1"></i>
                                                         Unggah Dokumen
                                                     </a>
@@ -131,7 +149,7 @@
                                     </tbody>
 
                                 </table>
-                                
+
                             </div>
                             <!-- .col end -->
 
@@ -142,7 +160,7 @@
             </div>
         </div>
         <!-- end row -->
-                        
+
 
   <!--end wrapper-->
 
@@ -162,5 +180,5 @@
     <script src="{{ asset('assets/admin/assets/js/pages/jquery.todo.js')}}"></script>
 
     <!-- Dashboard init JS -->
-    <script src="{{ asset('assets/admin/assets/js/pages/dashboard-3.init.js')}}"></script>  
+    <script src="{{ asset('assets/admin/assets/js/pages/dashboard-3.init.js')}}"></script>
     @endpush
