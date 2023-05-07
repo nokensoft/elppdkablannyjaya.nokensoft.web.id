@@ -32,7 +32,7 @@ class PerangkatDaerahController extends Controller
             $q->where('name','opd');
         })
         ->orderBy('id','Desc')->get();
-        
+
         return view('admin.pages.lppd.perangkatdaerah.print', compact('datas'));
     }
 
@@ -81,7 +81,6 @@ class PerangkatDaerahController extends Controller
                 $perangkatdaerah                    = new perangkatdaerah();
                 $perangkatdaerah->user_id           = $akun->id;
                 $perangkatdaerah->nama_organisasi   = $request->nama_organisasi;
-                $perangkatdaerah->urusan            = $request->urusan;
                 $perangkatdaerah->tipe_kantor       = $request->tipe_kantor;
                 $perangkatdaerah->alamat            = $request->alamat;
                 $perangkatdaerah->nama_pimpinan     = $request->nama_pimpinan;
@@ -155,7 +154,6 @@ class PerangkatDaerahController extends Controller
             $perangkatdaerah                    =  $akun->perangkatdaerah ?? new PerangkatDaerah();
 
             $perangkatdaerah->nama_organisasi   = $request->nama_organisasi;
-            $perangkatdaerah->urusan            = $request->urusan;
             $perangkatdaerah->tipe_kantor       = $request->tipe_kantor;
             $perangkatdaerah->alamat            = $request->alamat;
             $perangkatdaerah->nama_pimpinan     = $request->nama_pimpinan;

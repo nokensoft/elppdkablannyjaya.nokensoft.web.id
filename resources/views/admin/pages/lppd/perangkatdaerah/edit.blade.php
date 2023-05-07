@@ -48,15 +48,7 @@
                             </div>
                             <!-- input item end -->
 
-                            <div class="mb-3 fs-4">
-                                <label for="" class="fw-bold">Urusan</label>
-                                <input type="text" class="form-control form-control-lg" placeholder="Urusan"
-                                    value="{{ old('urusan',$data->perangkatdaerah->urusan ?? '')}}" name="urusan">
-                                @if($errors->has('urusan'))
-                                <label class="text-danger"> {{ $errors->first('urusan') }} </label>
-                                @endif
-                            </div>
-                            <!-- input item end -->
+
 
                             <div class="mb-3 fs-4">
                                 <label for="" class="fw-bold">Tipe Kantor</label>

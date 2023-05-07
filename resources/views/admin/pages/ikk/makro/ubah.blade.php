@@ -44,28 +44,19 @@
                             </div>
 
                             <div class="mb-3 fs-4">
-                                <label for="" class="fw-bold">OPD</label>
-                                <select name="user_id" class="form-select form-select-lg">
+                                <label for="" class="fw-bold">Urusan</label>
+                                <select name="urusan_ud" class="form-select form-select-lg">
                                     <option hidden>Pillih</option>
-                                    @foreach ($opd as $user)
-                                    @if($user->name == 'Admin')
-                                    @elseif($user->name == 'Supervisor')
-                                    @else
-                                    <option value="{{ $user->id }}">{{ $user->name }}</option>
-                                    @endif
+                                    @foreach ($urusan as $data)
+
+                                    <option value="{{ $data->id }}">{{ $data->judul_urusan }}</option>
+
                                     @endforeach
 
                                 </select>
                             </div>
 
-                            <div class="mb-3 fs-4">
-                                <label for="" class="fw-bold">Urusan</label>
-                                <input type="text" class="form-control form-control-lg disabled bg-secondary text-light"
-                                    name="urusan" value="{{old('urusan',$data->urusan) }}" readonly>
-                                @if($errors->has('urusan'))
-                                <label class="text-danger"> {{ $errors->first('urusan') }} </label>
-                                @endif
-                            </div>
+
 
                             <div class="mb-3 fs-4">
                                 <label for="" class="fw-bold">IKK</label>

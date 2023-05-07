@@ -14,5 +14,11 @@ class Ikk extends Model
     {
         return $this->hasOne(User::class,'id','user_id');
     }
+    public function urusan()
+    {
+        return $this->belongsTo(Urusan::class,'urusan_id');
+    }
+
+
 
 }

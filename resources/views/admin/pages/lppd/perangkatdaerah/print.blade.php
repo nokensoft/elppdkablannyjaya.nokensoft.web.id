@@ -70,7 +70,6 @@
                                         </td>
                                         <td>{{$data->perangkatdaerah->nama_organisasi ?? ''}} </td>
                                         <td>{{$data->perangkatdaerah->nama_pimpinan ?? 'Data belum ada' }}</td>
-                                        <td>{{$data->perangkatdaerah->urusan ?? 'Data belum ada'}}</td>
                                         <td>{{$data->email ?? ''}}</td>
                                     </tr>
                                     @endforeach

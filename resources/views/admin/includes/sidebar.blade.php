@@ -110,6 +110,9 @@
                                 <a href="{{route('admin.desa')}}">Desa</a>
                             </li>
                             <li>
+                                <a href="{{ route('admin.urusan') }}">Urusan</a>
+                            </li>
+                            <li>
                                 <a href="{{ route('pengguna.index') }}">Pengguna</a>
                             </li>
                             <li>

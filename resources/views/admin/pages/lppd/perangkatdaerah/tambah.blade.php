@@ -45,16 +45,6 @@
                             </div>
                             <!-- input item end -->
 
-                            <div class="mb-3 fs-4">
-                                <label for="urusan" class="fw-bold mb-2 d-block">Urusan</label>
-                                <input type="text" class="form-control form-control-lg" placeholder="Urusan" value="{{ old('urusan')}}" name="urusan">
-
-                                @if($errors->has('urusan'))
-                                <label class="text-danger"> {{ $errors->first('urusan') }} </label>
-                                @endif
-
-                            </div>
-                            <!-- input item end -->
 
                             <div class="mb-3 fs-4">
                                 <label for="" class="fw-bold mb-2 d-block">Alamat</label>
@@ -106,7 +96,7 @@
                                 <label for="" class="fw-bold mb-2 d-block">Kata Sandi</label>
                                 {!! Form::password('password',['id'=>'password','class'=>'form-control
                                 form-control-lg','placeholder'=>'Kata sandi pengguna']) !!}
-                                
+
                                 @if($errors->has('password'))
                                 <label class="text-danger"> {{ $errors->first('password') }} </label>
                                 @endif
@@ -118,7 +108,7 @@
                                 <label for="" class="fw-bold mb-2 d-block">Konfirmasi Kata Sandi</label>
                                 {!! Form::password('confirm-password',['id'=>'confirm-password','class'=>'form-control
                                 form-control-lg','placeholder'=>'Konfirmasi kata sandi pengguna']) !!}
-                                
+
                                 @if($errors->has('confirm-password'))
                                 <label class="text-danger"> {{ $errors->first('confirm-password') }} </label>
                                 @endif

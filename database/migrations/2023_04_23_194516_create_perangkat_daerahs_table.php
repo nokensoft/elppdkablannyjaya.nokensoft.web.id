@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('perangkat_daerahs', function (Blueprint $table) {
             $table->id();
             $table->string('nama_organisasi');
-            $table->string('urusan')->nullable();
+
             $table->string('tipe_kantor')->nullable();
             $table->string('alamat')->nullable();
             $table->string('jumlah_pegawai')->nullable();

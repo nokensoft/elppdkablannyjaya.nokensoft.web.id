@@ -23,7 +23,7 @@
 
                 <div class="row">
                     <div class="col-md-6">
-                        <h1 class="fw-bold">IKK @if(!empty($bidang_ikk)) {{$bidang_ikk}} @endif</h1>
+                        <h1 class="fw-bold">IKK @if(!empty($judul_urusan)) {{$judul_urusan}} @endif</h1>
                         Tanggal : <span class="fw-bold">{{ today()->toDateString() }}</span>
                     </div>
                     <div class="col-md-6 text-md-end">

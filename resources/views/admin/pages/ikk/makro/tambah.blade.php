@@ -40,30 +40,18 @@
                             <!-- input item end -->
 
                             <div class="mb-3 fs-4">
-                                <label for="" class="fw-bold">Perangkat Daerah</label>
-                                <select name="user_id" class="form-select form-select-lg">
+                                <label for="" class="fw-bold">Urusan</label>
+                                <select name="urusan_id" class="form-select form-select-lg">
                                     <option hidden>Pillih</option>
-                                    @foreach ($opd as $user)
-                                    @if($user->name == 'Admin')
-                                    @elseif($user->name == 'Supervisor')
-                                    @else
-                                    <option value="{{ $user->id }}">{{ $user->name }}</option>
-                                    @endif
+                                    @foreach ($data as $urusan)
+                                         <option value="{{ $urusan->id }}">{{ $urusan->judul_urusan }}</option>
                                     @endforeach
 
                                 </select>
                             </div>
                             <!-- input item end -->
 
-                            <div class="mb-3 fs-4">
-                                <label for="" class="fw-bold">Urusan</label>
-                                <input type="text" class="form-control form-control-lg" name="urusan"
-                                    value="{{old('urusan')}}">
-                                @if($errors->has('urusan'))
-                                <label class="text-danger"> {{ $errors->first('urusan') }} </label>
-                                @endif
-                            </div>
-                            <!-- input item end -->
+
 
                             <div class="mb-3 fs-4">
                                 <label for="" class="fw-bold">IKK</label>

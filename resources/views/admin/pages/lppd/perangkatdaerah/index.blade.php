@@ -56,7 +56,7 @@
                                     <th>Foto Kantor</th>
                                     <th>Nama Organisasi</th>
                                     <th>Nama Pimpinan</th>
-                                    <th>Rumpun</th>
+
                                     <th>Email</th>
                                     <th class="text-center">Aksi</th>
                                 </tr>
@@ -76,7 +76,7 @@
                                     </td>
                                     <td>{{$data->perangkatdaerah->nama_organisasi ?? ''}} </td>
                                     <td>{{$data->perangkatdaerah->nama_pimpinan ?? 'Data belum ada' }}</td>
-                                    <td>{{$data->perangkatdaerah->urusan ?? 'Data belum ada'}}</td>
+
                                     <td>{{$data->email ?? ''}}</td>
 
                                     <td class="d-flex justify-content-between gap-1">

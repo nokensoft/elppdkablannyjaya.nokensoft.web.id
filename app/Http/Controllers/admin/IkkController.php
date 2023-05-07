@@ -6,6 +6,7 @@ use App\Exports\IkkExport;
 use App\Http\Controllers\Controller;
 use App\Models\Ikk;
 use App\Models\PerangkatDaerah;
+use App\Models\Urusan;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -33,8 +34,11 @@ class IkkController extends Controller
     }
 
     public function ikkMethod($method){
-        $all = Ikk::where('urusan',$method)->get();
-        return view('admin.pages.ikk.makro.index',['all' => $all, 'bidang_ikk' => $method]);
+        // $all = Ikk::where('urusan_id',$method)->get();
+        $all =  Ikk::whereHas('urusan',function($q){
+            $q->where('slug');
+        })->get();
+        return view('admin.pages.ikk.makro.index',['all' => $all, 'judul_urusan' => $method]);
 
     }
 
@@ -57,8 +61,8 @@ class IkkController extends Controller
      */
     public function create()
     {
-        $opd = User::all();
-        return view('admin.pages.ikk.makro.tambah',compact('opd'));
+        $data = Urusan::all();
+        return view('admin.pages.ikk.makro.tambah',compact('data'));
     }
 
     /**
@@ -72,7 +76,7 @@ class IkkController extends Controller
         $validator = Validator::make($request->all(),
         [
             'no_ikk'                    => 'required',
-            'user_id'                   => 'required',
+            'urusan_id'                   => 'required',
             'capaian_kinerja'           => 'required',
             'ikk'                       => 'required',
             'jml2'                      => 'required',
@@ -83,7 +87,7 @@ class IkkController extends Controller
         [
             'no_ikk.required'          => 'Nomor IKK tidak boleh kosong',
             // 'no_ikk.unique'            => 'Nomor IKK sudah ada',
-            'user_id.required'         => 'OPD tidak boleh kosong',
+            'urusan_id.required'         => 'OPD tidak boleh kosong',
             'keterangan.required'      => 'Keterangan tidak boleh kosong',
             'rumus.required'           => 'Rumus tidak boleh kosong',
             'urusan.required'          => 'Urusan tidak boleh kosong',
@@ -97,7 +101,7 @@ class IkkController extends Controller
         } else {
             try {
                 $ikk = new Ikk();
-                $ikk->user_id        = $request->user_id;
+                $ikk->urusan_id        = $request->urusan_id;
                 $ikk->no_ikk        = $request->no_ikk;
                 $ikk->urusan        = $request->urusan;
                 $ikk->ikk           = $request->ikk;
@@ -129,9 +133,9 @@ class IkkController extends Controller
 
      public function edit($id)
      {
-        $opd = User::all();
+        $urusan = Urusan::all();
          $data = Ikk::where('id',$id)->first();
-         return view('admin.pages.ikk.makro.ubah',compact('data','opd'));
+         return view('admin.pages.ikk.makro.ubah',compact('data','urusan'));
      }
 
 
@@ -140,7 +144,7 @@ class IkkController extends Controller
         $validator = Validator::make($request->all(),
         [
             'no_ikk'                    => 'required',
-            'user_id'                   => 'required',
+            'urusan_id'                   => 'required',
             'capaian_kinerja'           => 'required',
             'ikk'                       => 'required',
             'jml2'                      => 'required',
@@ -151,7 +155,7 @@ class IkkController extends Controller
         [
             'no_ikk.required'          => 'Nomor IKK tidak boleh kosong',
             // 'no_ikk.unique'            => 'Nomor IKK sudah ada',
-            'user_id.required'         => 'OPD tidak boleh kosong',
+            'urusan_id.required'         => 'OPD tidak boleh kosong',
             'keterangan.required'      => 'Keterangan tidak boleh kosong',
             'rumus.required'           => 'Rumus tidak boleh kosong',
             'urusan.required'          => 'Urusan tidak boleh kosong',
@@ -164,7 +168,7 @@ class IkkController extends Controller
         } else {
             try {
                 $ikk                = Ikk::find($id);
-                $ikk->user_id       = $request->user_id;
+                $ikk->urusan_id       = $request->urusan_id;
                 $ikk->no_ikk        = $request->no_ikk;
                 $ikk->urusan        = $request->urusan;
                 $ikk->ikk           = $request->ikk;

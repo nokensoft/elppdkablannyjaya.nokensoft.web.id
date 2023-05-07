@@ -47,11 +47,7 @@
                                 <input type="text" class="form-control form-control-lg" readonly
                                     value="{{ $data->perangkatdaerah->nama_organisasi ?? '' }}">
                             </div>
-                            <div class="mb-3 fs-4">
-                                <label for="" class="fw-bold">Urusan</label>
-                                <input type="text" class="form-control form-control-lg" readonly
-                                    value="{{ $data->perangkatdaerah->urusan ?? '' }}">
-                            </div>
+
                             <div class="mb-3 fs-4">
                                 <label for="" class="fw-bold">Tipe Kantor</label>
                                 <input type="text" class="form-control form-control-lg" readonly

@@ -15,9 +15,10 @@ return new class extends Migration
     {
         Schema::create('ikks', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('user_id')->unsigned()->nullable();
+            // $table->bigInteger('user_id')->unsigned()->nullable();
+            $table->foreignId('urusan_id')->nullable();
             $table->string('no_ikk')->nullable();
-            
+
             $table->string('urusan')->nullable();
 
             $table->string('ikk')->nullable();

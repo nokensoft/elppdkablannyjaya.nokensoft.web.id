@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\App;
 use Illuminate\Support\ServiceProvider;
 use App\Models\Pengaturan;
 use App\Models\PerangkatDaerah;
+use App\Models\Urusan;
 use Illuminate\Support\Facades\URL;
 
 use Illuminate\Support\Facades\View;
@@ -40,11 +41,11 @@ class AppServiceProvider extends ServiceProvider
         }
 
         $pengaturan             = Pengaturan::first();
-        $perangkatDaerah        = PerangkatDaerah::get();
+        $urusans                = Urusan::get();
 
         view::share([
             'pengaturan'        => $pengaturan,
-            'perangkatDaerah'   => $perangkatDaerah,
+            'urusans'            => $urusans,
         ]);
 
     }

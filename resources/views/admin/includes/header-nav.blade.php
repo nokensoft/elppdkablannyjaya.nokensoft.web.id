@@ -110,7 +110,7 @@
                 </a>
                 <div class="dropdown-menu">
                     <!-- item-->
-                    
+
                     {{-- <a href="{{asset('admin/lppd/monitoring')}}" class="dropdown-item fs-4">
                         <i class="fas fa-bookmark me-1"></i>
                         <span>Monitoring</span>
@@ -139,11 +139,19 @@
                         <span>Pelaporan</span>
                     </a>
                     <!-- item-->
-                    
-                    <a href="{{asset('admin/ikk/urusan')}}" class="dropdown-item fs-4">
-                        <i class="fas fa-bookmark me-1"></i>
-                        <span>Urusan</span>
-                    </a>
+
+                    @foreach ($urusans as $urusan )
+                        @if(!$urusan->id)
+
+                        @else
+
+                        <a href="{{route('admin.ikk.method',['method' => $urusan->slug])}}" class="dropdown-item fs-4">
+                            <i class="fas fa-bookmark me-1"></i>
+                            <span>{{ $urusan->judul_urusan }}</span>
+                        </a>
+
+                        @endif
+                    @endforeach
                     <!-- item-->
 
                     {{-- @foreach ($perangkatDaerah as $dataPerangkatDaerah )
