@@ -36,8 +36,7 @@
 
                             <div class="mb-3 fs-4">
                                 <label for="" class="fw-bold d-block">Foto Kantor</label>
-                                <img src="{{asset('assets/admin/assets/images/users/user-default.png')}}" alt="Logo"
-                                    width="250px" class="img-thumbnail mb-1">
+                                <img src="{{asset('gambar/default.png')}}" alt="Logo" width="250px" class="img-thumbnail mb-1">
                                 <input type="file" name="foto_gedung" class="form-control form-control-lg">
                                 @if($errors->has('foto_gedung'))
                                 <label class="text-danger"> {{ $errors->first('foto_gedung') }} </label>
