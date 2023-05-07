@@ -35,21 +35,7 @@
                             @csrf
                             @method('put')
 
-                            <div class="mb-3 fs-4">
-                                <img src="{{asset('gambar/' . $data->foto)}}" alt="Foto" width="250px"
-                                    class="img-thumbnail mb-1">
-                                <label for="" class="fw-bold d-block">Foto</label>
-                                <input type="text" class="form-control form-control-lg" placeholder="Alamat file gambar"
-                                    name="foto" value="{{old('', $data->foto)}}">
-                                <small class="text-muted">Sisipkan alamat file gambar. Gambar diunggah terlebih dahulu
-                                    pada halaman <a href="{{route('admin.gambar')}}" target="_blank">Kelolah
-                                        Gambar</a></small>
 
-                                @if($errors->has('foto '))
-                                <label class="text-danger"> {{ $errors->first('foto ') }} </label>
-                                @endif
-                            </div>
-                            <!-- input item end -->
 
                             <div class="mb-3 fs-4">
                                 <label for="" class="fw-bold">Nama Lengkap</label>

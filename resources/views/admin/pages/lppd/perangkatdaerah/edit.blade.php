@@ -34,17 +34,7 @@
                             @csrf
                             @method('put')
 
-                            <label for="" class="fw-bold">Foto Kantor</label>
-                            <div class="mb-3 fs-4 text-center">
 
-                                <img src="{{asset('file/foto/perangkatdaerah')}}/{{ $data->perangkatdaerah->foto_gedung ?? ''}}"
-                                    alt="Logo" width="250px" class="img-thumbnail mb-1">
-
-                                <input type="file" name="foto_gedung" class="form-control form-control-lg">
-                                @if($errors->has('foto_gedung'))
-                                <label class="text-danger"> {{ $errors->first('foto_gedung') }} </label>
-                                @endif
-                            </div>
 
                             <div class="mb-3 fs-4">
                                 <label for="" class="fw-bold">Nama Organisasi</label>

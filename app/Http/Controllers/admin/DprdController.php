@@ -75,12 +75,12 @@ class DprdController extends Controller
                 $dprd->pendidikan       = $request->pendidikan;
                 $dprd->foto             = $request->foto;
                 $dprd->slug             = Str::slug($request->nama_lengkap);
-                
+
                 $dprd->save();
 
                 alert()->success('Berhasil', 'Sukses!!')->autoclose(1100);
                 return redirect()->route('admin.dprd');
-                
+
             } catch (\Throwable $th) {
 
                 alert()->error('Maaf', 'Gagal!!')->autoclose(1100);
@@ -145,7 +145,7 @@ class DprdController extends Controller
                 $dprd->pendidikan       = $request->pendidikan;
                 $dprd->foto             = $request->foto;
                 $dprd->slug             = Str::slug($request->nama_lengkap);
-                
+
                 $dprd->update();
 
                 alert()->success('Berhasil', 'Sukses!!')->autoclose(1100);
@@ -173,11 +173,6 @@ class DprdController extends Controller
     {
         try {
             $dprd = Dprd::find($id);
-            $path = public_path('file/foto/dprd/' . $dprd->foto);
-
-            if (file_exists($path)) {
-                File::delete($path);
-            }
             $dprd->delete();
             alert()->success('Berhasil', 'Terhapus!!')->autoclose(1500);
             return redirect()->route('admin.dprd');

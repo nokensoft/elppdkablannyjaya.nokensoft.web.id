@@ -7,12 +7,10 @@ use App\Models\PerangkatDaerah;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-use RealRashid\SweetAlert\Facades\Alert;
-use Spatie\Permission\Models\Role;
+
 
 class PerangkatDaerahController extends Controller
 {
@@ -40,7 +38,7 @@ class PerangkatDaerahController extends Controller
             'email'                             => 'required|email|unique:users,email',
             'password'                          => 'required|same:confirm-password',
             'nama_organisasi'                   => 'required|unique:perangkat_daerahs',
-            'foto_gedung'                       => 'mimes:jpeg,png,jpg',
+
         ],
         [
             'email.required'                    => 'Email pengguna tidak boleh kosong',
@@ -49,7 +47,7 @@ class PerangkatDaerahController extends Controller
 
             'nama_organisasi.required'          => 'Nama instansi/Organisasi tidak boleh kosong',
             'nama_organisasi.unique'            => 'Nama instansi/Organisasi sudah ada',
-            'foto_gedung.mimes'                 => 'Foto Gedung harus dengan jenis JPEG,JPG,PNG',
+
         ]
     );
 
@@ -77,13 +75,6 @@ class PerangkatDaerahController extends Controller
                 $perangkatdaerah->status            = $request->status;
                 $perangkatdaerah->slug              =  Str::slug($request->nama_organisasi);
 
-                $posterName = time() . '.' . $request->foto_gedung->extension();
-                $path = public_path('file/foto/perangkatdaerah');
-                if (!empty($perangkatdaerah->foto_gedung) && file_exists($path . '/' . $perangkatdaerah->foto_gedung)) :
-                    unlink($path . '/' . $perangkatdaerah->foto_gedung);
-                endif;
-                $perangkatdaerah->foto_gedung = $posterName;
-                $request->foto_gedung->move(public_path('file/foto/perangkatdaerah'), $posterName);
 
                 $akun->perangkatdaerahs()->save($perangkatdaerah);
 
@@ -125,7 +116,6 @@ class PerangkatDaerahController extends Controller
         [
             'nama_organisasi.required'          => 'Nama instansi/Organisasi tidak boleh kosong',
             'nama_organisasi.unique'            => 'Nama instansi/Organisasi sudah ada',
-            'foto_gedung.mimes'                 => 'Foto Gedung harus dengan jenis JPEG,JPG,PNG',
         ]
     );
 
@@ -159,15 +149,7 @@ class PerangkatDaerahController extends Controller
             $perangkatdaerah->user_id           = $request->user_id;
             $perangkatdaerah->slug              =  Str::slug($request->nama_organisasi);
 
-            if($request->foto_gedung){
-                $posterName = time() . '.' . $request->foto_gedung->extension();
-                $path = public_path('file/foto/perangkatdaerah');
-                if (!empty($perangkatdaerah->foto_gedung) && file_exists($path . '/' . $perangkatdaerah->foto_gedung)) :
-                    unlink($path . '/' . $perangkatdaerah->foto_gedung);
-                endif;
-                $perangkatdaerah->foto_gedung = $posterName;
-                $request->foto_gedung->move(public_path('file/foto/perangkatdaerah'), $posterName);
-            }
+
 
             $akun->perangkatdaerahs()->save($perangkatdaerah);
 
@@ -194,13 +176,10 @@ class PerangkatDaerahController extends Controller
     public function destroy($id)
     {
         try {
-            $perangkatdaerah = PerangkatDaerah::find($id);
-            $path = public_path('file/foto/perangkatdaerah/' . $perangkatdaerah->foto_gedung);
+            $user = User::find($id);
 
-            if (file_exists($path)) {
-                File::delete($path);
-            }
-            $perangkatdaerah->user->delete();
+            $user->perangkatdaerahs()->delete();
+            $user->delete();
             alert()->success('Berhasil', 'Sukses!!')->autoclose(1500);
             return redirect()->route('admin.perangkatdaerah');
 

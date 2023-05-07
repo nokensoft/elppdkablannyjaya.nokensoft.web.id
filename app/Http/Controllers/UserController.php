@@ -113,16 +113,26 @@ class UserController extends Controller
     }
 
     // DESTROY
-    public function destroy($id)
-    {
-        User::find($id)->delete();
-        Alert::toast('Pengguna Berhasil dihapus!', 'success');
-        return redirect()->route('pengguna.index');
-    }
-
     public function delete($id)
     {
         $data = User::where('slug',$id)->first();
         return view('admin.users.delete',compact('data'));
     }
+
+    public function destroy($id)
+    {
+        try {
+            $user = User::find($id);
+
+            $user->delete();
+            Alert::toast('Pengguna Berhasil dihapus!', 'success');
+            return redirect()->route('pengguna.index');
+        } catch (\Throwable $e) {
+            Alert::toast('Gagal', ['error' => $e->getMessage()], 'error');
+            return redirect()->back();
+        }
+
+    }
+
+
 }
