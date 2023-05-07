@@ -35,7 +35,7 @@
                             @method('PUT')
 
                             <div class="mb-3 fs-4">
-                                <label for="pemda_namainstansi" class="fw-bold">Nama Instansi</label>
+                                <label for="pemda_namainstansi" class="fw-bold mb-2">Nama Instansi</label>
                                 <input type="text" class="form-control form-control-lg" id="pemda_namainstansi"
                                     name="pemda_namainstansi"
                                     value="{{old('pemda_namainstansi') ? old('pemda_namainstansi') : $data->pemda_namainstansi }}">
@@ -48,7 +48,7 @@
                             <!-- input item end -->
 
                             <div class="mb-3 fs-4">
-                                <label for="pemda_lambang" class="fw-bold d-block">Lambang Pemerintah Darah</label>
+                                <label for="pemda_lambang" class="fw-bold d-block mb-2">Lambang Pemerintah Darah</label>
 
                                 @if (empty($data->pemda_peta))
                                 <img src="{{ asset('gambar/default.png') }}" alt="{{$data->pemda_lambang}}" alt="gambar" class="img-thumbnail" width="250px">
@@ -69,7 +69,7 @@
                             <!-- input item end -->
 
                             <div class="mb-3 fs-4">
-                                <label for="pemda_peta" class="fw-bold d-block">Gambar Peta Wilayah</label>
+                                <label for="pemda_peta" class="fw-bold d-block mb-2">Gambar Peta Wilayah</label>
 
                                 @if (empty($data->pemda_peta))
                                 <img src="{{ asset('gambar/default.png') }}" alt="{{$data->pemda_peta}}" alt="gambar" width="250px" class="img-thumbnail">

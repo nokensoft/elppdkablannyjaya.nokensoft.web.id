@@ -35,14 +35,13 @@
                                 <tr>
                                     <td class="fw-bold">Lambang Daerah</td>
                                     <td>
-                                        <img src="{{ asset('gambar/' . $data->pemda_lambang) }}"
-                                            class="img-thumbnail col-lg-6" alt="Foto">
+                                        <img src="{{ asset('gambar/' . $data->pemda_lambang) }}" alt="gambar" class="img-thumbnail col-lg-6">
                                     </td>
                                 </tr>
                                 <tr>
                                     <td class="fw-bold">Peta Wilayah</td>
                                     <td>
-                                        <img src="{{ asset('gambar/' . $data->pemda_peta) }}" class="img-thumbnail w-100" alt="Foto">
+                                        <img src="{{ asset('gambar/' . $data->pemda_peta) }}" alt="gambar" class="img-thumbnail w-100">
                                     </td>
                                 </tr>
                             </tbody>

@@ -34,7 +34,7 @@
                             @method('PUT')
 
                             <div class="mb-3 fs-4">
-                                <label for="kepala_nama" class="fw-bold">Nama Kepala Daerah</label>
+                                <label for="kepala_nama" class="fw-bold d-block mb-2">Nama Kepala Daerah</label>
                                 <input type="text" class="form-control form-control-lg" id="kepala_nama"
                                     name="kepala_nama"
                                     value="{{old('kepala_nama') ? old('kepala_nama') : $data->kepala_nama }}">
@@ -47,10 +47,8 @@
                             <!-- input item end -->
 
                             <div class="mb-3 fs-4">
-                                <label for="kepala_nik" class="fw-bold">NIK</label>
-                                <input type="text" class="form-control form-control-lg" id="kepala_nik"
-                                    name="kepala_nik"
-                                    value="{{old('kepala_nik') ? old('kepala_nik') : $data->kepala_nik }}">
+                                <label for="kepala_nik" class="fw-bold d-block mb-2">NIK</label>
+                                <input type="text" class="form-control form-control-lg" id="kepala_nik" name="kepala_nik" value="{{old('kepala_nik') ? old('kepala_nik') : $data->kepala_nik }}">
 
                                 @if($errors->has('kepala_nik'))
                                 <small class="text-danger"> {{ $errors->first('kepala_nik') }} </small>
@@ -60,10 +58,8 @@
                             <!-- input item end -->
 
                             <div class="mb-3 fs-4">
-                                <label for="kepala_tgl_lahir" class="fw-bold">Tanggal Lahir</label>
-                                <input type="text" class="form-control form-control-lg" id="kepala_tgl_lahir"
-                                    name="kepala_tgl_lahir"
-                                    value="{{old('kepala_tgl_lahir') ? old('kepala_tgl_lahir') : $data->kepala_tgl_lahir }}">
+                                <label for="kepala_tgl_lahir" class="fw-bold d-block mb-2">Tanggal Lahir</label>
+                                <input type="text" class="form-control form-control-lg" id="kepala_tgl_lahir" name="kepala_tgl_lahir" value="{{old('kepala_tgl_lahir') ? old('kepala_tgl_lahir') : $data->kepala_tgl_lahir }}">
 
                                 @if($errors->has('kepala_tgl_lahir'))
                                 <small class="text-danger"> {{ $errors->first('kepala_tgl_lahir') }} </small>
@@ -73,7 +69,7 @@
                             <!-- input item end -->
 
                             <div class="mb-3 fs-4">
-                                <label for="kepala_tgl_pelantikan" class="fw-bold">Tanggal Pelantikan</label>
+                                <label for="kepala_tgl_pelantikan" class="fw-bold d-block mb-2">Tanggal Pelantikan</label>
                                 <input type="text" class="form-control form-control-lg" id="kepala_tgl_pelantikan"
                                     name="kepala_tgl_pelantikan"
                                     value="{{old('kepala_tgl_pelantikan') ? old('kepala_tgl_pelantikan') : $data->kepala_tgl_pelantikan }}">
@@ -86,7 +82,7 @@
                             <!-- input item end -->
 
                             <div class="mb-3 fs-4">
-                                <label for="kepala_no_sk" class="fw-bold">Nomor SK</label>
+                                <label for="kepala_no_sk" class="fw-bold d-block mb-2">Nomor SK</label>
                                 <input type="text" class="form-control form-control-lg" id="kepala_no_sk"
                                     name="kepala_no_sk"
                                     value="{{old('kepala_no_sk') ? old('kepala_no_sk') : $data->kepala_no_sk }}">
@@ -99,7 +95,7 @@
                             <!-- input item end -->
 
                             <div class="mb-3 fs-4">
-                                <label for="kepala_file_sk" class="fw-bold">File SK</label>
+                                <label for="kepala_file_sk" class="fw-bold d-block mb-2">File SK</label>
                                 <input type="text" class="form-control form-control-lg" id="kepala_file_sk"
                                     name="kepala_file_sk"
                                     value="{{old('kepala_file_sk') ? old('kepala_file_sk') : $data->kepala_file_sk }}">
@@ -112,10 +108,8 @@
                             <!-- input item end -->
 
                             <div class="mb-3 fs-4">
-                                <label for="kepala_asal_partai" class="fw-bold">Asal Partai</label>
-                                <input type="text" class="form-control form-control-lg" id="kepala_asal_partai"
-                                    name="kepala_asal_partai"
-                                    value="{{old('kepala_asal_partai') ? old('kepala_asal_partai') : $data->kepala_asal_partai }}">
+                                <label for="kepala_asal_partai" class="fw-bold d-block mb-2">Asal Partai</label>
+                                <input type="text" class="form-control form-control-lg" id="kepala_asal_partai" name="kepala_asal_partai" value="{{old('kepala_asal_partai') ? old('kepala_asal_partai') : $data->kepala_asal_partai }}">
 
                                 @if($errors->has('kepala_asal_partai'))
                                 <small class="text-danger"> {{ $errors->first('kepala_asal_partai') }} </small>
@@ -125,9 +119,8 @@
                             <!-- input item end -->
 
                             <div class="mb-3 fs-4">
-                                <label for="kepala_visi_misi" class="fw-bold">Visi & Misi</label>
-                                <textarea name="kepala_visi_misi" id="kepala_visi_misi" cols="30" rows="10"
-                                    class="form-control form-control-lg">{{old('kepala_visi_misi') ? old('kepala_visi_misi') : $data->kepala_visi_misi }}</textarea>
+                                <label for="kepala_visi_misi" class="fw-bold d-block mb-2">Visi & Misi</label>
+                                <textarea name="kepala_visi_misi" id="kepala_visi_misi" cols="30" rows="10" class="form-control form-control-lg">{{old('kepala_visi_misi') ? old('kepala_visi_misi') : $data->kepala_visi_misi }}</textarea>
 
                                 @if($errors->has('kepala_visi_misi'))
                                 <small class="text-danger"> {{ $errors->first('kepala_visi_misi') }} </small>
@@ -137,9 +130,8 @@
                             <!-- input item end -->
 
                             <div class="mb-3 fs-4">
-                                <label for="kepala_riwayat" class="fw-bold">Riwayat Hidup</label>
-                                <textarea name="kepala_riwayat" id="kepala_riwayat" cols="30" rows="10"
-                                    class="form-control form-control-lg">{{old('kepala_riwayat') ? old('kepala_riwayat') : $data->kepala_riwayat }}</textarea>
+                                <label for="kepala_riwayat" class="fw-bold d-block mb-2">Riwayat Hidup</label>
+                                <textarea name="kepala_riwayat" id="kepala_riwayat" cols="30" rows="10" class="form-control form-control-lg">{{old('kepala_riwayat') ? old('kepala_riwayat') : $data->kepala_riwayat }}</textarea>
 
                                 @if($errors->has('kepala_riwayat'))
                                 <small class="text-danger"> {{ $errors->first('kepala_riwayat') }} </small>
@@ -149,14 +141,17 @@
                             <!-- input item end -->
 
                             <div class="mb-3 fs-4">
+                                <label for="kepala_riwayat" class="fw-bold d-block mb-2">Foto Kepala Daerah</label>
                                 @if ($data->kepala_foto == null)
-                                <img src="{{asset('assets/images/profildaerah/kepala.png')}}" alt="{{$data->slug}}"
-                                    width="250px" class="img-thumbnail">
+                                <img src="{{asset('gambar/default.png')}}" alt="gambar" width="250px" class="img-thumbnail">
                                 @else
-                                <img src="{{ url($data->kepala_foto)}}" alt="{{$data->kepala_foto}}"
-                                    class="img-fluid img-thumbnail" width="250px" class="img-thumbnail"></td>
+                                <img src="{{ asset('gambar/' . $data->kepala_foto)}}" alt="gambar" class="img-fluid img-thumbnail" width="250px" class="img-thumbnail"></td>
                                 @endif
-                                <input type="file" class="form-control form-control-lg mt-2" name="kepala_foto">
+
+                                <input type="text" class="form-control form-control-lg mt-2" id="kepala_foto" name="kepala_foto" value="{{old('kepala_foto') ? old('kepala_foto') : $data->kepala_foto }}">
+                                <small class="text-muted">Gambar diunggah terlebih dahulu pada halaman <a href="{{route('admin.gambar')}}" target="_blank" class="link-info">Kelolah Gambar</a>, kemudian copy & paste alamat gambarnya.</small>
+
+                                {{-- <input type="file" class="form-control form-control-lg mt-2" name="kepala_foto"> --}}
                             </div>
                             <!-- input item end -->
 

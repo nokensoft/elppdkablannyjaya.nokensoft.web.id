@@ -82,16 +82,16 @@ class ProfilDaerahController extends Controller
 
         $pengaturan = new ProfilDaerah();
 
-        $data['kepala_nama']                 = $request->kepala_nama;
-        $data['kepala_nik']                  = $request->kepala_nik;
-        $data['kepala_tgl_lahir']            = $request->kepala_tgl_lahir;
-        $data['kepala_tgl_pelantikan']            = $request->kepala_tgl_pelantikan;
-        $data['kepala_no_sk']            = $request->kepala_no_sk;
-        $data['kepala_file_sk']            = $request->kepala_file_sk;
-        $data['kepala_asal_partai']            = $request->kepala_asal_partai;
-        $data['kepala_visi_misi']            = $request->kepala_visi_misi;
-        $data['kepala_riwayat']            = $request->kepala_riwayat;
-        // $data['kepala_foto']            = $request->kepala_foto;
+        $data['kepala_nama']                = $request->kepala_nama;
+        $data['kepala_nik']                 = $request->kepala_nik;
+        $data['kepala_tgl_lahir']           = $request->kepala_tgl_lahir;
+        $data['kepala_tgl_pelantikan']      = $request->kepala_tgl_pelantikan;
+        $data['kepala_no_sk']               = $request->kepala_no_sk;
+        $data['kepala_file_sk']             = $request->kepala_file_sk;
+        $data['kepala_asal_partai']         = $request->kepala_asal_partai;
+        $data['kepala_visi_misi']           = $request->kepala_visi_misi;
+        $data['kepala_riwayat']             = $request->kepala_riwayat;
+        $data['kepala_foto']                = $request->kepala_foto;
 
         ProfilDaerah::whereId($id)->update($data);
 

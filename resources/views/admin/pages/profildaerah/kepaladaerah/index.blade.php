@@ -29,40 +29,40 @@
                         <table class="table table-bordered fs-4">
                             <tbody>
                                 <tr>
-                                    <td>Nama Kepala Daerah</td>
-                                    <td class="fw-bold">{{$data->kepala_nama}}</td>
+                                    <td class="fw-bold" width="250px">Nama Kepala Daerah</td>
+                                    <td>{{$data->kepala_nama}}</td>
                                 </tr>
                                 <tr>
-                                    <td>NIK</td>
-                                    <td class="fw-bold">{{$data->kepala_nik}}</td>
+                                    <td class="fw-bold">NIK</td>
+                                    <td>{{$data->kepala_nik}}</td>
                                 </tr>
                                 <tr>
-                                    <td>Tanggal Lahir</td>
-                                    <td class="fw-bold">{{$data->kepala_tgl_lahir}}</td>
+                                    <td class="fw-bold">Tanggal Lahir</td>
+                                    <td>{{$data->kepala_tgl_lahir}}</td>
                                 </tr>
                                 <tr>
-                                    <td>Tanggal Pelantikan</td>
-                                    <td class="fw-bold">{{$data->kepala_tgl_pelantikan}}</td>
+                                    <td class="fw-bold">Tanggal Pelantikan</td>
+                                    <td>{{$data->kepala_tgl_pelantikan}}</td>
                                 </tr>
                                 <tr>
-                                    <td>Nomor SK</td>
-                                    <td class="fw-bold">{{$data->kepala_no_sk}}</td>
+                                    <td class="fw-bold">Nomor SK</td>
+                                    <td>{{$data->kepala_no_sk}}</td>
                                 </tr>
                                 <tr>
-                                    <td>File SK</td>
-                                    <td class="fw-bold">{{$data->kepala_file_sk}}</td>
+                                    <td class="fw-bold">File SK</td>
+                                    <td>{{$data->kepala_file_sk}}</td>
                                 </tr>
                                 <tr>
-                                    <td>Asal Partai</td>
-                                    <td class="fw-bold">{{$data->kepala_asal_partai}}</td>
+                                    <td class="fw-bold">Asal Partai</td>
+                                    <td>{{$data->kepala_asal_partai}}</td>
                                 </tr>
                                 <tr>
-                                    <td>Visi & Misi</td>
-                                    <td class="fw-bold">{{$data->kepala_visi_misi}}</td>
+                                    <td class="fw-bold">Visi & Misi</td>
+                                    <td>{{$data->kepala_visi_misi}}</td>
                                 </tr>
                                 <tr>
-                                    <td>Riwayat</td>
-                                    <td class="fw-bold">{{$data->kepala_riwayat}}</td>
+                                    <td class="fw-bold">Riwayat</td>
+                                    <td>{{$data->kepala_riwayat}}</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -77,7 +77,7 @@
                             <tbody>
                                 <tr>
                                     <td class="fw-bold text-center">
-                                        <img src="{{ asset($data->kepala_foto) }}" class="img-thumbnail" alt="Foto">
+                                        <img src="{{ asset('gambar/' . $data->kepala_foto) }}" class="img-thumbnail" alt="Foto">
                                     </td>
                                 </tr>
                             </tbody>
