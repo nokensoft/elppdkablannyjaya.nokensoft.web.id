@@ -39,12 +39,12 @@ class AppServiceProvider extends ServiceProvider
             URL::forceScheme('http');
         }
 
-        $pengaturan = Pengaturan::first();
-        $perangkatDaerah = PerangkatDaerah::get();
+        $pengaturan             = Pengaturan::first();
+        $perangkatDaerah        = PerangkatDaerah::get();
 
         view::share([
-            'pengaturan' => $pengaturan,
-            'perangkatDaerah' => $perangkatDaerah,
+            'pengaturan'        => $pengaturan,
+            'perangkatDaerah'   => $perangkatDaerah,
         ]);
 
     }

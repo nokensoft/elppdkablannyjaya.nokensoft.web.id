@@ -110,10 +110,12 @@
                 </a>
                 <div class="dropdown-menu">
                     <!-- item-->
-                    <a href="{{asset('admin/lppd/monitoring')}}" class="dropdown-item fs-4">
+                    
+                    {{-- <a href="{{asset('admin/lppd/monitoring')}}" class="dropdown-item fs-4">
                         <i class="fas fa-bookmark me-1"></i>
                         <span>Monitoring</span>
-                    </a>
+                    </a> --}}
+
                     <!-- item-->
                     <a href="{{asset('admin/lppd/pelaporan')}}" class="dropdown-item fs-4">
                         <i class="fas fa-bookmark me-1"></i>
@@ -131,17 +133,20 @@
                     <i class="mdi mdi-chevron-down"></i>
                 </a>
                 <div class="dropdown-menu">
+                    <a href="{{asset('admin/ikk')}}" class="dropdown-item fs-4">
+                        <i class="fas fa-bookmark me-1"></i>
+                        <span>Pelaporan</span>
+                    </a>
+                    <!-- item-->
 
-                    @foreach ($perangkatDaerah as $dataPerangkatDaerah )
+                    {{-- @foreach ($perangkatDaerah as $dataPerangkatDaerah )
                     <a href="{{route('admin.ikk.method',['method' => $dataPerangkatDaerah->urusan])}}"
                         class="dropdown-item fs-4">
                         <i class="fas fa-bookmark me-1"></i>
                         <span>{{ $dataPerangkatDaerah->nama_organisasi }}</span>
                     </a>
-                    <!-- item-->
-                    <br>
-
                     @endforeach
+                    <!-- item--> --}}
 
                     {{-- <a href="{{asset('admin/ikk/pendidikan')}}" class="dropdown-item fs-4">
                         <i class="fas fa-bookmark me-1"></i>

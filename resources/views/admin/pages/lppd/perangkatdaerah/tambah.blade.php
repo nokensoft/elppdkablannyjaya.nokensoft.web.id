@@ -34,85 +34,105 @@
                             enctype="multipart/form-data">
                             @csrf
 
-
-
                             <div class="mb-3 fs-4">
-                                <label for="" class="fw-bold">Nama Organisasi</label>
-                                <input type="text" class="form-control form-control-lg"
-                                    placeholder="Nama Instansi atau Organisasi" value="{{ old('nama_organisasi')}}"
-                                    name="nama_organisasi">
+                                <label for="nama_organisasi" class="fw-bold mb-2 d-block">Nama Organisasi</label>
+                                <input type="text" class="form-control form-control-lg" placeholder="Nama Instansi atau Organisasi" value="{{ old('nama_organisasi') }}" name="nama_organisasi">
+
                                 @if($errors->has('nama_organisasi'))
                                 <label class="text-danger"> {{ $errors->first('nama_organisasi') }} </label>
                                 @endif
+
                             </div>
                             <!-- input item end -->
 
                             <div class="mb-3 fs-4">
-                                <label for="" class="fw-bold">Urusan</label>
-                                <input type="text" class="form-control form-control-lg" placeholder="Urusan"
-                                    value="{{ old('urusan')}}" name="urusan">
+                                <label for="urusan" class="fw-bold mb-2 d-block">Urusan</label>
+                                <input type="text" class="form-control form-control-lg" placeholder="Urusan" value="{{ old('urusan')}}" name="urusan">
+
                                 @if($errors->has('urusan'))
                                 <label class="text-danger"> {{ $errors->first('urusan') }} </label>
                                 @endif
+
                             </div>
                             <!-- input item end -->
 
-
-
                             <div class="mb-3 fs-4">
-                                <label for="" class="fw-bold">Alamat</label>
-                                <textarea name="alamat" id="" rows="5" class="form-control form-control-lg"
-                                    placeholder="Alamat Kantor">{{ old('alamat')}}</textarea>
+                                <label for="" class="fw-bold mb-2 d-block">Alamat</label>
+                                <textarea name="alamat" id="" rows="5" class="form-control form-control-lg" placeholder="Alamat Kantor">{{ old('alamat') }}</textarea>
+
                                 @if($errors->has('alamat'))
                                 <label class="text-danger"> {{ $errors->first('alamat') }} </label>
                                 @endif
+
                             </div>
                             <!-- input item end -->
 
                             <div class="mb-3 fs-4">
-                                <label for="" class="fw-bold">Nama Pimpinan</label>
-                                <input type="text" class="form-control form-control-lg"
-                                    placeholder="Nama Pimpinan Dinas" value="{{ old('nama_pimpinan')}}"
-                                    name="nama_pimpinan">
+                                <label for="" class="fw-bold mb-2 d-block">Nama Pimpinan</label>
+                                <input type="text" class="form-control form-control-lg" placeholder="Nama Pimpinan Dinas" value="{{ old('nama_pimpinan') }}" name="nama_pimpinan">
+
                                 @if($errors->has('nama_pimpinan'))
                                 <label class="text-danger"> {{ $errors->first('nama_pimpinan') }} </label>
                                 @endif
+
                             </div>
                             <!-- input item end -->
 
                             <div class="mb-3 fs-4">
-                                <label for="" class="fw-bold">Jumlah Pegawai</label>
-                                <input type="text" class="form-control form-control-lg" placeholder="Jumlah Pegawai"
-                                    value="{{ old('jumlah_pegawai')}}" name="jumlah_pegawai">
+                                <label for="" class="fw-bold mb-2 d-block">Jumlah Pegawai</label>
+                                <input type="text" class="form-control form-control-lg" placeholder="Jumlah Pegawai" value="{{ old('jumlah_pegawai') }}" name="jumlah_pegawai">
+
                                 @if($errors->has('jumlah_pegawai'))
                                 <label class="text-danger"> {{ $errors->first('jumlah_pegawai') }} </label>
                                 @endif
+
                             </div>
                             <!-- input item end -->
 
                             <div class="border-top border-1 pt-3 mt-4"></div>
 
                             <div class="mb-3 fs-4">
-                                <label for="" class="fw-bold">Alamat Email</label>
-                                <input type="text" class="form-control form-control-lg" placeholder="Alamat email"
-                                    value="{{ old('email')}}" name="email">
+                                <label for="" class="fw-bold mb-2 d-block">Alamat Email</label>
+                                <input type="text" class="form-control form-control-lg" placeholder="Alamat email" value="{{ old('email') }}" name="email">
+
                                 @if($errors->has('email'))
                                 <label class="text-danger"> {{ $errors->first('email') }} </label>
                                 @endif
+
                             </div>
                             <!-- input item end -->
 
                             <div class="mb-3 fs-4">
-                                <label for="" class="fw-bold">Kata Sandi</label>
+                                <label for="" class="fw-bold mb-2 d-block">Kata Sandi</label>
                                 {!! Form::password('password',['id'=>'password','class'=>'form-control
                                 form-control-lg','placeholder'=>'Kata sandi pengguna']) !!}
+                                
+                                @if($errors->has('password'))
+                                <label class="text-danger"> {{ $errors->first('password') }} </label>
+                                @endif
+
                             </div>
                             <!-- input item end -->
 
                             <div class="mb-3 fs-4">
-                                <label for="" class="fw-bold">Konfirmasi Kata Sandi</label>
+                                <label for="" class="fw-bold mb-2 d-block">Konfirmasi Kata Sandi</label>
                                 {!! Form::password('confirm-password',['id'=>'confirm-password','class'=>'form-control
                                 form-control-lg','placeholder'=>'Konfirmasi kata sandi pengguna']) !!}
+                                
+                                @if($errors->has('confirm-password'))
+                                <label class="text-danger"> {{ $errors->first('confirm-password') }} </label>
+                                @endif
+
+                            </div>
+                            <!-- input item end -->
+
+                            <div class="mb-3 fs-4">
+                                <label for="foto_gedung" class="fw-bold d-block mb-2">Foto Gedung</label>
+                                <img src="{{ asset('gambar/default.png') }}" alt="gambar" width="250px" class="img-thumbnail">
+
+                                <input type="text" class="form-control form-control-lg mt-2" id="foto_gedung" name="foto_gedung" value="{{old('foto_gedung') ? old('foto_gedung') : '' }}">
+                                <small class="text-muted">Gambar diunggah terlebih dahulu pada halaman <a href="{{route('admin.gambar')}}" target="_blank" class="link-info">Kelolah Gambar</a>, kemudian copy & paste alamat gambarnya.</small>
+
                             </div>
                             <!-- input item end -->
 

@@ -20,12 +20,29 @@
     <div class="col">
         <div class="card">
             <div class="card-body">
-                <h1 class="fw-bold">Perangkat Daerah</h1>
-                <div class="mb-3">
-                    <a href="{{route('admin.perangkatdaerah.create')}}"
-                        class="btn btn-info waves-effect waves-light fs-4">
-                        <i class="fas fa-plus me-1"></i> Tambah Data
-                    </a>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <h1 class="fw-bold">Perangkat Daerah</h1>
+                        Tanggal : <span class="fw-bold">{{ today()->toDateString() }}</span>
+                    </div>
+                    <div class="col-md-6 text-md-end">
+                        <a href="{{ route('admin.perangkatdaerah.create') }}" class="btn btn-info waves-effect waves-light fs-4">
+                            <i class="fas fa-plus me-1"></i> Tambah Data
+                        </a>
+
+                        <a href="{{ route('admin.perangkatdaerah.print') }}" target="_blank"
+                            class="btn btn-outline-info border-0 waves-effect waves-light fs-4"
+                            title="Cetak file atau export ke file PDF">
+                            <i class="fas fa-print me-1"></i> Print
+                        </a>
+
+                        {{-- <a target="_blank" class="btn btn-outline-info border-0 waves-effect waves-light fs-4"
+                            title="Download file excel">
+                            <i class="fas fa-file me-1"></i> Download Excel
+                        </a> --}}
+
+                    </div>
                 </div>
 
                 <div class="row">

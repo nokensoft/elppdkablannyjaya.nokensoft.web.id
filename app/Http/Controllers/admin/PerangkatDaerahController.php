@@ -21,7 +21,19 @@ class PerangkatDaerahController extends Controller
             $q->where('name','opd');
         })
         ->orderBy('id','Desc')->paginate(4);
+
         return view('admin.pages.lppd.perangkatdaerah.index', compact('datas'));
+    }
+
+    // PRINT
+    public function print()
+    {
+        $datas = User::whereHas('roles',function($q){
+            $q->where('name','opd');
+        })
+        ->orderBy('id','Desc')->get();
+        
+        return view('admin.pages.lppd.perangkatdaerah.print', compact('datas'));
     }
 
     // CREATE
@@ -38,12 +50,14 @@ class PerangkatDaerahController extends Controller
             'email'                             => 'required|email|unique:users,email',
             'password'                          => 'required|same:confirm-password',
             'nama_organisasi'                   => 'required|unique:perangkat_daerahs',
+            'urusan'                            => 'required',
 
         ],
         [
             'email.required'                    => 'Email pengguna tidak boleh kosong',
             'email.unique'                      => 'Email ini telah digunakan',
             'password.required'                 => 'Nama pengguna tidak boleh kosong',
+            'urusan.required'                   => 'Urusan tidak boleh kosong',
 
             'nama_organisasi.required'          => 'Nama instansi/Organisasi tidak boleh kosong',
             'nama_organisasi.unique'            => 'Nama instansi/Organisasi sudah ada',
@@ -73,6 +87,7 @@ class PerangkatDaerahController extends Controller
                 $perangkatdaerah->nama_pimpinan     = $request->nama_pimpinan;
                 $perangkatdaerah->jumlah_pegawai    = $request->jumlah_pegawai;
                 $perangkatdaerah->status            = $request->status;
+                $perangkatdaerah->foto_gedung       = $request->foto_gedung;
                 $perangkatdaerah->slug              =  Str::slug($request->nama_organisasi);
 
 
