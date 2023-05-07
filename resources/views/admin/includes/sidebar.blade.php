@@ -5,7 +5,8 @@
 
         <!-- User box -->
         <div class="user-box text-center">
-            <img src="{{ asset( Auth::user()->avatar )}}" alt="user-img" title="Mat Helme" class="rounded-circle avatar-md">
+            <img src="{{ asset( Auth::user()->avatar )}}" alt="user-img" title="Mat Helme"
+                class="rounded-circle avatar-md">
             <div class="dropdown">
                 <a href="javascript: void(0);" class="text-black dropdown-toggle h5 mt-2 mb-1 d-block"
                     data-bs-toggle="dropdown"> {{ Auth::user()->name }}</a>
@@ -140,7 +141,7 @@
                     </a>
                     <div class="collapse" id="sidebarEcommerce">
                         <ul class="nav-second-level">
-                        <li>
+                            <li>
                                 <a href="{{ url('/app/kategori')}}">Kategori</a>
                             </li>
                             <li>

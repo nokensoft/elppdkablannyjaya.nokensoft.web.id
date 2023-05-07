@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Print</title>
 
-            <!-- Bootstrap css -->
-            <link href="{{ asset('assets/admin/assets/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" />
-            <!-- App css -->
-            <link href="{{ asset('assets/admin/assets/css/app.min.css')}}" rel="stylesheet" type="text/css" id="app-style"/>
-            <!-- icons -->
+    <!-- Bootstrap css -->
+    <link href="{{ asset('assets/admin/assets/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" />
+    <!-- App css -->
+    <link href="{{ asset('assets/admin/assets/css/app.min.css')}}" rel="stylesheet" type="text/css" id="app-style" />
+    <!-- icons -->
     <style>
-        @media print{
+        @media print {
             @page {
                 size: landscape;
                 font: 11px;
@@ -25,9 +26,10 @@
     </style>
 
 </head>
+
 <body onload="window.print()">
 
-    
+
     <div class="row">
         <div class="col">
             <div class="card">
@@ -58,26 +60,29 @@
                                 </thead>
                                 <tbody>
                                     @foreach ($datas as $data )
-                                        <tr>
-                                            <td>{{$data->nama_lengkap}}</td>
-                                            <td>{{$data->jabatan}}</td>
-                                            <td>{{$data->nik}}</td>
-                                            <td>{{$data->alamat}}</td>
-                                            <td>{{$data->ttl}}</td>
-                                            <td>{{$data->nama_partai}}</td>
-                                            <td>{{$data->pendidikan}}</td>
-                                            <td>
-                                                @if ($data->foto == null)
-                                                    <img src="{{asset('assets/admin/assets/images/users/user-man.png')}}" alt="Logo" width="100%" class="img-thumbnail">
-                                                @else
-                                                 <img src="{{ url($data->foto)}}" alt="{{$data->foto}}" class="img-fluid img-thumbnail" width="100"></td>
-                                                @endif
-                                            </td>
-                                        </tr>
+                                    <tr>
+                                        <td>{{$data->nama_lengkap}}</td>
+                                        <td>{{$data->jabatan}}</td>
+                                        <td>{{$data->nik}}</td>
+                                        <td>{{$data->alamat}}</td>
+                                        <td>{{$data->ttl}}</td>
+                                        <td>{{$data->nama_partai}}</td>
+                                        <td>{{$data->pendidikan}}</td>
+                                        <td>
+                                            @if ($data->foto == null)
+                                            <img src="{{asset('assets/admin/assets/images/users/user-man.png')}}"
+                                                alt="Logo" width="100%" class="img-thumbnail">
+                                            @else
+                                            <img src="{{ url($data->foto)}}" alt="{{$data->foto}}"
+                                                class="img-fluid img-thumbnail" width="100">
+                                        </td>
+                                        @endif
+                                        </td>
+                                    </tr>
                                     @endforeach
                                 </tbody>
                             </table>
-                            
+
                         </div>
                         <!-- .col end -->
 
@@ -88,8 +93,9 @@
         </div>
     </div>
     <!-- end row -->
-                    
 
-    
+
+
 </body>
+
 </html>

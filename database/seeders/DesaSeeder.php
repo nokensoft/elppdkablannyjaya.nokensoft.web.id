@@ -25,7 +25,8 @@ class DesaSeeder extends Seeder
             'alamat'                    => 'Lanny Jaya.',
             'telp'                      => '082112341234',
             'email'                     => $faker->email(),
-            'distrik_id'                => 1
+            'distrik_id'                => 1,
+            'slug'                      => 'kelurahan-bokon',
         ]);
 
         Desa::insert([
@@ -34,7 +35,8 @@ class DesaSeeder extends Seeder
             'alamat'                    => 'Lanny Jaya.',
             'telp'                      => '082112341234',
             'email'                     => $faker->email(),
-            'distrik_id'                => 2
+            'distrik_id'                => 2,
+            'slug'                      => 'aniwo',
         ]);
 
         Desa::insert([
@@ -43,7 +45,8 @@ class DesaSeeder extends Seeder
             'alamat'                    => 'Lanny Jaya.',
             'telp'                      => '082112341234',
             'email'                     => $faker->email(),
-            'distrik_id'                => 3
+            'distrik_id'                => 3,
+            'slug'                      => 'dimba',
         ]);
 
     }

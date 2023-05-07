@@ -1,185 +1,187 @@
 @extends('admin.layouts.app')
 @section('content')
-            
-        <!-- row -->
-        <div class="row mb-3">
-            <div class="col-12">
-                <div class="page-title-box">
-                    <div class="page-title-right">
-                        <ol class="breadcrumb m-0">
-                            <li class="breadcrumb-item"><a href="{{asset('admin/beranda')}}">Beranda</a></li>
-                            <li class="breadcrumb-item"><a href="{{asset('admin/ppid')}}">PPID</a></li>
-                            <li class="breadcrumb-item active">Pelaporan</li>
-                        </ol>
-                    </div>
-                </div>
+
+<!-- row -->
+<div class="row mb-3">
+    <div class="col-12">
+        <div class="page-title-box">
+            <div class="page-title-right">
+                <ol class="breadcrumb m-0">
+                    <li class="breadcrumb-item"><a href="{{asset('admin/beranda')}}">Beranda</a></li>
+                    <li class="breadcrumb-item"><a href="{{asset('admin/ppid')}}">PPID</a></li>
+                    <li class="breadcrumb-item active">Pelaporan</li>
+                </ol>
             </div>
         </div>
-        <!-- end row -->
+    </div>
+</div>
+<!-- end row -->
 
-        <!-- row -->
-        <div class="row">
-            <div class="col">
-                <div class="card">
-                    <div class="card-body">
-                        <h1 class="fw-bold">LPPD Pelaporan</h1>
+<!-- row -->
+<div class="row">
+    <div class="col">
+        <div class="card">
+            <div class="card-body">
+                <h1 class="fw-bold">LPPD Pelaporan</h1>
 
-                        <div class="mb-3">
-                            
-                            <a href="{{asset('admin/lppd/pelaporan')}}" class="btn btn-outline-info waves-effect waves-light fs-4">
-                                <i class="fas fa-file me-1"></i> 2019
-                            </a>
+                <div class="mb-3">
 
-                            <a href="#" class="btn btn-outline-info waves-effect waves-light fs-4">
-                                <i class="fas fa-file me-1"></i> 2020
-                            </a>
-                            <a href="{{asset('admin/lppd/pelaporan/2021')}}" class="btn btn-info waves-effect waves-light fs-4">
-                                <i class="fas fa-file me-1"></i> 2021
-                            </a>
-                            
-                            <a href="#" class="btn btn-outline-info waves-effect waves-light fs-4">
-                                <i class="fas fa-file me-1"></i> 2022
-                            </a>
-                            
-                            <a href="#" class="btn btn-outline-info waves-effect waves-light fs-4">
-                                <i class="fas fa-file me-1"></i> 2023
-                            </a>
-                        </div>
+                    <a href="{{asset('admin/lppd/pelaporan')}}"
+                        class="btn btn-outline-info waves-effect waves-light fs-4">
+                        <i class="fas fa-file me-1"></i> 2019
+                    </a>
 
-                        <div class="row">
+                    <a href="#" class="btn btn-outline-info waves-effect waves-light fs-4">
+                        <i class="fas fa-file me-1"></i> 2020
+                    </a>
+                    <a href="{{asset('admin/lppd/pelaporan/2021')}}" class="btn btn-info waves-effect waves-light fs-4">
+                        <i class="fas fa-file me-1"></i> 2021
+                    </a>
 
-                            <!-- .col start -->
-                            <div class="col">
+                    <a href="#" class="btn btn-outline-info waves-effect waves-light fs-4">
+                        <i class="fas fa-file me-1"></i> 2022
+                    </a>
 
-                                <table class="table table-bordered fs-4">
-                                    <thead class="bg-dark text-light">
-                                        <tr>
-                                            <th>Judul Dokumen</th>
-                                            <th class="text-center">Status</th>
-                                            <th class="text-center">Aksi</th>
-                                        </tr>
-                                    </thead>
+                    <a href="#" class="btn btn-outline-info waves-effect waves-light fs-4">
+                        <i class="fas fa-file me-1"></i> 2023
+                    </a>
+                </div>
 
-                                    
-                                    <tbody>
-                                        @foreach ($all as $data )
-                                            <tr class="@if ($data->cover != '') bg-success text-light @endif">
-                                                <td>{{$data->cover}}</td>
-                                                <td class="text-center">
-                                                    @if ($data->cover != '') <i class="fas fa-check mr-1"></i> @else <i class="fas fa-check mr-1"></i> @endif
-                                                </td>
-                                                <td>
-                                                    <a href="#" class="btn btn-sm btn-outline-dark waves-effect waves-light fs-4">
-                                                        <i class="fas fa-upload mr-1"></i>
-                                                        Unggah Dokumen
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>{{$data->babi}}</td>
-                                                <td class="text-center">
-                                                    <i class="fas fa-times"></i>
-                                                </td>
-                                                <td>
-                                                    <a href="#" class="btn btn-sm btn-outline-dark waves-effect waves-light fs-4">
-                                                        <i class="fas fa-upload mr-1"></i>
-                                                        Unggah Dokumen
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>{{$data->babii}}</td>
-                                                <td class="text-center">
-                                                    <i class="fas fa-times"></i>
-                                                </td>
-                                                <td>
-                                                    <a href="#" class="btn btn-sm btn-outline-dark waves-effect waves-light fs-4">
-                                                        <i class="fas fa-upload mr-1"></i>
-                                                        Unggah Dokumen
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>{{$data->babiii}}</td>
-                                                <td class="text-center">
-                                                    <i class="fas fa-times"></i>
-                                                </td>
-                                                <td>
-                                                    <a href="#" class="btn btn-sm btn-outline-dark waves-effect waves-light fs-4">
-                                                        <i class="fas fa-upload mr-1"></i>
-                                                        Unggah Dokumen
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>{{$data->babiv}}</td>
-                                                <td class="text-center">
-                                                    <i class="fas fa-times"></i>
-                                                </td>
-                                                <td>
-                                                    <a href="#" class="btn btn-sm btn-outline-dark waves-effect waves-light fs-4">
-                                                        <i class="fas fa-upload mr-1"></i>
-                                                        Unggah Dokumen
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>{{$data->babv}}</td>
-                                                <td class="text-center">
-                                                    <i class="fas fa-times"></i>
-                                                </td>
-                                                <td>
-                                                    <a href="#" class="btn btn-sm btn-outline-dark waves-effect waves-light fs-4">
-                                                        <i class="fas fa-upload mr-1"></i>
-                                                        Unggah Dokumen
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>{{$data->lampiran}}</td>
-                                                <td class="text-center">
-                                                    <i class="fas fa-times"></i>
-                                                </td>
-                                                <td>
-                                                    <a href="#" class="btn btn-sm btn-outline-dark waves-effect waves-light fs-4">
-                                                        <i class="fas fa-upload mr-1"></i>
-                                                        Unggah Dokumen
-                                                    </a>
-                                                </td>
-                                            </tr>
+                <div class="row">
+
+                    <!-- .col start -->
+                    <div class="col">
+
+                        <table class="table table-bordered fs-4">
+                            <thead class="bg-dark text-light">
+                                <tr>
+                                    <th>Judul Dokumen</th>
+                                    <th class="text-center">Status</th>
+                                    <th class="text-center">Aksi</th>
+                                </tr>
+                            </thead>
 
 
-                                        @endforeach
-                                    </tbody>
+                            <tbody>
+                                @foreach ($all as $data )
+                                <tr class="@if ($data->cover != '') bg-success text-light @endif">
+                                    <td>{{$data->cover}}</td>
+                                    <td class="text-center">
+                                        @if ($data->cover != '') <i class="fas fa-check mr-1"></i> @else <i
+                                            class="fas fa-check mr-1"></i> @endif
+                                    </td>
+                                    <td>
+                                        <a href="#" class="btn btn-sm btn-outline-dark waves-effect waves-light fs-4">
+                                            <i class="fas fa-upload mr-1"></i>
+                                            Unggah Dokumen
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>{{$data->babi}}</td>
+                                    <td class="text-center">
+                                        <i class="fas fa-times"></i>
+                                    </td>
+                                    <td>
+                                        <a href="#" class="btn btn-sm btn-outline-dark waves-effect waves-light fs-4">
+                                            <i class="fas fa-upload mr-1"></i>
+                                            Unggah Dokumen
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>{{$data->babii}}</td>
+                                    <td class="text-center">
+                                        <i class="fas fa-times"></i>
+                                    </td>
+                                    <td>
+                                        <a href="#" class="btn btn-sm btn-outline-dark waves-effect waves-light fs-4">
+                                            <i class="fas fa-upload mr-1"></i>
+                                            Unggah Dokumen
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>{{$data->babiii}}</td>
+                                    <td class="text-center">
+                                        <i class="fas fa-times"></i>
+                                    </td>
+                                    <td>
+                                        <a href="#" class="btn btn-sm btn-outline-dark waves-effect waves-light fs-4">
+                                            <i class="fas fa-upload mr-1"></i>
+                                            Unggah Dokumen
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>{{$data->babiv}}</td>
+                                    <td class="text-center">
+                                        <i class="fas fa-times"></i>
+                                    </td>
+                                    <td>
+                                        <a href="#" class="btn btn-sm btn-outline-dark waves-effect waves-light fs-4">
+                                            <i class="fas fa-upload mr-1"></i>
+                                            Unggah Dokumen
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>{{$data->babv}}</td>
+                                    <td class="text-center">
+                                        <i class="fas fa-times"></i>
+                                    </td>
+                                    <td>
+                                        <a href="#" class="btn btn-sm btn-outline-dark waves-effect waves-light fs-4">
+                                            <i class="fas fa-upload mr-1"></i>
+                                            Unggah Dokumen
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>{{$data->lampiran}}</td>
+                                    <td class="text-center">
+                                        <i class="fas fa-times"></i>
+                                    </td>
+                                    <td>
+                                        <a href="#" class="btn btn-sm btn-outline-dark waves-effect waves-light fs-4">
+                                            <i class="fas fa-upload mr-1"></i>
+                                            Unggah Dokumen
+                                        </a>
+                                    </td>
+                                </tr>
 
-                                </table>
-                                
-                            </div>
-                            <!-- .col end -->
 
-                        </div>
+                                @endforeach
+                            </tbody>
+
+                        </table>
 
                     </div>
+                    <!-- .col end -->
+
                 </div>
+
             </div>
         </div>
-        <!-- end row -->
+    </div>
+</div>
+<!-- end row -->
 
-    @stop
+@stop
 
-    @push('script-footer')
-    <!-- Chart JS -->
-    <script src="{{ asset('assets/admin/assets/libs/chart.js/Chart.bundle.min.js')}}"></script>
+@push('script-footer')
+<!-- Chart JS -->
+<script src="{{ asset('assets/admin/assets/libs/chart.js/Chart.bundle.min.js')}}"></script>
 
-    <script src="{{ asset('assets/admin/assets/libs/moment/min/moment.min.js')}}"></script>
-    <script src="{{ asset('assets/admin/assets/libs/jquery.scrollto/jquery.scrollTo.min.js')}}"></script>
+<script src="{{ asset('assets/admin/assets/libs/moment/min/moment.min.js')}}"></script>
+<script src="{{ asset('assets/admin/assets/libs/jquery.scrollto/jquery.scrollTo.min.js')}}"></script>
 
-    <!-- Chat app -->
-    <script src="{{ asset('assets/admin/assets/js/pages/jquery.chat.js')}}"></script>
+<!-- Chat app -->
+<script src="{{ asset('assets/admin/assets/js/pages/jquery.chat.js')}}"></script>
 
-    <!-- Todo app -->
-    <script src="{{ asset('assets/admin/assets/js/pages/jquery.todo.js')}}"></script>
+<!-- Todo app -->
+<script src="{{ asset('assets/admin/assets/js/pages/jquery.todo.js')}}"></script>
 
-    <!-- Dashboard init JS -->
-    <script src="{{ asset('assets/admin/assets/js/pages/dashboard-3.init.js')}}"></script>  
-    @endpush
+<!-- Dashboard init JS -->
+<script src="{{ asset('assets/admin/assets/js/pages/dashboard-3.init.js')}}"></script>
+@endpush

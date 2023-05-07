@@ -105,14 +105,14 @@ class DesaController extends Controller
     // SHOW
     public function show($id)
     {
-        $data = Desa::where('id',$id)->first();
+        $data = Desa::where('slug',$id)->first();
         return view('admin.pages.profil.desa.detail',compact('data'));
     }
 
     // EDIT
     public function edit($id)
     {
-        $data = Desa::whereId($id)->first();
+        $data = Desa::where('slug',$id)->first();
         $distriks = Distrik::all();
         return view('admin.pages.profil.desa.ubah', compact('data','distriks'));
     }
@@ -187,7 +187,7 @@ class DesaController extends Controller
     // DELETE PROCESS
     public function delete($id)
     {
-        $data = Desa::whereId($id)->first();
+        $data = Desa::where('slug',$id)->first();
         return view('admin.pages.profil.desa.delete', compact('data'));
     }
 

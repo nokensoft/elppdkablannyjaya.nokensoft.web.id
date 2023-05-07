@@ -126,8 +126,8 @@ Route::prefix('admin')->middleware('auth')->group(function () {
 
         Route::get('desa/print','print')->name('admin.desa.print')->middleware(['role:administrator']);
 
-        Route::get('desa/{id}/edit','edit')->name('admin.desa.edit')->middleware(['role:administrator']);
-        Route::get('desa/{id}/show','show')->name('admin.desa.show')->middleware(['role:administrator']);
+        Route::get('desa/edit/{id}','edit')->name('admin.desa.edit')->middleware(['role:administrator']);
+        Route::get('desa/detail/{id}','show')->name('admin.desa.show')->middleware(['role:administrator']);
         Route::get('desa/delete/{id}','delete')->name('admin.desa.delete')->middleware(['role:administrator']);
         Route::put('desa/{id}','update')->name('admin.desa.update')->middleware(['role:administrator']);
 

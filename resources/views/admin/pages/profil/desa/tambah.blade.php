@@ -7,7 +7,9 @@
                     <div class="page-title-right">
                         <ol class="breadcrumb m-0">
                             <li class="breadcrumb-item"><a href="{{asset('admin/beranda')}}">Beranda</a></li>
-                            <li class="breadcrumb-item active">Desa</li>
+                            <li class="breadcrumb-item">Data Master</li>
+                            <li class="breadcrumb-item">Desa</li>
+                            <li class="breadcrumb-item active">Tambah</li>
                         </ol>
                     </div>
                 </div>

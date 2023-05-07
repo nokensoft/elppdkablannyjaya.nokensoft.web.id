@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,13 +9,13 @@
 
     <!-- Bootstrap css -->
     <link href="{{ asset('assets/admin/assets/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" />
-    
+
     <!-- App css -->
-    <link href="{{ asset('assets/admin/assets/css/app.min.css')}}" rel="stylesheet" type="text/css" id="app-style"/>
-    
+    <link href="{{ asset('assets/admin/assets/css/app.min.css')}}" rel="stylesheet" type="text/css" id="app-style" />
+
     <!-- STYLE -->
     <style>
-        @media print{
+        @media print {
             @page {
                 size: landscape;
                 font: 11px;
@@ -27,8 +28,9 @@
     </style>
 
 </head>
+
 <body onload="window.print()">
-    
+
     <div class="row">
         <div class="col">
             <div class="card">
@@ -57,24 +59,27 @@
                                 </thead>
                                 <tbody>
                                     @foreach ($datas as $data )
-                                        <tr>
-                                            <td>{{$data->nama_desa}}</td>
-                                            <td>{{$data->nama_kepala_desa}}</td>
-                                            <td>
-                                                @if ($data->foto == null)
-                                                    <img src="{{asset('assets/images/user.png')}}" alt="Logo" class="img-fluid img-thumbnail" width="100">
-                                                @else
-                                                    <img src="{{ url($data->foto)}}" alt="{{$data->foto}}" alt="Logo" class="img-fluid img-thumbnail" width="100"></td>
-                                                @endif
-                                            </td>
-                                            <td>{{$data->alamat}}</td>
-                                            <td>{{$data->telp}}</td>
-                                            <td>{{$data->email}}</td>
-                                        </tr>
+                                    <tr>
+                                        <td>{{$data->nama_desa}}</td>
+                                        <td>{{$data->nama_kepala_desa}}</td>
+                                        <td>
+                                            @if ($data->foto == null)
+                                            <img src="{{asset('assets/images/user.png')}}" alt="Logo"
+                                                class="img-fluid img-thumbnail" width="100">
+                                            @else
+                                            <img src="{{ url($data->foto)}}" alt="{{$data->foto}}" alt="Logo"
+                                                class="img-fluid img-thumbnail" width="100">
+                                        </td>
+                                        @endif
+                                        </td>
+                                        <td>{{$data->alamat}}</td>
+                                        <td>{{$data->telp}}</td>
+                                        <td>{{$data->email}}</td>
+                                    </tr>
                                     @endforeach
                                 </tbody>
                             </table>
-                            
+
                         </div>
                         <!-- .col end -->
 
@@ -85,8 +90,9 @@
         </div>
     </div>
     <!-- end row -->
-                    
 
-    
+
+
 </body>
+
 </html>
