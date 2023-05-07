@@ -37,10 +37,10 @@
                             <i class="fas fa-print me-1"></i> Print
                         </a>
 
-                        <a target="_blank" class="btn btn-outline-info border-0 waves-effect waves-light fs-4"
+                        {{-- <a target="_blank" class="btn btn-outline-info border-0 waves-effect waves-light fs-4"
                             title="Download file excel">
                             <i class="fas fa-file me-1"></i> Download Excel
-                        </a>
+                        </a> --}}
 
                     </div>
                 </div>
@@ -69,11 +69,9 @@
                                 <tr>
                                     <td>
                                         @if(empty($data->foto))
-                                        <img src="{{asset('assets/images/user.png')}}" alt="Logo"
-                                            class="img-fluid img-thumbnail" width="100">
+                                        <img src="{{asset('gambar/default.png')}}" alt="gambar" class="img-fluid img-thumbnail" width="100">
                                         @else
-                                        <img src="{{asset('gambar/' . $data->foto)}}" class="img-fluid img-thumbnail"
-                                            width="150">
+                                        <img src="{{asset('gambar/' . $data->foto)}}" alt="gambar" class="img-fluid img-thumbnail" width="150">
                                     </td>
                                     @endif
                                     </td>

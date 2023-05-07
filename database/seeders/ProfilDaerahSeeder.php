@@ -25,7 +25,7 @@ class ProfilDaerahSeeder extends Seeder
             'kepala_asal_partai'    => 'kepala_asal_partai',
             'kepala_visi_misi'      => 'kepala_visi_misi',
             'kepala_riwayat'        => 'kepala_riwayat',
-            'kepala_foto'           => 'assets/images/profildaerah/kepala.png',
+            'kepala_foto'           => 'gambar/default.png',
 
             // WAKIL wakil DAERAH
             'wakil_nama'            => 'wakil_nama',
@@ -37,7 +37,7 @@ class ProfilDaerahSeeder extends Seeder
             'wakil_asal_partai'     => 'wakil_asal_partai',
             'wakil_visi_misi'       => 'wakil_visi_misi',
             'wakil_riwayat'         => 'wakil_riwayat',
-            'wakil_foto'            => 'assets/images/profildaerah/wakil.png',
+            'wakil_foto'            => 'gambar/default.png',
 
             // SEKRETARIS DAERAH
             'sekretaris_nama'       => 'sekretaris_nama',
@@ -50,7 +50,7 @@ class ProfilDaerahSeeder extends Seeder
             'sekretaris_no_sk'      => 'sekretaris_no_sk',
             'sekretaris_file_sk'    => 'sekretaris_file_sk',
             'sekretaris_tmt'        => 'sekretaris_tmt',
-            'sekretaris_foto'       => 'assets/images/profildaerah/sekretaris.png',
+            'sekretaris_foto'       => 'gambar/default.png',
         ]);
     }
 }
