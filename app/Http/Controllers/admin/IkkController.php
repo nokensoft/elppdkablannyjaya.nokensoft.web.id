@@ -20,11 +20,15 @@ class IkkController extends Controller
     public function index()
     {
         if(Auth::user()->hasRole('administrator')){
-            $all = Ikk::orderBy('no_ikk','asc')->get();
+
+            $all = Urusan::paginate(6);
             return view('admin.pages.ikk.makro.index', ['all' => $all]);
+
         } elseif (Auth::user()->hasRole('supervisor')){
+
             $all = Ikk::orderBy('no_ikk','asc')->get();
             return view('admin.pages.ikk.makro.index', ['all' => $all]);
+
         } else {
             $all = Ikk::orderBy('no_ikk','asc')->where('user_id',Auth::user()->id)->get();
             return view('admin.pages.ikk.makro.index', ['all' => $all]);
@@ -34,10 +38,15 @@ class IkkController extends Controller
     }
 
     public function ikkMethod($method){
-        // $all = Ikk::where('urusan_id',$method)->get();
-        $all =  Ikk::whereHas('urusan',function($q){
-            $q->where('slug');
-        })->get();
+
+        $all = Urusan::whereHas('ikk',function($q){
+                    $q->where('urusan_id');
+                })->where('id')->get();
+
+        // $all =  Ikk::whereHas('urusan',function($q){
+        //     $q->where('judul_urusan');
+        // })->where('urusan_id')->get();
+
         return view('admin.pages.ikk.makro.index',['all' => $all, 'judul_urusan' => $method]);
 
     }
@@ -62,7 +71,8 @@ class IkkController extends Controller
     public function create()
     {
         $data = Urusan::all();
-        return view('admin.pages.ikk.makro.tambah',compact('data'));
+        $user  = User::all();
+        return view('admin.pages.ikk.makro.tambah',compact('data','user'));
     }
 
     /**
@@ -77,6 +87,7 @@ class IkkController extends Controller
         [
             'no_ikk'                    => 'required',
             'urusan_id'                   => 'required',
+            'user_id'                   => 'required',
             'capaian_kinerja'           => 'required',
             'ikk'                       => 'required',
             'jml2'                      => 'required',
@@ -87,7 +98,8 @@ class IkkController extends Controller
         [
             'no_ikk.required'          => 'Nomor IKK tidak boleh kosong',
             // 'no_ikk.unique'            => 'Nomor IKK sudah ada',
-            'urusan_id.required'         => 'OPD tidak boleh kosong',
+            'urusan_id.required'         => 'Urusan tidak boleh kosong',
+            'user_id.required'         => 'Perangkat Daerah tidak boleh kosong',
             'keterangan.required'      => 'Keterangan tidak boleh kosong',
             'rumus.required'           => 'Rumus tidak boleh kosong',
             'urusan.required'          => 'Urusan tidak boleh kosong',
@@ -129,13 +141,12 @@ class IkkController extends Controller
         return view('admin.pages.ikk.makro.detail',compact('data'));
     }
 
-
-
      public function edit($id)
      {
         $urusan = Urusan::all();
+        $user  = User::all();
          $data = Ikk::where('id',$id)->first();
-         return view('admin.pages.ikk.makro.ubah',compact('data','urusan'));
+         return view('admin.pages.ikk.makro.ubah',compact('data','urusan','user'));
      }
 
 
@@ -144,7 +155,8 @@ class IkkController extends Controller
         $validator = Validator::make($request->all(),
         [
             'no_ikk'                    => 'required',
-            'urusan_id'                   => 'required',
+            'user_id'                   => 'required',
+            'urusan_id'                 => 'required',
             'capaian_kinerja'           => 'required',
             'ikk'                       => 'required',
             'jml2'                      => 'required',
@@ -155,7 +167,8 @@ class IkkController extends Controller
         [
             'no_ikk.required'          => 'Nomor IKK tidak boleh kosong',
             // 'no_ikk.unique'            => 'Nomor IKK sudah ada',
-            'urusan_id.required'         => 'OPD tidak boleh kosong',
+            'user_id.required'         => 'Perangkat daerah tidak boleh kosong',
+            'urusan_id.required'       => 'Urusan tidak boleh kosong',
             'keterangan.required'      => 'Keterangan tidak boleh kosong',
             'rumus.required'           => 'Rumus tidak boleh kosong',
             'urusan.required'          => 'Urusan tidak boleh kosong',
@@ -168,6 +181,7 @@ class IkkController extends Controller
         } else {
             try {
                 $ikk                = Ikk::find($id);
+                $ikk->user_id       = $request->user_id;
                 $ikk->urusan_id       = $request->urusan_id;
                 $ikk->no_ikk        = $request->no_ikk;
                 $ikk->urusan        = $request->urusan;

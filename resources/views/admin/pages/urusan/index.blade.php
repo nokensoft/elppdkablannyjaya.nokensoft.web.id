@@ -37,24 +37,31 @@
                                     <th>NO</th>
                                     <th>Judul Urusan</th>
                                     <th>Slug</th>
+                                    <th>NO IKK</th>
                                     <th class="text-center">Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($data as $user )
+                                @foreach ($data as $urusan )
                                 <tr>
                                     <td>#</td>
-                                    <td>{{$user->judul_urusan}}</td>
-                                    <td>{{$user->slug}}</td>
+                                    <td>{{$urusan->judul_urusan}}</td>
+                                    <td>{{$urusan->slug}}</td>
 
-
+                                    <td>
+                                        @foreach ($urusan->ikk as $ikk )
+                                            <ul>
+                                                <li>{{ $ikk->no_ikk }}</li>
+                                            </ul>
+                                        @endforeach
+                                    </td>
                                     <td class="text-center">
 
-                                        <a href="{{route('admin.urusan.edit',$user->slug)}}"
+                                        <a href="{{route('admin.urusan.edit',$urusan->slug)}}"
                                             class="btn btn-sm btn-outline-info border-0 waves-effect waves-light fs-4">
                                             <i class="fas fa-edit"></i>
                                         </a>
-                                        <a href="{{route('admin.urusan.delete',$user->slug)}}"
+                                        <a href="{{route('admin.urusan.delete',$urusan->slug)}}"
                                             class="btn btn-sm btn-outline-info border-0 waves-effect waves-light fs-4">
                                             <i class="fas fa-trash"></i>
                                         </a>

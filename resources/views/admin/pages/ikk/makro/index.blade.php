@@ -54,8 +54,8 @@
                         <table class="table table-bordered fs-4">
                             <thead class="bg-dark text-light">
                                 <tr>
+                                    <th>Urusan</th>
                                     <th>No IKK</th>
-                                    <th>OPD</th>
                                     <th>IKK</th>
                                     <th>Rumus</th>
                                     <th>Capaian Kinerja</th>
@@ -67,62 +67,105 @@
                             <tbody>
                                 @foreach ($all as $data )
                                 <tr>
-                                    <td>{{$data->no_ikk}}</td>
-                                    <td>{{$data->user->name ?? ''}}</td>
-                                    <td>{{$data->ikk}}</td>
-                                    <td>{{$data->rumus}}</td>
-                                    <td>{{$data->capaian_kinerja}} %</td>
-                                    <td>{{$data->keterangan}}</td>
                                     <td>
-                                        @if($data->status == 'revisi')
-                                        Revisi
-                                        @elseif ($data->status == 'approved')
-                                        Disetujui
-                                        @else
-                                        Review
-                                        @endif
-
+                                      {{ $data->judul_urusan }}
                                     </td>
                                     <td>
-                                        @if(Auth::user()->hasRole('supervisor'))
-                                        <a href="{{ route('admin.ikk.show',$data->id) }}"
-                                            class="btn btn-sm btn-outline-dark waves-effect waves-light fs-4"> Detail
-                                        </a>
-                                        <a href="{{ route('admin.ikk.status',$data->id) }}"
-                                            class="btn btn-sm btn-outline-dark waves-effect waves-light fs-4"> Ubah </a>
+                                        @foreach ($data->ikk as $ikk )
+                                           <ul>
+                                                <li> {{$ikk->no_ikk}}</li>
+                                           </ul>
+                                        @endforeach
+                                    </td>
+                                    <td>
+                                        @foreach ($data->ikk as $ikk )
+                                        <ul>
+                                             <li> {{$ikk->ikk}}</li>
+                                        </ul>
+                                        @endforeach
+                                    </td>
+                                    <td>
+                                        @foreach ($data->ikk as $ikk )
+                                        <ul>
+                                             <li> {{$ikk->rumus}}</li>
+                                        </ul>
+                                        @endforeach
+                                    </td>
+                                    <td>
+                                        @foreach ($data->ikk as $ikk )
+                                        <ul>
+                                             <li> {{$ikk->capaian_kinerja}} %</li>
+                                        </ul>
+                                        @endforeach
+                                    </td>
+                                    <td>
+                                        @foreach ($data->ikk as $ikk )
+                                        <ul>
+                                             <li> {{$ikk->keterangan}} %</li>
+                                        </ul>
+                                        @endforeach
+                                    </td>
+                                    <td>
+                                        @foreach ($data->ikk as $ikk )
+                                        <ul>
+                                             <li>
+                                                @if($ikk->status == 'revisi')
+                                                Revisi
+                                                @elseif ($ikk->status == 'approved')
+                                                Disetujui
+                                                @else
+                                                Review
+                                                @endif
+                                             </li>
+                                        </ul>
+                                        @endforeach
+                                    </td>
+                                    <td>
+                                        @foreach ($data->ikk as $ikk )
+                                            @if(Auth::user()->hasRole('supervisor'))
+                                                <a href="{{ route('admin.ikk.show',$ikk->id) }}"
+                                                    class="btn btn-sm btn-outline-dark waves-effect waves-light fs-4"> Detail
+                                                </a>
+                                                <a href="{{ route('admin.ikk.status',$ikk->id) }}"
+                                                    class="btn btn-sm btn-outline-dark waves-effect waves-light fs-4"> Ubah
+                                                </a>
 
-                                        @elseif(Auth::user()->hasRole('opd'))
-                                        <a href="{{ route('admin.ikk.show',$data->id) }}"
-                                            class="btn btn-sm btn-outline-dark waves-effect waves-light fs-4"> Detail
-                                        </a>
-                                        <a href="{{ route('admin.ikk.status',$data->id) }}"
-                                            class="btn btn-sm btn-outline-dark waves-effect waves-light fs-4"> Ubah </a>
+                                            @elseif(Auth::user()->hasRole('opd'))
+                                                <a href="{{ route('admin.ikk.show',$ikk->id) }}"
+                                                    class="btn btn-sm btn-outline-dark waves-effect waves-light fs-4"> Detail
+                                                </a>
+                                                <a href="{{ route('admin.ikk.status',$data->id) }}"
+                                                    class="btn btn-sm btn-outline-dark waves-effect waves-light fs-4"> Ubah
+                                                </a>
 
-                                        @else
-                                        @if($data->status == 'approved')
-                                        <a href="{{ route('admin.ikk.show',$data->id) }}"
-                                            class="btn btn-sm btn-outline-dark waves-effect waves-light fs-4"> Detail
-                                        </a>
-                                        @elseif ($data->status == 'revisi')
-                                        <a href="{{ route('admin.ikk.show',$data->id) }}"
-                                            class="btn btn-sm btn-outline-dark waves-effect waves-light fs-4"> Detail
-                                        </a>
-                                        <a href="{{route('admin.ikk.edit',$data->id)}}"
-                                            class="btn btn-sm btn-outline-dark waves-effect waves-light fs-4"> Ubah </a>
-                                        <a href="{{route('admin.ikk.delete',$data->id)}}"
-                                            class="btn btn-sm btn-outline-dark waves-effect waves-light fs-4"> Hapus
-                                        </a>
-                                        @else
-                                        <a href="{{ route('admin.ikk.show',$data->id) }}"
-                                            class="btn btn-sm btn-outline-dark waves-effect waves-light fs-4"> Detail
-                                        </a>
-                                        <a href="{{route('admin.ikk.edit',$data->id)}}"
-                                            class="btn btn-sm btn-outline-dark waves-effect waves-light fs-4"> Ubah </a>
-                                        <a href="{{route('admin.ikk.delete',$data->id)}}"
-                                            class="btn btn-sm btn-outline-dark waves-effect waves-light fs-4"> Hapus
-                                        </a>
-                                        @endif
-                                        @endif
+                                            @else
+                                            @if($data->status == 'approved')
+                                                <a href="{{ route('admin.ikk.show',$ikk->id) }}"
+                                                    class="btn btn-sm btn-outline-dark waves-effect waves-light fs-4"> Detail
+                                                </a>
+                                            @elseif ($data->status == 'revisi')
+                                                <a href="{{ route('admin.ikk.show',$ikk->id) }}"
+                                                    class="btn btn-sm btn-outline-dark waves-effect waves-light fs-4"> Detail
+                                                </a>
+                                                <a href="{{route('admin.ikk.edit',$ikk->id)}}"
+                                                    class="btn btn-sm btn-outline-dark waves-effect waves-light fs-4"> Ubah </a>
+                                                <a href="{{route('admin.ikk.delete',$ikk->id)}}"
+                                                    class="btn btn-sm btn-outline-dark waves-effect waves-light fs-4"> Hapus
+                                                </a>
+
+                                            @else
+                                            <hr>
+                                                <a href="{{ route('admin.ikk.show',$ikk->id) }}"
+                                                    class="btn btn-sm btn-outline-dark waves-effect waves-light fs-4"> Detail
+                                                </a>
+                                                <a href="{{route('admin.ikk.edit',$ikk->id)}}"
+                                                    class="btn btn-sm btn-outline-dark waves-effect waves-light fs-4"> Ubah </a>
+                                                <a href="{{route('admin.ikk.delete',$ikk->id)}}"
+                                                    class="btn btn-sm btn-outline-dark waves-effect waves-light fs-4"> Hapus
+                                                </a>
+                                            @endif
+                                            @endif
+                                        @endforeach
                                     </td>
                                 </tr>
                                 @endforeach

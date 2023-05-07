@@ -50,6 +50,21 @@
                                 </select>
                             </div>
                             <!-- input item end -->
+                            <div class="mb-3 fs-4">
+                                <label for="" class="fw-bold">Perangkat Daerah</label>
+                                <select name="user_id" class="form-select form-select-lg">
+                                    <option hidden>Pillih</option>
+                                    @foreach ($user as $data)
+                                        @if($data->name == 'Admin')
+                                        @elseif ($data->name == 'Supervisor')
+                                        @else
+                                        <option value="{{ $data->id }}">{{ $data->name }}</option>
+                                        @endif
+                                    @endforeach
+
+                                </select>
+                            </div>
+                            <!-- input item end -->
 
 
 

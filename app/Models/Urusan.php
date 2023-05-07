@@ -10,5 +10,9 @@ class Urusan extends Model
     use HasFactory;
     public $guarded = [];
 
-    
+    public function ikk()
+    {
+        return $this->hasMany(Ikk::class,'urusan_id','id');
+    }
+
 }

@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
         $this->call(PerangkatDaerahSeeder::class);
 
         $this->call([
+            UrusanSeeder::class,
             IkkSeeder::class,
             DistrikSeeder::class,
             DesaSeeder::class,

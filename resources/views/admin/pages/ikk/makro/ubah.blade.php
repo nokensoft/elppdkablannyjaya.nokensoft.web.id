@@ -48,11 +48,22 @@
                                 <select name="urusan_ud" class="form-select form-select-lg">
                                     <option hidden>Pillih</option>
                                     @foreach ($urusan as $data)
-
-                                    <option value="{{ $data->id }}">{{ $data->judul_urusan }}</option>
-
+                                      <option value="{{ $data->id }}">{{ $data->judul_urusan }}</option>
                                     @endforeach
+                                </select>
+                            </div>
 
+                            <div class="mb-3 fs-4">
+                                 <label for="" class="fw-bold">Perangkat Daerah</label>
+                                <select name="urusan_ud" class="form-select form-select-lg">
+                                    <option hidden>Pillih</option>
+                                    @foreach ($user as $data)
+                                        @if($data->name == 'Admin')
+                                        @elseif ($data->name == 'Supervisor')
+                                        @else
+                                        <option value="{{ $data->id }}">{{ $data->name }}</option>
+                                        @endif
+                                    @endforeach
                                 </select>
                             </div>
 
@@ -94,7 +105,7 @@
                                 @endif
                             </div>
 
-                            <div class="mb-3 fs-4">
+                            {{-- <div class="mb-3 fs-4">
                                 <label for="" class="fw-bold">Capaian Kinerja</label>
                                 <?php
                                             $kali = $data->jml1 / $data->jml2;
@@ -102,7 +113,7 @@
                                         ?>
                                 <input type="text" class="form-control form-control-lg" name="capaian_kinerja"
                                     value="<?php echo number_format($hasil,'2')?>">
-                            </div>
+                            </div> --}}
 
                             <div class="mb-3 fs-4">
                                 <label for="" class="fw-bold">Keterangan</label>

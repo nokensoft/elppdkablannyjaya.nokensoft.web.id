@@ -19,19 +19,16 @@ class PerangkatDaerahSeeder extends Seeder
             [
                 [
                     'nama_organisasi'       => 'Dinas Kesehatan',
-                    'urusan'                => 'Kesehatan',
                     'alamat'                => 'Tiom, Lanny Jaya',
                     'user_id'               => 3
                 ],
                 [
                     'nama_organisasi'       => 'Dinas Pendidikan dan Kebudayaan',
-                    'urusan'                => 'Pendidikan',
                     'alamat'                => 'Tiom, Lanny Jaya',
                     'user_id'               => 2
                 ],
                 [
                     'nama_organisasi'       => 'Dinas Pekerjaan Umum',
-                    'urusan'                => 'Pekerjaan Umum',
                     'alamat'                => 'Tiom, Lanny Jaya',
                     'user_id'               => 4
                 ]
