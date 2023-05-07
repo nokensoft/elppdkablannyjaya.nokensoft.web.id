@@ -130,7 +130,7 @@
         </div>
     </div> <!-- end col -->
 </div>
-</div>
+
 
 
 <!--end wrapper-->
