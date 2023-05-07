@@ -67,10 +67,10 @@ class DprdController extends Controller
             try {
                 $dprd = new Dprd();
                 $dprd->nama_lengkap     = $request->nama_lengkap;
-                $dprd->jabatan          = $request->jabatan;
-                $dprd->nik              = $request->nik;
-                $dprd->alamat           = $request->alamat;
                 $dprd->ttl              = $request->ttl;
+                $dprd->nik              = $request->nik;
+                $dprd->jabatan          = $request->jabatan;
+                $dprd->alamat           = $request->alamat;
                 $dprd->nama_partai      = $request->nama_partai;
                 $dprd->pendidikan       = $request->pendidikan;
                 $dprd->foto             = $request->foto;

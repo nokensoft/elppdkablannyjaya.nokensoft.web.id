@@ -70,11 +70,9 @@
                                         <td>{{$data->pendidikan}}</td>
                                         <td>
                                             @if ($data->foto == null)
-                                            <img src="{{asset('assets/admin/assets/images/users/user-man.png')}}"
-                                                alt="Logo" width="100%" class="img-thumbnail">
+                                            <img src="{{asset('gambar/default.png')}}" alt="gambar" class="img-thumbnail" width="150">
                                             @else
-                                            <img src="{{ url($data->foto)}}" alt="{{$data->foto}}"
-                                                class="img-fluid img-thumbnail" width="100">
+                                            <img src="{{ asset('gambar/' . $data->foto)}}" alt="gambar" class="img-fluid img-thumbnail" width="150">
                                         </td>
                                         @endif
                                         </td>

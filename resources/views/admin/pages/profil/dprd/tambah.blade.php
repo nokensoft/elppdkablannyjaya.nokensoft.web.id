@@ -69,23 +69,23 @@
                             <!-- input item end -->
 
                             <div class="mb-3 fs-4">
-                                <label for="" class="fw-bold">Alamat</label>
-                                <input type="text" class="form-control form-control-lg"
-                                    placeholder="Jalan Raya, Kelurahan, Kecamatan, Kota/Kabupaten." name="alamat">
-
-                                @if($errors->has('alamat '))
-                                <label class="text-danger"> {{ $errors->first('alamat ') }} </label>
-                                @endif
-                            </div>
-                            <!-- input item end -->
-
-                            <div class="mb-3 fs-4">
                                 <label for="" class="fw-bold">TTL</label>
                                 <input type="text" class="form-control form-control-lg" name="ttl"
                                     placeholder="Tempat, Tanggal Lahir">
 
                                 @if($errors->has('ttl '))
                                 <label class="text-danger"> {{ $errors->first('ttl ') }} </label>
+                                @endif
+                            </div>
+                            <!-- input item end -->
+
+                            <div class="mb-3 fs-4">
+                                <label for="" class="fw-bold">Alamat</label>
+                                <input type="text" class="form-control form-control-lg"
+                                    placeholder="Jalan Raya, Kelurahan, Kecamatan, Kota/Kabupaten." name="alamat">
+
+                                @if($errors->has('alamat '))
+                                <label class="text-danger"> {{ $errors->first('alamat ') }} </label>
                                 @endif
                             </div>
                             <!-- input item end -->
@@ -109,6 +109,16 @@
                                 @if($errors->has('pendidikan '))
                                 <label class="text-danger"> {{ $errors->first('pendidikan ') }} </label>
                                 @endif
+                            </div>
+                            <!-- input item end -->
+
+                            <div class="mb-3 fs-4">
+                                <label for="foto" class="fw-bold d-block mb-2">Foto</label>
+                                <img src="{{asset('gambar/default.png')}}" alt="gambar" width="250px" class="img-thumbnail">
+
+                                <input type="text" class="form-control form-control-lg mt-2" id="foto" name="foto" value="{{old('foto') ? old('foto') : '' }}">
+                                <small class="text-muted">Gambar diunggah terlebih dahulu pada halaman <a href="{{route('admin.gambar')}}" target="_blank" class="link-info">Kelolah Gambar</a>, kemudian copy & paste alamat gambarnya.</small>
+
                             </div>
                             <!-- input item end -->
 

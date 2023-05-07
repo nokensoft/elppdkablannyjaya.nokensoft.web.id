@@ -83,15 +83,9 @@
                                     <td>{{$data->nama_partai}}</td>
                                     <td>{{$data->pendidikan}}</td>
                                     <td class="d-flex justify-content-between gap-1">
-                                        <a href="{{route('admin.dprd.show',$data->id)}}"
-                                            class="btn btn-sm btn-info border-0  waves-effect waves-light fs-4"> <i
-                                                class="fas fa-eye"></i> </a>
-                                        <a href="{{route('admin.dprd.edit',$data->id)}}"
-                                            class="btn btn-sm btn-outline-info border-0 waves-effect waves-light fs-4">
-                                            <i class="fas fa-edit"></i> </a>
-                                        <a href="{{route('admin.dprd.delete',$data->id)}}"
-                                            class="btn btn-sm btn-outline-info border-0 waves-effect waves-light fs-4">
-                                            <i class="fas fa-trash"></i> </a>
+                                        <a href="{{route('admin.dprd.show',$data->id)}}" class="btn btn-sm btn-info border-0  waves-effect waves-light fs-4"> <i  class="fas fa-eye"></i> </a>
+                                        <a href="{{route('admin.dprd.edit',$data->id)}}" class="btn btn-sm btn-outline-info border-0 waves-effect waves-light fs-4"> <i class="fas fa-edit"></i> </a>
+                                        <a href="{{route('admin.dprd.delete',$data->id)}}" class="btn btn-sm btn-outline-info border-0 waves-effect waves-light fs-4"> <i class="fas fa-trash"></i> </a>
                                     </td>
                                 </tr>
                                 @endforeach
@@ -102,13 +96,13 @@
                 </div>
                 <!-- .row end -->
 
-                <!--pagination start-->
+                <!-- row pagination start-->
                 <div class="row">
                     <div class="col">
                         {{ $datas->links() }}
                     </div>
                 </div>
-                <!--pagination end-->
+                <!-- row pagination end-->
 
             </div>
         </div>

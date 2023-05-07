@@ -47,22 +47,22 @@
                             <!-- input item end -->
 
                             <div class="mb-3 fs-4">
-                                <label for="kepala_nik" class="fw-bold d-block mb-2">NIK</label>
-                                <input type="text" class="form-control form-control-lg" id="kepala_nik" name="kepala_nik" value="{{old('kepala_nik') ? old('kepala_nik') : $data->kepala_nik }}">
+                                <label for="kepala_tgl_lahir" class="fw-bold d-block mb-2">Tanggal Lahir</label>
+                                <input type="text" class="form-control form-control-lg" id="kepala_tgl_lahir" name="kepala_tgl_lahir" value="{{old('kepala_tgl_lahir') ? old('kepala_tgl_lahir') : $data->kepala_tgl_lahir }}">
 
-                                @if($errors->has('kepala_nik'))
-                                <small class="text-danger"> {{ $errors->first('kepala_nik') }} </small>
+                                @if($errors->has('kepala_tgl_lahir'))
+                                <small class="text-danger"> {{ $errors->first('kepala_tgl_lahir') }} </small>
                                 @endif
 
                             </div>
                             <!-- input item end -->
 
                             <div class="mb-3 fs-4">
-                                <label for="kepala_tgl_lahir" class="fw-bold d-block mb-2">Tanggal Lahir</label>
-                                <input type="text" class="form-control form-control-lg" id="kepala_tgl_lahir" name="kepala_tgl_lahir" value="{{old('kepala_tgl_lahir') ? old('kepala_tgl_lahir') : $data->kepala_tgl_lahir }}">
+                                <label for="kepala_nik" class="fw-bold d-block mb-2">NIK</label>
+                                <input type="text" class="form-control form-control-lg" id="kepala_nik" name="kepala_nik" value="{{old('kepala_nik') ? old('kepala_nik') : $data->kepala_nik }}">
 
-                                @if($errors->has('kepala_tgl_lahir'))
-                                <small class="text-danger"> {{ $errors->first('kepala_tgl_lahir') }} </small>
+                                @if($errors->has('kepala_nik'))
+                                <small class="text-danger"> {{ $errors->first('kepala_nik') }} </small>
                                 @endif
 
                             </div>

@@ -27,72 +27,70 @@
 
                     <!-- .col start -->
                     <div class="col-lg-6  mx-auto border border-4 border-info rounded shadow-lg p-5 my-5">
-                        <h1 class="fw-bold text-center">Detail Profil DPRD</h1>
-                        <div class="border-top border-1 pt-3 mt-1"></div>
+                        <h1 class="fw-bold mb-4">Detail Profil DPRD</h1>
                         <form>
-                            <div class="mb-3 fs-4 text-center">
-                                @if (!$data->foto)
-                                <img src="{{asset('assets/admin/assets/images/users/user-man.png')}}"
-                                    alt="{{$data->slug}}" width="250px" class="img-thumbnail mb-1">
+
+                            <div class="mb-3 fs-4">
+                                <label for="" class="fw-bold d-block">Nama Lengkap</label>
+                                <input type="text" class="form-control form-control-lg px-0 border-0" readonly value="{{$data->nama_lengkap }}">
+                            </div>
+                            <!-- input item end -->
+
+                            <div class="mb-3 fs-4">
+                                <label for="" class="fw-bold d-block">Jabatan</label>
+                                <input type="text" class="form-control form-control-lg px-0 border-0" readonly value="{{$data->jabatan }}">
+                            </div>
+                            <!-- input item end -->
+
+                            <div class="mb-3 fs-4">
+                                <label for="" class="fw-bold d-block">NIK</label>
+                                <input type="text" class="form-control form-control-lg px-0 border-0" readonly value="{{$data->nik }}">
+                            </div>
+                            <!-- input item end -->
+
+                            <div class="mb-3 fs-4">
+                                <label for="" class="fw-bold d-block">Alamat</label>
+                                <textarea class="form-control form-control-lg px-0 border-0" readonly>{{ $data->alamat }}</textarea>
+                            </div>
+                            <!-- input item end -->
+
+                            <div class="mb-3 fs-4">
+                                <label for="" class="fw-bold d-block">TTL</label>
+                                <input type="text" class="form-control form-control-lg px-0 border-0" value="{{$data->ttl }}" readonly>
+                            </div>
+                            <!-- input item end -->
+
+                            <div class="mb-3 fs-4">
+                                <label for="" class="fw-bold d-block">Nama Partai</label>
+                                <input type="text" class="form-control form-control-lg px-0 border-0" value="{{$data->nama_partai }}" readonly>
+                            </div>
+                            <!-- input item end -->
+
+                            <div class="mb-3 fs-4">
+                                <label for="" class="fw-bold d-block">Pendidikan</label>
+                                <input type="text" class="form-control form-control-lg px-0 border-0" value="{{$data->pendidikan}}" readonly>
+                            </div>
+                            <!-- input item end -->
+
+                            <div class="mb-3 fs-4">
+                                <label for="" class="fw-bold d-block mb-1">Foto</label>
+                                @if (empty($data->foto))
+                                <img src="{{ asset('gambar/default.png') }}" alt="gambar" width="250px" class="img-thumbnail mb-1">
                                 @else
-                                <img src="{{asset('file/foto/dprd')}}/{{ $data->foto}}" class="img-fluid img-thumbnail"
-                                    width="250px" class="img-thumbnail mb-1"></td>
+                                <img src="{{ asset('gambar/' . $data->foto) }}" class="img-fluid img-thumbnail" width="250px" class="img-thumbnail mb-1"></td>
                                 @endif
                             </div>
-                            <br>
-                            <div class="mb-3 fs-4">
-                                <label for="" class="fw-bold">Nama Lengkap</label>
-                                <input type="text" class="form-control form-control-lg" readonly
-                                    value="{{$data->nama_lengkap }}">
-                            </div>
-
-                            <div class="mb-3 fs-4">
-                                <label for="" class="fw-bold">Jabatan</label>
-                                <input type="text" class="form-control form-control-lg" readonly
-                                    value="{{$data->jabatan }}">
-                            </div>
-
-                            <div class="mb-3 fs-4">
-                                <label for="" class="fw-bold">NIK</label>
-                                <input type="text" class="form-control form-control-lg" readonly
-                                    value="{{$data->nik }}">
-                            </div>
-
-                            <div class="mb-3 fs-4">
-                                <label for="" class="fw-bold">Alamat</label>
-                                <textarea class="form-control form-control-lg" rows="2"
-                                    readonly>{{ $data->alamat }}</textarea>
-                            </div>
-
-                            <div class="mb-3 fs-4">
-                                <label for="" class="fw-bold">TTL</label>
-                                <input type="text" class="form-control form-control-lg" value="{{$data->ttl }}"
-                                    readonly>
-                            </div>
-
-                            <div class="mb-3 fs-4">
-                                <label for="" class="fw-bold">Nama Partai</label>
-                                <input type="text" class="form-control form-control-lg" value="{{$data->nama_partai }}"
-                                    readonly>
-                            </div>
-
-                            <div class="mb-3 fs-4">
-                                <label for="" class="fw-bold">Pendidikan</label>
-                                <input type="text" class="form-control form-control-lg" value="{{$data->pendidikan}}"
-                                    readonly>
-                            </div>
-
+                            <!-- input item end -->
 
                             <div class="border-top border-1 pt-3 mt-4">
-                                <a href="{{ route('admin.dprd.edit',$data->id) }}"
-                                    class="btn btn-outline-light waves-effect waves-light fs-4">
+                                <a href="{{ route('admin.dprd.edit',$data->id) }}" class="btn btn-info waves-effect waves-light fs-4">
                                     <i class="fas fa-edit me-1"></i> Edit
                                 </a>
-                                <a href="{{URL::previous()}}"
-                                    class="btn btn-outline-light waves-effect waves-light fs-4">
+                                <a href="{{URL::previous()}}" class="btn btn-outline-light waves-effect waves-light fs-4">
                                     <i class="fas fa-arrow-left me-1"></i> Kembali
                                 </a>
                             </div>
+                            <!-- input button end -->
 
                         </form>
 
