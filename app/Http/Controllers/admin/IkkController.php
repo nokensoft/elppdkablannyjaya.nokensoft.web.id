@@ -93,11 +93,11 @@ class IkkController extends Controller
             'jml2'                      => 'required',
             'keterangan'                => 'required',
             'rumus'                     => 'required',
-            'urusan'                    => 'required',
         ],
         [
             'no_ikk.required'          => 'Nomor IKK tidak boleh kosong',
-            // 'no_ikk.unique'            => 'Nomor IKK sudah ada',
+            'capaian_kinerja.required' => 'capaian kinerja tidak boleh kosong',
+
             'urusan_id.required'         => 'Urusan tidak boleh kosong',
             'user_id.required'         => 'Perangkat Daerah tidak boleh kosong',
             'keterangan.required'      => 'Keterangan tidak boleh kosong',
@@ -114,20 +114,22 @@ class IkkController extends Controller
             try {
                 $ikk = new Ikk();
                 $ikk->urusan_id        = $request->urusan_id;
+                $ikk->user_id        = $request->user_id;
                 $ikk->no_ikk        = $request->no_ikk;
-                $ikk->urusan        = $request->urusan;
                 $ikk->ikk           = $request->ikk;
                 $ikk->rumus         = $request->rumus;
-                // $ikk->ket_jml1   = $request->ket_jml1;
+                $ikk->ket_jml1   = $request->ket_jml1;
                 $ikk->jml1          = $request->jml1;
-                // $ikk->ket_jml2   = $request->ket_jml2;
+                $ikk->ket_jml2   = $request->ket_jml2;
                 $ikk->jml2          = $request->jml2;
                 $ikk->capaian_kinerja    = $request->capaian_kinerja;
                 $ikk->keterangan    = $request->keterangan;
                 $ikk->save();
+
                 alert()->success('Berhasil', 'Sukses!!')->autoclose(1100);
                 return redirect()->route('admin.ikk');
             } catch (\Throwable $th) {
+                dd($th);
                 alert()->error('Gagal', 'Sukses!!')->autoclose(1100);
                 return redirect()->back();
             }

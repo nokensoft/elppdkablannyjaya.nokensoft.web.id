@@ -32,7 +32,7 @@ class DatabaseSeeder extends Seeder
 
         // \App\Models\User::factory(10)->create();
 
-        Ikk::factory(3)->create();
+        // Ikk::factory(3)->create();
         // User::factory(3)->create();
         // Distrik::factory(3)->create();
         // Desa::factory(3)->create();

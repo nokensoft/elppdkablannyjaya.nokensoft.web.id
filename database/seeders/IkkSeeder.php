@@ -82,8 +82,7 @@ class IkkSeeder extends Seeder
             'ikk'               => 'Tingkat Partisipasi warga negara usia 7-12 tahun yang berpartisipasi dalam Pendidikan Dasar',
             'rumus'             => 'Jumlah anak usia 7-12 tahun yang sudah tamat atau sedang belajar di Sekolah Dasar (SD, MI dan bentuk lain yang sederajat) ---------------------- x 100 % (13.979/15.359) x 100 % = 91,01 Jumlah anak usia 7-12 tahun Kabupaten Lanny Jaya',
             'keterangan'        => 'Dinas Pendidikan dan Dinas Kependuduk an & Capil',
-            'ket_jml1'          => 'Jumlah anak usia 7-12 tahun yang sudah tamat atau sedang belajar di Sekolah Dasar (SD, MI dan bentuk  lain yang sederajat)
-            ',
+            'ket_jml1'          => 'Jumlah anak usia 7-12 tahun yang sudah tamat atau sedang belajar di Sekolah Dasar (SD, MI dan bentuk  lain yang sederajat)',
             'jml1'              => '13979',
             'ket_jml2'          => 'Jumlah anak usia 7-12 tahun Kabupaten Lanny Jaya',
             'jml2'              => '15359',

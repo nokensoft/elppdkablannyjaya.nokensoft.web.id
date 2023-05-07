@@ -18,9 +18,6 @@ return new class extends Migration
             $table->bigInteger('user_id')->unsigned()->nullable();
             $table->foreignId('urusan_id')->nullable();
             $table->string('no_ikk')->nullable();
-
-            $table->string('urusan')->nullable();
-
             $table->string('ikk')->nullable();
             $table->string('rumus')->nullable();
             $table->string('ket_jml1')->nullable();
