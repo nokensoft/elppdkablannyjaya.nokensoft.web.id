@@ -48,8 +48,8 @@
                                                 </td>
                                                 <td>
                                                     <a href="#" class="btn btn-sm btn-outline-dark waves-effect waves-light fs-4">
-                                                        <i class="fas fa-upload mr-1"></i>
-                                                        Unggah Dokumen
+                                                        <i class="fas fa-download mr-1"></i>
+                                                        Unduh Dokumen
                                                     </a>
                                                 </td>
                                             </tr>

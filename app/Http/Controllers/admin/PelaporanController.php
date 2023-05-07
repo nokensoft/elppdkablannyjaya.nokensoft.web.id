@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\pelapoarn;
 use App\Models\Pelaporan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -12,48 +11,32 @@ use Illuminate\Support\Facades\File;
 
 class PelaporanController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    // INDEX
     public function index()
     {
-        // $all =DB::select('SELECT * FROM lppd_pelaporan WHERE tahun = 2021  ');
-        $all = Pelaporan::where('tahun','2021')->get();
+        $all = Pelaporan::where('tahun','2023')->get();
         return view('admin.pages.lppd.pelaporan.index', ['all' => $all]);
     }
 
-    public function index2021()
+    public function index2023()
     {
-        // $all =DB::select('SELECT * FROM lppd_pelaporan WHERE tahun = 2021  ');
-        $all = Pelaporan::where('tahun','2021')->get();
-        return view('admin.pages.lppd.pelaporan.index2021', ['all' => $all]);
+        $all = Pelaporan::where('tahun','2023')->get();
+        return view('admin.pages.lppd.pelaporan.index2023', ['all' => $all]);
     }
 
-    public function index2021Cover()
+    public function index2023Cover()
     {
-        // $all =DB::select('SELECT * FROM lppd_pelaporan WHERE tahun = 2021  ');
-        $all = Pelaporan::where('tahun','2021')->get();
-        return view('admin.pages.lppd.pelaporan.index2021cover', ['all' => $all]);
+        $all = Pelaporan::where('tahun','2023')->get();
+        return view('admin.pages.lppd.pelaporan.index2023cover', ['all' => $all]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    // CREATE
     public function create()
     {
-        return view('admin.pages.profil.pelapoarn.tambah');
+        return view('admin.pages.profil.Pelaporan.tambah');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    // STORE
     public function store(Request $request)
     {
         $request->validate([
@@ -66,61 +49,45 @@ class PelaporanController extends Controller
         $tahun = date("Y");
         $bulan = date("M");
 
-        $filename  = 'profil-pelapoarn'.'-'.date('Y-m-d-H-i-s').$request->file('foto')->getClientOriginalName();
+        $filename  = 'profil-Pelaporan'.'-'.date('Y-m-d-H-i-s').$request->file('foto')->getClientOriginalName();
 
-        $request->file('foto')->storeAs('public/resource/admin/pelapoarn/'.$tahun.'/'.$bulan,$filename);
-        $url = ('storage/resource/admin/pelapoarn/'.$tahun.'/'.$bulan.'/'.$filename);
+        $request->file('foto')->storeAs('public/resource/admin/Pelaporan/'.$tahun.'/'.$bulan,$filename);
+        $url = ('storage/resource/admin/Pelaporan/'.$tahun.'/'.$bulan.'/'.$filename);
 
-        $pelapoarn = new pelapoarn();
+        $Pelaporan = new Pelaporan();
 
-        $pelapoarn->nama_instansi    = $request->nama_instansi;
-        $pelapoarn->jabatan          = $request->jabatan;
-        $pelapoarn->nama_lengkap     = $request->nama_lengkap;
-        $pelapoarn->nik              = $request->nik;
-        $pelapoarn->alamat           = $request->alamat;
-        $pelapoarn->ttl              = $request->ttl;
-        $pelapoarn->nama_partai      = $request->nama_partai;
-        $pelapoarn->pendidikan       = $request->pendidikan;
-        $pelapoarn->foto             = $url;
-        $pelapoarn->slug             =  Str::slug($request->nama_lengkap);
+        $Pelaporan->nama_instansi    = $request->nama_instansi;
+        $Pelaporan->jabatan          = $request->jabatan;
+        $Pelaporan->nama_lengkap     = $request->nama_lengkap;
+        $Pelaporan->nik              = $request->nik;
+        $Pelaporan->alamat           = $request->alamat;
+        $Pelaporan->ttl              = $request->ttl;
+        $Pelaporan->nama_partai      = $request->nama_partai;
+        $Pelaporan->pendidikan       = $request->pendidikan;
+        $Pelaporan->foto             = $url;
+        $Pelaporan->slug             =  Str::slug($request->nama_lengkap);
 
 
-        $pelapoarn->save();
+        $Pelaporan->save();
         alert()->success('Berhasil', 'Sukses!!')->autoclose(1100);
-        return redirect()->route('admin.pelapoarn');
+        return redirect()->route('admin.Pelaporan');
 
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\pelapoarn  $pelapoarn
-     * @return \Illuminate\Http\Response
-     */
-    public function show(pelapoarn $pelapoarn)
+    // SHOW
+    public function show(Pelaporan $Pelaporan)
     {
-        return view('admin.pages.profil.pelapoarn.detail');
+        return view('admin.pages.profil.Pelaporan.detail');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\pelapoarn  $pelapoarn
-     * @return \Illuminate\Http\Response
-     */
-    public function edit_2021()
+    // EDIT
+    public function edit_2023()
     {
-        $data =DB::select("SELECT * FROM lppd_pelaporan WHERE tahun = '2021' ");
-        return view('admin.pages.profil.pelapoarn.ubah',['data' => $data]);
+        $data =DB::select("SELECT * FROM lppd_pelaporan WHERE tahun = '2023' ");
+        return view('admin.pages.profil.Pelaporan.ubah',['data' => $data]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\pelapoarn  $pelapoarn
-     * @return \Illuminate\Http\Response
-     */
+    // UPDATE
     public function update(Request $request,$slug)
     {
          $request->validate([
@@ -133,12 +100,12 @@ class PelaporanController extends Controller
         $tahun = date("Y");
         $bulan = date("M");
 
-        $pelapoarn = new pelapoarn();
+        $Pelaporan = new Pelaporan();
 
         if(!empty($request->file('foto'))){
-            $filename  = 'profil-pelapoarn'.'-'.date('Y-m-d-H-i-s').$request->file('foto')->getClientOriginalName();
-            $request->file('foto')->storeAs('public/resource/admin/pelapoarn/'.$tahun.'/'.$bulan,$filename);
-            $url = ('storage/resource/admin/pelapoarn/'.$tahun.'/'.$bulan.'/'.$filename);
+            $filename  = 'profil-Pelaporan'.'-'.date('Y-m-d-H-i-s').$request->file('foto')->getClientOriginalName();
+            $request->file('foto')->storeAs('public/resource/admin/Pelaporan/'.$tahun.'/'.$bulan,$filename);
+            $url = ('storage/resource/admin/Pelaporan/'.$tahun.'/'.$bulan.'/'.$filename);
             $datalama =DB::select("SELECT * FROM lppd_pelaporan WHERE id = '$slug' ");
             if($datalama[0]->foto){
              \File::delete($datalama[0]->foto);
@@ -160,24 +127,19 @@ class PelaporanController extends Controller
             ->update($data);
 
         alert()->success('Berhasil', 'Sukses!!')->autoclose(1100);
-        return redirect()->route('admin.pelapoarn');
+        return redirect()->route('admin.Pelaporan');
 
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\pelapoarn  $pelapoarn
-     * @return \Illuminate\Http\Response
-     */
-    public function delete($pelapoarn)
+    // DELETE
+    public function delete($Pelaporan)
     {
-        $data =DB::select("SELECT * FROM lppd_pelaporan WHERE slug = '$pelapoarn' ");
-        return view('admin.pages.profil.pelapoarn.delete',['data' => $data]);
+        $data =DB::select("SELECT * FROM lppd_pelaporan WHERE slug = '$Pelaporan' ");
+        return view('admin.pages.profil.Pelaporan.delete',['data' => $data]);
     }
     public function destroy($id)
     {
-        $data = pelapoarn::findOrFail($id);
+        $data = Pelaporan::findOrFail($id);
 
         //dd($data);
         if($data->foto){
@@ -187,6 +149,6 @@ class PelaporanController extends Controller
         $data->forceDelete();
 
         alert()->success('Berhasil', 'Sukses!!')->autoclose(1500);
-        return redirect()->route('admin.pelapoarn');
+        return redirect()->route('admin.Pelaporan');
     }
 }

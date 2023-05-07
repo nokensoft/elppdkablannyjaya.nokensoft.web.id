@@ -133,9 +133,16 @@
                     <i class="mdi mdi-chevron-down"></i>
                 </a>
                 <div class="dropdown-menu">
+
                     <a href="{{asset('admin/ikk')}}" class="dropdown-item fs-4">
                         <i class="fas fa-bookmark me-1"></i>
                         <span>Pelaporan</span>
+                    </a>
+                    <!-- item-->
+                    
+                    <a href="{{asset('admin/ikk/urusan')}}" class="dropdown-item fs-4">
+                        <i class="fas fa-bookmark me-1"></i>
+                        <span>Urusan</span>
                     </a>
                     <!-- item-->
 

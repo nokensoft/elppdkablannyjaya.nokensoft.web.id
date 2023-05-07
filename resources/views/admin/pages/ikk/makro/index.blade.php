@@ -20,25 +20,30 @@
     <div class="col">
         <div class="card">
             <div class="card-body">
-                <h1 class="fw-bold">IKK @if(!empty($bidang_ikk)) {{$bidang_ikk}} @endif</h1>
-                <div class="mb-3">
-                    @if(Auth::user()->hasRole('administrator'))
 
-                    <a href="{{ route('admin.ikk.create') }}" class="btn btn-info waves-effect waves-light fs-4">
-                        <i class="fas fa-plus me-1"></i> Tambah Data
-                    </a>
-                    @endif
+                <div class="row">
+                    <div class="col-md-6">
+                        <h1 class="fw-bold">IKK @if(!empty($bidang_ikk)) {{$bidang_ikk}} @endif</h1>
+                        Tanggal : <span class="fw-bold">{{ today()->toDateString() }}</span>
+                    </div>
+                    <div class="col-md-6 text-md-end">
+                        @if(Auth::user()->hasRole('administrator'))
 
-                    <a href="{{ route('admin.ikk.print') }}" target="_blank"
-                        class="btn btn-outline-info waves-effect waves-light fs-4">
-                        <i class="fas fa-print me-1"></i> Print
-                    </a>
+                        <a href="{{ route('admin.ikk.create') }}" class="btn btn-info waves-effect waves-light fs-4">
+                            <i class="fas fa-plus me-1"></i> Tambah Data
+                        </a>
+                        @endif
 
-                    <a href="{{ route('admin.ikk.download_excel') }}" target="_blank"
-                        class="btn btn-outline-info waves-effect waves-light fs-4">
-                        <i class="fas fa-file me-1"></i> Download Excel
-                    </a>
+                        <a href="{{ route('admin.ikk.print') }}" target="_blank"
+                            class="btn btn-outline-info waves-effect waves-light fs-4">
+                            <i class="fas fa-print me-1"></i> Print
+                        </a>
 
+                        {{-- <a href="{{ route('admin.ikk.download_excel') }}" target="_blank" class="btn btn-outline-info waves-effect waves-light fs-4">
+                            <i class="fas fa-file me-1"></i> Download Excel
+                        </a> --}}
+
+                    </div>
                 </div>
 
                 <div class="row">

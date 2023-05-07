@@ -16,17 +16,28 @@ return new class extends Migration
         Schema::create('lppd_pelaporan', function (Blueprint $table) {
             $table->id();
             $table->string('tahun')->nullable();
+            
             $table->string('cover')->nullable();
             $table->string('cover_file')->nullable();
-            $table->string('babi')->nullable();
-            $table->string('babii')->nullable();
-            $table->string('babiii')->nullable();
-            $table->string('babiv')->nullable();
-            $table->string('babv')->nullable();
-            $table->string('lampiran')->nullable();
-            $table->string('status')->nullable();
 
-            
+            $table->string('babi')->nullable();
+            $table->string('babi_file')->nullable();
+
+            $table->string('babii')->nullable();
+            $table->string('babii_file')->nullable();
+
+            $table->string('babiii')->nullable();
+            $table->string('babiii_file')->nullable();
+
+            $table->string('babiv')->nullable();
+            $table->string('babiv_file')->nullable();
+
+            $table->string('babv')->nullable();
+            $table->string('babv_file')->nullable();
+
+            $table->string('lampiran')->nullable();
+            $table->string('lampiran_file')->nullable();
+
             $table->timestamps();
         });
     }
