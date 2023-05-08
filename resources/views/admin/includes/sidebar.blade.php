@@ -1,43 +1,10 @@
 <!-- ========== Left Sidebar Start ========== -->
 <div class="left-side-menu">
 
-    <div class="h-100" data-simplebar>
+    <div class="h-100 pt-0" data-simplebar>
 
-        <!-- User box -->
-        <div class="user-box text-center">
-            <img src="{{ asset( Auth::user()->avatar )}}" alt="user-img" title="Mat Helme"
-                class="rounded-circle avatar-md">
-            <div class="dropdown">
-                <a href="javascript: void(0);" class="text-black dropdown-toggle h5 mt-2 mb-1 d-block"
-                    data-bs-toggle="dropdown"> {{ Auth::user()->name }}</a>
-                <div class="dropdown-menu user-pro-dropdown">
-
-                    <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                        <i class="fe-user me-1"></i>
-                        <span>My Account</span>
-                    </a>
-
-                    <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                        <i class="fe-settings me-1"></i>
-                        <span>Settings</span>
-                    </a>
-
-                    <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                        <i class="fe-lock me-1"></i>
-                        <span>Lock Screen</span>
-                    </a>
-
-                    <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                        <i class="fe-log-out me-1"></i>
-                        <span>Logout</span>
-                    </a>
-
-                </div>
-            </div>
+        <div class="bg-warning text-dark m-2 p-2 rounded">
+            <small> <b class="d-block">Perhatian</b> Ini merupakan tampilan demo Sistem Informasi Pemerintahan Kabupaten Lanny Jaya. Untuk update data, silahkan kunjungi <a href="https://silanny.lannyjayakab.id" class="fw-bold btn btn-light" target="_blank">silanny.lannyjayakab.id</a></small>
         </div>
 
         @if(Auth::user()->hasRole('administrator'))
