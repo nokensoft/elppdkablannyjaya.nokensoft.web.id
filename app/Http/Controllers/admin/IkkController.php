@@ -210,7 +210,8 @@ class IkkController extends Controller
                 // 'user_id'                   => 'required',
                 'urusan_id'                 => 'required',
                 // 'capaian_kinerja'           => 'required',
-                'ikk'                       => 'required',
+                'ikk_output'                       => 'required',
+                'ikk_outcome'                       => 'required',
                 'jml1'                      => 'required',
                 'jml2'                      => 'required',
                 'keterangan'                => 'required',
@@ -237,7 +238,8 @@ class IkkController extends Controller
         $ikk['urusan_id']       = $request->urusan_id;
         $ikk['no_ikk']        = $request->no_ikk;
         // $ikk['urusan']        = $request->urusan;
-        $ikk['ikk']           = $request->ikk;
+        $ikk['ikk_output']           = $request->ikk_output;
+        $ikk['ikk_outcome']           = $request->ikk_outcome;
         $ikk['rumus']         = $request->rumus;
         // $ikk->ket_jml1   = $request->ket_jml1;
         $ikk['jml1']          = $request->jml1;

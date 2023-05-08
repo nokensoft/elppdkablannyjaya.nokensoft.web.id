@@ -80,15 +80,15 @@
                                     <td> {{$ikk->ikk_outcome}} </td>
                                     <td>
                                         {{$ikk->capaian_kinerja}}
-                                        <a href="{{ route('admin.ikk.capaian_kinerja',['id' => $ikk->id]) }}"
+                                        {{-- <a href="{{ route('admin.ikk.capaian_kinerja',['id' => $ikk->id]) }}"
                                             class="btn btn-sm btn-info border-0  waves-effect waves-light">
                                             <i class="fas fa-eye"></i>
-                                        </a>
+                                        </a> --}}
                                     </td>
                                     <td> {{$ikk->keterangan}} </td>
                                     <td>
                                         @if(!$ikk->file_bukti)
-                                        <a href="{{ route('admin.ikk.upload',['id' => $ikk->id]) }}" class="link-info">
+                                        <a href="{{ route('admin.ikk.upload',['id' => $ikk->id]) }}" class="link-dark">
                                             <i class="fas fa-file"></i> Upload File
                                         </a>
                                         @else
