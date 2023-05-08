@@ -42,6 +42,7 @@
                                 <label class="text-danger"> {{ $errors->first('no_ikk') }} </label>
                                 @endif
                             </div>
+                            <!-- input item end -->
 
                             <div class="mb-3 fs-4">
                                 <label for="" class="fw-bold">Urusan</label>
@@ -56,19 +57,27 @@
                                     @endforeach
                                 </select>
                             </div>
-
-
-
-
+                            <!-- input item end -->
 
                             <div class="mb-3 fs-4">
-                                <label for="" class="fw-bold">IKK</label>
-                                <textarea name="ikk" id="" rows="5"
-                                    class="form-control form-control-lg">{{old('ikk') ? old('ikk') : $data->ikk }}</textarea>
-                                @if($errors->has('ikk'))
-                                <label class="text-danger"> {{ $errors->first('ikk') }} </label>
+                                <label for="" class="fw-bold">IKK Output</label>
+                                <textarea name="ikk_output" id="" rows="5"
+                                    class="form-control form-control-lg">{{old('ikk_output') ? old('ikk_output') : $data->ikk_output }}</textarea>
+                                @if($errors->has('ikk_output'))
+                                <label class="text-danger"> {{ $errors->first('ikk_output') }} </label>
                                 @endif
                             </div>
+                            <!-- input item end -->
+
+                            <div class="mb-3 fs-4">
+                                <label for="" class="fw-bold">IKK Outcome</label>
+                                <textarea name="ikk_outcome" id="" rows="5"
+                                    class="form-control form-control-lg">{{old('ikk_outcome') ? old('ikk_outcome') : $data->ikk_outcome }}</textarea>
+                                @if($errors->has('ikk_outcome'))
+                                <label class="text-danger"> {{ $errors->first('ikk_outcome') }} </label>
+                                @endif
+                            </div>
+                            <!-- input item end -->
 
                             <div class="mb-3 fs-4">
                                 <label for="" class="fw-bold">Rumus</label>
@@ -78,6 +87,7 @@
                                 <label class="text-danger"> {{ $errors->first('rumus') }} </label>
                                 @endif
                             </div>
+                            <!-- input item end -->
 
                             <div class="mb-3 fs-4">
                                 <label for="" class="fw-bold">{{ $data->ket_jml1 }}</label>
@@ -87,6 +97,7 @@
                                 <label class="text-danger"> {{ $errors->first('jml1') }} </label>
                                 @endif
                             </div>
+                            <!-- input item end -->
 
                             <div class="mb-3 fs-4">
                                 <label for="" class="fw-bold">{{ $data->ket_jml2 }}</label>
@@ -96,6 +107,7 @@
                                 <label class="text-danger"> {{ $errors->first('jml2') }} </label>
                                 @endif
                             </div>
+                            <!-- input item end -->
 
                             {{-- <div class="mb-3 fs-4">
                                 <label for="" class="fw-bold">Capaian Kinerja</label>
@@ -115,6 +127,7 @@
                                 <label class="text-danger"> {{ $errors->first('keterangan') }} </label>
                                 @endif
                             </div>
+                            <!-- input item end -->
 
                             <div class="border-top border-1 pt-3 mt-4">
                                 <button type="submit" class="btn btn-info waves-effect waves-light fs-4">
@@ -125,6 +138,7 @@
                                     <i class="fas fa-arrow-left me-1"></i> Kembali
                                 </a>
                             </div>
+                            <!-- input item end -->
 
                         </form>
 

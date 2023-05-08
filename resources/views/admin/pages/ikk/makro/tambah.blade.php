@@ -77,11 +77,21 @@
 
 
                             <div class="mb-3 fs-4">
-                                <label for="" class="fw-bold">IKK</label>
-                                <textarea name="ikk" id="" rows="5"
-                                    class="form-control form-control-lg">{{old('ikk')}}</textarea>
-                                    @if($errors->has('ikk'))
-                                    <label class="text-danger"> {{ $errors->first('ikk') }} </label>
+                                <label for="" class="fw-bold">IKK Output</label>
+                                <textarea name="ikk_output" id="" rows="5"
+                                    class="form-control form-control-lg">{{old('ikk_output')}}</textarea>
+                                    @if($errors->has('ikk_output'))
+                                    <label class="text-danger"> {{ $errors->first('ikk_output') }} </label>
+                                @endif
+                            </div>
+                            <!-- input item end -->
+
+                            <div class="mb-3 fs-4">
+                                <label for="" class="fw-bold">IKK Outcome</label>
+                                <textarea name="ikk_outcome" id="" rows="5"
+                                    class="form-control form-control-lg">{{old('ikk_outcome')}}</textarea>
+                                    @if($errors->has('ikk_outcome'))
+                                    <label class="text-danger"> {{ $errors->first('ikk_outcome') }} </label>
                                 @endif
                             </div>
                             <!-- input item end -->

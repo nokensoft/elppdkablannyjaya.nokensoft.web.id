@@ -33,47 +33,46 @@
                                         @else
                                     <form action="{{ url('app/halaman') }}" method="get">
                                         @endif
-<div class="input-group mb-3">
-  <input type="search" name="s" class="form-control" placeholder="Search">
-  <button type="submit" class="btn btn-primary">Search</button>
-</div>
-</form>
-
                                         
+                                        <div class="input-group mb-3">
+                                            <input type="search" name="s" class="form-control" placeholder="Search">
+                                            <button type="submit" class="btn btn-primary">Search</button>
+                                        </div>
+                                    </form>
 
                                         <div class="mt-3">
-                                        <table class="table table-bordered">
-        <tr>
-            <th>No</th>
-            
-            <th>Title</th>
-           
-          
-            <th width="280px">Action</th>
-        </tr>
-        @foreach ($datas as $data)
-        <tr>
-            <td>{{ ++$i }}</td>
-             <td>{{Str::limit($data->title, 20)}}</td>
-              
-            <td>
-                <form action="{{ url('app/halaman',$data->id) }}" method="POST">
-     
-                
-               
-                
-                    <a class="btn btn-primary" href="{{ url('app/halaman/'.$data->id.'/edit') }}">Edit</a>
-     
-                    @csrf
-                    @method('DELETE')
-        
-                    <button type="submit" class="btn btn-danger">Delete</button>
-                </form>
-            </td>
-        </tr>
-        @endforeach
+                                            <table class="table table-bordered">
+                                                <tr>
+                                                    <th>No</th>
+                                                    
+                                                    <th>Title</th>
+                                                
+                                                
+                                                    <th width="280px">Action</th>
+                                                </tr>
+                                                @foreach ($datas as $data)
+                                                <tr>
+                                                    <td>{{ ++$i }}</td>
+                                                    <td>{{Str::limit($data->title, 20)}}</td>
+                                                    
+                                                    <td>
+                                                        <form action="{{ url('app/halaman',$data->id) }}" method="POST">
+                                            
+                                                        
+                                                    
+                                                        
+                                                            <a class="btn btn-primary" href="{{ url('app/halaman/'.$data->id.'/edit') }}">Edit</a>
+                                            
+                                                            @csrf
+                                                            @method('DELETE')
+                                                
+                                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                                        </form>
+                                                    </td>
+                                                </tr>
+                                                @endforeach
 
-    </table>
+                                            </table>
                                         </div>
                                         <!-- end .mt-4 -->
 

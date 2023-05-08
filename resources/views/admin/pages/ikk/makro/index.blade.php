@@ -85,14 +85,32 @@
                                         <a class=" " href="{{route('admin.ikk.show',$ikk->id)  }}">Detail</a> |
                                         <form action="{{ url('admin/ikk',$ikk->id) }}" method="POST" class="d-flex">
 
-
-
                                             <a class="" href="{{ url('admin/ikk/'.$ikk->id.'/edit') }}">Edit</a> |
 
                                             @csrf
                                             @method('DELETE')
 
                                             <button type="submit" class="btn text-primary">Delete</button>
+                                    </td>
+                                    <td class="d-flex justify-content-between gap-1">
+                                        @if(Cache::has('user-is-online-' . $ikk->id))
+                                        <a href="{{route('admin.ikk.show',$ikk->id)}}" class="btn btn-sm btn-info border-0  waves-effect waves-light fs-4">
+                                            <i class="fas fa-eye"></i>
+                                        </a>
+                                        <a href="{{route('admin.ikk.edit',$ikk->id)}}" class="btn btn-sm btn-outline-info border-0 waves-effect waves-light fs-4">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
+                                        @else
+                                        <a href="{{route('admin.ikk.show',$ikk->id)}}" class="btn btn-sm btn-info border-0  waves-effect waves-light fs-4">
+                                            <i class="fas fa-eye"></i>
+                                        </a>
+                                        <a href="{{route('admin.ikk.edit',$ikk->id)}}" class="btn btn-sm btn-outline-info border-0 waves-effect waves-light fs-4">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
+                                        <a href="{{route('admin.ikk.delete',$ikk->id)}}" class="btn btn-sm btn-outline-info border-0 waves-effect waves-light fs-4">
+                                            <i class="fas fa-trash"></i>
+                                        </a>
+                                        @endif
                                     </td>
                                 </tr>
                                 @endforeach

@@ -111,7 +111,8 @@ class IkkController extends Controller
                 $ikk->urusan_id        = $request->urusan_id;
                 $ikk->user_id        = $request->user_id;
                 $ikk->no_ikk        = $request->no_ikk;
-                $ikk->ikk           = $request->ikk;
+                $ikk->ikk_output           = $request->ikk_output;
+                $ikk->ikk_outcome           = $request->ikk_outcome;
                 $ikk->rumus         = $request->rumus;
                 $ikk->ket_jml1   = $request->ket_jml1;
                 $ikk->jml1          = $request->jml1;
