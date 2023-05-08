@@ -34,18 +34,18 @@
                         <table class="table table-bordered fs-4">
                             <thead class="bg-dark text-light">
                                 <tr>
-                                    <th>NO</th>
-                                    <th>Judul Urusan</th>
-                                    <th>Slug</th>
+                                    <th>Urusan</th>
+                                    <th>Urusan IKK</th>
                                     <th class="text-center">Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($data as $urusan )
                                 <tr>
-                                    <td>#</td>
                                     <td>{{$urusan->judul_urusan}}</td>
-                                    <td>{{$urusan->slug}}</td>
+                                    <td>
+                                        <a href="{{ url('admin/ikk' . $urusan->slug) }}" class="btn btn-light"> Tampilkan</a>
+                                    </td>
                                     <td class="text-center">
 
                                         <a href="{{route('admin.urusan.edit',$urusan->slug)}}"

@@ -45,7 +45,7 @@ class AppServiceProvider extends ServiceProvider
 
         view::share([
             'pengaturan'        => $pengaturan,
-            'urusans'            => $urusans,
+            'urusans'           => $urusans,
         ]);
 
     }
