@@ -273,6 +273,8 @@ Route::prefix('admin')->middleware('auth')->group(function () {
         Route::get('ikk/{id}/upload', 'upload')->name('admin.ikk.upload');
         Route::put('ikk/upload/{id}', 'uploadFile')->name('admin.ikk.uploadFile');
 
+        Route::get('ikk/{id}/capaian-kinerja', 'capaian_kinerja')->name('admin.ikk.capaian_kinerja');
+
         Route::get('ikk/{id}/detail', 'show')->name('admin.ikk.show');
 
         Route::get('ikk/{id}/edit', 'edit')->name('admin.ikk.edit');

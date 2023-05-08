@@ -70,6 +70,11 @@ class IkkController extends Controller
         $data = Ikk::where('id',$id)->first();
         return view('admin.pages.ikk.makro.upload',compact('data'));
     }
+    public function capaian_kinerja($id)
+    {
+        $data = Ikk::where('id',$id)->first();
+        return view('admin.pages.ikk.makro.capaian_kinerja',compact('data'));
+    }
 
     /**
      * Store a newly created resource in storage.

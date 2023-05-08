@@ -8,8 +8,8 @@
                 <ol class="breadcrumb m-0">
                     <li class="breadcrumb-item"><a href="{{asset('admin/beranda')}}">Beranda</a></li>
                     <li class="breadcrumb-item"><a href="{{asset('admin/profil')}}">Profil</a></li>
-                    <li class="breadcrumb-item">IKK</li>
-                    <li class="breadcrumb-item active">Detaill</li>
+                    <li class="breadcrumb-item active">IKK</li>
+                    <li class="breadcrumb-item active">Pencapaian Kerja</li>
                 </ol>
             </div>
         </div>
@@ -27,103 +27,67 @@
                     <!-- .col start -->
                     <div class="col-lg-6  mx-auto border border-4 border-info rounded shadow-lg p-5 my-5">
 
-                        <h1 class="fw-bold">Detail IKK</h1>
-
+                        <h1 class="fw-bold">Pencapaian Kerja {{ $data->urusan->judul_urusan }} </h1>
+                        <br>
                             <div class="mb-3 fs-4">
                                 <label for="" class="fw-bold">No IKK</label>
-                                <input type="text" class="form-control form-control-lg" readonly value="{{$ikk->no_ikk}}">
-                                @if($errors->has('no_ikk'))
-                                    <label class="text-danger"> {{ $errors->first('no_ikk') }} </label>
-                                @endif
+                                <input type="text" class="form-control form-control-lg" readonly value="{{$data->no_ikk}}" >
                             </div>
                             <!-- input item end -->
-
-                            <div class="mb-3 fs-4">
-                                <label for="urusan_id" class="fw-bold">Urusan</label>
-                                    @foreach ($data as $urusan)
-                                        @if($urusan->id == $ikk->urusan_id)
-                                            <input type="text" class="form-control form-control-lg" readonly value="{{$urusan->judul_urusan}}">
-                                        @endif
-                                    @endforeach
-                                @if($errors->has('urusan_id'))
-                                <label class="text-danger"> {{ $errors->first('urusan_id') }} </label>
-                                @endif
-                            </div>
-                            <!-- input item end -->
-
-                            {{-- <div class="mb-3 fs-4">
-                                <label for="" class="fw-bold">Perangkat Daerah</label>
-                                <select name="user_id" class="form-select form-select-lg">
-                                    <option hidden>Pillih</option>
-                                    @foreach ($user as $data)
-                                    @if($data->name == 'Admin')
-                                    @elseif ($data->name == 'Supervisor')
-                                    @else
-                                    <option value="{{ $data->id }}">{{ $data->name }}</option>
-                                    @endif
-                                    @endforeach
-
-                                </select>
-                                @if($errors->has('user_id'))
-                                    <label class="text-danger"> {{ $errors->first('user_id') }} </label>
-                                @endif
-                            </div>
-                            <!-- input item end --> --}}
-
 
                             <div class="mb-3 fs-4">
                                 <label for="" class="fw-bold">IKK Output</label>
-                                <textarea name="ikk_output" id="" rows="5" class="form-control form-control-lg" readonly>{{$ikk->ikk_output}}</textarea>
+                                <textarea name="ikk_output" id="" rows="5" class="form-control form-control-lg" readonly>{{$data->ikk_output}}</textarea>
                             </div>
                             <!-- input item end -->
 
                             <div class="mb-3 fs-4">
                                 <label for="" class="fw-bold">IKK Outcome</label>
-                                <textarea name="ikk_outcome" id="" rows="5" class="form-control form-control-lg" readonly>{{$ikk->ikk_outcome}}</textarea>
+                                <textarea name="ikk_outcome" id="" rows="5" class="form-control form-control-lg" readonly>{{$data->ikk_outcome}}</textarea>
                             </div>
                             <!-- input item end -->
 
                             <div class="mb-3 fs-4">
                                 <label for="" class="fw-bold">Rumus</label>
                                 <textarea readonly id="" rows="5"
-                                    class="form-control form-control-lg">{{$ikk->rumus}}</textarea>
+                                    class="form-control form-control-lg">{{$data->rumus}}</textarea>
                             </div>
                             <!-- input item end -->
 
                             <div class="mb-3 fs-4">
                                 <label for="" class="fw-bold">Keterangan Nilai 1</label>
                                 <input type="text" readonly class="form-control form-control-lg"
-                                    value="{{$ikk->ket_jml1}}">
+                                    value="{{$data->ket_jml1}}">
                             </div>
                             <!-- input item end -->
 
                             <div class="mb-3 fs-4">
                                 <label for="" class="fw-bold">Nilai 1</label>
-                                <input type="text" class="form-control form-control-lg" readonly  value="{{$ikk->ket_jml1}}">
+                                <input type="text" class="form-control form-control-lg" readonly  value="{{$data->ket_jml1}}">
                             </div>
                             <!-- input item end -->
 
                             <div class="mb-3 fs-4">
                                 <label for="" class="fw-bold">Keterangan Nilai 2</label>
-                                <input type="text" class="form-control form-control-lg"  readonly  value="{{$ikk->ket_jml2}}">
+                                <input type="text" class="form-control form-control-lg"  readonly  value="{{$data->ket_jml2}}">
                             </div>
                             <!-- input item end -->
 
                             <div class="mb-3 fs-4">
                                 <label for="" class="fw-bold">Nilai 2</label>
-                                <input type="text" class="form-control form-control-lg" name=""  readonly  value="{{$ikk->jml2}}">
+                                <input type="text" class="form-control form-control-lg" name=""  readonly  value="{{$data->jml2}}">
                             </div>
                             <!-- input item end -->
 
                             <div class="mb-3 fs-4">
                                 <label for="" class="fw-bold">Capaian Kinerja</label>
-                                <input type="text" class="form-control form-control-lg" name="" readonly  value="{{$ikk->capaian_kinerja}}" >
+                                <input type="text" class="form-control form-control-lg" name="" readonly  value="{{$data->capaian_kinerja}}" >
                             </div>
                             <!-- input item end -->
 
                             <div class="mb-3 fs-4">
                                 <label for="" class="fw-bold">Keterangan</label>
-                                <textarea name="keterangan" id="" rows="5" class="form-control form-control-lg">{{$ikk->keterangan}}</textarea>
+                                <textarea name="keterangan" id="" rows="5" class="form-control form-control-lg">{{$data->keterangan}}</textarea>
                             </div>
                             <!-- input item end -->
 
