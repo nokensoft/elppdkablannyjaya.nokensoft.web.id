@@ -37,7 +37,7 @@
                             <div class="mb-3 fs-4">
                                 <label for="" class="fw-bold">No IKK</label>
                                 <input type="text" class="form-control form-control-lg" name="no_ikk"
-                                    value="{{old('no_ikk',$data->no_ikk) }}">
+                                    value="{{old('no_ikk') ? old('no_ikk') : $data->no_ikk }}">
                                 @if($errors->has('no_ikk'))
                                 <label class="text-danger"> {{ $errors->first('no_ikk') }} </label>
                                 @endif
@@ -45,23 +45,13 @@
 
                             <div class="mb-3 fs-4">
                                 <label for="" class="fw-bold">Urusan</label>
-                                <select name="urusan_ud" class="form-select form-select-lg">
-                                    <option hidden>Pillih</option>
-                                    @foreach ($urusan as $data)
-                                      <option value="{{ $data->id }}">{{ $data->judul_urusan }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-
-                            <div class="mb-3 fs-4">
-                                 <label for="" class="fw-bold">Perangkat Daerah</label>
-                                <select name="urusan_ud" class="form-select form-select-lg">
-                                    <option hidden>Pillih</option>
-                                    @foreach ($user as $data)
-                                        @if($data->name == 'Admin')
-                                        @elseif ($data->name == 'Supervisor')
+                                <select name="urusan_id" class="form-select form-select-lg">
+                                    <option hidden>Pilih</option>
+                                    @foreach ($urusan as $u)
+                                        @if($u->id == $data->urusan_id)
+                                            <option selected value="{{ $u->id }}">{{ $u->judul_urusan }}</option>
                                         @else
-                                        <option value="{{ $data->id }}">{{ $data->name }}</option>
+                                            <option  value="{{ $u->id }}">{{ $u->judul_urusan }}</option>
                                         @endif
                                     @endforeach
                                 </select>
@@ -69,10 +59,12 @@
 
 
 
+
+
                             <div class="mb-3 fs-4">
                                 <label for="" class="fw-bold">IKK</label>
                                 <textarea name="ikk" id="" rows="5"
-                                    class="form-control form-control-lg">{{old('ikk',$data->ikk)}}</textarea>
+                                    class="form-control form-control-lg">{{old('ikk') ? old('ikk') : $data->ikk }}</textarea>
                                 @if($errors->has('ikk'))
                                 <label class="text-danger"> {{ $errors->first('ikk') }} </label>
                                 @endif
@@ -81,7 +73,7 @@
                             <div class="mb-3 fs-4">
                                 <label for="" class="fw-bold">Rumus</label>
                                 <textarea name="rumus" id="" rows="5"
-                                    class="form-control form-control-lg">{{old('rumus',$data->rumus) }}</textarea>
+                                    class="form-control form-control-lg">{{old('rumus') ? old('rumus') : $data->rumus }}</textarea>
                                 @if($errors->has('rumus'))
                                 <label class="text-danger"> {{ $errors->first('rumus') }} </label>
                                 @endif
@@ -90,7 +82,7 @@
                             <div class="mb-3 fs-4">
                                 <label for="" class="fw-bold">{{ $data->ket_jml1 }}</label>
                                 <input type="text" class="form-control form-control-lg" name="jml1"
-                                    value="{{old('jml1',$data->jml1) }}">
+                                    value="{{old('jml1') ? old('jml1') : $data->jml1 }}">
                                 @if($errors->has('jml1'))
                                 <label class="text-danger"> {{ $errors->first('jml1') }} </label>
                                 @endif
@@ -99,7 +91,7 @@
                             <div class="mb-3 fs-4">
                                 <label for="" class="fw-bold">{{ $data->ket_jml2 }}</label>
                                 <input type="text" class="form-control form-control-lg" name="jml2"
-                                    value="{{old('jml2',$data->jml2) }}">
+                                    value="{{old('jml2') ? old('jml2') : $data->jml2 }}">
                                 @if($errors->has('jml2'))
                                 <label class="text-danger"> {{ $errors->first('jml2') }} </label>
                                 @endif
@@ -118,7 +110,7 @@
                             <div class="mb-3 fs-4">
                                 <label for="" class="fw-bold">Keterangan</label>
                                 <textarea name="keterangan" id="" rows="5"
-                                    class="form-control form-control-lg">{{old('keterangan',$data->keterangan) }}</textarea>
+                                    class="form-control form-control-lg">{{old('keterangan') ? old('keterangan') : $data->keterangan }}</textarea>
                                 @if($errors->has('keterangan'))
                                 <label class="text-danger"> {{ $errors->first('keterangan') }} </label>
                                 @endif

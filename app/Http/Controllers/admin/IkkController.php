@@ -21,7 +21,7 @@ class IkkController extends Controller
     {
         if(Auth::user()->hasRole('administrator')){
 
-            $all = Urusan::paginate(6);
+            $all = Urusan::paginate(10);
 
             return view('admin.pages.ikk.makro.index', [ 'all' => $all] );
 
@@ -39,7 +39,7 @@ class IkkController extends Controller
     }
 
     public function ikkMethod(Request $request, $slug){
-   
+
         $all = Urusan::where('slug', $slug)->get();
 
         return view('admin.pages.ikk.makro.index',['all' => $all, 'judul_urusan' => $slug]);
@@ -134,8 +134,9 @@ class IkkController extends Controller
 
     public function show($id)
     {
-        $data = Ikk::where('id',$id)->first();
-        return view('admin.pages.ikk.makro.detail',compact('data'));
+        $ikk = Ikk::where('id',$id)->first();
+        $data = Urusan::all();
+        return view('admin.pages.ikk.makro.detail',compact('data','ikk','id'));
     }
 
      public function edit($id)
@@ -152,52 +153,51 @@ class IkkController extends Controller
         $validator = Validator::make($request->all(),
         [
             'no_ikk'                    => 'required',
-            'user_id'                   => 'required',
+            // 'user_id'                   => 'required',
             'urusan_id'                 => 'required',
-            'capaian_kinerja'           => 'required',
+            // 'capaian_kinerja'           => 'required',
             'ikk'                       => 'required',
+            'jml1'                      => 'required',
             'jml2'                      => 'required',
             'keterangan'                => 'required',
             'rumus'                     => 'required',
-            'urusan'                    => 'required',
+            // 'urusan'                    => 'required',
         ],
         [
             'no_ikk.required'          => 'Nomor IKK tidak boleh kosong',
             // 'no_ikk.unique'            => 'Nomor IKK sudah ada',
-            'user_id.required'         => 'Perangkat daerah tidak boleh kosong',
+            // 'user_id.required'         => 'Perangkat daerah tidak boleh kosong',
             'urusan_id.required'       => 'Urusan tidak boleh kosong',
             'keterangan.required'      => 'Keterangan tidak boleh kosong',
             'rumus.required'           => 'Rumus tidak boleh kosong',
-            'urusan.required'          => 'Urusan tidak boleh kosong',
+            // 'urusan.required'          => 'Urusan tidak boleh kosong',
             'ikk.required'             => 'ikk tidak boleh kosong',
             'jml2.required'            => 'Jumlah tidak boleh kosong',
         ]);
 
-        if ($validator->fails()) {
-            return redirect()->back()->withInput($request->all())->withErrors($validator);
-        } else {
-            try {
-                $ikk                = Ikk::find($id);
-                $ikk->user_id       = $request->user_id;
-                $ikk->urusan_id       = $request->urusan_id;
-                $ikk->no_ikk        = $request->no_ikk;
-                $ikk->urusan        = $request->urusan;
-                $ikk->ikk           = $request->ikk;
-                $ikk->rumus         = $request->rumus;
+
+                // $ikk                = Ikk::find($id);
+                // dd($ikk);
+                // $ikk->user_id       = $request->user_id;
+                $ikk['urusan_id']       = $request->urusan_id;
+                $ikk['no_ikk']        = $request->no_ikk;
+                // $ikk['urusan']        = $request->urusan;
+                $ikk['ikk']           = $request->ikk;
+                $ikk['rumus']         = $request->rumus;
                 // $ikk->ket_jml1   = $request->ket_jml1;
-                $ikk->jml1          = $request->jml1;
+                $ikk['jml1']          = $request->jml1;
                 // $ikk->ket_jml2   = $request->ket_jml2;
-                $ikk->jml2          = $request->jml2;
-                $ikk->capaian_kinerja    = $request->capaian_kinerja;
-                $ikk->keterangan    = $request->keterangan;
-                $ikk->update();
+                $ikk['jml2']          = $request->jml2;
+                // $ikk->capaian_kinerja    = $request->capaian_kinerja;
+                $ikk['keterangan']    = $request->keterangan;
+
+                $affected = DB::table('ikks')
+                ->where('id', $id)
+                ->update($ikk);
+
                 alert()->success('Berhasil', 'Sukses!!')->autoclose(1100);
                 return redirect()->route('admin.ikk');
-            } catch (\Throwable $th) {
-                alert()->error('Gagal', 'Sukses!!')->autoclose(1100);
-                return redirect()->back();
-            }
-        }
+
     }
 
 

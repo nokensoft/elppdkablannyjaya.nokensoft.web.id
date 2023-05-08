@@ -79,10 +79,20 @@
                                     <td> {{$ikk->ikk_output}} </td>
                                     <td> {{$ikk->ikk_outcome}} </td>
                                     <td> {{$ikk->capaian_kinerja}} </td>
-                                    <td> {{$ikk->ketearngan}} </td>
+                                    <td> {{$ikk->keterangan}} </td>
                                     <td> {{$ikk->status}} </td>
                                     <td>
-                                        <a href="{{url('admin/ikk/' . $data->slug)}}">Detail</a>
+                                        <a class=" " href="{{route('admin.ikk.show',$ikk->id)  }}">Detail</a> |
+                                        <form action="{{ url('admin/ikk',$ikk->id) }}" method="POST" class="d-flex">
+
+
+
+                                            <a class="" href="{{ url('admin/ikk/'.$ikk->id.'/edit') }}">Edit</a> |
+
+                                            @csrf
+                                            @method('DELETE')
+
+                                            <button type="submit" class="btn text-primary">Delete</button>
                                     </td>
                                 </tr>
                                 @endforeach
