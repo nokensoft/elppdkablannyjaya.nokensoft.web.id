@@ -26,7 +26,7 @@ use App\Http\Controllers\admin\IkkController;
 use App\Http\Controllers\admin\PengaturanController;
 use App\Http\Controllers\admin\ProfilDaerahController;
 use App\Http\Controllers\admin\GambarController;
-use App\Http\Controllers\Admin\UrusanController;
+use App\Http\Controllers\admin\UrusanController;
 use App\Http\Controllers\HomeController;
 use App\Models\Pengaturan;
 
