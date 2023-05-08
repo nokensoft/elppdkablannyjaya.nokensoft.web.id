@@ -80,7 +80,17 @@
                                     <td> {{$ikk->ikk_outcome}} </td>
                                     <td> {{$ikk->capaian_kinerja}} </td>
                                     <td> {{$ikk->keterangan}} </td>
-                                    <td> <a href="{{ asset('file/ikk/' . $ikk->file_bukti) }}" class="link-info" target="_blank"><i class="fas fa-file"></i> File Bukti</a> </td>
+                                    <td>
+                                        @if(!$ikk->file_bukti)
+                                        <a href="{{ route('admin.ikk.upload',['id' => $ikk->id]) }}" class="link-info">
+                                            <i class="fas fa-file"></i> Upload File
+                                        </a>
+                                        @else
+                                        <a href="{{ asset('file/ikk/' . $ikk->file_bukti) }}" class="link-info" target="_blank">
+                                            <i class="fas fa-file"></i> File Bukti
+                                        </a>
+                                        @endif
+                                    </td>
                                     {{-- <td>
                                         <a class=" " href="{{route('admin.ikk.show',$ikk->id)  }}">Detail</a> |
                                         <form action="{{ url('admin/ikk',$ikk->id) }}" method="POST" class="d-flex">

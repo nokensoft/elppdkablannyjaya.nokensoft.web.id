@@ -2,18 +2,19 @@
 
 namespace App\Http\Controllers\admin;
 
-use App\Exports\IkkExport;
-use App\Http\Controllers\Controller;
 use App\Models\Ikk;
-use App\Models\PerangkatDaerah;
-use App\Models\Urusan;
 use App\Models\User;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use App\Models\Urusan;
+use App\Exports\IkkExport;
 use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+use App\Models\PerangkatDaerah;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Validator;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
+use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Facades\Validator;
 
 class IkkController extends Controller
 {
@@ -63,6 +64,11 @@ class IkkController extends Controller
         $data = Urusan::all();
         // $user  = User::all();
         return view('admin.pages.ikk.makro.tambah', compact('data'));
+    }
+    public function upload($id)
+    {
+        $data = Ikk::where('id',$id)->first();
+        return view('admin.pages.ikk.makro.upload',compact('data'));
     }
 
     /**
@@ -118,6 +124,12 @@ class IkkController extends Controller
                 $ikk->capaian_kinerja       = $request->capaian_kinerja;
                 $ikk->keterangan            = $request->keterangan;
 
+                $fileName = Str::randim(12) . '-' . time() . '.' . $request->file_bukti->extension();
+                $path = public_path('file/ikk');
+
+                $ikk->file_bukti = $fileName;
+                $request->file_bukti->move($path, $fileName);
+
                 $ikk->save();
 
                 alert()->success('Berhasil', 'Sukses!!')->autoclose(1100);
@@ -130,6 +142,43 @@ class IkkController extends Controller
         }
     }
 
+    public function uploadFile(Request $request,$id){
+
+        $validator = Validator::make(
+            $request->only('file_bukti'),
+            [
+                'file_bukti' => 'mimes:pdf',
+            ],
+            [
+                'file_bukti.mimes'      => 'File Upload Cover harus dengan extensi pdf',
+            ]
+        );
+
+        if ($validator->fails()) {
+            return redirect()->back()->withInput($request->all())->withErrors($validator);
+        } else {
+
+            try {
+                $data = Ikk::find($id);
+                if ($request->file_bukti) {
+
+                    $fileName = Str::random(12) . '.' . $request->file_bukti->extension();
+                    $path = 'file/ikk/';
+                    if (!empty($data->file_bukti) && file_exists( $path . $data->file_bukti)) :
+                        unlink( $path  . $data->file_bukti);
+                    endif;
+                    $data->file_bukti = $fileName;
+                    $request->file_bukti->move(public_path( $path ), $fileName);
+                }
+                $data->update();
+                alert()->success('Data berhasil diupload', 'Sukses!!')->autoclose(1100);
+                return redirect()->route('admin.ikk');
+            } catch (\Throwable $th) {
+                Alert::toast('Gagal', 'error');
+                return redirect()->back();
+            }
+        }
+    }
 
     public function show($id)
     {

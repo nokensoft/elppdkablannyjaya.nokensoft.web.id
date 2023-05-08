@@ -85,7 +85,7 @@ class PelaporanController extends Controller
     // DELETE
     public function deleteCover($id)
     {
-        
+
         $data = Pelaporan::where('id', $id)->first();
         return view('admin.pages.lppd.pelaporan.delete.cover', compact('data'));
     }
@@ -115,7 +115,7 @@ class PelaporanController extends Controller
     // BAB I
     // -------------------------------------------------------------
 
-    // CREATE 
+    // CREATE
     public function createBabI($id)
     {
         $data = Pelaporan::where('id', $id)->first();
@@ -171,7 +171,7 @@ class PelaporanController extends Controller
     // DELETE
     public function deleteBabI($id)
     {
-        
+
         $data = Pelaporan::where('id', $id)->first();
         return view('admin.pages.lppd.pelaporan.delete.babi', compact('data'));
     }
@@ -201,7 +201,7 @@ class PelaporanController extends Controller
     // BAB II
     // -------------------------------------------------------------
 
-    // CREATE 
+    // CREATE
     public function createBabII($id)
     {
         $data = Pelaporan::where('id', $id)->first();
@@ -257,7 +257,7 @@ class PelaporanController extends Controller
     // DELETE
     public function deleteBabII($id)
     {
-        
+
         $data = Pelaporan::where('id', $id)->first();
         return view('admin.pages.lppd.pelaporan.delete.babii', compact('data'));
     }
@@ -286,7 +286,7 @@ class PelaporanController extends Controller
     // BAB III
     // -------------------------------------------------------------
 
-    // CREATE 
+    // CREATE
     public function createBabIII($id)
     {
         $data = Pelaporan::where('id', $id)->first();
@@ -342,7 +342,7 @@ class PelaporanController extends Controller
     // DELETE
     public function deleteBabIII($id)
     {
-        
+
         $data = Pelaporan::where('id', $id)->first();
         return view('admin.pages.lppd.pelaporan.delete.babiii', compact('data'));
     }
@@ -370,8 +370,8 @@ class PelaporanController extends Controller
     // -------------------------------------------------------------
     // BAB IV
     // -------------------------------------------------------------
-    
-    // CREATE 
+
+    // CREATE
     public function createBabIV($id)
     {
         $data = Pelaporan::where('id', $id)->first();
@@ -427,7 +427,7 @@ class PelaporanController extends Controller
     // DELETE
     public function deleteBabIV($id)
     {
-        
+
         $data = Pelaporan::where('id', $id)->first();
         return view('admin.pages.lppd.pelaporan.delete.babiv', compact('data'));
     }
@@ -456,8 +456,8 @@ class PelaporanController extends Controller
     // -------------------------------------------------------------
     // BAB V
     // -------------------------------------------------------------
-    
-    // CREATE 
+
+    // CREATE
     public function createBabV($id)
     {
         $data = Pelaporan::where('id', $id)->first();
@@ -513,7 +513,7 @@ class PelaporanController extends Controller
     // DELETE
     public function deleteBabV($id)
     {
-        
+
         $data = Pelaporan::where('id', $id)->first();
         return view('admin.pages.lppd.pelaporan.delete.babv', compact('data'));
     }
@@ -544,7 +544,7 @@ class PelaporanController extends Controller
     // LAMPIRAN
     // -------------------------------------------------------------
 
-    // CREATE 
+    // CREATE
     public function createLampiran($id)
     {
         $data = Pelaporan::where('id', $id)->first();
@@ -600,7 +600,7 @@ class PelaporanController extends Controller
     // DELETE
     public function deleteLampiran($id)
     {
-        
+
         $data = Pelaporan::where('id', $id)->first();
         return view('admin.pages.lppd.pelaporan.delete.lampiran', compact('data'));
     }
