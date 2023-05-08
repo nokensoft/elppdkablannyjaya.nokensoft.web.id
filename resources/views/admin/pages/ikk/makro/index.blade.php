@@ -60,7 +60,7 @@
                                     <th>IKK Outcome</th>
                                     <th>Capaian</th>
                                     <th>Keterangan</th>
-                                    <th>Status</th>
+                                    <th>File Bukti</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
@@ -80,7 +80,7 @@
                                     <td> {{$ikk->ikk_outcome}} </td>
                                     <td> {{$ikk->capaian_kinerja}} </td>
                                     <td> {{$ikk->keterangan}} </td>
-                                    <td> {{$ikk->status}} </td>
+                                    <td> <a href="{{ asset('file/ikk/' . $ikk->file_bukti) }}" class="link-info" target="_blank"><i class="fas fa-file"></i> File Bukti</a> </td>
                                     {{-- <td>
                                         <a class=" " href="{{route('admin.ikk.show',$ikk->id)  }}">Detail</a> |
                                         <form action="{{ url('admin/ikk',$ikk->id) }}" method="POST" class="d-flex">

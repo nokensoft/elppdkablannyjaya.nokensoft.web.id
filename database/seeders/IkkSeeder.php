@@ -20,6 +20,7 @@ class IkkSeeder extends Seeder
 
             'rumus'             => 'Panjang jalan kabupaten dalam kondisi mantap (baik dan sedang) ------------------------------------------------------------ x 100 % Panjang seluruh jalan kabupaten di daerah tersebut ',
             'keterangan'        => 'Dinas Pekerjaan Umum',
+            'file_bukti'        => '',
 
             'ket_jml1'          => 'Panjang jalan kabupaten dalam kondisi mantap (baik dan sedang)',
             'jml1'              => '11.927',
@@ -38,6 +39,7 @@ class IkkSeeder extends Seeder
 
             'rumus'             => 'Jumlah RS Rujukan yang terakreditasi ---------------------------- x 100 % 1/1) x 100 % Jumlah RS di Kabupaten Lanny Jaya',
             'keterangan'        => 'Dinas Kesehatan',
+            'file_bukti'        => '',
 
             'ket_jml1'          => 'Jumlah RS Rujukan yang terakreditasi',
             'jml1'              => '1',
@@ -55,6 +57,7 @@ class IkkSeeder extends Seeder
 
             'rumus'             => 'Jumlah daya tampung rumah sakit rujukan ------------------ x 100 % (247/201.835) x 100 % = 0,005 Jumlah Penduduk Kabupaten Lanny Jaya',
             'keterangan'        => 'Dinas Kesehatan',
+            'file_bukti'        => '',
 
             'ket_jml1'          => 'Jumlah daya tampung rumah sakit rujukan',
             'jml1'              => '247',
@@ -72,6 +75,8 @@ class IkkSeeder extends Seeder
             'ikk_outcome'       => 'Tingkat Partisipasi warga negara usia 5-6 tahun yang berpartisipasi dalam PAUD',
             'rumus'             => 'Jumlah anak usia 5 - 6 tahun yang sudah tamat atau sedang belajar disatuan PAUD ----------------------- x 100 % (7.012/10.456) x 100 % = 67,06 Jumlah anak usia 5 – 6 tahun Kabupaten Lanny Jaya',
             'keterangan'        => 'Dinas Pendidikan dan Dinas Kependuduk an & Capil',
+            'file_bukti'        => '',
+
             'ket_jml1'          => 'Jumlah anak usia 5 - 6 tahun yang sudah tamat atau sedang belajar disatuan PAUD ',
             'jml1'              => '7012',
             'ket_jml2'          => 'Jumlah anak usia 5 – 6 tahun Kabupaten Lanny Jaya',
@@ -87,6 +92,8 @@ class IkkSeeder extends Seeder
             'ikk_outcome'       => 'Tingkat Partisipasi warga negara usia 7-12 tahun yang berpartisipasi dalam Pendidikan Dasar',
             'rumus'             => 'Jumlah anak usia 7-12 tahun yang sudah tamat atau sedang belajar di Sekolah Dasar (SD, MI dan bentuk lain yang sederajat) ---------------------- x 100 % (13.979/15.359) x 100 % = 91,01 Jumlah anak usia 7-12 tahun Kabupaten Lanny Jaya',
             'keterangan'        => 'Dinas Pendidikan dan Dinas Kependuduk an & Capil',
+            'file_bukti'        => '',
+            
             'ket_jml1'          => 'Jumlah anak usia 7-12 tahun yang sudah tamat atau sedang belajar di Sekolah Dasar (SD, MI dan bentuk  lain yang sederajat)',
             'jml1'              => '13979',
             'ket_jml2'          => 'Jumlah anak usia 7-12 tahun Kabupaten Lanny Jaya',
