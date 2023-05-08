@@ -92,6 +92,7 @@
 
                         <!-- Footer-->
                         <footer class="footer footer-alt">
+                            @include('info')
                             <p class="text-muted">Terkendala saat login? <a href="#" class="text-muted ms-1"><b>Hubungi Admin</b></a></p>
                         </footer>
 

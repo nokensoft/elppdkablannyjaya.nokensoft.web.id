@@ -71,10 +71,14 @@
 
 
                             <div class="mb-3 fs-4">
-                                <label for="" class="fw-bold">IKK</label>
-                                <textarea name="ikk" id="" rows="5"
-                                    class="form-control form-control-lg" readonly>{{$ikk->ikk}}</textarea>
+                                <label for="" class="fw-bold">IKK Output</label>
+                                <textarea name="ikk_output" id="" rows="5" class="form-control form-control-lg" readonly>{{$ikk->ikk_output}}</textarea>
+                            </div>
+                            <!-- input item end -->
 
+                            <div class="mb-3 fs-4">
+                                <label for="" class="fw-bold">IKK Outcome</label>
+                                <textarea name="ikk_outcome" id="" rows="5" class="form-control form-control-lg" readonly>{{$ikk->ikk_outcome}}</textarea>
                             </div>
                             <!-- input item end -->
 
@@ -123,16 +127,8 @@
                             <!-- input item end -->
 
                             <div class="border-top border-1 pt-3 mt-4">
-                                <form action="{{ url('admin/ikk',$id) }}" method="POST" >
-                                <a class="btn btn-primary" href="{{ url('admin/ikk/'.$id.'/edit') }}">Edit</a>
-
-                                    @csrf
-                                    @method('DELETE')
-
-                                    <button type="submit" class="btn btn-danger">Delete</button>
-                                <a href="{{URL::previous()}}" class="btn btn-outline-light waves-effect waves-light fs-4">
-                                    <i class="fas fa-arrow-left me-1"></i> Kembali
-                                </a>
+                                <a href="{{URL::previous()}}" class="btn btn-outline-light waves-effect waves-light fs-4"> <i class="fas fa-arrow-left me-1"></i> Kembali </a>
+                                    
                             </div>
                             <!-- input item end -->
 

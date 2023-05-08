@@ -94,6 +94,5 @@ class IkkSeeder extends Seeder
             'capaian_kinerja'   => '',
             'user_id'           => 3
         ]);
-
     }
 }

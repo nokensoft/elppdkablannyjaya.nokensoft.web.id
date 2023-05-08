@@ -81,7 +81,7 @@
                                     <td> {{$ikk->capaian_kinerja}} </td>
                                     <td> {{$ikk->keterangan}} </td>
                                     <td> {{$ikk->status}} </td>
-                                    <td>
+                                    {{-- <td>
                                         <a class=" " href="{{route('admin.ikk.show',$ikk->id)  }}">Detail</a> |
                                         <form action="{{ url('admin/ikk',$ikk->id) }}" method="POST" class="d-flex">
 
@@ -91,7 +91,7 @@
                                             @method('DELETE')
 
                                             <button type="submit" class="btn text-primary">Delete</button>
-                                    </td>
+                                    </td> --}}
                                     <td class="d-flex justify-content-between gap-1">
                                         @if(Cache::has('user-is-online-' . $ikk->id))
                                         <a href="{{route('admin.ikk.show',$ikk->id)}}" class="btn btn-sm btn-info border-0  waves-effect waves-light fs-4">

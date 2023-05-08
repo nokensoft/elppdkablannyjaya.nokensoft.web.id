@@ -27,10 +27,10 @@ return new class extends Migration
             $table->string('jml2')->nullable();
             $table->string('capaian_kinerja')->nullable();
             $table->string('keterangan')->nullable();
-            
+
             $table->string('file_bukti')->nullable();
 
-            $table->enum('status',['review','revisi','approved'])->default('review')->nullable();
+            $table->enum('status', ['review', 'revisi', 'approved'])->default('review')->nullable();
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
         });
