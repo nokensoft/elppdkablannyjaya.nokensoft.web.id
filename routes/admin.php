@@ -263,9 +263,9 @@ Route::prefix('admin')->middleware('auth')->group(function () {
 
         Route::get('ikk','index')->name('admin.ikk');
 
+        Route::get('ikk/create','create')->name('admin.ikk.create');
         Route::get('ikk/{method}','ikkMethod')->name('admin.ikk.method');
 
-        Route::get('ikk/create','create')->name('admin.ikk.create');
         Route::post('ikk','store')->name('admin.ikk.store');
 
         Route::get('ikk/print','print')->name('admin.ikk.print');

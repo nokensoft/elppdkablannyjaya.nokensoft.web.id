@@ -16,7 +16,6 @@
 </div>
 <!-- end row -->
 
-
 <div class="row" id="ubah">
     <div class="col">
         <div class="card">
@@ -34,8 +33,7 @@
 
                             <div class="mb-3 fs-4">
                                 <label for="" class="fw-bold">No IKK</label>
-                                <input type="text" class="form-control form-control-lg" name="no_ikk"
-                                    value="{{old('no_ikk')}}">
+                                <input type="text" class="form-control form-control-lg" name="no_ikk" value="{{old('no_ikk')}}">
                                 @if($errors->has('no_ikk'))
                                 <label class="text-danger"> {{ $errors->first('no_ikk') }} </label>
                                 @endif
@@ -43,20 +41,22 @@
                             <!-- input item end -->
 
                             <div class="mb-3 fs-4">
-                                <label for="" class="fw-bold">Urusan</label>
+                                <label for="urusan_id" class="fw-bold">Urusan</label>
+                                {{old('urusan_id')}}
                                 <select name="urusan_id" class="form-select form-select-lg">
-                                    <option hidden>Pillih</option>
+                                    <option value="" hidden {{ old('urusan_id') == '' ? 'selected' : '' }}>Pilih</option>
+                                    
                                     @foreach ($data as $urusan)
-                                    <option value="{{ $urusan->id }}">{{ $urusan->judul_urusan }}</option>
+                                    <option value="{{ $urusan->id }}" {{ old('urusan_id') != '' ? 'selected' : '' }}>{{ $urusan->judul_urusan }}</option>
                                     @endforeach
-
                                 </select>
                                 @if($errors->has('urusan_id'))
                                 <label class="text-danger"> {{ $errors->first('urusan_id') }} </label>
                                 @endif
                             </div>
                             <!-- input item end -->
-                            <div class="mb-3 fs-4">
+
+                            {{-- <div class="mb-3 fs-4">
                                 <label for="" class="fw-bold">Perangkat Daerah</label>
                                 <select name="user_id" class="form-select form-select-lg">
                                     <option hidden>Pillih</option>
@@ -73,8 +73,7 @@
                                     <label class="text-danger"> {{ $errors->first('user_id') }} </label>
                                 @endif
                             </div>
-                            <!-- input item end -->
-
+                            <!-- input item end --> --}}
 
 
                             <div class="mb-3 fs-4">
@@ -146,8 +145,7 @@
 
                             <div class="mb-3 fs-4">
                                 <label for="" class="fw-bold">Keterangan</label>
-                                <textarea name="keterangan" id="" rows="5"
-                                    class="form-control form-control-lg">{{old('keterangan')}}</textarea>
+                                <textarea name="keterangan" id="" rows="5" class="form-control form-control-lg">{{old('keterangan')}}</textarea>
                                     @if($errors->has('keterangan'))
                                     <label class="text-danger"> {{ $errors->first('keterangan') }} </label>
                                     @endif
@@ -158,8 +156,7 @@
                                 <button type="submit" class="btn btn-info waves-effect waves-light fs-4">
                                     <i class="fas fa-save me-1"></i> Simpan
                                 </button>
-                                <a href="{{URL::previous()}}"
-                                    class="btn btn-outline-light waves-effect waves-light fs-4">
+                                <a href="{{URL::previous()}}" class="btn btn-outline-light waves-effect waves-light fs-4">
                                     <i class="fas fa-arrow-left me-1"></i> Kembali
                                 </a>
                             </div>
@@ -178,7 +175,6 @@
     </div>
 </div>
 <!-- end row -->
-
 
 <!--end wrapper-->
 

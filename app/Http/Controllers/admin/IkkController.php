@@ -65,8 +65,8 @@ class IkkController extends Controller
     public function create()
     {
         $data = Urusan::all();
-        $user  = User::all();
-        return view('admin.pages.ikk.makro.tambah',compact('data','user'));
+        // $user  = User::all();
+        return view('admin.pages.ikk.makro.tambah',compact('data'));
     }
 
     /**
@@ -80,25 +80,26 @@ class IkkController extends Controller
         $validator = Validator::make($request->all(),
         [
             'no_ikk'                    => 'required',
-            'urusan_id'                   => 'required',
-            'user_id'                   => 'required',
-            'capaian_kinerja'           => 'required',
-            'ikk'                       => 'required',
-            'jml2'                      => 'required',
-            'keterangan'                => 'required',
-            'rumus'                     => 'required',
+            'urusan_id'                 => 'required',
+
+        //     'user_id'                   => 'required',
+        //     'capaian_kinerja'           => 'required',
+        //     'ikk'                       => 'required',
+        //     'jml2'                      => 'required',
+        //     'keterangan'                => 'required',
+        //     'rumus'                     => 'required',
         ],
         [
             'no_ikk.required'          => 'Nomor IKK tidak boleh kosong',
-            'capaian_kinerja.required' => 'capaian kinerja tidak boleh kosong',
+            // 'capaian_kinerja.required' => 'capaian kinerja tidak boleh kosong',
 
             'urusan_id.required'         => 'Urusan tidak boleh kosong',
-            'user_id.required'         => 'Perangkat Daerah tidak boleh kosong',
-            'keterangan.required'      => 'Keterangan tidak boleh kosong',
-            'rumus.required'           => 'Rumus tidak boleh kosong',
-            'urusan.required'          => 'Urusan tidak boleh kosong',
-            'ikk.required'             => 'ikk tidak boleh kosong',
-            'jml2.required'            => 'Jumlah tidak boleh kosong',
+            // 'user_id.required'         => 'Perangkat Daerah tidak boleh kosong',
+            // 'keterangan.required'      => 'Keterangan tidak boleh kosong',
+            // 'rumus.required'           => 'Rumus tidak boleh kosong',
+            // 'urusan.required'          => 'Urusan tidak boleh kosong',
+            // 'ikk.required'             => 'ikk tidak boleh kosong',
+            // 'jml2.required'            => 'Jumlah tidak boleh kosong',
 
         ]
         );

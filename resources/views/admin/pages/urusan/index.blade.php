@@ -37,7 +37,6 @@
                                     <th>NO</th>
                                     <th>Judul Urusan</th>
                                     <th>Slug</th>
-                                    <th>NO IKK</th>
                                     <th class="text-center">Aksi</th>
                                 </tr>
                             </thead>
@@ -47,14 +46,6 @@
                                     <td>#</td>
                                     <td>{{$urusan->judul_urusan}}</td>
                                     <td>{{$urusan->slug}}</td>
-
-                                    <td>
-                                        @foreach ($urusan->ikk as $ikk )
-                                            <ul>
-                                                <li>{{ $ikk->no_ikk }}</li>
-                                            </ul>
-                                        @endforeach
-                                    </td>
                                     <td class="text-center">
 
                                         <a href="{{route('admin.urusan.edit',$urusan->slug)}}"

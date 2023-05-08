@@ -15,8 +15,10 @@ return new class extends Migration
     {
         Schema::create('urusans', function (Blueprint $table) {
             $table->id();
+            
             $table->string('judul_urusan');
             $table->string('slug')->nullable();
+
             $table->timestamps();
         });
     }

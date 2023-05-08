@@ -28,6 +28,10 @@ class UrusanSeeder extends Seeder
                 [
                     'judul_urusan'      => 'Pendidikan',
                     'slug'              => 'pendidikan',
+                ],
+                [
+                    'judul_urusan'      => 'Perumahan Rakyat',
+                    'slug'              => 'perumahan-rakyat',
                 ]
             ]
         );
