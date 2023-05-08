@@ -11,7 +11,7 @@ class PengaturanSeeder extends Seeder
     public function run()
     {
         Pengaturan::insert([
-            'judul_situs'           => 'SILPPD',
+            'judul_situs'           => 'SILANNY',
             'deskripsi_situs'       => 'Sistem Informasi Laporan Penyelenggaraan Pengelolaan Daerah',
 
             'logo_sm_dark'          => 'logo-small-dark.png',

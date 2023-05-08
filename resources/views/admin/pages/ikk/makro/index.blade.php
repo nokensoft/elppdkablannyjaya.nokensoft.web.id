@@ -23,7 +23,7 @@
 
                 <div class="row">
                     <div class="col-md-6">
-                        <h1 class="fw-bold">IKK @if(!empty($judul_urusan)) {{$judul_urusan}} @endif</h1>
+                        <h1 class="fw-bold">IKK <span class="text-capitalize">@if(!empty($judul_urusan)) {{$judul_urusan}}</span> @endif</h1>
                         Tanggal : <span class="fw-bold">{{ today()->toDateString() }}</span>
                     </div>
                     <div class="col-md-6 text-md-end">
@@ -64,7 +64,38 @@
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
+
                             <tbody>
+                                @foreach ($all as $data )
+                                <tr class="fw-bold bg-secondary text-light">
+                                    <td colspan="8">
+                                        {{ $data->judul_urusan }}
+                                    </td>
+                                </tr>
+                                @foreach ($data->ikk as $ikk )
+                                <tr>
+                                    <td></td>
+                                    <td>                                        
+                                        {{$ikk->no_ikk}}
+                                    </td>
+                                    <td>
+                                        {{$ikk->ikk}}
+                                    </td>
+                                    <td>
+                                        {{$ikk->rumus}}
+                                    </td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>
+                                        <a href="{{url('admin/ikk/' . $data->slug)}}">Detail</a>
+                                    </td>
+                                </tr>
+                                @endforeach
+                                @endforeach
+                            </tbody>
+
+                            {{-- <tbody>
                                 @foreach ($all as $data )
                                 <tr>
                                     <td>
@@ -169,7 +200,7 @@
                                     </td>
                                 </tr>
                                 @endforeach
-                            </tbody>
+                            </tbody> --}}
                         </table>
 
                     </div>

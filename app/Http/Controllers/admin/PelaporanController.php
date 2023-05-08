@@ -555,12 +555,12 @@ class PelaporanController extends Controller
     public function storeLampiran(Request $request, $id)
     {
         $validator = Validator::make($request->only('lampiran', 'lampiran_file'), [
-            'lampiran' => 'required',
-            'lampiran_file' => 'mimes:pdf',
+            'lampiran'                  => 'required',
+            'lampiran_file'             => 'mimes:pdf',
         ], [
-            'lampiran.required'        => 'Judul tidak boleh kosong',
-            'lampiran_file.required'   => 'File Upload tidak boleh kosong',
-            'lampiran_file.mimes'      => 'File Upload harus dengan extensi pdf',
+            'lampiran.required'         => 'Judul tidak boleh kosong',
+            'lampiran_file.required'    => 'File Upload tidak boleh kosong',
+            'lampiran_file.mimes'       => 'File Upload harus dengan extensi pdf',
         ]);
 
         if ($validator->fails()) {

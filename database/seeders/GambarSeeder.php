@@ -27,7 +27,7 @@ class GambarSeeder extends Seeder
 
         Gambar::insert([
             'nama_file'             => 'Favicon',
-            'alamat_file'           => 'default-favicon.png',
+            'alamat_file'           => 'favicon.png',
             'slug'                  => $random.+.2
         ]);
 

@@ -147,7 +147,7 @@
 
                         <a href="{{route('admin.ikk.method',['method' => $urusan->slug])}}" class="dropdown-item fs-4">
                             <i class="fas fa-bookmark me-1"></i>
-                            <span>{{ $urusan->judul_urusan }}</span>
+                            <span class="text-capitalize">{{ $urusan->judul_urusan }}</span>
                         </a>
 
                         @endif

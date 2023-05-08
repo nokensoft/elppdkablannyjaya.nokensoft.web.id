@@ -66,11 +66,9 @@
                                 <tr>
                                     <td>
                                         @if (empty($data->perangkatdaerah->foto_gedung))
-                                        <img src="{{ asset('assets/images/image1.png') }}" alt="Foto Kantor"
-                                            width="150px" class="img-thumbnail">
+                                        <img src="{{ asset('gambar/default.png') }}" alt="Foto Kantor" width="150px" class="img-thumbnail">
                                         @else
-                                        <img src="{{asset('file/foto/perangkatdaerah')}}/{{ $data->perangkatdaerah->foto_gedung ?? '' }}"
-                                            class="img-fluid img-thumbnail" width="100px">
+                                        <img src="{{asset('gambar/' . $data->perangkatdaerah->foto_gedung)}}" class="img-fluid img-thumbnail" width="100px">
                                     </td>
                                     @endif
                                     </td>
@@ -81,25 +79,20 @@
 
                                     <td class="d-flex justify-content-between gap-1">
                                         @if(Cache::has('user-is-online-' . $data->id))
-                                        <a href="{{route('admin.perangkatdaerah.show',$data->id)}}"
-                                            class="btn btn-sm btn-info border-0  waves-effect waves-light fs-4">
+                                        <a href="{{route('admin.perangkatdaerah.show',$data->id)}}" class="btn btn-sm btn-info border-0  waves-effect waves-light fs-4">
                                             <i class="fas fa-eye"></i>
                                         </a>
-                                        <a href="{{route('admin.perangkatdaerah.edit',$data->id)}}"
-                                            class="btn btn-sm btn-outline-info border-0 waves-effect waves-light fs-4">
+                                        <a href="{{route('admin.perangkatdaerah.edit',$data->id)}}" class="btn btn-sm btn-outline-info border-0 waves-effect waves-light fs-4">
                                             <i class="fas fa-edit"></i>
                                         </a>
                                         @else
-                                        <a href="{{route('admin.perangkatdaerah.show',$data->id)}}"
-                                            class="btn btn-sm btn-info border-0  waves-effect waves-light fs-4">
+                                        <a href="{{route('admin.perangkatdaerah.show',$data->id)}}" class="btn btn-sm btn-info border-0  waves-effect waves-light fs-4">
                                             <i class="fas fa-eye"></i>
                                         </a>
-                                        <a href="{{route('admin.perangkatdaerah.edit',$data->id)}}"
-                                            class="btn btn-sm btn-outline-info border-0 waves-effect waves-light fs-4">
+                                        <a href="{{route('admin.perangkatdaerah.edit',$data->id)}}" class="btn btn-sm btn-outline-info border-0 waves-effect waves-light fs-4">
                                             <i class="fas fa-edit"></i>
                                         </a>
-                                        <a href="{{route('admin.perangkatdaerah.delete',$data->id)}}"
-                                            class="btn btn-sm btn-outline-info border-0 waves-effect waves-light fs-4">
+                                        <a href="{{route('admin.perangkatdaerah.delete',$data->id)}}" class="btn btn-sm btn-outline-info border-0 waves-effect waves-light fs-4">
                                             <i class="fas fa-trash"></i>
                                         </a>
                                         @endif

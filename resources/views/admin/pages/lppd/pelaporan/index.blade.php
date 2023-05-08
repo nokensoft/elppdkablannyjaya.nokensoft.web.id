@@ -24,6 +24,7 @@
                 <div class="card">
                     <div class="card-body">
                         <h1 class="fw-bold">LPPD Pelaporan</h1>
+                        Tanggal : <span class="fw-bold">{{ today()->toDateString() }}</span>
 
                         <div class="row">
 

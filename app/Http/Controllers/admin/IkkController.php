@@ -22,7 +22,8 @@ class IkkController extends Controller
         if(Auth::user()->hasRole('administrator')){
 
             $all = Urusan::paginate(6);
-            return view('admin.pages.ikk.makro.index', ['all' => $all]);
+
+            return view('admin.pages.ikk.makro.index', [ 'all' => $all] );
 
         } elseif (Auth::user()->hasRole('supervisor')){
 
@@ -37,20 +38,13 @@ class IkkController extends Controller
 
     }
 
-    public function ikkMethod($method){
+    public function ikkMethod(Request $request, $slug){
+   
+        $all = Urusan::where('slug', $slug)->get();
 
-        $all = Urusan::whereHas('ikk',function($q){
-                    $q->where('urusan_id');
-                })->where('id')->get();
-
-        // $all =  Ikk::whereHas('urusan',function($q){
-        //     $q->where('judul_urusan');
-        // })->where('urusan_id')->get();
-
-        return view('admin.pages.ikk.makro.index',['all' => $all, 'judul_urusan' => $method]);
+        return view('admin.pages.ikk.makro.index',['all' => $all, 'judul_urusan' => $slug]);
 
     }
-
 
     public function print()
     {

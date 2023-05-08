@@ -45,6 +45,16 @@
                             </div>
                             <!-- input item end -->
 
+                            <div class="mb-3 fs-4">
+                                <label for="foto_gedung" class="fw-bold d-block mb-2">Foto Gedung</label>
+                                <img src="{{asset('gambar/default.png')}}" alt="gambar" width="250px" class="img-thumbnail">
+
+                                <input type="text" class="form-control form-control-lg mt-2" id="foto_gedung" name="foto_gedung" value="{{old('foto_gedung') ? old('foto_gedung') : '' }}" placeholder="Isi nama file (contoh : foto-gedung.png)">
+                                <small class="text-muted">Gambar diunggah terlebih dahulu pada halaman <a href="{{route('admin.gambar')}}" target="_blank" class="link-info">Kelolah Gambar</a>, kemudian copy & paste alamat gambarnya.</small>
+
+                            </div>
+                            <!-- input item end -->
+
 
                             <div class="mb-3 fs-4">
                                 <label for="" class="fw-bold mb-2 d-block">Alamat</label>

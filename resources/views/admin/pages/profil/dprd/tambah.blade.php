@@ -33,8 +33,6 @@
                         <form action="{{route('admin.dprd.store')}}" method="POST" enctype="multipart/form-data">
                             @csrf
 
-
-
                             <div class="mb-3 fs-4">
                                 <label for="" class="fw-bold">Nama Lengkap</label>
                                 <input type="text" class="form-control form-control-lg" placeholder="Nama Lengkap"
