@@ -66,11 +66,9 @@
                                 <tr>
                                     <td>
                                         @if(empty($data->foto_kepala_desa))
-                                        <img src="{{asset('assets/images/user.png')}}" alt="Logo"
-                                            class="img-fluid img-thumbnail" width="100">
+                                        <img src="{{asset('assets/images/user.png')}}" alt="Logo" class="img-fluid img-thumbnail" width="100">
                                         @else
-                                        <img src="{{asset('file/foto/kepala/desa')}}/{{ $data->foto_kepala_desa }}"
-                                            class="img-fluid img-thumbnail" width="150">
+                                        <img src="{{asset('file/foto/kepala/desa')}}/{{ $data->foto_kepala_desa }}" class="img-fluid img-thumbnail" width="150">
                                     </td>
                                     @endif
                                     </td>
@@ -86,15 +84,9 @@
                                     </td>
 
                                     <td class="d-flex justify-content-between gap-1">
-                                        <a href="{{route('admin.desa.show',['id'=> $data->slug])}}"
-                                            class="btn btn-sm btn-info border-0  waves-effect waves-light fs-4"> <i
-                                                class="fas fa-eye"></i> </a>
-                                        <a href="{{route('admin.desa.edit',$data->slug)}}"
-                                            class="btn btn-sm btn-outline-info border-0 waves-effect waves-light fs-4">
-                                            <i class="fas fa-edit"></i> </a>
-                                        <a href="{{route('admin.desa.delete',$data->slug)}}"
-                                            class="btn btn-sm btn-outline-info border-0 waves-effect waves-light fs-4">
-                                            <i class="fas fa-trash"></i> </a>
+                                        <a href="{{route('admin.desa.show',['id'=> $data->slug])}}" class="btn btn-sm btn-info border-0  waves-effect waves-light fs-4"> <i  class="fas fa-eye"></i> </a>
+                                        <a href="{{route('admin.desa.edit',$data->slug)}}" class="btn btn-sm btn-outline-info border-0 waves-effect waves-light fs-4"> <i class="fas fa-edit"></i> </a>
+                                        <a href="{{route('admin.desa.delete',$data->slug)}}" class="btn btn-sm btn-outline-info border-0 waves-effect waves-light fs-4"> <i class="fas fa-trash"></i> </a>
                                     </td>
                                 </tr>
                                 @endforeach

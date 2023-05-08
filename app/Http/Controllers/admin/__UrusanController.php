@@ -6,11 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Urusan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-use Image;
-use Alert;
-use Storage;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\File;
+use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\Validator;
 
 class UrusanController extends Controller

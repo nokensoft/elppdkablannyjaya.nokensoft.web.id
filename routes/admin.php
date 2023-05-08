@@ -50,6 +50,7 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     // URUSAN
 
     Route::controller(UrusanController::class)->group(function(){
+
         Route::get('urusan','index')->name('admin.urusan')->middleware(['role:administrator']);
         Route::get('urusan/tambah','create')->name('admin.urusan.create')->middleware(['role:administrator']);
         Route::get('urusan/edit/{id}','edit')->name('admin.urusan.edit')->middleware(['role:administrator']);

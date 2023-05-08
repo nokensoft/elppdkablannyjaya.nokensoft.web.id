@@ -57,7 +57,6 @@
                                     <th>Urusan</th>
                                     <th>No IKK</th>
                                     <th>IKK</th>
-                                    <th>Rumus</th>
                                     <th>Capaian Kinerja</th>
                                     <th>Keterangan</th>
                                     <th>Status</th>
@@ -80,9 +79,6 @@
                                     </td>
                                     <td>
                                         {{$ikk->ikk}}
-                                    </td>
-                                    <td>
-                                        {{$ikk->rumus}}
                                     </td>
                                     <td></td>
                                     <td></td>
