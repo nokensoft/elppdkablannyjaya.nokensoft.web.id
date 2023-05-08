@@ -139,17 +139,15 @@
                         <span>Pelaporan</span>
                     </a>
                     <!-- item-->
+                    <hr class="border my-2">
 
                     @foreach ($urusans as $urusan )
                         @if(!$urusan->id)
-
                         @else
-
                         <a href="{{route('admin.ikk.method',['method' => $urusan->slug])}}" class="dropdown-item fs-4">
                             <i class="fas fa-bookmark me-1"></i>
                             <span class="text-capitalize">{{ $urusan->judul_urusan }}</span>
                         </a>
-
                         @endif
                     @endforeach
                     <!-- item-->

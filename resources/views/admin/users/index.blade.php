@@ -33,7 +33,7 @@
                         <table class="table table-bordered fs-4">
                             <thead class="bg-dark text-light">
                                 <tr>
-                                    <th>Foto</th>
+                                    <th width="100px">Foto</th>
                                     <th>Nama</th>
                                     <th>Email</th>
                                     <th>Role</th>
@@ -46,11 +46,9 @@
 
                                     <td>
                                         @if (!$user->avatar)
-                                        <img src="{{asset('assets/images/1.jpg')}}" alt="Logo" width="80px"
-                                            class="img-thumbnail">
+                                        <img src="{{asset('gambar/default.png')}}" alt="Gambar" class="img-fluid img-thumbnail">
                                         @else
-                                        <img src="{{ url($user->avatar)}}" alt="{{asset($user->name)}}"
-                                            class="img-fluid img-thumbnail" width="80px">
+                                        <img src="{{ url($user->avatar)}}" alt="Gambar"class="img-fluid img-thumbnail">
                                     </td>
                                     @endif
                                     </td>
@@ -60,7 +58,7 @@
                                         {{ implode('',$user->roles()->pluck('display_name')->toArray()) }}
                                     </td>
 
-                                    <td class="d-flex justify-content-between gap-1">
+                                    <td class="">
 
 
                                         @if (Auth::id() == $user->id)

@@ -18,7 +18,8 @@ return new class extends Migration
             $table->bigInteger('user_id')->unsigned()->nullable();
             $table->foreignId('urusan_id')->nullable();
             $table->string('no_ikk')->nullable();
-            $table->string('ikk')->nullable();
+            $table->string('ikk_output')->nullable();
+            $table->string('ikk_outcome')->nullable();
             $table->string('rumus')->nullable();
             $table->string('ket_jml1')->nullable();
             $table->string('jml1')->nullable();
@@ -26,6 +27,9 @@ return new class extends Migration
             $table->string('jml2')->nullable();
             $table->string('capaian_kinerja')->nullable();
             $table->string('keterangan')->nullable();
+            
+            $table->string('file_bukti')->nullable();
+
             $table->enum('status',['review','revisi','approved'])->default('review')->nullable();
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');

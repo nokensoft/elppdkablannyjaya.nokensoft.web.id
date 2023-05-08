@@ -56,8 +56,9 @@
                                 <tr>
                                     <th>Urusan</th>
                                     <th>No IKK</th>
-                                    <th>IKK</th>
-                                    <th>Capaian Kinerja</th>
+                                    <th>IKK Output</th>
+                                    <th>IKK Outcome</th>
+                                    <th>Capaian</th>
                                     <th>Keterangan</th>
                                     <th>Status</th>
                                     <th>Aksi</th>
@@ -74,15 +75,12 @@
                                 @foreach ($data->ikk as $ikk )
                                 <tr>
                                     <td></td>
-                                    <td>                                        
-                                        {{$ikk->no_ikk}}
-                                    </td>
-                                    <td>
-                                        {{$ikk->ikk}}
-                                    </td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                    <td> {{$ikk->no_ikk}} </td>
+                                    <td> {{$ikk->ikk_output}} </td>
+                                    <td> {{$ikk->ikk_outcome}} </td>
+                                    <td> {{$ikk->capaian_kinerja}} </td>
+                                    <td> {{$ikk->ketearngan}} </td>
+                                    <td> {{$ikk->status}} </td>
                                     <td>
                                         <a href="{{url('admin/ikk/' . $data->slug)}}">Detail</a>
                                     </td>
