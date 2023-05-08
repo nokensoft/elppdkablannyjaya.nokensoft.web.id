@@ -18,16 +18,16 @@ class UrusanSeeder extends Seeder
         Urusan::insert(
             [
                 [
-                    'judul_urusan'       => 'Kesehatan',
-                    'slug'                => 'kesehatan',
+                    'judul_urusan'      => 'Kesehatan',
+                    'slug'              => 'kesehatan',
                 ],
                 [
-                    'judul_urusan'       => 'Pekerjaan Umum',
-                    'slug'                => 'pekerjaan-umum',
+                    'judul_urusan'      => 'Pekerjaan Umum',
+                    'slug'              => 'pekerjaan-umum',
                 ],
                 [
-                    'judul_urusan'       => 'Pendidikan',
-                    'slug'                => 'pendidikan',
+                    'judul_urusan'      => 'Pendidikan',
+                    'slug'              => 'pendidikan',
                 ]
             ]
         );

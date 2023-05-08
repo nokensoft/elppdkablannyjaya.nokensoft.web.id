@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Urusan extends Model
 {
     use HasFactory;
-    protected $table = 'urusans';
     public $guarded = [];
 
     public function ikk()

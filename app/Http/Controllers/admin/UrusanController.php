@@ -14,9 +14,7 @@ class UrusanController extends Controller
     public function index(Request $request)
     {
         $data = Urusan::orderBy('id','desc')->paginate(5);
-        return view('admin.pages.urusan.index',compact('data'))
-            ->with('i', ($request->input('page', 1) - 1) * 5);
-
+        return view('admin.pages.urusan.index',compact('data'))->with('i', ($request->input('page', 1) - 1) * 5);
     }
 
     public function create()
@@ -38,9 +36,9 @@ class UrusanController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(),[
-            'judul_urusan' => 'required',
+            'judul_urusan'                  => 'required',
         ],[
-            'judul_urusan.required'        => 'Judul Urusan tidak boleh kosong',
+            'judul_urusan.required'         => 'Judul Urusan tidak boleh kosong',
         ]);
 
         if($validator->fails()){
@@ -48,8 +46,8 @@ class UrusanController extends Controller
         } else {
             try {
                 $urusan = new Urusan();
-                $urusan->judul_urusan = $request->judul_urusan;
-                $urusan->slug = Str::slug($request->judul_urusan);
+                $urusan->judul_urusan       = $request->judul_urusan;
+                $urusan->slug               = Str::slug($request->judul_urusan);
                 $urusan->save();
                 Alert::toast('Urusan Berhasil disimpan!', 'success');
                 return redirect()->route('admin.urusan');
@@ -63,9 +61,9 @@ class UrusanController extends Controller
     public function update(Request $request,$id)
     {
         $validator = Validator::make($request->all(),[
-            'judul_urusan' => 'required',
+            'judul_urusan'                  => 'required',
         ],[
-            'judul_urusan.required'        => 'Judul Urusan tidak boleh kosong',
+            'judul_urusan.required'         => 'Judul Urusan tidak boleh kosong',
         ]);
 
         if($validator->fails()){
@@ -73,11 +71,14 @@ class UrusanController extends Controller
         } else {
             try {
                 $urusan = Urusan::find($id);
-                $urusan->judul_urusan = $request->judul_urusan;
-                $urusan->slug = Str::slug($request->judul_urusan);
+                $urusan->judul_urusan       = $request->judul_urusan;
+                $urusan->slug               = Str::slug($request->judul_urusan);
+
                 $urusan->update();
+
                 Alert::toast('Urusan Berhasil diperbarui!', 'success');
                 return redirect()->route('admin.urusan');
+
             } catch (\Throwable $th) {
                 Alert::toast('Gagal', 'error');
                 return redirect()->back();
@@ -93,7 +94,7 @@ class UrusanController extends Controller
             Alert::toast('Urusan Berhasil dihapus!', 'success');
             return redirect()->route('admin.urusan');
         } catch (\Throwable $e) {
-            Alert::toast('Gagal', ['error' => $e->getMessage()], 'error');
+            Alert::toast('Gagal', ['error'  => $e->getMessage()], 'error');
             return redirect()->back();
         }
 
