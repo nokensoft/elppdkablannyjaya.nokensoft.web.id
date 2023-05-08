@@ -31,12 +31,12 @@
                     </a>
                     <!-- item-->
 
-                    @if(Auth::user()->hasRole('administrator'))
+                    {{-- @if(Auth::user()->hasRole('administrator'))
                     <a href="javascript:void(0);" class="dropdown-item notify-item">
                         <i class="fe-settings"></i>
                         <span>Pengaturan</span>
                     </a>
-                    @endif
+                    @endif --}}
 
                     <div class="dropdown-divider"></div>
 
