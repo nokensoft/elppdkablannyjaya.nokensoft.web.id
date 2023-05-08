@@ -16,7 +16,7 @@ class GambarController extends Controller
     // INDEX
     public function index()
     {
-        $datas = Gambar::orderBy('id','desc')->paginate(8);
+        $datas = Gambar::orderBy('id', 'desc')->paginate(8);
         return view('admin.pages.gambar.index', compact('datas'));
     }
 
@@ -29,24 +29,25 @@ class GambarController extends Controller
     // CREATE
     public function edit($id)
     {
-        $data = Gambar::where('slug',$id)->first();
-        return view('admin.pages.gambar.edit',compact('data'));
+        $data = Gambar::where('slug', $id)->first();
+        return view('admin.pages.gambar.edit', compact('data'));
     }
 
     // STORE
     public function store(Request $request)
     {
-        $validator = Validator::make($request->all(),
-        [
-            'nama_file' => 'required',
-            'alamat_file' => 'required|image|mimes:png,jpg,jpeg,svg|max:4028'
-        ],
-        [
-            'nama_file.required'     => 'Judul gambar tidak boleh kosong',
-            'alamat_file.required'   => 'Gambar tidak boleh kosong',
-            'alamat_file.mimes'      => 'Gambar dengan jenis JPEG,JPG,PNG,SVG',
-            'alamat_file.max'        => 'Gambar dengan maximal 2MB'
-        ]
+        $validator = Validator::make(
+            $request->all(),
+            [
+                'nama_file' => 'required',
+                'alamat_file' => 'required|image|mimes:png,jpg,jpeg,svg|max:4028'
+            ],
+            [
+                'nama_file.required'     => 'Judul gambar tidak boleh kosong',
+                'alamat_file.required'   => 'Gambar tidak boleh kosong',
+                'alamat_file.mimes'      => 'Gambar dengan jenis JPEG,JPG,PNG,SVG',
+                'alamat_file.max'        => 'Gambar dengan maximal 2MB'
+            ]
         );
 
         if ($validator->fails()) {
@@ -59,7 +60,7 @@ class GambarController extends Controller
                 $gambar->nama_file = $request->nama_file;
                 $gambar->slug = $random;
 
-                $fileName = Str::slug($request->nama_file) . '-'.time() . '.' . $request->alamat_file->extension();
+                $fileName = Str::slug($request->nama_file) . '-' . time() . '.' . $request->alamat_file->extension();
                 $path = public_path('gambar');
 
                 $gambar->alamat_file = $fileName;
@@ -74,62 +75,61 @@ class GambarController extends Controller
                 return redirect()->back();
             }
         }
-
     }
 
-     // STORE
-     public function update(Request $request,$id)
-     {
-         $validator = Validator::make($request->all(),
-         [
-             'nama_file' => 'required',
-            //  'alamat_file' => 'required|image|mimes:png,jpg,jpeg|max:4028'
-         ],
-         [
-             'nama_file.required'     => 'Judul gambar tidak boleh kosong',
-            //  'alamat_file.required'   => 'Gambar tidak boleh kosong',
-            //  'alamat_file.mimes'      => 'Gambar dengan jenis JPEG,JPG,PNG',
-            //  'alamat_file.max'        => 'Gambar dengan maximal 2MB'
-         ]
-         );
+    // STORE
+    public function update(Request $request, $id)
+    {
+        $validator = Validator::make(
+            $request->all(),
+            [
+                'nama_file' => 'required',
+                //  'alamat_file' => 'required|image|mimes:png,jpg,jpeg|max:4028'
+            ],
+            [
+                'nama_file.required'     => 'Judul gambar tidak boleh kosong',
+                //  'alamat_file.required'   => 'Gambar tidak boleh kosong',
+                //  'alamat_file.mimes'      => 'Gambar dengan jenis JPEG,JPG,PNG',
+                //  'alamat_file.max'        => 'Gambar dengan maximal 2MB'
+            ]
+        );
 
-         if ($validator->fails()) {
-             return redirect()->back()->withInput($request->all())->withErrors($validator);
-         } else {
-             try {
-                 $random = Str::random(15);
+        if ($validator->fails()) {
+            return redirect()->back()->withInput($request->all())->withErrors($validator);
+        } else {
+            try {
+                $random = Str::random(15);
 
-                 $gambar = Gambar::find($id);
-                 $gambar->nama_file = $request->nama_file;
-                 $gambar->slug = $random;
+                $gambar = Gambar::find($id);
+                $gambar->nama_file = $request->nama_file;
+                $gambar->slug = $random;
 
-                 if ($request->alamat_file) {
+                if ($request->alamat_file) {
 
-                    $fileName = Str::slug($request->nama_file) . '-'.time() . '.' . $request->alamat_file->extension();
+                    $fileName = Str::slug($request->nama_file) . '-' . time() . '.' . $request->alamat_file->extension();
                     $path = public_path('gambar');
-                    if (!empty($gambar->alamat_file) && file_exists($path.$gambar->alamat_file)) :
-                        unlink($path.$gambar->alamat_file);
+                    if (!empty($gambar->alamat_file) && file_exists($path . $gambar->alamat_file)) :
+                        unlink($path . $gambar->alamat_file);
                     endif;
 
                     $gambar->alamat_file = $fileName;
                     $request->alamat_file->move($path, $fileName);
-                 }
-                 $gambar->update();
+                }
+                $gambar->update();
 
-                 alert()->success('Berhasil', 'Sukses!!')->autoclose(1100);
-                 return redirect()->route('admin.gambar');
-             } catch (\Throwable $th) {
-                 alert()->error('Gagal', 'Gagal!!')->autoclose(1100);
-                 return redirect()->back();
-             }
-         }
-
-     }
+                alert()->success('Berhasil', 'Sukses!!')->autoclose(1100);
+                return redirect()->route('admin.gambar');
+            } catch (\Throwable $th) {
+                alert()->error('Gagal', 'Gagal!!')->autoclose(1100);
+                return redirect()->back();
+            }
+        }
+    }
 
     // DELETE
     public function delete($id)
     {
-        $data = Gambar::where('slug',$id)->first();
+        $data = Gambar::where('slug', $id)->first();
         return view('admin.pages.gambar.hapus', compact('data'));
     }
 
@@ -144,11 +144,10 @@ class GambarController extends Controller
             if (file_exists($path)) {
                 File::delete($path);
             }
-            
+
             $gambar->delete();
             alert()->success('Berhasil', 'Sukses!!')->autoclose(1500);
             return redirect()->route('admin.gambar');
-
         } catch (\Throwable $e) {
             alert()->error('Gagal', 'Gagal!!')->autoclose(1100);
             return redirect()->back();

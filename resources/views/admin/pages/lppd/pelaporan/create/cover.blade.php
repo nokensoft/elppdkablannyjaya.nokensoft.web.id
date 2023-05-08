@@ -32,22 +32,26 @@
                         <form action="{{route('admin.pelaporan.uploadCover.store',['id' => $data->id])}}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('put')
+                            
                             <div class="mb-3 fs-4">
-                                <label for="" class="fw-bold">Judul Cover</label>
-                                <input type="text" class="form-control" name="cover" value="{{ old('cover',$data->cover) }}" placeholder="Masukan judul cover ">
+                                <label for="" class="fw-bold">Judul Dokumen</label>
+                                <input type="text" class="form-control" name="cover" value="{{ old('cover', $data->cover) }}" placeholder="Masukan judul cover" readonly>
 
                                 @if($errors->has('cover'))
                                     <label class="text-danger"> {{ $errors->first('cover') }} </label>
                                 @endif
                             </div>
+                            <!-- input item end -->
+
                             <div class="mb-3 fs-4">
-                                <label for="" class="fw-bold">File Upload Cover</label>
+                                <label for="" class="fw-bold">Upload File</label>
                                 <input type="file" class="form-control" name="cover_file" value="{{ old('cover_file',$data->cover_file) }}" >
                                 <small class="text-muted">File harus berupda file dengan extensi PDF</small>
                                 @if($errors->has('cover_file'))
                                     <label class="text-danger"> {{ $errors->first('cover_file') }} </label>
                                 @endif
                             </div>
+                            <!-- input item end -->
 
                             <div class="border-top border-1 pt-3 mt-4">
                                 <button type="submit" class="btn btn-success waves-effect waves-light fs-4">
@@ -58,6 +62,8 @@
                                     <i class="fas fa-arrow-left me-1"></i> Tidak
                                 </a>
                             </div>
+                            <!-- input buttons end -->
+
                         </form>
                     </div>
                     <!-- .col end -->

@@ -42,108 +42,215 @@
                                     <tbody>
                                         @foreach ($all as $data )
 
-                                            <tr class="@if ($data->cover != '') bg-success text-light @endif">
-                                                <td>{{$data->cover}}</td>
+                                        <tr class="@if (!empty($data->cover_file)) bg-success text-light @endif">
+                                            <td>{{$data->cover}}</td>
                                                 <td class="text-center">
-                                                    @if(!$data->cover)
+                                                    @if(empty($data->cover_file))
                                                     <i class="fas fa-times"></i>
                                                     @else
-                                                    <i class="fas fa-check mr-1"></i>
+                                                    <i class="fas fa-check"></i>
                                                     @endif
                                                 </td>
                                                 <td>
                                                     @if (!$data->cover_file)
-                                                    <a href="{{ route('admin.pelaporan.uploadCover',['id' => $data->id]) }}" class="btn btn-sm btn-outline-dark waves-effect waves-light fs-4">
-                                                        <i class="fas fa-upload mr-1"></i>
-                                                        Unduh Dokumen
+                                                    <a href="{{ route('admin.pelaporan.createCover',['id' => $data->id]) }}" class="btn btn-sm btn-outline-dark waves-effect waves-light fs-4">
+                                                        <i class="fas fa-upload mr-1"></i> Upload
                                                     </a>
                                                     @else
-                                                    <a href="" class="btn btn-sm btn-outline-dark waves-effect waves-light fs-4">
-                                                        <i class="fas fa-download mr-1"></i>
-                                                        Unduh Dokumen
+                                                    <a href="{{ asset('file/lppd/' . $data->cover_file) }}" target="_blank" class="btn btn-sm btn-outline-dark waves-effect waves-light fs-4">
+                                                        <i class="fas fa-download mr-1"></i> Download
                                                     </a>
-                                                    <a href="{{ route('admin.pelaporan.uploadCover',['id' => $data->id]) }}"
-                                                        class="btn btn-sm btn-outline-dark waves-effect waves-light fs-4">
+                                                    
+                                                    <a href="{{ route('admin.pelaporan.createCover',['id' => $data->id]) }}" class="btn btn-sm btn-outline-dark waves-effect waves-light fs-4">
                                                         <i class="fas fa-edit mr-1"></i>
+                                                    </a>
+                                                    <a href="{{ route('admin.pelaporan.deleteCover',['id' => $data->id]) }}" class="btn btn-sm btn-outline-dark waves-effect waves-light fs-4">
+                                                        <i class="fas fa-trash mr-1"></i>
                                                     </a>
                                                     @endif
 
                                                 </td>
-                                            </tr>
-
-                                            <tr>
+                                            </tr> 
+                                            
+                                            <tr class="@if (!empty($data->babi_file)) bg-success text-light @endif">
                                                 <td>{{$data->babi}}</td>
-                                                <td class="text-center">
-                                                    <i class="fas fa-times"></i>
-                                                </td>
-                                                <td>
-                                                    <a href="{{ route('admin.pelaporan.uploadBabSatu') }}" class="btn btn-sm btn-outline-dark waves-effect waves-light fs-4">
-                                                        <i class="fas fa-upload mr-1"></i>
-                                                        Unggah Dokumen
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>{{$data->babii}}</td>
-                                                <td class="text-center">
-                                                    <i class="fas fa-times"></i>
-                                                </td>
-                                                <td>
-                                                    <a href="{{ route('admin.pelaporan.uploadBabDua') }}" class="btn btn-sm btn-outline-dark waves-effect waves-light fs-4">
-                                                        <i class="fas fa-upload mr-1"></i>
-                                                        Unggah Dokumen
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>{{$data->babiii}}</td>
-                                                <td class="text-center">
-                                                    <i class="fas fa-times"></i>
-                                                </td>
-                                                <td>
-                                                    <a href="{{ route('admin.pelaporan.uploadBabTiga') }}" class="btn btn-sm btn-outline-dark waves-effect waves-light fs-4">
-                                                        <i class="fas fa-upload mr-1"></i>
-                                                        Unggah Dokumen
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>{{$data->babiv}}</td>
-                                                <td class="text-center">
-                                                    <i class="fas fa-times"></i>
-                                                </td>
-                                                <td>
-                                                    <a href="{{ route('admin.pelaporan.uploadBabEmpat') }}" class="btn btn-sm btn-outline-dark waves-effect waves-light fs-4">
-                                                        <i class="fas fa-upload mr-1"></i>
-                                                        Unggah Dokumen
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>{{$data->babv}}</td>
-                                                <td class="text-center">
-                                                    <i class="fas fa-times"></i>
-                                                </td>
-                                                <td>
-                                                    <a href="{{ route('admin.pelaporan.uploadBabLima') }}" class="btn btn-sm btn-outline-dark waves-effect waves-light fs-4">
-                                                        <i class="fas fa-upload mr-1"></i>
-                                                        Unggah Dokumen
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>{{$data->lampiran}}</td>
-                                                <td class="text-center">
-                                                    <i class="fas fa-times"></i>
-                                                </td>
-                                                <td>
-                                                    <a href="{{ route('admin.pelaporan.uploadLampiran') }}" class="btn btn-sm btn-outline-dark waves-effect waves-light fs-4">
-                                                        <i class="fas fa-upload mr-1"></i>
-                                                        Unggah Dokumen
-                                                    </a>
-                                                </td>
-                                            </tr>
+                                                    <td class="text-center">
+                                                        @if(empty($data->babi_file))
+                                                        <i class="fas fa-times"></i>
+                                                        @else
+                                                        <i class="fas fa-check"></i>
+                                                        @endif
+                                                    </td>
+                                                    <td>
+                                                        @if (!$data->babi_file)
+                                                        <a href="{{ route('admin.pelaporan.createBabI',['id' => $data->id]) }}" class="btn btn-sm btn-outline-dark waves-effect waves-light fs-4">
+                                                            <i class="fas fa-upload mr-1"></i> Upload
+                                                        </a>
+                                                        @else
+                                                        <a href="{{ asset('file/lppd/' . $data->babi_file) }}" target="_blank" class="btn btn-sm btn-outline-dark waves-effect waves-light fs-4">
+                                                            <i class="fas fa-download mr-1"></i> Download
+                                                        </a>
+                                                        
+                                                        <a href="{{ route('admin.pelaporan.createBabI',['id' => $data->id]) }}" class="btn btn-sm btn-outline-dark waves-effect waves-light fs-4">
+                                                            <i class="fas fa-edit mr-1"></i>
+                                                        </a>
+                                                        <a href="{{ route('admin.pelaporan.deleteBabI',['id' => $data->id]) }}" class="btn btn-sm btn-outline-dark waves-effect waves-light fs-4">
+                                                            <i class="fas fa-trash mr-1"></i>
+                                                        </a>
+                                                        @endif
+    
+                                                    </td>
+                                                </tr> 
+                                            
+                                                <tr class="@if (!empty($data->babii_file)) bg-success text-light @endif">
+                                                    <td>{{$data->babii}}</td>
+                                                    <td class="text-center">
+                                                        @if(empty($data->babii_file))
+                                                        <i class="fas fa-times"></i>
+                                                        @else
+                                                        <i class="fas fa-check"></i>
+                                                        @endif
+                                                    </td>
+                                                    <td>
+                                                        @if (!$data->babii_file)
+                                                        <a href="{{ route('admin.pelaporan.createBabII',['id' => $data->id]) }}" class="btn btn-sm btn-outline-dark waves-effect waves-light fs-4">
+                                                            <i class="fas fa-upload mr-1"></i> Upload
+                                                        </a>
+                                                        @else
+                                                        <a href="{{ asset('file/lppd/' . $data->babii_file) }}" target="_blank" class="btn btn-sm btn-outline-dark waves-effect waves-light fs-4">
+                                                            <i class="fas fa-download mr-1"></i> Download
+                                                        </a>
+                                                        
+                                                        <a href="{{ route('admin.pelaporan.createBabII',['id' => $data->id]) }}" class="btn btn-sm btn-outline-dark waves-effect waves-light fs-4">
+                                                            <i class="fas fa-edit mr-1"></i>
+                                                        </a>
+                                                        <a href="{{ route('admin.pelaporan.deleteBabII',['id' => $data->id]) }}" class="btn btn-sm btn-outline-dark waves-effect waves-light fs-4">
+                                                            <i class="fas fa-trash mr-1"></i>
+                                                        </a>
+                                                        @endif
+    
+                                                    </td>
+                                                </tr> 
 
+                                                <tr class="@if (!empty($data->babiii_file)) bg-success text-light @endif">
+                                                    <td>{{$data->babiii}}</td>
+                                                    <td class="text-center">
+                                                        @if(empty($data->babiii_file))
+                                                        <i class="fas fa-times"></i>
+                                                        @else
+                                                        <i class="fas fa-check"></i>
+                                                        @endif
+                                                    </td>
+                                                    <td>
+                                                        @if (!$data->babiii_file)
+                                                        <a href="{{ route('admin.pelaporan.createBabIII',['id' => $data->id]) }}" class="btn btn-sm btn-outline-dark waves-effect waves-light fs-4">
+                                                            <i class="fas fa-upload mr-1"></i> Upload
+                                                        </a>
+                                                        @else
+                                                        <a href="{{ asset('file/lppd/' . $data->babiii_file) }}" target="_blank" class="btn btn-sm btn-outline-dark waves-effect waves-light fs-4">
+                                                            <i class="fas fa-download mr-1"></i> Download
+                                                        </a>
+                                                        
+                                                        <a href="{{ route('admin.pelaporan.createBabIII',['id' => $data->id]) }}" class="btn btn-sm btn-outline-dark waves-effect waves-light fs-4">
+                                                            <i class="fas fa-edit mr-1"></i>
+                                                        </a>
+                                                        <a href="{{ route('admin.pelaporan.deleteBabIII',['id' => $data->id]) }}" class="btn btn-sm btn-outline-dark waves-effect waves-light fs-4">
+                                                            <i class="fas fa-trash mr-1"></i>
+                                                        </a>
+                                                        @endif
+    
+                                                    </td>
+                                                </tr> 
+
+                                                <tr class="@if (!empty($data->babiv_file)) bg-success text-light @endif">
+                                                    <td>{{$data->babiv}}</td>
+                                                    <td class="text-center">
+                                                        @if(empty($data->babiv_file))
+                                                        <i class="fas fa-times"></i>
+                                                        @else
+                                                        <i class="fas fa-check"></i>
+                                                        @endif
+                                                    </td>
+                                                    <td>
+                                                        @if (!$data->babiv_file)
+                                                        <a href="{{ route('admin.pelaporan.createBabIV',['id' => $data->id]) }}" class="btn btn-sm btn-outline-dark waves-effect waves-light fs-4">
+                                                            <i class="fas fa-upload mr-1"></i> Upload
+                                                        </a>
+                                                        @else
+                                                        <a href="{{ asset('file/lppd/' . $data->babiv_file) }}" target="_blank" class="btn btn-sm btn-outline-dark waves-effect waves-light fs-4">
+                                                            <i class="fas fa-download mr-1"></i> Download
+                                                        </a>
+                                                        
+                                                        <a href="{{ route('admin.pelaporan.createBabIV',['id' => $data->id]) }}" class="btn btn-sm btn-outline-dark waves-effect waves-light fs-4">
+                                                            <i class="fas fa-edit mr-1"></i>
+                                                        </a>
+                                                        <a href="{{ route('admin.pelaporan.deleteBabIV',['id' => $data->id]) }}" class="btn btn-sm btn-outline-dark waves-effect waves-light fs-4">
+                                                            <i class="fas fa-trash mr-1"></i>
+                                                        </a>
+                                                        @endif
+    
+                                                    </td>
+                                                </tr> 
+
+                                                <tr class="@if (!empty($data->babv_file)) bg-success text-light @endif">
+                                                    <td>{{$data->babv}}</td>
+                                                    <td class="text-center">
+                                                        @if(empty($data->babv_file))
+                                                        <i class="fas fa-times"></i>
+                                                        @else
+                                                        <i class="fas fa-check"></i>
+                                                        @endif
+                                                    </td>
+                                                    <td>
+                                                        @if (!$data->babv_file)
+                                                        <a href="{{ route('admin.pelaporan.createBabV',['id' => $data->id]) }}" class="btn btn-sm btn-outline-dark waves-effect waves-light fs-4">
+                                                            <i class="fas fa-upload mr-1"></i> Upload
+                                                        </a>
+                                                        @else
+                                                        <a href="{{ asset('file/lppd/' . $data->babv_file) }}" target="_blank" class="btn btn-sm btn-outline-dark waves-effect waves-light fs-4">
+                                                            <i class="fas fa-download mr-1"></i> Download
+                                                        </a>
+                                                        
+                                                        <a href="{{ route('admin.pelaporan.createBabV',['id' => $data->id]) }}" class="btn btn-sm btn-outline-dark waves-effect waves-light fs-4">
+                                                            <i class="fas fa-edit mr-1"></i>
+                                                        </a>
+                                                        <a href="{{ route('admin.pelaporan.deleteBabV',['id' => $data->id]) }}" class="btn btn-sm btn-outline-dark waves-effect waves-light fs-4">
+                                                            <i class="fas fa-trash mr-1"></i>
+                                                        </a>
+                                                        @endif
+    
+                                                    </td>
+                                                </tr> 
+
+                                                <tr class="@if (!empty($data->lampiran_file)) bg-success text-light @endif">
+                                                    <td>{{$data->lampiran}}</td>
+                                                    <td class="text-center">
+                                                        @if(empty($data->lampiran_file))
+                                                        <i class="fas fa-times"></i>
+                                                        @else
+                                                        <i class="fas fa-check"></i>
+                                                        @endif
+                                                    </td>
+                                                    <td>
+                                                        @if (!$data->lampiran_file)
+                                                        <a href="{{ route('admin.pelaporan.createLampiran',['id' => $data->id]) }}" class="btn btn-sm btn-outline-dark waves-effect waves-light fs-4">
+                                                            <i class="fas fa-upload mr-1"></i> Upload
+                                                        </a>
+                                                        @else
+                                                        <a href="{{ asset('file/lppd/' . $data->lampiran_file) }}" target="_blank" class="btn btn-sm btn-outline-dark waves-effect waves-light fs-4">
+                                                            <i class="fas fa-download mr-1"></i> Download
+                                                        </a>
+                                                        
+                                                        <a href="{{ route('admin.pelaporan.createLampiran',['id' => $data->id]) }}" class="btn btn-sm btn-outline-dark waves-effect waves-light fs-4">
+                                                            <i class="fas fa-edit mr-1"></i>
+                                                        </a>
+                                                        <a href="{{ route('admin.pelaporan.deleteLampiran',['id' => $data->id]) }}" class="btn btn-sm btn-outline-dark waves-effect waves-light fs-4">
+                                                            <i class="fas fa-trash mr-1"></i>
+                                                        </a>
+                                                        @endif
+    
+                                                    </td>
+                                                </tr> 
 
                                         @endforeach
                                     </tbody>

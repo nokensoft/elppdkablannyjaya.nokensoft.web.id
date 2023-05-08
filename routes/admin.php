@@ -187,15 +187,64 @@ Route::prefix('admin')->middleware('auth')->group(function () {
 
         Route::get('lppd/pelaporan','index')->name('admin.pelaporan')->middleware(['role:administrator']);
 
-        Route::get('lppd/pelaporan/upload-cover/{id}','createCover')->name('admin.pelaporan.uploadCover')->middleware(['role:administrator']);
-        Route::get('lppd/pelaporan/upload-babsatu','createBabSatu')->name('admin.pelaporan.uploadBabSatu')->middleware(['role:administrator']);
-        Route::get('lppd/pelaporan/upload-babdua','createBabDua')->name('admin.pelaporan.uploadBabDua')->middleware(['role:administrator']);
-        Route::get('lppd/pelaporan/upload-babtiga','createBabTiga')->name('admin.pelaporan.uploadBabTiga')->middleware(['role:administrator']);
-        Route::get('lppd/pelaporan/upload-babempat','createBabEmpat')->name('admin.pelaporan.uploadBabEmpat')->middleware(['role:administrator']);
-        Route::get('lppd/pelaporan/upload-bablima','createBabLima')->name('admin.pelaporan.uploadBabLima')->middleware(['role:administrator']);
-        Route::get('lppd/pelaporan/upload-lampiran','createLampiran')->name('admin.pelaporan.uploadLampiran')->middleware(['role:administrator']);
+        // COVER
+        Route::get('lppd/pelaporan/createCover/{id}','createCover')->name('admin.pelaporan.createCover')->middleware(['role:administrator']);
+        Route::put('lppd/pelaporan/uploadCover/{id}','storeCover')->name('admin.pelaporan.uploadCover.store')->middleware(['role:administrator']);
 
-        Route::put('lppd/pelaporan/upload-cover/{id}','storeCover')->name('admin.pelaporan.uploadCover.store')->middleware(['role:administrator']);
+        Route::get('lppd/pelaporan/deleteCover{id}','deleteCover')->name('admin.pelaporan.deleteCover')->middleware(['role:administrator']);
+        Route::put('lppd/pelaporan/emptyCover/{id}','emptyCover')->name('admin.pelaporan.emptyCover')->middleware(['role:administrator']);
+
+
+        // BAB I
+        Route::get('lppd/pelaporan/createBabI/{id}','createBabI')->name('admin.pelaporan.createBabI')->middleware(['role:administrator']);
+        Route::put('lppd/pelaporan/uploadBabI/{id}','storeBabI')->name('admin.pelaporan.uploadBabI.store')->middleware(['role:administrator']);
+
+        Route::get('lppd/pelaporan/deleteBabI/{id}','deleteBabI')->name('admin.pelaporan.deleteBabI')->middleware(['role:administrator']);
+        Route::put('lppd/pelaporan/emptyBabI/{id}','emptyBabI')->name('admin.pelaporan.emptyBabI')->middleware(['role:administrator']);
+
+        // BAB II
+        Route::get('lppd/pelaporan/createBabII/{id}','createBabII')->name('admin.pelaporan.createBabII')->middleware(['role:administrator']);
+        Route::put('lppd/pelaporan/uploadBabII/{id}','storeBabII')->name('admin.pelaporan.uploadBabII.store')->middleware(['role:administrator']);
+
+        Route::get('lppd/pelaporan/deleteBabII/{id}','deleteBabII')->name('admin.pelaporan.deleteBabII')->middleware(['role:administrator']);
+        Route::put('lppd/pelaporan/emptyBabII/{id}','emptyBabII')->name('admin.pelaporan.emptyBabII')->middleware(['role:administrator']);
+        
+        // BAB III
+        Route::get('lppd/pelaporan/createBabIII/{id}','createBabIII')->name('admin.pelaporan.createBabIII')->middleware(['role:administrator']);
+        Route::put('lppd/pelaporan/uploadBabIII/{id}','storeBabIII')->name('admin.pelaporan.uploadBabIII.store')->middleware(['role:administrator']);
+
+        Route::get('lppd/pelaporan/deleteBabIII/{id}','deleteBabIII')->name('admin.pelaporan.deleteBabIII')->middleware(['role:administrator']);
+        Route::put('lppd/pelaporan/emptyBabIII/{id}','emptyBabIII')->name('admin.pelaporan.emptyBabIII')->middleware(['role:administrator']);
+        
+        // BAB IV
+        Route::get('lppd/pelaporan/createBabIV/{id}','createBabIV')->name('admin.pelaporan.createBabIV')->middleware(['role:administrator']);
+        Route::put('lppd/pelaporan/uploadBabIV/{id}','storeBabIV')->name('admin.pelaporan.uploadBabIV.store')->middleware(['role:administrator']);
+
+        Route::get('lppd/pelaporan/deleteBabIV/{id}','deleteBabIV')->name('admin.pelaporan.deleteBabIV')->middleware(['role:administrator']);
+        Route::put('lppd/pelaporan/emptyBabIV/{id}','emptyBabIV')->name('admin.pelaporan.emptyBabIV')->middleware(['role:administrator']);
+        
+        // BAB V
+        Route::get('lppd/pelaporan/createBabV/{id}','createBabV')->name('admin.pelaporan.createBabV')->middleware(['role:administrator']);
+        Route::put('lppd/pelaporan/uploadBabV/{id}','storeBabV')->name('admin.pelaporan.uploadBabV.store')->middleware(['role:administrator']);
+
+        Route::get('lppd/pelaporan/deleteBabV/{id}','deleteBabV')->name('admin.pelaporan.deleteBabV')->middleware(['role:administrator']);
+        Route::put('lppd/pelaporan/emptyBabV/{id}','emptyBabV')->name('admin.pelaporan.emptyBabV')->middleware(['role:administrator']);
+        
+        // LAMPIRAN
+        Route::get('lppd/pelaporan/createLampiran/{id}','createLampiran')->name('admin.pelaporan.createLampiran')->middleware(['role:administrator']);
+        Route::put('lppd/pelaporan/uploadLampiran/{id}','storeLampiran')->name('admin.pelaporan.uploadLampiran.store')->middleware(['role:administrator']);
+        
+        Route::get('lppd/pelaporan/deleteLampiran/{id}','deleteLampiran')->name('admin.pelaporan.deleteLampiran')->middleware(['role:administrator']);
+        Route::put('lppd/pelaporan/emptyLampiran/{id}','emptyLampiran')->name('admin.pelaporan.emptyLampiran')->middleware(['role:administrator']);
+        
+        // BAB VI
+        // Route::get('lppd/pelaporan/upload-babsatu','createBabSatu')->name('admin.pelaporan.uploadBabSatu')->middleware(['role:administrator']);
+        // Route::get('lppd/pelaporan/upload-babdua','createBabDua')->name('admin.pelaporan.uploadBabDua')->middleware(['role:administrator']);
+        // Route::get('lppd/pelaporan/upload-babtiga','createBabTiga')->name('admin.pelaporan.uploadBabTiga')->middleware(['role:administrator']);
+        // Route::get('lppd/pelaporan/upload-babempat','createBabEmpat')->name('admin.pelaporan.uploadBabEmpat')->middleware(['role:administrator']);
+        // Route::get('lppd/pelaporan/upload-bablima','createBabLima')->name('admin.pelaporan.uploadBabLima')->middleware(['role:administrator']);
+        // Route::get('lppd/pelaporan/upload-lampiran','createLampiran')->name('admin.pelaporan.uploadLampiran')->middleware(['role:administrator']);
+
         // Route::post('lppd/pelaporan/upload-babsatu','storeBabSatu')->name('admin.pelaporan.uploadBabSatu')->middleware(['role:administrator']);
         // Route::post('lppd/pelaporan/upload-babdua','storeBabDua')->name('admin.pelaporan.uploadBabDua')->middleware(['role:administrator']);
         // Route::post('lppd/pelaporan/upload-babtiga','storeBabTiga')->name('admin.pelaporan.uploadBabTiga')->middleware(['role:administrator']);
