@@ -107,17 +107,19 @@
                             </div>
                             <!-- input item end -->
 
+                            <h5 class="bg-secondary p-2 text-light">Ubah Kata Sandi?</h5>
+
                             <div class="mb-3 fs-4">
                                 <label for="" class="fw-bold">Kata Sandi</label>
                                 {!! Form::password('password',['id'=>'password','class'=>'form-control
-                                form-control-lg','placeholder'=>'Kata sandi pengguna']) !!}
+                                form-control-lg','placeholder'=>'Kata sandi baru']) !!}
                             </div>
                             <!-- input item end -->
 
                             <div class="mb-3 fs-4">
                                 <label for="" class="fw-bold">Konfirmasi Kata Sandi</label>
                                 {!! Form::password('confirm-password',['id'=>'confirm-password','class'=>'form-control
-                                form-control-lg','placeholder'=>'Konfirmasi kata sandi pengguna']) !!}
+                                form-control-lg','placeholder'=>'Konfirmasi kata sandi baru']) !!}
                             </div>
                             <!-- input item end -->
 
