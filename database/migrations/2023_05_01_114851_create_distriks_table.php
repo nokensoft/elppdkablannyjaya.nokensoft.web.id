@@ -16,14 +16,18 @@ return new class extends Migration
         Schema::create('distriks', function (Blueprint $table) {
             $table->id();
             $table->string('nama_distrik');
+            $table->string('slug')->nullable();
+
             $table->string('ibu_kota_distrik');
             $table->string('nama_kepala_distrik')->nullable();
             $table->string('foto_kepala_distrik')->nullable();
+            
+            $table->string('foto_kantor')->nullable();
             $table->string('alamat')->nullable();
             $table->string('telp')->nullable();
             $table->string('email')->nullable();
-            $table->string('foto_kantor')->nullable();
-            $table->string('slug')->nullable();
+            $table->string('peta_distrik')->nullable();
+
             $table->timestamps();
         });
     }

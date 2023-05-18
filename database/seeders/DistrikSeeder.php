@@ -20,6 +20,7 @@ class DistrikSeeder extends Seeder
 
         Distrik::insert([
             'nama_distrik'              => 'Tiom',
+            'slug'                      => 'tiom',
             'ibu_kota_distrik'          => 'Bokon',
             'nama_kepala_distrik'       => 'Miter Wanimbo',
             'alamat'                    => 'Lanny Jaya.',
@@ -29,6 +30,7 @@ class DistrikSeeder extends Seeder
 
         Distrik::insert([
             'nama_distrik'              => 'Pirime',
+            'slug'                      => 'pirime',
             'ibu_kota_distrik'          => 'Umbanume',
             'nama_kepala_distrik'       => 'Mael Wanimbo, AMd',
             'alamat'                    => 'Lanny Jaya.',
@@ -38,6 +40,7 @@ class DistrikSeeder extends Seeder
 
         Distrik::insert([
             'nama_distrik'              => 'Dimba',
+            'slug'                      => 'dimba',
             'ibu_kota_distrik'          => 'Dimba',
             'nama_kepala_distrik'       => 'Yuluerius Kogoya, S.Sos',
             'alamat'                    => 'Lanny Jaya.',
@@ -48,6 +51,7 @@ class DistrikSeeder extends Seeder
 
         Distrik::insert([
             'nama_distrik'              => 'Gamelia',
+            'slug'                      => 'gamelia',
             'ibu_kota_distrik'          => 'Gamelia',
             'nama_kepala_distrik'       => 'Uragame Muni',
             'alamat'                    => 'Lanny Jaya.',
