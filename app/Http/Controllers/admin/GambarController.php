@@ -37,6 +37,7 @@ class GambarController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make(
+
             $request->all(),
             [
                 'nama_file'             => 'required',
@@ -51,6 +52,7 @@ class GambarController extends Controller
         );
 
         if ($validator->fails()) {
+
             return redirect()->back()->withInput($request->all())->withErrors($validator);
         } else {
             try {
@@ -61,16 +63,19 @@ class GambarController extends Controller
                 $gambar->slug = $random;
 
                 $fileName = Str::slug($request->nama_file) . '-' . time() . '.' . $request->alamat_file->extension();
-                $path = public_path('gambar');
+
+                // $path = public_path('gambar');
+                $path = 'gambar/';
 
                 $gambar->alamat_file = $fileName;
-                $request->alamat_file->move(public_path('gambar'), $fileName);
+                $request->alamat_file->move($path, $fileName);
 
                 $gambar->save();
 
                 alert()->success('Berhasil', 'Sukses!!')->autoclose(1100);
                 return redirect()->route('admin.gambar');
             } catch (\Throwable $th) {
+
                 alert()->error('Gagal', 'Gagal!!')->autoclose(1100);
                 return redirect()->back();
             }
@@ -84,13 +89,13 @@ class GambarController extends Controller
             $request->all(),
             [
                 'nama_file' => 'required',
-                //  'alamat_file' => 'required|image|mimes:png,jpg,jpeg|max:4028'
+                //  'alamat_file'       => 'required|image|mimes:png,jpg,jpeg|max:4028'
             ],
             [
-                'nama_file.required'     => 'Judul gambar tidak boleh kosong',
-                //  'alamat_file.required'   => 'Gambar tidak boleh kosong',
-                //  'alamat_file.mimes'      => 'Gambar dengan jenis JPEG,JPG,PNG',
-                //  'alamat_file.max'        => 'Gambar dengan maximal 2MB'
+                'nama_file.required'    => 'Judul gambar tidak boleh kosong',
+                'alamat_file.required'  => 'Gambar tidak boleh kosong',
+                'alamat_file.mimes'     => 'Gambar dengan jenis JPEG,JPG,PNG,SVG',
+                'alamat_file.max'       => 'Gambar dengan maximal 2MB'
             ]
         );
 
@@ -107,7 +112,10 @@ class GambarController extends Controller
                 if ($request->alamat_file) {
 
                     $fileName = Str::slug($request->nama_file) . '-' . time() . '.' . $request->alamat_file->extension();
-                    $path = public_path('gambar');
+
+                    // $path = public_path('gambar');
+                    $path = 'gambar/';
+
                     if (!empty($gambar->alamat_file) && file_exists($path . $gambar->alamat_file)) :
                         unlink($path . $gambar->alamat_file);
                     endif;
@@ -120,6 +128,7 @@ class GambarController extends Controller
                 alert()->success('Berhasil', 'Sukses!!')->autoclose(1100);
                 return redirect()->route('admin.gambar');
             } catch (\Throwable $th) {
+
                 alert()->error('Gagal', 'Gagal!!')->autoclose(1100);
                 return redirect()->back();
             }
