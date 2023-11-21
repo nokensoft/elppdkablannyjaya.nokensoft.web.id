@@ -32,6 +32,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+
+        try {
+
         Paginator::useBootstrap();
 
         if (App::environment('production')) {
@@ -47,6 +50,10 @@ class AppServiceProvider extends ServiceProvider
             'pengaturan'        => $pengaturan,
             'urusans'           => $urusans,
         ]);
+
+        }  catch (\Exception $e) {
+            // do nothing
+        }
 
     }
 }

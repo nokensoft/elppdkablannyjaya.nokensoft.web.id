@@ -44,17 +44,17 @@ class DesaController extends Controller
         $validator = Validator::make($request->all(),
         [
             'nama_desa'                 => 'required',
-            'distrik_id'                => 'required',
-            'nama_kepala_desa'          => 'required',
-            'alamat'                    => 'required',
-            'telp'                      => 'required',
+            // 'distrik_id'                => 'required',
+            // 'nama_kepala_desa'          => 'required',
+            // 'alamat'                    => 'required',
+            // 'telp'                      => 'required',
         ],
         [
             'nama_desa.required'          => 'Nama desa tidak boleh kosong',
-            'distrik_id.required'         => 'Distrik boleh kosong',
-            'nama_kepala_desa.required'   => 'Nama kepala desa tidak boleh kosong',
-            'alamat.required'             => 'Alamat tidak boleh kosong',
-            'telp.required'               => 'Telp tidak boleh kosong',
+            // 'distrik_id.required'         => 'Distrik boleh kosong',
+            // 'nama_kepala_desa.required'   => 'Nama kepala desa tidak boleh kosong',
+            // 'alamat.required'             => 'Alamat tidak boleh kosong',
+            // 'telp.required'               => 'Telp tidak boleh kosong',
         ]);
 
         if ($validator->fails()) {
@@ -100,17 +100,17 @@ class DesaController extends Controller
         $validator = Validator::make($request->all(),
         [
             'nama_desa'                 => 'required',
-            'distrik_id'                => 'required',
-            'nama_kepala_desa'          => 'required',
-            'alamat'                    => 'required',
-            'telp'                      => 'required',
+            // 'distrik_id'                => 'required',
+            // 'nama_kepala_desa'          => 'required',
+            // 'alamat'                    => 'required',
+            // 'telp'                      => 'required',
         ],
         [
             'nama_desa.required'          => 'Nama desa tidak boleh kosong',
-            'distrik_id.required'         => 'Distrik boleh kosong',
-            'nama_kepala_desa.required'   => 'Nama kepala desa tidak boleh kosong',
-            'alamat.required'             => 'Alamat tidak boleh kosong',
-            'telp.required'               => 'Telp tidak boleh kosong',
+            // 'distrik_id.required'         => 'Distrik boleh kosong',
+            // 'nama_kepala_desa.required'   => 'Nama kepala desa tidak boleh kosong',
+            // 'alamat.required'             => 'Alamat tidak boleh kosong',
+            // 'telp.required'               => 'Telp tidak boleh kosong',
         ]);
 
         if ($validator->fails()) {
