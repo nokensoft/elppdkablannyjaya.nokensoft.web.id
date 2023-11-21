@@ -78,10 +78,10 @@ class KategoriController extends Controller
     {
         $request->validate([
             'title' => 'required',
-            'deskripsi' => 'required',
-            'status' => 'required',
-            'katakunci' => 'required',
-            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            // 'deskripsi' => 'required',
+            // 'status' => 'required',
+            // 'katakunci' => 'required',
+            // 'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
         if(!empty( $request->file('image'))){
             $filename  = 'nokensoft'.'-'.date('Y-m-d-H-i-s').$request->file('image')->getClientOriginalName();
@@ -164,10 +164,10 @@ class KategoriController extends Controller
     {
         $request->validate([
             'title' => 'required',
-            'deskripsi' => 'required',
-            'status' => 'required',
-            'katakunci' => 'required',
-            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            // 'deskripsi' => 'required',
+            // 'status' => 'required',
+            // 'katakunci' => 'required',
+            // 'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
         if(!empty( $request->file('image'))){
             $filename  = 'nokensoft'.'-'.date('Y-m-d-H-i-s').$request->file('image')->getClientOriginalName();

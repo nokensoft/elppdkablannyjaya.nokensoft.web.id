@@ -44,17 +44,17 @@ class DistrikController extends Controller
         $validator = Validator::make($request->all(),
         [
             'nama_distrik'                  => 'required',
-            'ibu_kota_distrik'              => 'required',
-            'nama_kepala_distrik'           => 'required',
-            'alamat'                        => 'required',
-            'telp'                          => 'required',
+            // 'ibu_kota_distrik'              => 'required',
+            // 'nama_kepala_distrik'           => 'required',
+            // 'alamat'                        => 'required',
+            // 'telp'                          => 'required',
         ],
         [
             'nama_distrik.required'         => 'Nama desa tidak boleh kosong',
-            'ibu_kota_distrik.required'     => 'Distrik boleh kosong',
-            'nama_kepala_distrik.required'  => 'Nama kepala desa tidak boleh kosong',
-            'alamat.required'               => 'Alamat tidak boleh kosong',
-            'telp.required'                 => 'Telp tidak boleh kosong',
+            // 'ibu_kota_distrik.required'     => 'Distrik boleh kosong',
+            // 'nama_kepala_distrik.required'  => 'Nama kepala desa tidak boleh kosong',
+            // 'alamat.required'               => 'Alamat tidak boleh kosong',
+            // 'telp.required'                 => 'Telp tidak boleh kosong',
         ]);
 
         if ($validator->fails()) {
@@ -102,17 +102,17 @@ class DistrikController extends Controller
         $validator = Validator::make($request->all(),
         [
             'nama_distrik'              => 'required',
-            'ibu_kota_distrik'          => 'required',
-            'nama_kepala_distrik'       => 'required',
-            'alamat'                    => 'required',
-            'telp'                      => 'required',
+            // 'ibu_kota_distrik'          => 'required',
+            // 'nama_kepala_distrik'       => 'required',
+            // 'alamat'                    => 'required',
+            // 'telp'                      => 'required',
         ],
         [
             'nama_distrik.required'       => 'Nama desa tidak boleh kosong',
-            'ibu_kota_distrik.required'   => 'Distrik boleh kosong',
-            'nama_kepala_distrik.required'=> 'Nama kepala desa tidak boleh kosong',
-            'alamat.required'             => 'Alamat tidak boleh kosong',
-            'telp.required'               => 'Telp tidak boleh kosong',
+            // 'ibu_kota_distrik.required'   => 'Distrik boleh kosong',
+            // 'nama_kepala_distrik.required'=> 'Nama kepala desa tidak boleh kosong',
+            // 'alamat.required'             => 'Alamat tidak boleh kosong',
+            // 'telp.required'               => 'Telp tidak boleh kosong',
         ]);
 
         if ($validator->fails()) {
