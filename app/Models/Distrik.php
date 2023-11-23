@@ -10,7 +10,10 @@ class Distrik extends Model
     use HasFactory;
     public $guarded = [];
 
-
+    protected $hidden = [
+        'created_at',
+        'updated_at',
+    ];
 
     public function desa()
     {

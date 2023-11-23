@@ -2,30 +2,29 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Controllers\Controller;
 use App\Models\Distrik;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class DistrikController extends Controller
 {
-    // public function index()
-    // {
-    //     return Distrik::all();
-    // }
-
-    public function index()
+    public function getsDataDistrik()
     {
-        $response = [
-            'success'   => true,
-            'status'    => 200,
-            'data'      => Distrik::all()
-        ];
+        $data = Distrik::with('desa')->get();
+        return response()->json([
+                'status' => 'Berhasil',
+                'data'  => $data
+        ], 200);
 
-        return response()->json($response);
     }
 
-    // SHOW
-    public function show($id)
+    public function getDataDistrik($id)
     {
-        return Distrik::find($id);
+        $data = Distrik::with('desa')->where('id',$id)->first();
+        return response()->json([
+                'status' => 'Berhasil',
+                'data'  => $data
+        ], 200);
+
     }
 }
