@@ -11,7 +11,7 @@ class GetController extends Controller
 {
     public function getsDataDistrik()
     {
-        $data = Distrik::with('desa')->get();
+        $data = Distrik::get();
         return response()->json([
                 'status' => 'Berhasil',
                 'data'  => $data
@@ -21,7 +21,7 @@ class GetController extends Controller
 
     public function getDataDistrik($id)
     {
-        $data = Distrik::with('desa')->where('id',$id)->first();
+        $data = Distrik::where('id',$id)->first();
         return response()->json([
                 'status' => 'Berhasil',
                 'data'  => $data

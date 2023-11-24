@@ -12,8 +12,7 @@ class Desa extends Model
 
     protected $hidden = [
         'created_at',
-        'updated_at',
-        'distrik_id'
+        'updated_at'
     ];
 
     public function distrik()
