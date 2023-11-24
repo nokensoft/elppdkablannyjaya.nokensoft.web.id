@@ -21,12 +21,12 @@ return new class extends Migration
             $table->string('ibu_kota_distrik');
             $table->string('nama_kepala_distrik')->nullable();
             $table->string('foto_kepala_distrik')->nullable();
-            
+
             $table->string('foto_kantor')->nullable();
             $table->string('alamat')->nullable();
             $table->string('telp')->nullable();
             $table->string('email')->nullable();
-            $table->string('peta_distrik')->nullable();
+            $table->geometry('peta_distrik')->nullable();
 
             $table->timestamps();
         });
