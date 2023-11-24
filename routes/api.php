@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Api\DistrikController;
+use App\Http\Controllers\Api\GetController;
 
 
 /*
@@ -21,9 +21,12 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 // DISTRIK
-Route::get('distrik', [DistrikController::class, 'getsDataDistrik']);
+Route::get('distrik', [GetController::class, 'getsDataDistrik']);
+Route::get('distrik/{id}', [GetController::class, 'getDataDistrik']);
 
-Route::get('distrik/{id}', [DistrikController::class, 'getDataDistrik']);
+Route::get('desa', [GetController::class, 'getsDataDesa']);
+Route::get('desa/{id}', [GetController::class, 'getDataDesa']);
+
 
 // DESA
 // Route::get('desa', [DesaController::class, 'index']);
