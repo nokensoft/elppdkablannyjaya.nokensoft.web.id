@@ -129,6 +129,31 @@
                             </div>
                             <!-- input item end -->
 
+                            <div class="mb-3 fs-4">
+                                
+                                <label for="" class="fw-bold d-block">File Bukti</label>
+
+                                @if(!$data->file_bukti)
+                                
+                                <input type="file" class="form-control" name="file_bukti" value="{{ old('file_bukti',$data->file_bukti) }}" >
+                                <small class="text-muted">File harus berupda file dengan extensi PDF</small>
+                                @if($errors->has('file_bukti'))
+                                    <label class="text-danger"> {{ $errors->first('file_bukti') }} </label>
+                                @endif
+
+                                @else
+                                <a href="{{ asset('file/ikk/' . $data->file_bukti) }}" class="link-info" target="_blank">
+                                    <i class="fas fa-file"></i> Tampilkan 
+                                </a> |
+
+                                <a href="{{ asset('admin/ikk/hapus_file_bukti/' . $data->id) }}" class="link-danger">
+                                    <i class="fas fa-trash"></i> Hapus 
+                                </a>
+
+                                @endif
+                            </div>
+                            <!-- input item end -->
+
                             <div class="border-top border-1 pt-3 mt-4">
                                 <button type="submit" class="btn btn-info waves-effect waves-light fs-4">
                                     <i class="fas fa-save me-1"></i> Simpan & Hitung

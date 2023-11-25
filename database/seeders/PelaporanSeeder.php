@@ -12,6 +12,32 @@ class PelaporanSeeder extends Seeder
     {
 
         Pelaporan::insert([
+            'tahun'             => '2022',
+
+            'cover'             => 'COVER',
+            'cover_file'        => '',
+            'cover_file_public'        => TRUE,
+
+            'babi'              => 'BAB I',
+            'babi_file'         => '',
+
+            'babii'             => 'BAB II',
+            'babii_file'        => '',
+
+            'babiii'            => 'BAB III',
+            'babiii_file'       => '',
+
+            'babiv'             => 'BAB IV',
+            'babiv_file'        => '',
+
+            'babv'              => 'BAB V',
+            'babv_file'         => '',
+            
+            'lampiran'          => 'LAMPIRAN',
+            'lampiran_file'     => '',
+        ]);
+
+        Pelaporan::insert([
             'tahun'             => '2023',
 
             'cover'             => 'COVER',

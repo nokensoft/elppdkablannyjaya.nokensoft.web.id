@@ -36,6 +36,7 @@
                                         <tr>
                                             <th>Judul Dokumen</th>
                                             <th class="text-center">Status</th>
+                                            <th class="text-center">Publik</th>
                                             <th class="text-center">Aksi</th>
                                         </tr>
                                     </thead>
@@ -47,6 +48,13 @@
                                             <td>{{$data->cover}}</td>
                                                 <td class="text-center">
                                                     @if(empty($data->cover_file))
+                                                    <i class="fas fa-times"></i>
+                                                    @else
+                                                    <i class="fas fa-check"></i>
+                                                    @endif
+                                                </td>
+                                                <td class="text-center">
+                                                    @if(empty($data->cover_publik))
                                                     <i class="fas fa-times"></i>
                                                     @else
                                                     <i class="fas fa-check"></i>
@@ -82,6 +90,13 @@
                                                         <i class="fas fa-check"></i>
                                                         @endif
                                                     </td>
+                                                    <td class="text-center">
+                                                        @if(empty($data->cover_publik))
+                                                        <i class="fas fa-times"></i>
+                                                        @else
+                                                        <i class="fas fa-check"></i>
+                                                        @endif
+                                                    </td>
                                                     <td>
                                                         @if (!$data->babi_file)
                                                         <a href="{{ route('admin.pelaporan.createBabI',['id' => $data->id]) }}" class="btn btn-sm btn-outline-dark waves-effect waves-light fs-4">
@@ -107,6 +122,13 @@
                                                     <td>{{$data->babii}}</td>
                                                     <td class="text-center">
                                                         @if(empty($data->babii_file))
+                                                        <i class="fas fa-times"></i>
+                                                        @else
+                                                        <i class="fas fa-check"></i>
+                                                        @endif
+                                                    </td>
+                                                    <td class="text-center">
+                                                        @if(empty($data->cover_publik))
                                                         <i class="fas fa-times"></i>
                                                         @else
                                                         <i class="fas fa-check"></i>
@@ -142,6 +164,13 @@
                                                         <i class="fas fa-check"></i>
                                                         @endif
                                                     </td>
+                                                    <td class="text-center">
+                                                        @if(empty($data->cover_publik))
+                                                        <i class="fas fa-times"></i>
+                                                        @else
+                                                        <i class="fas fa-check"></i>
+                                                        @endif
+                                                    </td>
                                                     <td>
                                                         @if (!$data->babiii_file)
                                                         <a href="{{ route('admin.pelaporan.createBabIII',['id' => $data->id]) }}" class="btn btn-sm btn-outline-dark waves-effect waves-light fs-4">
@@ -167,6 +196,13 @@
                                                     <td>{{$data->babiv}}</td>
                                                     <td class="text-center">
                                                         @if(empty($data->babiv_file))
+                                                        <i class="fas fa-times"></i>
+                                                        @else
+                                                        <i class="fas fa-check"></i>
+                                                        @endif
+                                                    </td>
+                                                    <td class="text-center">
+                                                        @if(empty($data->cover_publik))
                                                         <i class="fas fa-times"></i>
                                                         @else
                                                         <i class="fas fa-check"></i>
@@ -202,6 +238,13 @@
                                                         <i class="fas fa-check"></i>
                                                         @endif
                                                     </td>
+                                                    <td class="text-center">
+                                                        @if(empty($data->cover_publik))
+                                                        <i class="fas fa-times"></i>
+                                                        @else
+                                                        <i class="fas fa-check"></i>
+                                                        @endif
+                                                    </td>
                                                     <td>
                                                         @if (!$data->babv_file)
                                                         <a href="{{ route('admin.pelaporan.createBabV',['id' => $data->id]) }}" class="btn btn-sm btn-outline-dark waves-effect waves-light fs-4">
@@ -227,6 +270,13 @@
                                                     <td>{{$data->lampiran}}</td>
                                                     <td class="text-center">
                                                         @if(empty($data->lampiran_file))
+                                                        <i class="fas fa-times"></i>
+                                                        @else
+                                                        <i class="fas fa-check"></i>
+                                                        @endif
+                                                    </td>
+                                                    <td class="text-center">
+                                                        @if(empty($data->cover_publik))
                                                         <i class="fas fa-times"></i>
                                                         @else
                                                         <i class="fas fa-check"></i>

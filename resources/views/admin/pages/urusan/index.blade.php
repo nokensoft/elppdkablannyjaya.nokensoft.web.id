@@ -44,10 +44,9 @@
                                 <tr>
                                     <td>{{$urusan->judul_urusan}}</td>
                                     <td>
-                                        <a href="{{ url('admin/ikk' . $urusan->slug) }}" class="btn btn-light"> Tampilkan</a>
+                                        <a href="{{ url('admin/ikk', $urusan->slug) }}" class="btn btn-light"> Tampilkan</a>
                                     </td>
                                     <td class="text-center">
-
                                         <a href="{{route('admin.urusan.edit',$urusan->slug)}}"
                                             class="btn btn-sm btn-outline-info border-0 waves-effect waves-light fs-4">
                                             <i class="fas fa-edit"></i>
@@ -56,11 +55,8 @@
                                             class="btn btn-sm btn-outline-info border-0 waves-effect waves-light fs-4">
                                             <i class="fas fa-trash"></i>
                                         </a>
-
                                     </td>
                                 </tr>
-
-
                                 @endforeach
                             </tbody>
                         </table>

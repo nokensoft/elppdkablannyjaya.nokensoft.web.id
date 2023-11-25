@@ -19,6 +19,7 @@ return new class extends Migration
             
             $table->string('cover')->nullable();
             $table->string('cover_file')->nullable();
+            $table->string('cover_file_public')->nullable();
 
             $table->string('babi')->nullable();
             $table->string('babi_file')->nullable();

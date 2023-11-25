@@ -31,7 +31,7 @@
 
                             <div class="mb-3 fs-4">
                                 <label for="" class="fw-bold">No IKK</label>
-                                <input type="text" class="form-control form-control-lg" readonly value="{{$ikk->no_ikk}}">
+                                <input type="text" class="form-control form-control-lg border-0 border-bottom border-1 p-0 rounded-0 border-0 border-bottom border-1 p-0 rounded-0" readonly value="{{$ikk->no_ikk}}">
                                 @if($errors->has('no_ikk'))
                                     <label class="text-danger"> {{ $errors->first('no_ikk') }} </label>
                                 @endif
@@ -42,7 +42,7 @@
                                 <label for="urusan_id" class="fw-bold">Urusan</label>
                                     @foreach ($data as $urusan)
                                         @if($urusan->id == $ikk->urusan_id)
-                                            <input type="text" class="form-control form-control-lg" readonly value="{{$urusan->judul_urusan}}">
+                                            <input type="text" class="form-control form-control-lg border-0 border-bottom border-1 p-0 rounded-0" readonly value="{{$urusan->judul_urusan}}">
                                         @endif
                                     @endforeach
                                 @if($errors->has('urusan_id'))
@@ -51,83 +51,63 @@
                             </div>
                             <!-- input item end -->
 
-                            {{-- <div class="mb-3 fs-4">
-                                <label for="" class="fw-bold">Perangkat Daerah</label>
-                                <select name="user_id" class="form-select form-select-lg">
-                                    <option hidden>Pillih</option>
-                                    @foreach ($user as $data)
-                                    @if($data->name == 'Admin')
-                                    @elseif ($data->name == 'Supervisor')
-                                    @else
-                                    <option value="{{ $data->id }}">{{ $data->name }}</option>
-                                    @endif
-                                    @endforeach
-
-                                </select>
-                                @if($errors->has('user_id'))
-                                    <label class="text-danger"> {{ $errors->first('user_id') }} </label>
-                                @endif
-                            </div>
-                            <!-- input item end --> --}}
-
-
                             <div class="mb-3 fs-4">
                                 <label for="" class="fw-bold">IKK Output</label>
-                                <textarea name="ikk_output" id="" rows="5" class="form-control form-control-lg" readonly>{{$ikk->ikk_output}}</textarea>
+                                <textarea name="ikk_output" id="" rows="5" class="form-control form-control-lg border-0 border-bottom border-1 p-0 rounded-0" readonly>{{$ikk->ikk_output}}</textarea>
                             </div>
                             <!-- input item end -->
 
                             <div class="mb-3 fs-4">
                                 <label for="" class="fw-bold">IKK Outcome</label>
-                                <textarea name="ikk_outcome" id="" rows="5" class="form-control form-control-lg" readonly>{{$ikk->ikk_outcome}}</textarea>
+                                <textarea name="ikk_outcome" id="" rows="5" class="form-control form-control-lg border-0 border-bottom border-1 p-0 rounded-0" readonly>{{$ikk->ikk_outcome}}</textarea>
                             </div>
                             <!-- input item end -->
 
                             <div class="mb-3 fs-4">
                                 <label for="" class="fw-bold">Rumus</label>
                                 <textarea readonly id="" rows="5"
-                                    class="form-control form-control-lg">{{$ikk->rumus}}</textarea>
+                                    class="form-control form-control-lg border-0 border-bottom border-1 p-0 rounded-0">{{$ikk->rumus}}</textarea>
                             </div>
                             <!-- input item end -->
 
                             <div class="mb-3 fs-4">
                                 <label for="" class="fw-bold">Keterangan Nilai 1</label>
-                                <input type="text" readonly class="form-control form-control-lg"
+                                <input type="text" readonly class="form-control form-control-lg border-0 border-bottom border-1 p-0 rounded-0"
                                     value="{{$ikk->ket_jml1}}">
                             </div>
                             <!-- input item end -->
 
                             <div class="mb-3 fs-4">
                                 <label for="" class="fw-bold">Nilai 1</label>
-                                <input type="text" class="form-control form-control-lg" readonly  value="{{$ikk->ket_jml1}}">
+                                <input type="text" class="form-control form-control-lg border-0 border-bottom border-1 p-0 rounded-0" readonly  value="{{$ikk->ket_jml1}}">
                             </div>
                             <!-- input item end -->
 
                             <div class="mb-3 fs-4">
                                 <label for="" class="fw-bold">Keterangan Nilai 2</label>
-                                <input type="text" class="form-control form-control-lg"  readonly  value="{{$ikk->ket_jml2}}">
+                                <input type="text" class="form-control form-control-lg border-0 border-bottom border-1 p-0 rounded-0"  readonly  value="{{$ikk->ket_jml2}}">
                             </div>
                             <!-- input item end -->
 
                             <div class="mb-3 fs-4">
                                 <label for="" class="fw-bold">Nilai 2</label>
-                                <input type="text" class="form-control form-control-lg" name=""  readonly  value="{{$ikk->jml2}}">
+                                <input type="text" class="form-control form-control-lg border-0 border-bottom border-1 p-0 rounded-0" name=""  readonly  value="{{$ikk->jml2}}">
                             </div>
                             <!-- input item end -->
 
                             <div class="mb-3 fs-4">
                                 <label for="" class="fw-bold">Capaian Kinerja</label>
-                                <input type="text" class="form-control form-control-lg" name="" readonly  value="{{$ikk->capaian_kinerja}}" >
+                                <input type="text" class="form-control form-control-lg border-0 border-bottom border-1 p-0 rounded-0" name="" readonly  value="{{$ikk->capaian_kinerja}}" >
                             </div>
                             <!-- input item end -->
 
                             <div class="mb-3 fs-4">
                                 <label for="" class="fw-bold">Keterangan</label>
-                                <textarea name="keterangan" id="" rows="5" class="form-control form-control-lg">{{$ikk->keterangan}}</textarea>
+                                <textarea name="keterangan" id="" rows="5" class="form-control form-control-lg border-0 border-bottom border-1 p-0 rounded-0">{{$ikk->keterangan}}</textarea>
                             </div>
                             <!-- input item end -->
 
-                            <div class="border-top border-1 pt-3 mt-4">
+                            <div class="pt-3 mt-4">
                                 <a href="{{URL::previous()}}" class="btn btn-outline-light waves-effect waves-light fs-4"> <i class="fas fa-arrow-left me-1"></i> Kembali </a>
 
                             </div>
