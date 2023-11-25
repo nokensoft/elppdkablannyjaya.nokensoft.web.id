@@ -279,6 +279,16 @@ Route::prefix('admin')->middleware('auth')->group(function () {
 
         Route::get('ikk/{id}/edit', 'edit')->name('admin.ikk.edit');
         Route::put('ikk/{id}', 'update')->name('admin.ikk.update');
+        Route::put('ikk/hapus_file_bukti/{id}', 'hapus_file_bukti')->name('admin.ikk.hapus_file_bukti');
+
+        // FILE BUKTI
+        Route::get('ikk/createFileBukti/{id}', 'createFileBukti')->name('admin.ikk.createFileBukti')->middleware(['role:administrator']);
+        Route::put('ikk/uploadFileBukti/{id}', 'storeFileBukti')->name('admin.ikk.uploadFileBukti.store')->middleware(['role:administrator']);
+
+        Route::get('ikk/deleteFileBukti/{id}', 'deleteFileBukti')->name('admin.ikk.deleteFileBukti')->middleware(['role:administrator']);
+        Route::put('ikk/emptyFileBukti/{id}', 'emptyFileBukti')->name('admin.ikk.emptyFileBukti')->middleware(['role:administrator']);
+
+
 
         Route::get('ikk/delete/{id}', 'delete')->name('admin.ikk.delete')->middleware(['role:administrator']);
         Route::delete('ikk/{id}', 'destroy')->name('admin.ikk.destroy')->middleware(['role:administrator']);

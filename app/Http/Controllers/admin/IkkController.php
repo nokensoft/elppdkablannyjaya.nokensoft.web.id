@@ -65,6 +65,7 @@ class IkkController extends Controller
         // $user  = User::all();
         return view('admin.pages.ikk.makro.tambah', compact('data'));
     }
+
     public function upload($id)
     {
         $data = Ikk::where('id',$id)->first();
@@ -147,6 +148,7 @@ class IkkController extends Controller
         }
     }
 
+    // upload file bukti
     public function uploadFile(Request $request,$id){
 
         $validator = Validator::make(
@@ -185,6 +187,7 @@ class IkkController extends Controller
         }
     }
 
+    // detail ikk
     public function show($id)
     {
         $ikk    = Ikk::where('id', $id)->first();
@@ -192,6 +195,7 @@ class IkkController extends Controller
         return view('admin.pages.ikk.makro.detail', compact('data', 'ikk', 'id'));
     }
 
+    // form edit
     public function edit($id)
     {
         $urusan = Urusan::all();
@@ -200,7 +204,7 @@ class IkkController extends Controller
         return view('admin.pages.ikk.makro.ubah', compact('data', 'urusan', 'user'));
     }
 
-
+    // ubah ikk
     public function update(Request $request, $id)
     {
         $validator = Validator::make(
@@ -232,29 +236,133 @@ class IkkController extends Controller
         );
 
 
-        // $ikk                = Ikk::find($id);
+        $data                = Ikk::find($id);
         // dd($ikk);
         // $ikk->user_id       = $request->user_id;
-        $ikk['urusan_id']       = $request->urusan_id;
-        $ikk['no_ikk']        = $request->no_ikk;
+        $data['urusan_id']       = $request->urusan_id;
+        $data['no_ikk']        = $request->no_ikk;
         // $ikk['urusan']        = $request->urusan;
-        $ikk['ikk_output']           = $request->ikk_output;
-        $ikk['ikk_outcome']           = $request->ikk_outcome;
-        $ikk['rumus']         = $request->rumus;
+        $data['ikk_output']           = $request->ikk_output;
+        $data['ikk_outcome']           = $request->ikk_outcome;
+        $data['rumus']         = $request->rumus;
         // $ikk->ket_jml1   = $request->ket_jml1;
-        $ikk['jml1']          = $request->jml1;
+        $data['jml1']          = $request->jml1;
         // $ikk->ket_jml2   = $request->ket_jml2;
-        $ikk['jml2']          = $request->jml2;
+        $data['jml2']          = $request->jml2;
         // $ikk->capaian_kinerja    = $request->capaian_kinerja;
-        $ikk['keterangan']    = $request->keterangan;
+        $data['keterangan']    = $request->keterangan;
 
-        $affected = DB::table('ikks')
-            ->where('id', $id)
-            ->update($ikk);
 
+        if ($request->file_bukti) {
+
+            $fileName = Str::random(12) . '.' . $request->file_bukti->extension();
+            $path = 'file/ikk/';
+            if (!empty($data->file_bukti) && file_exists( $path . $data->file_bukti)) :
+                unlink( $path  . $data->file_bukti);
+            endif;
+            $data->file_bukti = $fileName;
+            $request->file_bukti->move(public_path( $path ), $fileName);
+        }
+
+
+        // $affected = DB::table('ikks')
+        //     ->where('id', $id)
+        //     ->update($data);
+
+        $data->update();
         alert()->success('Berhasil', 'Sukses!!')->autoclose(1100);
         return redirect()->route('admin.ikk');
     }
+
+    // hapus file bukti
+
+
+
+    // -------------------------------------------------------------
+    // FILE BUKTI
+    // -------------------------------------------------------------
+
+    // CREATE
+    public function createFileBukti($id)
+    {
+        $data = Ikk::where('id', $id)->first();
+        return view('admin.pages.ikk.makro.create.file-bukti', compact('data'));
+}
+
+    // STORE
+    public function storeFileBukti(Request $request, $id)
+    {
+        $validator = Validator::make($request->only('cover', 'file_bukti'), [
+            'file_bukti' => 'mimes:pdf',
+        ], [
+            'file_bukti.required'   => 'File bukti tidak boleh kosong',
+            'file_bukti.mimes'      => 'File bukti harus dengan extensi pdf',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withInput($request->all())->withErrors($validator);
+        } else {
+            try {
+                $data = Ikk::find($id);
+                $data->file_bukti = $request->file_bukti;
+
+                if ($request->file_bukti) {
+
+                    $fileName = 'file_bukti_' . time() . '.' . $request->file_bukti->extension();
+
+                    $path = 'file/ikk/file_bukti/';
+
+                    if (!empty($data->file_bukti) && file_exists( $path . $data->file_bukti)) :
+                        unlink( $path  . $data->file_bukti);
+                    endif;
+
+                    $data->file_bukti = $fileName;
+                    $request->file_bukti->move(public_path( $path ), $fileName);
+                }
+
+                // update table
+                $data->update();
+
+                Alert::toast('Berhasil disimpan!', 'success');
+                return redirect()->route('admin.ikk');
+            } catch (\Throwable $th) {
+                dd($th);
+                Alert::toast('Gagal', 'error');
+                return redirect()->back();
+            }
+        }
+    }
+
+    // DELETE
+    public function deleteFileBukti($id)
+    {
+
+        $data = Ikk::where('id', $id)->first();
+        return view('admin.pages.ikk.makro.delete.file-bukti', compact('data'));
+    }
+
+    // UPDATE
+    public function emptyFileBukti(Request $request, $id)
+    {
+        $data = Ikk::find($id);
+
+        if (!empty($data->file_bukti) && file_exists('file/ikk/file_bukti/' . $data->file_bukti)) :
+            unlink('file/ikk/file_bukti/' . $data->file_bukti);
+        endif;
+
+        $data->file_bukti = '';
+
+        $data->update();
+
+        Alert::toast('File Berhasil disimpan!', 'success');
+        return redirect()->route('admin.ikk');
+    }
+
+
+    // -------------------------------------------------------------
+    // FILE BUKTI END
+    // -------------------------------------------------------------
+
 
 
     /**

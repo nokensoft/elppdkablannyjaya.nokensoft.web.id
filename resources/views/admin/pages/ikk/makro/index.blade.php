@@ -61,6 +61,7 @@
                                     <th>Capaian</th>
                                     <th>Keterangan</th>
                                     <th>File Bukti</th>
+                                    {{-- <th>File Bukti</th> --}}
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
@@ -68,7 +69,7 @@
                             <tbody>
                                 @foreach ($all as $data )
                                 <tr class="fw-bold bg-secondary text-light">
-                                    <td colspan="8">
+                                    <td colspan="9">
                                         {{ $data->judul_urusan }}
                                     </td>
                                 </tr>
@@ -87,16 +88,35 @@
                                     </td>
                                     <td> {{$ikk->keterangan}} </td>
                                     <td>
+                                        
+                                        @if (!$ikk->file_bukti)
+                                        <a href="{{ route('admin.ikk.createFileBukti',['id' => $ikk->id]) }}" class="btn btn-sm btn-outline-info waves-effect waves-light fs-4" title="Upload file bukti">
+                                            <i class="fas fa-upload mr-1"></i>
+                                        </a>
+                                        @else
+                                        <a href="{{ asset('file/ikk/' . $ikk->file_bukti) }}" target="_blank" class="btn btn-sm btn-outline-info waves-effect waves-light fs-4" title="Download file bukti">
+                                            <i class="fas fa-download mr-1"></i>
+                                        </a>
+                                        
+                                        <a href="{{ route('admin.ikk.createFileBukti',['id' => $ikk->id]) }}" class="btn btn-sm btn-outline-info waves-effect waves-light fs-4" title="Ubah file bukti">
+                                            <i class="fas fa-edit mr-1"></i>
+                                        </a>
+                                        <a href="{{ route('admin.ikk.deleteFileBukti',['id' => $ikk->id]) }}" class="btn btn-sm btn-outline-info waves-effect waves-light fs-4" title="Hapus file bukti">
+                                            <i class="fas fa-trash mr-1"></i>
+                                        </a>
+                                        @endif
+                                    </td>
+                                    {{-- <td>
                                         @if(!$ikk->file_bukti)
                                         <a href="{{ route('admin.ikk.upload',['id' => $ikk->id]) }}" class="link-dark">
                                             <i class="fas fa-file"></i> Upload File
                                         </a>
                                         @else
-                                        <a href="{{ asset('file/ikk/' . $ikk->file_bukti) }}" class="link-info" target="_blank">
+                                        <a href="{{ asset('ikk/' . $ikk->id) }}" class="link-info" target="_blank">
                                             <i class="fas fa-file"></i> File Bukti
                                         </a>
                                         @endif
-                                    </td>
+                                    </td> --}}
                                     {{-- <td>
                                         <a class=" " href="{{route('admin.ikk.show',$ikk->id)  }}">Detail</a> |
                                         <form action="{{ url('admin/ikk',$ikk->id) }}" method="POST" class="d-flex">

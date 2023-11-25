@@ -27,6 +27,8 @@ class DesaSeeder extends Seeder
             'email'                     => $faker->email(),
             'distrik_id'                => 1,
             'slug'                      => 'kelurahan-bokon',
+            'jumlah_penduduk' => '100',
+            'peta_desa' => '',
         ]);
 
         Desa::insert([
@@ -37,6 +39,8 @@ class DesaSeeder extends Seeder
             'email'                     => $faker->email(),
             'distrik_id'                => 2,
             'slug'                      => 'aniwo',
+            'jumlah_penduduk' => '150',
+            'peta_desa' => '',
         ]);
 
         Desa::insert([
@@ -47,6 +51,8 @@ class DesaSeeder extends Seeder
             'email'                     => $faker->email(),
             'distrik_id'                => 3,
             'slug'                      => 'dimba',
+            'jumlah_penduduk' => '300',
+            'peta_desa' => '',
         ]);
 
     }
