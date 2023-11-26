@@ -9,6 +9,7 @@
         "algolia/algoliasearch-client-php": "^3.3",
         "guzzlehttp/guzzle": "^7.2",
         "intervention/image": "^2.7",
+        "jmikola/geojson": "^1.0",
         "laravel/framework": "^9.19",
         "laravel/sanctum": "^3.0",
         "laravel/scout": "^9.8",
@@ -59,7 +60,7 @@
     },
     "extra": {
         "laravel": {
-            "dont-discover": [""]
+            "dont-discover": ["laravel/dusk"]
         }
     },
     "config": {

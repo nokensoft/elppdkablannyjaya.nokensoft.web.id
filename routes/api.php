@@ -24,6 +24,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('distrik', [GetController::class, 'getsDataDistrik']);
 Route::get('distrik/{id}', [GetController::class, 'getDataDistrik']);
 
+Route::get('test', [GetController::class, 'index']);
+
 Route::get('desa', [GetController::class, 'getsDataDesa']);
 Route::get('desa/{id}', [GetController::class, 'getDataDesa']);
 
