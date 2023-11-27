@@ -16,16 +16,19 @@ return new class extends Migration
         Schema::create('desas', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('distrik_id')->unsigned()->nullable();
+
             $table->string('nama_desa');
+            $table->string('slug')->nullable();
+
             $table->string('nama_kepala_desa')->nullable();
             $table->string('foto_kepala_desa')->nullable();
             $table->string('alamat')->nullable();
             $table->string('telp')->nullable();
             $table->string('email')->nullable();
             $table->string('foto_kantor')->nullable();
-            $table->string('slug')->nullable();
             $table->integer('jumlah_penduduk')->nullable();
             $table->geometry('peta_desa')->nullable();
+            
             $table->timestamps();
         });
     }

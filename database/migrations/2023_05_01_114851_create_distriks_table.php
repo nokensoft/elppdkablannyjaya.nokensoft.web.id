@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('distriks', function (Blueprint $table) {
             $table->id();
+            
             $table->string('nama_distrik');
             $table->string('slug')->nullable();
 
