@@ -24,7 +24,7 @@ class GeospatialController extends Controller
     public function getVillages(Request $request)
     {
         $districtId = $request->query('districtId');
-        $query = "SELECT desa_id, distrik_id, nama_desa, ST_AsGeoJSON(peta_desa) AS geojson FROM desas";
+        $query = "SELECT id, distrik_id, nama_desa, ST_AsGeoJSON(peta_desa) AS geojson FROM desas";
         if ($districtId) {
             $query .= " WHERE distrik_id = ?";
             $villages = DB::select($query, [$districtId]);
@@ -46,7 +46,7 @@ class GeospatialController extends Controller
                 ]
                 :
                 [
-                    'desa_id' => $item->desa_id,
+                    'id' => $item->id,
                     'distrik_id' => $item->distrik_id,
                     'name' => $item->nama_desa,
                     'nama_kepala_desa' => $item->nama_kepala_desa,
