@@ -46,7 +46,7 @@ class GeospatialController extends Controller
                 ]
                 :
                 [
-                    'id' => $item->desa_id,
+                    'id' => $item->id,
                     'distrik_id' => $item->distrik_id,
                     'name' => $item->nama_desa,
                     'nama_kepala_desa' => $item->nama_kepala_desa,
