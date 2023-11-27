@@ -10,14 +10,14 @@ class GeospatialController extends Controller
 {
     public function getDistricts()
     {
-        $districts = DB::select("SELECT distrik_id, nama_distrik, ST_AsGeoJSON(peta_distrik) AS geojson FROM distriks");
+        $districts = DB::select("SELECT distrik_id, nama_distrik,nama_kepala_distrik, ST_AsGeoJSON(peta_distrik) AS geojson FROM distriks");
         return response()->json($this->createGeoJSON($districts, true));
     }
 
     public function getVillages(Request $request)
     {
         $districtId = $request->query('districtId');
-        $query = "SELECT desa_id, distrik_id, nama_desa, ST_AsGeoJSON(peta_desa) AS geojson FROM desas";
+        $query = "SELECT desa_id, distrik_id, nama_desa,nama_kepala_desa,jumlah_penduduk, ST_AsGeoJSON(peta_desa) AS geojson FROM desas";
         if ($districtId) {
             $query .= " WHERE distrik_id = ?";
             $villages = DB::select($query, [$districtId]);
@@ -31,8 +31,20 @@ class GeospatialController extends Controller
     {
         $features = array_map(function ($item) use ($isDistrict) {
             $properties = $isDistrict
-                ? ['distrik_id' => $item->distrik_id, 'name' => $item->nama_distrik]
-                : ['desa_id' => $item->desa_id, 'distrik_id' => $item->distrik_id, 'name' => $item->nama_desa];
+                ?
+                [
+                    'distrik_id' => $item->distrik_id,
+                    'name' => $item->nama_distrik,
+                    'nama_kepala_distrik' => $item->nama_kepala_distrik
+                ]
+                :
+                [
+                    'desa_id' => $item->desa_id,
+                    'distrik_id' => $item->distrik_id,
+                    'name' => $item->nama_desa,
+                    'nama_kepala_desa' => $item->nama_kepala_desa,
+                    'jumlah_penduduk' => $item->jumlah_penduduk,
+                ];
 
             return [
                 'type' => 'Feature',
