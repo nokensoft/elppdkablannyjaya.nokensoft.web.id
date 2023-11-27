@@ -34,6 +34,7 @@ Route::get('desa/{id}', [GetController::class, 'getDataDesa']);
 Route::get('geospatial/distrik', [GeospatialController::class, 'getDistricts']);
 Route::get('geospatial/desa', [GeospatialController::class, 'getVillages']);
 
+Route::get('geospatial/test', [GeospatialController::class, 'test']);
 // DESA
 // Route::get('desa', [DesaController::class, 'index']);
 // Route::get('desa/{id}', [DesaController::class, 'show']);

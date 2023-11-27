@@ -17,15 +17,16 @@ class DatabaseSeeder extends Seeder
         $this->call(PerangkatDaerahSeeder::class);
 
         $this->call([
-            UrusanSeeder::class,
-            IkkSeeder::class,
-            DistrikSeeder::class,
-            DesaSeeder::class,
-            PelaporanSeeder::class,
-            DprdSeeder::class,
-            PengaturanSeeder::class,
-            ProfilDaerahSeeder::class,
-            GambarSeeder::class,
+            GeometryDistrikSeeder::class,
+            // UrusanSeeder::class,
+            // IkkSeeder::class,
+            // DistrikSeeder::class,
+            // DesaSeeder::class,
+            // PelaporanSeeder::class,
+            // DprdSeeder::class,
+            // PengaturanSeeder::class,
+            // ProfilDaerahSeeder::class,
+            // GambarSeeder::class,
         ]);
 
 
