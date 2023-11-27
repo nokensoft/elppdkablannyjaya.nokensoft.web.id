@@ -8,16 +8,23 @@ use App\Http\Controllers\Controller;
 
 class GeospatialController extends Controller
 {
+
     public function getDistricts()
     {
-        $districts = DB::select("SELECT distrik_id, nama_distrik,nama_kepala_distrik, ST_AsGeoJSON(peta_distrik) AS geojson FROM distriks");
+        $query = "
+            SELECT d.distrik_id, d.nama_distrik, ST_AsGeoJSON(d.peta_distrik) AS geojson, SUM(de.jumlah_penduduk) AS total_penduduk
+            FROM distriks d
+            LEFT JOIN desas de ON d.distrik_id = de.distrik_id
+            GROUP BY d.distrik_id, d.nama_distrik, d.peta_distrik
+        ";
+        $districts = DB::select($query);
         return response()->json($this->createGeoJSON($districts, true));
     }
 
     public function getVillages(Request $request)
     {
         $districtId = $request->query('districtId');
-        $query = "SELECT desa_id, distrik_id, nama_desa,nama_kepala_desa,jumlah_penduduk, ST_AsGeoJSON(peta_desa) AS geojson FROM desas";
+        $query = "SELECT desa_id, distrik_id, nama_desa, ST_AsGeoJSON(peta_desa) AS geojson FROM desas";
         if ($districtId) {
             $query .= " WHERE distrik_id = ?";
             $villages = DB::select($query, [$districtId]);
@@ -55,4 +62,25 @@ class GeospatialController extends Controller
 
         return ['type' => 'FeatureCollection', 'features' => $features];
     }
+
+    // public function getDistricts()
+    // {
+    //     $districts = DB::select("SELECT distrik_id, nama_distrik,nama_kepala_distrik, ST_AsGeoJSON(peta_distrik) AS geojson FROM distriks");
+    //     return response()->json($this->createGeoJSON($districts, true));
+    // }
+
+    // public function getVillages(Request $request)
+    // {
+    //     $districtId = $request->query('districtId');
+    //     $query = "SELECT desa_id, distrik_id, nama_desa,nama_kepala_desa,jumlah_penduduk, ST_AsGeoJSON(peta_desa) AS geojson FROM desas";
+    //     if ($districtId) {
+    //         $query .= " WHERE distrik_id = ?";
+    //         $villages = DB::select($query, [$districtId]);
+    //     } else {
+    //         $villages = DB::select($query);
+    //     }
+    //     return response()->json($this->createGeoJSON($villages, false));
+    // }
+
+
 }
