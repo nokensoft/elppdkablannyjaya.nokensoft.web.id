@@ -28,6 +28,8 @@ return new class extends Migration
             $table->string('email')->nullable();
             $table->geometry('peta_distrik')->nullable();
 
+            $table->integer('jumlah_penduduk')->nullable();
+
             $table->timestamps();
         });
     }
