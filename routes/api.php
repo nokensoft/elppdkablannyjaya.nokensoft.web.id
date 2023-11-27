@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\GetController;
+use App\Http\Controllers\Api\GeospatialController;
 
 
 /*
@@ -24,11 +25,14 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('distrik', [GetController::class, 'getsDataDistrik']);
 Route::get('distrik/{id}', [GetController::class, 'getDataDistrik']);
 
-Route::get('test', [GetController::class, 'index']);
 
 Route::get('desa', [GetController::class, 'getsDataDesa']);
 Route::get('desa/{id}', [GetController::class, 'getDataDesa']);
 
+
+
+Route::get('geospatia/distrik', [GeospatialController::class, 'getDistricts']);
+Route::get('geospatia/desa', [GeospatialController::class, 'getVillages']);
 
 // DESA
 // Route::get('desa', [DesaController::class, 'index']);
