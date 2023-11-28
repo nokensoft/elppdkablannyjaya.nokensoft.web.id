@@ -16,10 +16,10 @@ return new class extends Migration
         Schema::create('distriks', function (Blueprint $table) {
             $table->id();
 
-            $table->string('nama_distrik');
+            $table->string('nama_distrik')->nullable();
             $table->string('slug')->nullable();
 
-            $table->string('ibu_kota_distrik');
+            $table->string('ibu_kota_distrik')->nullable();
             $table->string('nama_kepala_distrik')->nullable();
             $table->string('foto_kepala_distrik')->nullable();
 
