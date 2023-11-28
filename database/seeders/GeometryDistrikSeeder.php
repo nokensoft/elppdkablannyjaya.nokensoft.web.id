@@ -18,7 +18,7 @@ class GeometryDistrikSeeder extends Seeder
     public function run()
     {
 
-        $json = file_get_contents(storage_path('public/lanny-jaya/distrik.geo.json'));
+        $json = file_get_contents('public/lanny-jaya/distrik.geo.json');
         $data = json_decode($json, true);
 
         // Iterasi setiap 'feature' dalam file JSON

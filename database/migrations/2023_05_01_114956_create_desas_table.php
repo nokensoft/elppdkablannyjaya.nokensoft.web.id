@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->bigInteger('distrik_id')->unsigned()->nullable();
 
-            $table->string('nama_desa');
+            $table->string('nama_desa')->nullable();
             $table->string('slug')->nullable();
 
             $table->string('nama_kepala_desa')->nullable();

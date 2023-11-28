@@ -15,7 +15,7 @@ class GeometryDesaSeeder extends Seeder
     public function run()
     {
         // Membaca file JSON
-        $json = file_get_contents(storage_path('public/lanny-jaya/kampung.geo.json'));
+        $json = file_get_contents('public/lanny-jaya/kampung.geo.json');
         $data = json_decode($json, true);
 
         // Iterasi setiap 'feature' dalam file JSON
