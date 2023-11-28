@@ -16,7 +16,7 @@ class GeospatialController extends Controller
         $query = "
         SELECT d.id, d.nama_distrik, ST_AsGeoJSON(d.peta_distrik) AS geojson, SUM(de.jumlah_penduduk) AS jumlah_penduduk
         FROM distriks d
-        LEFT JOIN desas de ON d.id = de.id
+        LEFT JOIN desas de ON d.id = de.distrik_id
         GROUP BY d.id, d.nama_distrik, d.peta_distrik
     ";
         $districts = DB::select($query);
