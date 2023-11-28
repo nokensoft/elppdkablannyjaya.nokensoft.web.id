@@ -63,7 +63,7 @@ class GeospatialController extends Controller
         return ['type' => 'FeatureCollection', 'features' => $features];
     }
 
-     // public function getDistricts()
+    // public function getDistricts()
     // {
     //     $query = "
     //         SELECT d.distrik_id, d.nama_distrik, ST_AsGeoJSON(d.peta_distrik) AS geojson, SUM(de.jumlah_penduduk) AS total_penduduk

@@ -25,9 +25,9 @@ class DatabaseSeeder extends Seeder
             // DesaSeeder::class,
             // PelaporanSeeder::class,
             // DprdSeeder::class,
-            // PengaturanSeeder::class,
             // ProfilDaerahSeeder::class,
             // GambarSeeder::class,
+            PengaturanSeeder::class,
         ]);
 
 

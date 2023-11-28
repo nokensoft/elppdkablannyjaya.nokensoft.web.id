@@ -32,6 +32,19 @@
             </div>
         </div>
         <!-- end row -->
+
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <div class="card-body">
+                        {{--  --}}
+                        map goes here
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end row -->
         @if(Auth::user()->hasRole('administrator'))
         <div class="row">
 
