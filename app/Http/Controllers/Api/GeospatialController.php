@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\File;
 class GeospatialController extends Controller
 {
 
-
+    // GET DISTRIK
     public function getDistricts()
     {
         $query = "
@@ -23,6 +23,7 @@ class GeospatialController extends Controller
         return response()->json($this->createGeoJSON($districts, true));
     }
 
+    // GET DESA
     public function getVillages(Request $request)
     {
         $districtId = $request->query('districtId');
@@ -36,6 +37,7 @@ class GeospatialController extends Controller
         return response()->json($this->createGeoJSON($villages, false));
     }
 
+    // CREATING GEO JSON
     private function createGeoJSON($data, $isDistrict = false)
     {
         $features = array_map(function ($item) use ($isDistrict) {
