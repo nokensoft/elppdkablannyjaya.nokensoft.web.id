@@ -17,33 +17,28 @@ class GeometryDistrikSeeder extends Seeder
      */
     public function run()
     {
-        $distrik = file_get_contents("public/lanny-jaya/distrik.geo.json");
-        // $distrik = File::get("public/lanny-jaya/distrik.geo.json");
 
-        $features = json_decode($distrik, true)->features;
+        $json = file_get_contents(storage_path('public/lanny-jaya/distrik.geo.json'));
+        $data = json_decode($json, true);
 
-        foreach($features as $feature) {
+        // Iterasi setiap 'feature' dalam file JSON
+        foreach ($data['features'] as $feature) {
+            $geometry = json_encode($feature['geometry']); // Konversi geometry ke JSON string
+            $properties = $feature['properties'];
 
-            error_log('SEEDING : ' . $feature );
-        };
+            // Mengakses kode_kec, nama dalam 'properties'
+            $kode_kec = $properties['kode_kec'];
+            $nama = $properties['nama'];
 
-            // $feature = $distrik["features"] ?? $distrik["features"];
-            // $geometry = json_decode($feature["geometry"]);
-            // $properties = $feature["properties"];
-
-            // $kode_kec = $properties["kode_kec"];
-            // $nama = $properties["nama"];
-
-            // $query = "
-            // INSERT INTO distriks (id, nama_distrik, peta_distrik, created_at)
-            // VALUES
-            // (%s, %s, ST_GeomFromGeoJSON(%s), NOW())
-            // ";
-
-            // $distriks =  DB::select($query);
-            //  error_log('SEEDING : ' . $distriks );
-            // Distrik::create($);
-
+            // Menyimpan data ke database
+           $distrik = DB::table('distriks')->insert([
+                'id' => $kode_kec,
+                'nama_distrik' => $nama,
+                'peta_distrik' => DB::raw("ST_GeomFromGeoJSON('$geometry')"),
+                'created_at' => now(),
+            ]);
+        }
+        error_log('SEEDING DISTRICT : ' . $nama);
 
     }
 }
