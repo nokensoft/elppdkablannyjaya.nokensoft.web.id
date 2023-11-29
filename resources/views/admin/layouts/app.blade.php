@@ -12,12 +12,14 @@
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
     @include('admin.includes.header')
+
+    @stack('style')
 </head>
 
 <!-- body start -->
 
 <body data-layout-mode="detached"  data-layout='{"mode": "light", "width": "fluid", "menuPosition": "fixed", "sidebar": { "color": "light", "size": "default", "showuser": true}, "topbar": {"color": "dark"}, "showRightSidebarOnPageLoad": true}'>
-       
+
     <!-- Begin page -->
     <div id="wrapper">
 
