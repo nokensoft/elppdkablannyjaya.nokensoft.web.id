@@ -27,7 +27,7 @@ return new class extends Migration
             $table->string('email')->nullable();
             $table->string('foto_kantor')->nullable();
             $table->integer('jumlah_penduduk')->nullable();
-            $table->string('peta_desa')->nullable();
+            $table->geometry('peta_desa')->nullable();
 
             $table->timestamps();
         });

@@ -27,7 +27,7 @@ return new class extends Migration
             $table->string('alamat')->nullable();
             $table->string('telp')->nullable();
             $table->string('email')->nullable();
-            $table->string('peta_distrik')->nullable();
+            $table->geometry('peta_distrik')->nullable();
 
             $table->timestamps();
         });
