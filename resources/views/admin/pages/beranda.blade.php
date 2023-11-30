@@ -227,6 +227,7 @@
                 title: {
                     text: 'Peta Kabupaten Lanny Jaya'
                 },
+                credits: { enabled: false },
                 chart: {
                     events: {
                         drilldown: function (e) {
