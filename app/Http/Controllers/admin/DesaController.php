@@ -82,14 +82,14 @@ class DesaController extends Controller
     // SHOW
     public function show($id)
     {
-        $data = Desa::where('slug',$id)->first();
+        $data = Desa::where('id',$id)->first();
         return view('admin.pages.profil.desa.detail',compact('data'));
     }
 
     // EDIT
     public function edit($id)
     {
-        $data = Desa::where('slug',$id)->first();
+        $data = Desa::where('id',$id)->first();
         $distriks = Distrik::all();
         return view('admin.pages.profil.desa.ubah', compact('data','distriks'));
     }
