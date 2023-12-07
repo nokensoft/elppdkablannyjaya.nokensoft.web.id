@@ -33,6 +33,7 @@ class GeometryDesaSeeder extends Seeder
             DB::table('desas')->insert([
                 'distrik_id' => $kode_kec,
                 'nama_desa' => $nama,
+                'jumlah_penduduk' => 0,
                 'peta_desa' => DB::raw("ST_GeomFromGeoJSON('$geometry')"),
                 'created_at' => now(),
             ]);

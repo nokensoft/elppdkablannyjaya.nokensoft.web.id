@@ -47,11 +47,11 @@ class GeospatialController extends Controller
 
             if ($isDistrict) {
                 $properties['id'] = $item->id;
-                $properties['jumlah_penduduk'] = $item->jumlah_penduduk;
+                $properties['jumlah_penduduk'] = 0;
             } else {
                 $properties['id'] = $item->id;
                 $properties['distrik_id'] = $item->distrik_id;
-                $properties['jumlah_penduduk'] = $item->jumlah_penduduk;
+                $properties['jumlah_penduduk'] = 0;
             }
 
             return [
