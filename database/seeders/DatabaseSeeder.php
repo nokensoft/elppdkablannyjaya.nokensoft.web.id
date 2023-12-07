@@ -19,14 +19,14 @@ class DatabaseSeeder extends Seeder
         $this->call([
             GeometryDistrikSeeder::class,
             GeometryDesaSeeder::class,
-            // UrusanSeeder::class,
-            // IkkSeeder::class,
-            // DistrikSeeder::class,
-            // DesaSeeder::class,
-            // PelaporanSeeder::class,
-            // DprdSeeder::class,
-            // ProfilDaerahSeeder::class,
-            // GambarSeeder::class,
+            UrusanSeeder::class,
+            IkkSeeder::class,
+            DistrikSeeder::class,
+            DesaSeeder::class,
+            PelaporanSeeder::class,
+            DprdSeeder::class,
+            ProfilDaerahSeeder::class,
+            GambarSeeder::class,
             PengaturanSeeder::class,
         ]);
 

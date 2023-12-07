@@ -191,14 +191,14 @@
         async function loadAllMapData() {
             try {
                 // Memuat data distrik dari API
-                const distrikResponse = await fetch('https://api.silanny.lannyjayakab.id/api/geospatial/distrik');
+                const distrikResponse = await fetch('https://silanny.lannyjayakab.id/api/geospatial/distrik');
                 districts = await distrikResponse.json();
                 console.info(districts)
 
                 // Membuat permintaan data kampung untuk setiap distrik
                 const villagePromises = districts.features.map(geometry => {
                     const districtId = geometry.properties.id;
-                    return fetch(`https://api.silanny.lannyjayakab.id/api/geospatial/desa?districtId=${districtId}`);
+                    return fetch(`https://silanny.lannyjayakab.id/api/geospatial/desa?districtId=${districtId}`);
                 });
 
                 // Jalankan semua fetch request secara paralel

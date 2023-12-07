@@ -49,7 +49,7 @@ class ProfilDaerahController extends Controller
         ProfilDaerah::whereId($id)->update($data);
 
         alert()->success('Berhasil', 'Sukses!!')->autoclose(1100);
-        return redirect()->route('admin.profildaerah.pemerintahdaerah');   
+        return redirect()->route('admin.profildaerah.pemerintahdaerah');
     }
 
     /*
@@ -96,7 +96,7 @@ class ProfilDaerahController extends Controller
         ProfilDaerah::whereId($id)->update($data);
 
         alert()->success('Berhasil', 'Sukses!!')->autoclose(1100);
-        return redirect()->route('admin.profildaerah.kepaladaerah');   
+        return redirect()->route('admin.profildaerah.kepaladaerah');
     }
 
     /*
@@ -143,7 +143,7 @@ class ProfilDaerahController extends Controller
         ProfilDaerah::whereId($id)->update($data);
 
         alert()->success('Berhasil', 'Sukses!!')->autoclose(1100);
-        return redirect()->route('admin.profildaerah.wakilkepaladaerah');   
+        return redirect()->route('admin.profildaerah.wakilkepaladaerah');
     }
 
     /*
@@ -191,7 +191,7 @@ class ProfilDaerahController extends Controller
         ProfilDaerah::whereId($id)->update($data);
 
         alert()->success('Berhasil', 'Sukses!!')->autoclose(1100);
-        return redirect()->route('admin.profildaerah.sekretarisdaerah');   
+        return redirect()->route('admin.profildaerah.sekretarisdaerah');
     }
 
     /*
