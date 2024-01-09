@@ -188,14 +188,14 @@
 
         async function loadVillageData(districtId) {
             if (!villages[districtId]) {
-                const response = await fetch(`https://api.silanny.lannyjayakab.id/api/geospatial/desa?districtId=${districtId}`);
+                const response = await fetch(`https://silanny.lannyjayakab.id/api/geospatial/desa?districtId=${districtId}`);
                 villages[districtId] = await response.json();
             }
         }
 
         async function loadAllMapData() {
             try {
-                const distrikResponse = await fetch('https://api.silanny.lannyjayakab.id/api/geospatial/distrik');
+                const distrikResponse = await fetch('https://silanny.lannyjayakab.id/api/geospatial/distrik');
                 districts = await distrikResponse.json();
                 console.info(districts);
 
