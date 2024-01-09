@@ -48,8 +48,7 @@
             <div class="col">
                 <div class="card">
                     <div class="card-body">
-                        <div id="container"></div>
-
+                        <div id="mainMap" style="height: 800px"></div>
                     </div>
                 </div>
             </div>
@@ -222,7 +221,7 @@
 
 
         function initializeChart() {
-            Highcharts.mapChart('container', {
+            Highcharts.mapChart('mainMap', {
                 // Pengaturan navigasi dan data peta
                 title: {
                     text: 'Peta Kabupaten Lanny Jaya'
