@@ -215,6 +215,11 @@
                     events: {
                         drilldown: async function (e) {
                             if (!e.seriesOptions) {
+
+                                var distrikName = e.point.name;
+                                // Mengubah judul menjadi "Peta Distrik [Nama Distrik]"
+                                this.setTitle({ text: 'Peta Distrik ' + distrikName });
+
                                 const districtId = e.point.drilldown;
                                 await loadVillageData(districtId);
                                 const villageData = villages[districtId].features.map(feature => {
@@ -231,6 +236,14 @@
                                     mapData: villages[districtId],
                                     data: villageData,
                                     joinBy: 'id',
+                                    events: {
+                                        click: function(event) {
+                                            if (event.point && event.point.properties) {
+                                                const desaId = event.point.properties.id;
+                                                window.location.href = `https://silanny.lannyjayakab.id/admin/desa/detail/${desaId}`;
+                                            }
+                                        }
+                                    }
                                 });
                             }
                         },
@@ -296,4 +309,5 @@
 
         loadAllMapData();
     </script>
+
   @endpush
