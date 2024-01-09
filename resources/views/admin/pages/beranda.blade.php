@@ -183,62 +183,58 @@
     <script src="https://code.highcharts.com/maps/modules/accessibility.js"></script>
 
     <script>
-
         let districts = {};
         let villages = {};
 
+        async function loadVillageData(districtId) {
+            if (!villages[districtId]) {
+                const response = await fetch(`https://api.silanny.lannyjayakab.id/api/geospatial/desa?districtId=${districtId}`);
+                villages[districtId] = await response.json();
+            }
+        }
+
         async function loadAllMapData() {
             try {
-                // Memuat data distrik dari API
-                const distrikResponse = await fetch('https://silanny.lannyjayakab.id/api/geospatial/distrik');
+                const distrikResponse = await fetch('https://api.silanny.lannyjayakab.id/api/geospatial/distrik');
                 districts = await distrikResponse.json();
-                console.info(districts)
+                console.info(districts);
 
-                // Membuat permintaan data kampung untuk setiap distrik
-                const villagePromises = districts.features.map(geometry => {
-                    const districtId = geometry.properties.id;
-                    return fetch(`https://silanny.lannyjayakab.id/api/geospatial/desa?districtId=${districtId}`);
-                });
-
-                // Jalankan semua fetch request secara paralel
-                const responses = await Promise.all(villagePromises);
-
-                // Konversi response ke json dan simpan dalam objek kampung
-                const jsonPromises = responses.map(async (response, index) => {
-                    const districtId = districts.features[index].properties.id;
-                    villages[districtId] = await response.json();
-                });
-
-                // Tunggu semua json conversion selesai
-                await Promise.all(jsonPromises);
-
-                // Inisialisasi peta dengan data yang dimuat
                 initializeChart();
             } catch (error) {
                 console.error("Error loading map data: ", error);
             }
         }
 
-
         function initializeChart() {
             Highcharts.mapChart('mainMap', {
-                // Pengaturan navigasi dan data peta
                 title: {
                     text: 'Peta Kabupaten Lanny Jaya'
                 },
                 credits: { enabled: false },
                 chart: {
                     events: {
-                        drilldown: function (e) {
-                            // Cek apakah event memiliki nama seri yang valid
-                            if (e.seriesOptions) {
-                                var distrikName = e.seriesOptions.name;
-                                // Mengubah judul menjadi "Peta Distrik [Nama Distrik]"
-                                this.setTitle({ text: 'Peta Distrik ' + distrikName });
+                        drilldown: async function (e) {
+                            if (!e.seriesOptions) {
+                                const districtId = e.point.drilldown;
+                                await loadVillageData(districtId);
+                                const villageData = villages[districtId].features.map(feature => {
+                                    return {
+                                        id: feature.properties.id,
+                                        name: feature.properties.name,
+                                        value: feature.properties.jumlah_penduduk,
+                                    };
+                                });
+
+                                this.addSeriesAsDrilldown(e.point, {
+                                    id: districtId,
+                                    name: e.point.name,
+                                    mapData: villages[districtId],
+                                    data: villageData,
+                                    joinBy: 'id',
+                                });
                             }
                         },
                         drillup: function (e) {
-                            // Mengembalikan judul saat drillup
                             this.setTitle({ text: 'Peta Kabupaten Lanny Jaya' });
                         }
                     }
@@ -265,7 +261,7 @@
                         return {
                             id: feature.properties.id,
                             value: feature.properties.jumlah_penduduk,
-                            drilldown: feature.properties.id // Menambahkan referensi drilldown
+                            drilldown: feature.properties.id
                         };
                     }),
                     joinBy: 'id',
@@ -280,11 +276,9 @@
                 tooltip: {
                     formatter: function () {
                         return '<span style="color: ' + this.point.color + '">&#9679;</span> ' +
-                            '<span style="font-size: 87%;">' + this.point.properties.name + '</span>' + // Nama distrik dengan ukuran font lebih kecil
-                            '<br>Jumlah Penduduk: ' + this.point.value; // Format tooltip
+                            '<span style="font-size: 87%;">' + this.point.properties.name + '</span><br>Jumlah Penduduk: ' + this.point.value;
                     }
                 },
-
                 drilldown: {
                     activeDataLabelStyle: {
                         color: '#FFFFFF',
@@ -295,27 +289,11 @@
                         floating: true,
                         showFullPath: false
                     },
-                    mapZooming: true,
-                    series: districts.features.map(feature => {
-                        const districtId = feature.properties.id;
-                        return {
-                            id: districtId,
-                            name: feature.properties.name,
-                            mapData: villages[districtId],
-                            data: villages[districtId].features.map(feature => {
-                                return {
-                                    id: feature.properties.id,
-                                    name: feature.properties.name,
-                                    value: feature.properties.jumlah_penduduk,
-                                };
-                            }),
-                            joinBy: 'id',
-                        };
-                    }),
+                    series: []
                 },
             });
         }
-        loadAllMapData();
 
+        loadAllMapData();
     </script>
   @endpush
