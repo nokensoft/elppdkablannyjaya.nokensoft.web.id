@@ -21,6 +21,7 @@ class GeospatialController extends Controller
     ";
         $districts = DB::select($query);
         return response()->json($this->createGeoJSON($districts, true));
+
     }
 
     // GET DESA
