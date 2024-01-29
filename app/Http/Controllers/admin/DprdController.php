@@ -18,7 +18,7 @@ class DprdController extends Controller
     // INDEX
     public function index()
     {
-        $datas = Dprd::orderBy('nama_lengkap','asc')->paginate(4);
+        $datas = Dprd::orderBy('nama_lengkap','asc')->paginate(10);
         return view('admin.pages.profil.dprd.index', ['datas' => $datas]);
     }
 
@@ -39,25 +39,25 @@ class DprdController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(),
-        [
-            'nama_lengkap'              => 'required',
-            // 'jabatan'                   => 'required',
-            // 'nik'                       => 'required|unique:dprds,nik',
-            // 'alamat'                    => 'required',
-            // 'ttl'                       => 'required',
-            // 'pendidikan'                => 'required',
-            // 'foto'                      => 'mimes:jpeg,png,jpg',
-        ],
-        [
-            'nama_lengkap.required'      => 'Nom tidak boleh kosong',
-            // 'nik.unique'                 => 'NIK sudah ada',
-            // 'jabatan.required'           => 'Jabatan tidak boleh kosong',
-            // 'alamat.required'            => 'Alamat tidak boleh kosong',
-            // 'ttl.required'               => 'TTL tidak boleh kosong',
-            // 'pendidikan.required'        => 'Pendidikan tidak boleh kosong',
-            // 'foto.mimes'                 => 'Foto harus dengan jenis JPEG,JPG,PNG',
-        ]
-    );
+            [
+                'nama_lengkap'              => 'required',
+                // 'jabatan'                   => 'required',
+                // 'nik'                       => 'required|unique:dprds,nik',
+                // 'alamat'                    => 'required',
+                // 'ttl'                       => 'required',
+                // 'pendidikan'                => 'required',
+                // 'foto'                      => 'mimes:jpeg,png,jpg',
+            ],
+            [
+                'nama_lengkap.required'      => 'Nom tidak boleh kosong',
+                // 'nik.unique'                 => 'NIK sudah ada',
+                // 'jabatan.required'           => 'Jabatan tidak boleh kosong',
+                // 'alamat.required'            => 'Alamat tidak boleh kosong',
+                // 'ttl.required'               => 'TTL tidak boleh kosong',
+                // 'pendidikan.required'        => 'Pendidikan tidak boleh kosong',
+                // 'foto.mimes'                 => 'Foto harus dengan jenis JPEG,JPG,PNG',
+            ]
+        );
 
         if ($validator->fails()) {
 
@@ -108,26 +108,26 @@ class DprdController extends Controller
     public function update(Request $request, $id)
     {
         $validator = Validator::make($request->only('nama_lengkap','jabatan','nik','alamat','ttl','pendidikan'),
-        [
-            'nama_lengkap'              => 'required',
-            // 'jabatan'                   => 'required',
-            // 'nik'                       => 'required|string|unique:dprds,nik,'.$id,
-            // 'alamat'                    => 'required',
-            // 'ttl'                       => 'required',
-            // 'pendidikan'                => 'required',
-            // 'foto'                      => 'mimes:jpg,png,jpeg'
+            [
+                'nama_lengkap'              => 'required',
+                // 'jabatan'                   => 'required',
+                // 'nik'                       => 'required|string|unique:dprds,nik,'.$id,
+                // 'alamat'                    => 'required',
+                // 'ttl'                       => 'required',
+                // 'pendidikan'                => 'required',
+                // 'foto'                      => 'mimes:jpg,png,jpeg'
 
-        ],
-        [
-            'nama_lengkap.required'      => 'Nom tidak boleh kosong',
-            // 'nik.unique'                 => 'NIK sudah ada',
-            // 'jabatan.required'           => 'Jabatan tidak boleh kosong',
-            // 'alamat.required'            => 'Alamat tidak boleh kosong',
-            // 'ttl.required'               => 'TTL tidak boleh kosong',
-            // 'pendidikan.required'        => 'Pendidikan tidak boleh kosong',
-            // 'foto.mimes'                 => 'Foto harus dengan jenis JPEG,JPG,PNG',
-        ]
-    );
+            ],
+            [
+                'nama_lengkap.required'      => 'Nom tidak boleh kosong',
+                // 'nik.unique'                 => 'NIK sudah ada',
+                // 'jabatan.required'           => 'Jabatan tidak boleh kosong',
+                // 'alamat.required'            => 'Alamat tidak boleh kosong',
+                // 'ttl.required'               => 'TTL tidak boleh kosong',
+                // 'pendidikan.required'        => 'Pendidikan tidak boleh kosong',
+                // 'foto.mimes'                 => 'Foto harus dengan jenis JPEG,JPG,PNG',
+            ]
+        );
 
         if ($validator->fails()) {
 

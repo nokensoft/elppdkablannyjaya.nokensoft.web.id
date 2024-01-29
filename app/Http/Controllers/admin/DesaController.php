@@ -19,7 +19,7 @@ class DesaController extends Controller
     // INDEX
     public function index()
     {
-        $datas = Desa::orderBy('nama_desa','asc')->paginate(4);
+        $datas = Desa::orderBy('nama_desa','asc')->paginate(10);
         return view('admin.pages.profil.desa.index', compact('datas'));
     }
 

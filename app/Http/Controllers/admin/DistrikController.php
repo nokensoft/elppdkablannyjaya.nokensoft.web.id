@@ -18,7 +18,7 @@ class DistrikController extends Controller
     // INDEX
     public function index()
     {
-        $datas = Distrik::orderBy('nama_distrik','asc')->paginate(4);
+        $datas = Distrik::orderBy('nama_distrik','asc')->paginate(10);
         return view('admin.pages.profil.distrik.index', compact('datas'));
     }
 

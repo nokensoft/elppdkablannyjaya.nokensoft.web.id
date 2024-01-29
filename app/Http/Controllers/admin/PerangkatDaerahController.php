@@ -20,7 +20,7 @@ class PerangkatDaerahController extends Controller
         $datas = User::whereHas('roles', function ($q) {
             $q->where('name', 'opd');
         })
-            ->orderBy('id', 'Desc')->paginate(4);
+            ->orderBy('id', 'Desc')->paginate(10);
 
         return view('admin.pages.lppd.perangkatdaerah.index', compact('datas'));
     }
