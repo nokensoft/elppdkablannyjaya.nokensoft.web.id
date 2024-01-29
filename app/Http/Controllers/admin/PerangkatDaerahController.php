@@ -45,12 +45,13 @@ class PerangkatDaerahController extends Controller
     // STORE
     public function store(Request $request)
     {
+        // dd('store');
         $validator = Validator::make( $request->all(),
             [
                 'email'                             => 'required|email|unique:users,email',
                 'password'                          => 'required|same:confirm-password',
                 'nama_organisasi'                   => 'required|unique:perangkat_daerahs',
-                'urusan'                            => 'required',
+                // 'urusan'                            => 'required',
 
             ],
             [
