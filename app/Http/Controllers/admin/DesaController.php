@@ -13,49 +13,69 @@ use Storage;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Carbon;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class DesaController extends Controller
 {
     // INDEX
     public function index()
     {
-        $datas = Desa::orderBy('nama_desa','asc')->paginate(10);
+        $datas = Desa::orderBy('nama_desa', 'asc')->paginate(10);
         return view('admin.pages.profil.desa.index', compact('datas'));
     }
 
     // PRINT
     public function print()
     {
-        $datas = Desa::orderBy('nama_desa','asc')->get();
+        $datas = Desa::orderBy('nama_desa', 'asc')->get();
         $page_title = 'Print - Data Desa';
         return view('admin.pages.profil.desa.print', compact('datas', 'page_title'));
+    }
+
+    // PDF
+    public function pdf()
+    {
+        $data = Desa::orderBy('nama_desa', 'asc')->get();
+        $tanggal = Carbon::now()->isoFormat('D-M-Y');
+        $title = 'desa-kab-lanny-jaya-' . $tanggal . '.pdf';
+        $datas = [
+            'datas' => $data,
+            'tanggal' => $tanggal,
+            'title' =>  $title
+        ];
+        $pdf = PDF::loadView('admin.pages.profil.desa.pdf', $datas);
+        $pdf->setPaper('a4', 'landscape');
+        return $pdf->download($title);
     }
 
     // CREATE
     public function create()
     {
         $data = Distrik::all();
-        return view('admin.pages.profil.desa.tambah',compact('data'));
+        return view('admin.pages.profil.desa.tambah', compact('data'));
     }
 
     // STORE
     public function store(Request $request)
     {
-        $validator = Validator::make($request->all(),
-        [
-            'nama_desa'                 => 'required',
-            // 'distrik_id'                => 'required',
-            // 'nama_kepala_desa'          => 'required',
-            // 'alamat'                    => 'required',
-            // 'telp'                      => 'required',
-        ],
-        [
-            'nama_desa.required'          => 'Nama desa tidak boleh kosong',
-            // 'distrik_id.required'         => 'Distrik boleh kosong',
-            // 'nama_kepala_desa.required'   => 'Nama kepala desa tidak boleh kosong',
-            // 'alamat.required'             => 'Alamat tidak boleh kosong',
-            // 'telp.required'               => 'Telp tidak boleh kosong',
-        ]);
+        $validator = Validator::make(
+            $request->all(),
+            [
+                'nama_desa'                 => 'required',
+                // 'distrik_id'                => 'required',
+                // 'nama_kepala_desa'          => 'required',
+                // 'alamat'                    => 'required',
+                // 'telp'                      => 'required',
+            ],
+            [
+                'nama_desa.required'          => 'Nama desa tidak boleh kosong',
+                // 'distrik_id.required'         => 'Distrik boleh kosong',
+                // 'nama_kepala_desa.required'   => 'Nama kepala desa tidak boleh kosong',
+                // 'alamat.required'             => 'Alamat tidak boleh kosong',
+                // 'telp.required'               => 'Telp tidak boleh kosong',
+            ]
+        );
 
         if ($validator->fails()) {
             return redirect()->back()->withInput($request->all())->withErrors($validator);
@@ -82,36 +102,38 @@ class DesaController extends Controller
     // SHOW
     public function show($id)
     {
-        $data = Desa::where('id',$id)->first();
-        return view('admin.pages.profil.desa.detail',compact('data'));
+        $data = Desa::where('id', $id)->first();
+        return view('admin.pages.profil.desa.detail', compact('data'));
     }
 
     // EDIT
     public function edit($id)
     {
-        $data = Desa::where('id',$id)->first();
+        $data = Desa::where('id', $id)->first();
         $distriks = Distrik::all();
-        return view('admin.pages.profil.desa.ubah', compact('data','distriks'));
+        return view('admin.pages.profil.desa.ubah', compact('data', 'distriks'));
     }
 
     // UPDATE PROCESS
     public function update(Request $request, $id)
     {
-        $validator = Validator::make($request->all(),
-        [
-            'nama_desa'                 => 'required',
-            // 'distrik_id'                => 'required',
-            // 'nama_kepala_desa'          => 'required',
-            // 'alamat'                    => 'required',
-            // 'telp'                      => 'required',
-        ],
-        [
-            'nama_desa.required'          => 'Nama desa tidak boleh kosong',
-            // 'distrik_id.required'         => 'Distrik boleh kosong',
-            // 'nama_kepala_desa.required'   => 'Nama kepala desa tidak boleh kosong',
-            // 'alamat.required'             => 'Alamat tidak boleh kosong',
-            // 'telp.required'               => 'Telp tidak boleh kosong',
-        ]);
+        $validator = Validator::make(
+            $request->all(),
+            [
+                'nama_desa'                 => 'required',
+                // 'distrik_id'                => 'required',
+                // 'nama_kepala_desa'          => 'required',
+                // 'alamat'                    => 'required',
+                // 'telp'                      => 'required',
+            ],
+            [
+                'nama_desa.required'          => 'Nama desa tidak boleh kosong',
+                // 'distrik_id.required'         => 'Distrik boleh kosong',
+                // 'nama_kepala_desa.required'   => 'Nama kepala desa tidak boleh kosong',
+                // 'alamat.required'             => 'Alamat tidak boleh kosong',
+                // 'telp.required'               => 'Telp tidak boleh kosong',
+            ]
+        );
 
         if ($validator->fails()) {
             return redirect()->back()->withInput($request->all())->withErrors($validator);
@@ -142,7 +164,7 @@ class DesaController extends Controller
     // DELETE PROCESS
     public function delete($id)
     {
-        $data = Desa::where('slug',$id)->first();
+        $data = Desa::where('slug', $id)->first();
         return view('admin.pages.profil.desa.delete', compact('data'));
     }
 

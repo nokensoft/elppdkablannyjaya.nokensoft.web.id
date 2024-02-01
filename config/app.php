@@ -184,13 +184,13 @@ return [
         // Intervention\Image\ImageServiceProvider::class,
         // Barryvdh\Debugbar\ServiceProvider::class,
 
+        // DOM PDF
+        Barryvdh\DomPDF\ServiceProvider::class,
 
         /*
          * Package Service Providers...
          */
-        UniSharp\LaravelFilemanager\LaravelFilemanagerServiceProvider::class,
-        Intervention\Image\ImageServiceProvider::class,
-        Maatwebsite\Excel\ExcelServiceProvider::class,
+
         /*
          * Application Service Providers...
          */
@@ -214,11 +214,12 @@ return [
     */
 
     'aliases' => Facade::defaultAliases()->merge([
-        'Image' => Intervention\Image\Facades\Image::class,
-         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
         // 'ExampleClass' => App\Example\ExampleClass::class,
         // 'Image' => Intervention\Image\Facades\Image::class,
         // 'Debugbar' => Barryvdh\Debugbar\Facades\Debugbar::class,
+
+        // DOM PDF
+        'PDF' => Barryvdh\DomPDF\Facade::class,
     ])->toArray(),
 
 ];

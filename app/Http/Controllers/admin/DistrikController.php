@@ -12,24 +12,41 @@ use Storage;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Carbon;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class DistrikController extends Controller
 {
     // INDEX
     public function index()
     {
-        $datas = Distrik::orderBy('nama_distrik','asc')->paginate(10);
+        $datas = Distrik::orderBy('nama_distrik', 'asc')->paginate(10);
         return view('admin.pages.profil.distrik.index', compact('datas'));
     }
 
     // PRINT
     public function print()
     {
-        $datas = Distrik::orderBy('nama_distrik','asc')->paginate();
+        $datas = Distrik::orderBy('nama_distrik', 'asc')->paginate();
         return view('admin.pages.profil.distrik.print', [
             'datas'         => $datas,
             'page_title'    => 'Print - Data Distrik'
         ]);
+    }
+
+    public function pdf()
+    {
+        $data = Distrik::orderBy('nama_distrik', 'asc')->get();
+        $tanggal = Carbon::now()->isoFormat('D-M-Y');
+        $title = 'distrik-kab-lanny-jaya-' . $tanggal . '.pdf';
+        $datas = [
+            'datas' => $data,
+            'tanggal' => $tanggal,
+            'title' =>  $title
+        ];
+        $pdf = PDF::loadView('admin.pages.profil.distrik.pdf', $datas);
+        $pdf->setPaper('a4', 'landscape');
+        return $pdf->download($title);
     }
 
     // CREATE
@@ -41,21 +58,23 @@ class DistrikController extends Controller
     // STORE
     public function store(Request $request)
     {
-        $validator = Validator::make($request->all(),
-        [
-            'nama_distrik'                  => 'required',
-            // 'ibu_kota_distrik'              => 'required',
-            // 'nama_kepala_distrik'           => 'required',
-            // 'alamat'                        => 'required',
-            // 'telp'                          => 'required',
-        ],
-        [
-            'nama_distrik.required'         => 'Nama desa tidak boleh kosong',
-            // 'ibu_kota_distrik.required'     => 'Distrik boleh kosong',
-            // 'nama_kepala_distrik.required'  => 'Nama kepala desa tidak boleh kosong',
-            // 'alamat.required'               => 'Alamat tidak boleh kosong',
-            // 'telp.required'                 => 'Telp tidak boleh kosong',
-        ]);
+        $validator = Validator::make(
+            $request->all(),
+            [
+                'nama_distrik'                  => 'required',
+                // 'ibu_kota_distrik'              => 'required',
+                // 'nama_kepala_distrik'           => 'required',
+                // 'alamat'                        => 'required',
+                // 'telp'                          => 'required',
+            ],
+            [
+                'nama_distrik.required'         => 'Nama desa tidak boleh kosong',
+                // 'ibu_kota_distrik.required'     => 'Distrik boleh kosong',
+                // 'nama_kepala_distrik.required'  => 'Nama kepala desa tidak boleh kosong',
+                // 'alamat.required'               => 'Alamat tidak boleh kosong',
+                // 'telp.required'                 => 'Telp tidak boleh kosong',
+            ]
+        );
 
         if ($validator->fails()) {
             return redirect()->back()->withInput($request->all())->withErrors($validator);
@@ -74,7 +93,6 @@ class DistrikController extends Controller
 
                 alert()->success('Berhasil', 'Sukses!!')->autoclose(1100);
                 return redirect()->route('admin.distrik');
-
             } catch (\Throwable $th) {
                 alert()->error('Gagal', 'Sukses!!')->autoclose(1100);
                 return redirect()->back();
@@ -85,35 +103,37 @@ class DistrikController extends Controller
     // SHOW
     public function show($id)
     {
-        $data = Distrik::where('id',$id)->first();
-        return view('admin.pages.profil.distrik.detail',compact('data'));
+        $data = Distrik::where('id', $id)->first();
+        return view('admin.pages.profil.distrik.detail', compact('data'));
     }
 
     // EDIT
     public function edit($id)
     {
-        $data = Distrik::where('id',$id)->first();
+        $data = Distrik::where('id', $id)->first();
         return view('admin.pages.profil.distrik.ubah', compact('data'));
     }
 
     // UPDATE
-    public function update(Request $request,$id)
+    public function update(Request $request, $id)
     {
-        $validator = Validator::make($request->all(),
-        [
-            'nama_distrik'              => 'required',
-            // 'ibu_kota_distrik'          => 'required',
-            // 'nama_kepala_distrik'       => 'required',
-            // 'alamat'                    => 'required',
-            // 'telp'                      => 'required',
-        ],
-        [
-            'nama_distrik.required'       => 'Nama desa tidak boleh kosong',
-            // 'ibu_kota_distrik.required'   => 'Distrik boleh kosong',
-            // 'nama_kepala_distrik.required'=> 'Nama kepala desa tidak boleh kosong',
-            // 'alamat.required'             => 'Alamat tidak boleh kosong',
-            // 'telp.required'               => 'Telp tidak boleh kosong',
-        ]);
+        $validator = Validator::make(
+            $request->all(),
+            [
+                'nama_distrik'              => 'required',
+                // 'ibu_kota_distrik'          => 'required',
+                // 'nama_kepala_distrik'       => 'required',
+                // 'alamat'                    => 'required',
+                // 'telp'                      => 'required',
+            ],
+            [
+                'nama_distrik.required'       => 'Nama desa tidak boleh kosong',
+                // 'ibu_kota_distrik.required'   => 'Distrik boleh kosong',
+                // 'nama_kepala_distrik.required'=> 'Nama kepala desa tidak boleh kosong',
+                // 'alamat.required'             => 'Alamat tidak boleh kosong',
+                // 'telp.required'               => 'Telp tidak boleh kosong',
+            ]
+        );
 
         if ($validator->fails()) {
             return redirect()->back()->withInput($request->all())->withErrors($validator);
@@ -136,7 +156,6 @@ class DistrikController extends Controller
                 return redirect()->back();
             }
         }
-
     }
 
     // DELETE PROCESS

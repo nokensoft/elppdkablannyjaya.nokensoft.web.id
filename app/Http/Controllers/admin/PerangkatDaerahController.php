@@ -10,7 +10,8 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-
+use Illuminate\Support\Carbon;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class PerangkatDaerahController extends Controller
 {
@@ -42,11 +43,33 @@ class PerangkatDaerahController extends Controller
         return view('admin.pages.lppd.perangkatdaerah.tambah');
     }
 
+    // PDF
+    public function pdf()
+    {
+
+
+        $data = User::whereHas('roles', function ($q) {
+            $q->where('name', 'opd');
+        })->orderBy('id', 'Desc')->get();
+        $tanggal = Carbon::now()->isoFormat('D-M-Y');
+        $title = 'perangkat-daerah-kab-lanny-jaya-' . $tanggal . '.pdf';
+        $datas = [
+            'datas' => $data,
+            'tanggal' => $tanggal,
+            'title' =>  $title
+        ];
+
+        $pdf = PDF::loadView('admin.pages.lppd.perangkatdaerah.pdf', $datas);
+        $pdf->setPaper('a4', 'landscape');
+        return $pdf->download($title);
+    }
+
     // STORE
     public function store(Request $request)
     {
         // dd('store');
-        $validator = Validator::make( $request->all(),
+        $validator = Validator::make(
+            $request->all(),
             [
                 'email'                             => 'required|email|unique:users,email',
                 'password'                          => 'required|same:confirm-password',
@@ -175,8 +198,10 @@ class PerangkatDaerahController extends Controller
     }
 
     // UPDATE PASSWORD ONLY
-    public function updatePassword(Request $request, $id){
-        $validator = Validator::make( $request->all(),
+    public function updatePassword(Request $request, $id)
+    {
+        $validator = Validator::make(
+            $request->all(),
             [
                 'email'                             => 'required|email|unique:users,email',
                 'password'                          => 'required|same:confirm-password',
@@ -187,7 +212,7 @@ class PerangkatDaerahController extends Controller
             ]
         );
 
-        if($validator->fails()){
+        if ($validator->fails()) {
             return redirect()->back()->withInput($request->all())->withErrors($validator);
         } else {
             try {
@@ -198,14 +223,12 @@ class PerangkatDaerahController extends Controller
 
                 alert()->success('Berhasil', 'Sukses!!')->autoclose(1100);
                 return redirect()->route('admin.perangkatdaerah');
-
             } catch (\Throwable $th) {
                 dd($th);
                 alert()->error('Gagal', 'Gagal!!')->autoclose(1100);
                 return redirect()->back();
             }
         }
-
     }
 
     // DELETE

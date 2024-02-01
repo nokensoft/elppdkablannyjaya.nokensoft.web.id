@@ -110,11 +110,14 @@ Route::prefix('admin')->middleware('auth')->group(function () {
         Route::put('dprd/{id}', 'update')->name('admin.dprd.update')->middleware(['role:administrator']);
 
         Route::delete('dprd/{id}', 'destroy')->name('admin.dprd.destroy')->middleware(['role:administrator']);
+
+        Route::get('dprd/pdf', 'dprd_pdf')->name('admin.dprd.pdf')->middleware(['role:administrator']);
     });
 
     // DISTRIK
     Route::controller(DistrikController::class)->group(function () {
         Route::get('distrik', 'index')->name('admin.distrik')->middleware(['role:administrator']);
+        Route::get('distrik/pdf', 'pdf')->name('admin.distrik.pdf')->middleware(['role:administrator']);
         Route::get('distrik/create', 'create')->name('admin.distrik.create')->middleware(['role:administrator']);
         Route::post('distrik', 'store')->name('admin.distrik.store')->middleware(['role:administrator']);
 
@@ -132,6 +135,7 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     // DESA
     Route::controller(DesaController::class)->group(function () {
         Route::get('desa', 'index')->name('admin.desa')->middleware(['role:administrator']);
+        Route::get('desa/pdf', 'pdf')->name('admin.desa.pdf')->middleware(['role:administrator']);
         Route::get('desa/create', 'create')->name('admin.desa.create')->middleware(['role:administrator']);
         Route::post('desa', 'store')->name('admin.desa.store')->middleware(['role:administrator']);
 
@@ -162,6 +166,7 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     // PERANGKAT DAERAH
     Route::controller(PerangkatDaerahController::class)->group(function () {
         Route::get('perangkatdaerah', 'index')->name('admin.perangkatdaerah');
+        Route::get('perangkatdaerah/pdf', 'pdf')->name('admin.perangkatdaerah.pdf');
         Route::get('perangkatdaerah/create', 'create')->name('admin.perangkatdaerah.create');
 
         Route::get('perangkatdaerah/print', 'print')->name('admin.perangkatdaerah.print')->middleware(['role:administrator']);

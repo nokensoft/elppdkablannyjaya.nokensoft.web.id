@@ -12,20 +12,22 @@ use Storage;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Validator;
+use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Carbon;
 
 class DprdController extends Controller
 {
     // INDEX
     public function index()
     {
-        $datas = Dprd::orderBy('nama_lengkap','asc')->paginate(10);
+        $datas = Dprd::orderBy('nama_lengkap', 'asc')->paginate(10);
         return view('admin.pages.profil.dprd.index', ['datas' => $datas]);
     }
 
     // PRINT
     public function print()
     {
-        $datas = Dprd::orderBy('nama_lengkap','asc')->paginate();
+        $datas = Dprd::orderBy('nama_lengkap', 'asc')->paginate();
         return view('admin.pages.profil.dprd.print', ['datas' => $datas]);
     }
 
@@ -38,7 +40,8 @@ class DprdController extends Controller
     // STORE PROCESS
     public function store(Request $request)
     {
-        $validator = Validator::make($request->all(),
+        $validator = Validator::make(
+            $request->all(),
             [
                 'nama_lengkap'              => 'required',
                 // 'jabatan'                   => 'required',
@@ -62,7 +65,6 @@ class DprdController extends Controller
         if ($validator->fails()) {
 
             return redirect()->back()->withInput($request->all())->withErrors($validator);
-
         } else {
             try {
                 $dprd = new Dprd();
@@ -80,12 +82,10 @@ class DprdController extends Controller
 
                 alert()->success('Berhasil', 'Sukses!!')->autoclose(1100);
                 return redirect()->route('admin.dprd');
-
             } catch (\Throwable $th) {
 
                 alert()->error('Maaf', 'Gagal!!')->autoclose(1100);
                 return redirect()->back();
-
             }
         }
     }
@@ -93,21 +93,22 @@ class DprdController extends Controller
     // SHOW
     public function show($id)
     {
-        $data = Dprd::where('id',$id)->first();
-        return view('admin.pages.profil.dprd.detail',compact('data'));
+        $data = Dprd::where('id', $id)->first();
+        return view('admin.pages.profil.dprd.detail', compact('data'));
     }
 
     // EDIT
     public function edit($id)
     {
-        $data = Dprd::where('id',$id)->first();
+        $data = Dprd::where('id', $id)->first();
         return view('admin.pages.profil.dprd.ubah', compact('data'));
     }
 
     // UPDATE PROCESS
     public function update(Request $request, $id)
     {
-        $validator = Validator::make($request->only('nama_lengkap','jabatan','nik','alamat','ttl','pendidikan'),
+        $validator = Validator::make(
+            $request->only('nama_lengkap', 'jabatan', 'nik', 'alamat', 'ttl', 'pendidikan'),
             [
                 'nama_lengkap'              => 'required',
                 // 'jabatan'                   => 'required',
@@ -132,7 +133,6 @@ class DprdController extends Controller
         if ($validator->fails()) {
 
             return redirect()->back()->withInput($request->all())->withErrors($validator);
-
         } else {
             try {
                 $dprd                   = Dprd::find($id);
@@ -150,21 +150,37 @@ class DprdController extends Controller
 
                 alert()->success('Berhasil', 'Sukses!!')->autoclose(1100);
                 return redirect()->route('admin.dprd');
-
             } catch (\Throwable $th) {
 
                 alert()->error('Gagal', 'Sukses!!')->autoclose(1100);
                 return redirect()->back();
-
             }
         }
+    }
 
+    public function dprd_pdf()
+    {
+        $data = Dprd::orderBy('nama_lengkap', 'asc')->get();
+        $tanggal = Carbon::now()->isoFormat('D-M-Y');
+        $title = 'dprd-kab-lanny-jaya-' . $tanggal . '.pdf';
+        $datas = [
+            'datas' => $data,
+            'tanggal' => $tanggal,
+            'title' =>  $title
+        ];
+
+        // $datas =  Dprd::orderBy('nama_lengkap', 'asc')->get();
+        // return view('admin.pages.profil.dprd.pdf', compact('datas'));
+
+        $pdf = PDF::loadView('admin.pages.profil.dprd.pdf', $datas);
+        $pdf->setPaper('a4', 'landscape');
+        return $pdf->download($title);
     }
 
     // DELETE CONFIRMATION
     public function delete($id)
     {
-        $data = Dprd::where('id',$id)->first();
+        $data = Dprd::where('id', $id)->first();
         return view('admin.pages.profil.dprd.delete', compact('data'));
     }
 
@@ -181,5 +197,4 @@ class DprdController extends Controller
             return redirect()->back();
         }
     }
-
 }
